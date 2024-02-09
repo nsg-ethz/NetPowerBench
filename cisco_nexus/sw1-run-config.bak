@@ -1,0 +1,259 @@
+!Command: show running-config
+!Running configuration last done at: Thu Dec 21 15:24:55 2023
+!Time: Thu Dec 21 15:35:20 2023
+
+version 10.3(3) Bios:version 05.47 
+power redundancy-mode combined force
+
+switchname cisco1
+vdc cisco1 id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4097
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature bash-shell
+feature scp-server
+feature netconf
+clock protocol none vdc 1
+
+ip domain-lookup
+copp profile strict
+hardware access-list tcam region ing-racl 768
+hardware access-list tcam region ing-l3-vlan-qos 2048
+snmp-server user admin network-admin auth md5 0x30cc06114dbe5918d47acee076fc4e5a
+ priv des 0x30cc06114dbe5918d47acee076fc4e5a localizedkey
+rmon event 1 description FATAL(1) owner PMON@FATAL
+rmon event 2 description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 description ERROR(3) owner PMON@ERROR
+rmon event 4 description WARNING(4) owner PMON@WARNING
+rmon event 5 description INFORMATION(5) owner PMON@INFO
+system default switchport
+
+vlan 1,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,49-50,52
+
+vrf context management
+  ip route 0.0.0.0/0 192.168.3.1
+
+interface Ethernet1/1
+
+interface Ethernet1/2
+
+interface Ethernet1/3
+
+interface Ethernet1/4
+
+interface Ethernet1/5
+
+interface Ethernet1/6
+
+interface Ethernet1/7
+
+interface Ethernet1/8
+
+interface Ethernet1/9
+
+interface Ethernet1/10
+
+interface Ethernet1/11
+
+interface Ethernet1/12
+
+interface Ethernet1/13
+
+interface Ethernet1/14
+
+interface Ethernet1/15
+  switchport access vlan 49
+
+interface Ethernet1/16
+  switchport access vlan 50
+
+interface Ethernet1/17
+  switchport access vlan 49
+  speed 10000
+
+interface Ethernet1/18
+  switchport access vlan 18
+  speed 10000
+
+interface Ethernet1/19
+  switchport access vlan 18
+  speed 10000
+
+interface Ethernet1/20
+  switchport access vlan 20
+  speed 10000
+
+interface Ethernet1/21
+  switchport access vlan 20
+  speed 10000
+
+interface Ethernet1/22
+  switchport access vlan 22
+  speed 10000
+
+interface Ethernet1/23
+  switchport access vlan 22
+  speed 10000
+
+interface Ethernet1/24
+  switchport access vlan 24
+  speed 10000
+
+interface Ethernet1/25
+  switchport access vlan 24
+  speed 10000
+
+interface Ethernet1/26
+  switchport access vlan 26
+  speed 10000
+
+interface Ethernet1/27
+  switchport access vlan 26
+  speed 10000
+
+interface Ethernet1/28
+  switchport access vlan 28
+  speed 10000
+
+interface Ethernet1/29
+  switchport access vlan 28
+  speed 10000
+
+interface Ethernet1/30
+  switchport access vlan 30
+  speed 10000
+
+interface Ethernet1/31
+  switchport access vlan 30
+  speed 10000
+
+interface Ethernet1/32
+  switchport access vlan 32
+  speed 10000
+
+interface Ethernet1/33
+  switchport access vlan 32
+  speed 10000
+
+interface Ethernet1/34
+  switchport access vlan 34
+  speed 10000
+
+interface Ethernet1/35
+  switchport access vlan 34
+  speed 10000
+
+interface Ethernet1/36
+  switchport access vlan 36
+  speed 10000
+
+interface Ethernet1/37
+  switchport access vlan 36
+  speed 10000
+
+interface Ethernet1/38
+  switchport access vlan 38
+  speed 10000
+
+interface Ethernet1/39
+  switchport access vlan 38
+  speed 10000
+
+interface Ethernet1/40
+  switchport access vlan 40
+  speed 10000
+
+interface Ethernet1/41
+  switchport access vlan 40
+  speed 10000
+
+interface Ethernet1/42
+  switchport access vlan 42
+  speed 10000
+
+interface Ethernet1/43
+  switchport access vlan 42
+  speed 10000
+
+interface Ethernet1/44
+  switchport access vlan 44
+  speed 10000
+
+interface Ethernet1/45
+  switchport access vlan 44
+  speed 10000
+
+interface Ethernet1/46
+  switchport access vlan 46
+  speed 10000
+
+interface Ethernet1/47
+  switchport access vlan 46
+  speed 10000
+
+interface Ethernet1/48
+  switchport access vlan 50
+  speed 10000
+
+interface Ethernet1/49
+  switchport access vlan 49
+  speed 100000
+  fec off
+  no negotiate auto
+
+interface Ethernet1/50
+  switchport access vlan 50
+  speed 100000
+  fec off
+  no negotiate auto
+
+interface Ethernet1/51
+  switchport access vlan 49
+  speed 100000
+  fec off
+  no negotiate auto
+
+interface Ethernet1/52
+  switchport access vlan 52
+  speed 100000
+  fec off
+  no negotiate auto
+
+interface Ethernet1/53
+  switchport access vlan 52
+  speed 100000
+  fec off
+  no negotiate auto
+
+interface Ethernet1/54
+  switchport access vlan 50
+  speed 100000
+  fec off
+  no negotiate auto
+
+interface mgmt0
+  vrf member management
+  ip address 192.168.3.211/24
+
+interface loopback3
+
+interface loopback4
+
+interface loopback5
+
+interface loopback6
+
+interface loopback7
+
+interface loopback8
+line console
+line vty
+  access-class ssh in
+  access-class ssh out
+boot nxos bootflash:/nxos64-cs.10.3.3.F.bin 
+
+system software allow third-party
+logging timestamp microseconds
