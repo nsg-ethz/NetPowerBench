@@ -1,0 +1,55 @@
+show inventory
+Mon Oct  7 15:48:36.130 CEST
+NAME: "0/RP0", DESCR: "NC55A1 24Q6H SS Route Processor Card"
+PID: NCS-55A1-24Q6H-SS , VID: V01, SN: FOC262044A5
+
+NAME: "GigabitEthernet0/0/0/16", DESCR: "Non-Cisco SFP 1G CWDM 1470nm Pluggable Optics Module"
+PID: S.1612.37.KD      , VID: A  , SN: F782230
+
+NAME: "TenGigE0/0/0/18", DESCR: "Non-Cisco SFP+ 10G DWDM 1531.90nm Pluggable Optics Module"
+PID: P.1696.23.57      , VID: A  , SN: F784K3Z
+
+NAME: "TenGigE0/0/0/19", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.10         , VID: A  , SN: F783ZL0
+
+NAME: "TenGigE0/0/0/20", DESCR: "Non-Cisco SFP+ 10G DWDM 1538.98nm Pluggable Optics Module"
+PID: P.1696.23.48      , VID: 1A , SN: F8201AE
+
+NAME: "TenGigE0/0/0/21", DESCR: "Non-Cisco SFP+ 10G ER Pluggable Optics Module"
+PID: P.1696.23.L       , VID: A  , SN: F7AWQJY
+
+NAME: "TenGigE0/0/0/22", DESCR: "Non-Cisco SFP+ 10G ER Pluggable Optics Module"
+PID: P.1696.23.K       , VID: A  , SN: F7864TK
+
+NAME: "TenGigE0/0/0/47", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.10         , VID: A  , SN: F783QR2
+
+NAME: "HundredGigE0/0/1/0", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01 , SN: F7ARQJA
+
+NAME: "HundredGigE0/0/1/1", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 1A , SN: F8214JF
+
+NAME: "HundredGigE0/0/1/2", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01 , SN: F7ARRQ5
+
+NAME: "HundredGigE0/0/1/3", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 1A , SN: F8214J0
+
+NAME: "Rack 0", DESCR: "NCS55A1 24Q6H_SS 1RU Chassis"
+PID: NCS-55A1-24Q6H-SS , VID: V01, SN: FOC2621R0CG
+
+NAME: "0/FT0", DESCR: "NC5501 Fan Tray Forward Flow"
+PID: NCS-1RU-FAN-FW    , VID: V01, SN: N/A
+
+NAME: "0/FT1", DESCR: "NC5501 Fan Tray Forward Flow"
+PID: NCS-1RU-FAN-FW    , VID: V01, SN: N/A
+
+NAME: "0/PM0", DESCR: "NCS 5500 DC 950W Power Supply Port-S Intake/Front-to-back"
+PID: NCS-950W-DCFW     , VID: V02, SN: ART2731F9ZM
+
+NAME: "0/PM1", DESCR: "NCS 5500 DC 950W Power Supply Port-S Intake/Front-to-back"
+PID: NCS-950W-DCFW     , VID: V02, SN: ART2731F9ZJ
+
+RP/0/RP0/CPU0:swiBI1#exit
+Connection to swiBI1.switch.ch closed.

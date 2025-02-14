@@ -1,0 +1,58 @@
+show inventory
+Mon Oct  7 15:43:34.084 CEST
+NAME: "0/RP0", DESCR: "NC55A1 24Q6H SS Route Processor Card"
+PID: NCS-55A1-24Q6H-SS , VID: V01, SN: FOC2528002P
+
+NAME: "GigabitEthernet0/0/0/1", DESCR: "Non-Cisco SFP 1G 1000BASE-LX Pluggable Optics Module"
+PID: S.1312.10.D       , VID: A  , SN: F7882HP
+
+NAME: "TenGigE0/0/0/3", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.20         , VID: A  , SN: F79X7QC
+
+NAME: "TenGigE0/0/0/15", DESCR: "Non-Cisco SFP+ 10G ZR Pluggable Optics Module"
+PID: P.1696.23.L       , VID: A  , SN: F7825KL
+
+NAME: "TenGigE0/0/0/16", DESCR: "Non-Cisco SFP+ 10G ZR Pluggable Optics Module"
+PID: P.1696.23.K       , VID: A  , SN: F788P31
+
+NAME: "TenGigE0/0/0/17", DESCR: "Non-Cisco SFP+ 10G DWDM 1531.90nm Pluggable Optics Module"
+PID: P.1696.23.57      , VID: A  , SN: F788N2P
+
+NAME: "TenGigE0/0/0/18", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.20         , VID: A  , SN: F79X7QJ
+
+NAME: "TenGigE0/0/0/21", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.20         , VID: A  , SN: F79CHM8
+
+NAME: "TenGigE0/0/0/22", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.20         , VID: A  , SN: F79EL20
+
+NAME: "TenGigE0/0/0/47", DESCR: "Cisco SFP+ 10G CU1M Pluggable Optics Module"
+PID: SFP-H10GB-CU1M    , VID: V03, SN: TED1709A2NG
+
+NAME: "HundredGigE0/0/1/0", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01 , SN: F7ALPHK
+
+NAME: "HundredGigE0/0/1/3", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01 , SN: F7A32AY
+
+NAME: "HundredGigE0/0/1/5", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01 , SN: F7A32AX
+
+NAME: "Rack 0", DESCR: "NCS55A1 24Q6H_SS 1RU Chassis"
+PID: NCS-55A1-24Q6H-SS , VID: V01, SN: FOC2523R3FK
+
+NAME: "0/FT0", DESCR: "NC5501 Fan Tray Forward Flow"
+PID: NCS-1RU-FAN-FW    , VID: V01, SN: N/A
+
+NAME: "0/FT1", DESCR: "NC5501 Fan Tray Forward Flow"
+PID: NCS-1RU-FAN-FW    , VID: V01, SN: N/A
+
+NAME: "0/PM0", DESCR: "NCS 5500 AC 1100W Power Supply Port-S Intake/Front-to-back"
+PID: NCS-1100W-ACFW    , VID: V01, SN: ART2522F77K
+
+NAME: "0/PM1", DESCR: "NCS 5500 AC 1100W Power Supply Port-S Intake/Front-to-back"
+PID: NCS-1100W-ACFW    , VID: V01, SN: ART2522F76R
+
+RP/0/RP0/CPU0:swiFR1#exit
+Connection to swifr1.switch.ch closed.

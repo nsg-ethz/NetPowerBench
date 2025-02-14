@@ -1,0 +1,19 @@
+show inventory
+NAME: "Chassis", DESCR: "Cisco ASR920 Series - 2GE and 4-10GE - AC model"
+PID: ASR-920-4SZ-A     , VID: V01  , SN: CAT1915U0MV
+
+NAME: " FIXED IM subslot 0/0", DESCR: "FIXED : 2-port Gig & 4-port Ten Gig Dual Ethernet Interface Module"
+PID: 2xGE-4x10GE-FIXED , VID: V00  , SN: N/A        
+
+NAME: "subslot 0/0 transceiver 3", DESCR: "SFP+ 10GBASE-SR"
+PID: SFP-10G-SR          , VID: V03  , SN: F7996YB         
+
+NAME: "subslot 0/0 transceiver 4", DESCR: "10GE ZR"
+PID: SFP-10G-ZR          , VID: V01  , SN: F820AE8         
+
+NAME: "subslot 0/0 transceiver 5", DESCR: "SFP+ 10GBASE-ER"
+PID: SFP-10G-ER          , VID: V01  , SN: F788FPV         
+
+
+swiCAR1#exit
+Connection to swicar1.switch.ch closed.

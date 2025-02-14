@@ -1,0 +1,70 @@
+ports:
+  PCC:
+    ids:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      # - 11
+      # - 12
+      # - 13
+      # - 14
+      # - 15
+      # - 16
+      # - 17
+      # - 18
+      # - 19
+      # - 20
+      # - 21
+      # - 22
+      - 23
+    speeds:
+      10G:
+        speed_label: 10g
+        interface_label: TenGigE  0/0/0/PORT
+      25G:
+        speed_label: 25g
+        interface_label: TwentyFiveGigE 0/0/0/PORT
+      50G:
+        speed_label: 50g
+        interface_label: FiftyGigE 0/0/0/PORT
+      100G:
+        speed_label: 100g
+        interface_label: HundredGigE 0/0/0/PORT
+
+    commands:
+      speed_config:
+        - controller optics 0/0/0/PORT
+        - speed SPEED_LABEL
+        - exit
+      snake-test:
+        - interface INTERFACE_LABEL
+        - mtu 6000
+        - l2transport
+        - exit
+        - exit
+        - l2vpn
+        - bridge group g_VLAN_NUMBER
+        - bridge-domain d_VLAN_NUMBER
+        - mtu 6000
+        - interface INTERFACE_LABEL
+        - exit
+        - exit
+        - exit
+        - exit
+      enable:
+        - interface INTERFACE_LABEL
+        - no shutdown
+        - exit
+      disable:
+        - no l2vpn
+        - interface INTERFACE_LABEL
+        - shutdown
+        - exit

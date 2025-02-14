@@ -1,0 +1,19 @@
+show inventory
+NAME: "1", DESCR: "WS-C2960G-48TC-L"
+PID: WS-C2960G-48TC-L  , VID: V01  , SN: FOC1049X6D7
+
+NAME: "GigabitEthernet0/45", DESCR: "1000BaseSX SFP"
+PID: Unspecified       , VID:      , SN: P4Q089A         
+
+NAME: "GigabitEthernet0/46", DESCR: "1000BaseSX SFP"
+PID: Unspecified       , VID:      , SN: P4Q04D6         
+
+NAME: "GigabitEthernet0/47", DESCR: "1000BaseLX SFP"
+PID: SFP-GE-L            , VID: V01  , SN: F781ER2         
+
+NAME: "GigabitEthernet0/48", DESCR: "1000BaseLX SFP"
+PID: Unspecified       , VID:      , SN: P11V6EE         
+
+
+swiLAB-mgmt1#exit
+Connection to swiLAB-mgmt1.switch.ch closed.

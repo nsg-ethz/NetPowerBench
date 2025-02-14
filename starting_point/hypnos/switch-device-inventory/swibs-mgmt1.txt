@@ -1,0 +1,10 @@
+show inventory
+NAME: "1", DESCR: "WS-C2960X-24TD-L"
+PID: WS-C2960X-24TD-L  , VID: V05  , SN: FCW1941B5T8
+
+NAME: "TenGigabitEthernet1/0/2", DESCR: "SFP-10GBase-LR"
+PID: SFP-10G-LR          , VID: V01  , SN: F78RC88         
+
+
+swiBS-mgmt1#exit
+Connection to swibs-mgmt1.switch.ch closed.

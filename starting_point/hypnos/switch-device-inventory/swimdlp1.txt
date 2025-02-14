@@ -1,0 +1,28 @@
+show inventory
+NAME: "Chassis", DESCR: "Cisco ASR920 Series - 24GE Fiber and 4-10GE - Modular PSU"
+PID: ASR-920-24SZ-M    , VID: V01  , SN: CAT2221V26J
+
+NAME: " FIXED IM subslot 0/0", DESCR: "FIXED : 24-port Gig & 4-port Ten Gig SFP Ethernet Interface Module"
+PID: 24xGE-4x10GE-FIXED-S, VID: V00  , SN: N/A        
+
+NAME: "subslot 0/0 transceiver 24", DESCR: "SFP+ 10GBASE-SR"
+PID: SFP-10G-SR          , VID: V03  , SN: F78K49X         
+
+NAME: "subslot 0/0 transceiver 25", DESCR: "10GE ZR"
+PID: SFP-10G-ZR          , VID: V01  , SN: F782X5U         
+
+NAME: "subslot 0/0 transceiver 27", DESCR: "SFP+ 10GBASE-LR"
+PID: SFP-10G-LR          , VID: V01  , SN: F781GSF         
+
+NAME: "Power Supply Module 0", DESCR: "ASR 920 250W AC Power Supply"
+PID: ASR-920-PWR-A     , VID: V02  , SN: ART2213F1MG
+
+NAME: "Power Supply Module 1", DESCR: "ASR 920 250W AC Power Supply"
+PID: ASR-920-PWR-A     , VID: V02  , SN: ART2213F1LD
+
+NAME: "Fan Tray", DESCR: "ASR 920 Fan tray"
+PID: ASR-920-FAN-F     , VID: V01  , SN: CAT2223V08F
+
+
+swiMDLP1#exit
+Connection to swimdlp1.switch.ch closed.

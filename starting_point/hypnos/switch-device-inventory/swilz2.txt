@@ -1,0 +1,53 @@
+show inventory
+NAME: "WS-C6503-E", DESCR: "Cisco Systems Catalyst 6500 3-slot Chassis System"
+PID: WS-C6503-E        ,                     VID: V02, SN: FOX094800PT
+
+NAME: "CLK-7600 1", DESCR: "OSR-7600 Clock FRU 1"
+PID: CLK-7600          ,                     VID:    , SN: NWG094602JJ
+
+NAME: "CLK-7600 2", DESCR: "OSR-7600 Clock FRU 2"
+PID: CLK-7600          ,                     VID:    , SN: NWG094602JJ
+
+NAME: "1", DESCR: "VS-SUP2T-10G 5 ports Supervisor Engine 2T 10GE w/ CTS Rev. 1.3"
+PID: VS-SUP2T-10G      ,                     VID: V03, SN: SAL1643QWLC
+
+NAME: "msfc sub-module of 1", DESCR: "VS-F6K-MSFC5 CPU Daughterboard Rev. 1.4"
+PID: VS-F6K-MSFC5      ,                     VID:    , SN: SAL1642Q3XL
+
+NAME: "VS-F6K-PFC4XL Policy Feature Card 4 EARL 1 sub-module of 1", DESCR: "VS-F6K-PFC4XL Policy Feature Card 4 Rev. 1.0"
+PID: VS-F6K-PFC4XL     ,                     VID: V01, SN: SAL1626FAGE
+
+NAME: "Transceiver Te1/4", DESCR: "X2 Transceiver 10Gbase-ZR Te1/4"
+PID: X2 to SFP+        ,                     VID: V02 , SN: F783VAB    
+
+NAME: "Transceiver Te1/5", DESCR: "X2 Transceiver 10Gbase-ZR Te1/5"
+PID: X2 to SFP+        ,                     VID: V02 , SN: F786YUB    
+
+NAME: "3", DESCR: "WS-X6704-10GE CEF720 4 port 10-Gigabit Ethernet Rev. 2.6"
+PID: WS-X6704-10GE     ,                     VID: V02, SN: SAL1126SDLJ
+
+NAME: "WS-F6700-CFC Centralized Forwarding Card EARL 1 sub-module of 3", DESCR: "WS-F6700-CFC Centralized Forwarding Card Rev. 3.1"
+PID: WS-F6700-CFC      ,                     VID: V04, SN: SAL1131W3GE
+
+NAME: "Transceiver Te3/1", DESCR: "Xenpak Transceiver 10Gbase-LR Te3/1"
+PID: Xenpak-SFP+       ,                     VID: V02 , SN: F781WGQ    
+
+NAME: "Transceiver Te3/2", DESCR: "Xenpak Transceiver 10Gbase-SR Te3/2"
+PID: XENPAK-10GB-SR    ,                     VID: V02 , SN: IJM1147M058
+
+NAME: "Transceiver Te3/3", DESCR: "Xenpak Transceiver 10Gbase-LR Te3/3"
+PID: Xenpak-SFP+       ,                     VID: V02 , SN: F7827ZQ    
+
+NAME: "WS-C6503-E-FAN 1", DESCR: "Enhanced 3-slot Fan Tray 1"
+PID: WS-C6503-E-FAN    ,                     VID: V01, SN: DCH09320625
+
+NAME: "PS 1 PWR-1400-AC", DESCR: "AC power supply, 1400 watt 1"
+PID: PWR-1400-AC       ,                     VID: V01, SN: DTH0930J637
+
+NAME: "PS 2 PWR-1400-AC", DESCR: "AC power supply, 1400 watt 2"
+PID: PWR-1400-AC       ,                     VID: V01, SN: ABC0832J184
+
+
+swiLZ2#exit
+Connection to swiLZ2.switch.ch closed by remote host.
+Connection to swiLZ2.switch.ch closed.

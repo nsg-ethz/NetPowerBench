@@ -1,0 +1,76 @@
+show inventory
+Mon Oct  7 15:41:31.561 CEST
+
+NAME: "Rack 0", DESCR: "Cisco 8000 Series 32x400G QSFPDD 1RU Fixed System w/HBM"
+PID: 8201-32FH         , VID: V02, SN: FLM253401AN
+
+NAME: "0/RP0/CPU0", DESCR: "Cisco 8000 Series 32x400G QSFPDD 1RU Fixed System w/HBM"
+PID: 8201-32FH         , VID: V02, SN: FLM253207BD
+
+NAME: "FourHundredGigE0/0/0/0", DESCR: "Non-Cisco QSFPDD 400G FR4 Pluggable Optics Module"
+PID: D.164HG.2.C       , VID: 01, SN: F82343Z
+
+NAME: "HundredGigE0/0/0/9", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01, SN: F7ALQV3
+
+NAME: "FourHundredGigE0/0/0/10", DESCR: "Non-Cisco QSFPDD 400G FR4 Pluggable Optics Module"
+PID: D.164HG.30        , VID: 01, SN: F823PQE
+
+NAME: "HundredGigE0/0/0/11", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01, SN: F7AJ4XX
+
+NAME: "HundredGigE0/0/0/12", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01, SN: F7A989T
+
+NAME: "HundredGigE0/0/0/13", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01, SN: F7ACLNQ
+
+NAME: "HundredGigE0/0/0/14", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01, SN: F79U9FV
+
+NAME: "HundredGigE0/0/0/15", DESCR: "Non-Cisco QSFP28 100G ER4L Pluggable Optics Module"
+PID: Q.161HG.25        , VID: 01, SN: F823NW5
+
+NAME: "FourHundredGigE0/0/0/1", DESCR: "Non-Cisco QSFPDD 400G FR4 Pluggable Optics Module"
+PID: D.164HG.2.C       , VID: 01, SN: F82343R
+
+NAME: "FourHundredGigE0/0/0/2", DESCR: "Non-Cisco QSFPDD 400G LR4 Pluggable Optics Module"
+PID: D.164HG.10.C      , VID: 01, SN: F8225L9
+
+NAME: "HundredGigE0/0/0/29", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01, SN: F79H6WC
+
+NAME: "FourHundredGigE0/0/0/30", DESCR: "Non-Cisco QSFPDD 400G DR4 Pluggable Optics Module"
+PID: D.134HG.2         , VID: 1B, SN: FHC0YK9
+
+NAME: "FourHundredGigE0/0/0/3", DESCR: "Non-Cisco QSFPDD 400G FR4 Pluggable Optics Module"
+PID: D.164HG.2.C       , VID: 01, SN: F823RPY
+
+NAME: "HundredGigE0/0/0/8", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01, SN: F7A989U
+
+NAME: "0/FT0", DESCR: "Cisco 8000 Series 1RU Fan with Port-side Air Intake Ver 2"
+PID: FAN-1RU-PI-V2     , VID: V01 , SN: NCV2524Q0LJ
+
+NAME: "0/FT1", DESCR: "Cisco 8000 Series 1RU Fan with Port-side Air Intake Ver 2"
+PID: FAN-1RU-PI-V2     , VID: V01 , SN: NCV2524Q0LA
+
+NAME: "0/FT2", DESCR: "Cisco 8000 Series 1RU Fan with Port-side Air Intake Ver 2"
+PID: FAN-1RU-PI-V2     , VID: V01 , SN: NCV2524Q05F
+
+NAME: "0/FT3", DESCR: "Cisco 8000 Series 1RU Fan with Port-side Air Intake Ver 2"
+PID: FAN-1RU-PI-V2     , VID: V01 , SN: NCV2524Q04P
+
+NAME: "0/FT4", DESCR: "Cisco 8000 Series 1RU Fan with Port-side Air Intake Ver 2"
+PID: FAN-1RU-PI-V2     , VID: V01 , SN: NCV2524Q05W
+
+NAME: "0/FT5", DESCR: "Cisco 8000 Series 1RU Fan with Port-side Air Intake Ver 2"
+PID: FAN-1RU-PI-V2     , VID: V01 , SN: NCV2524Q0LD
+
+NAME: "0/PM0", DESCR: "2000W AC Power Module with Port-side Air Intake"
+PID: PSU2KW-ACPI       , VID: V01 , SN: POG2526K033
+
+NAME: "0/PM1", DESCR: "2000W AC Power Module with Port-side Air Intake"
+PID: PSU2KW-ACPI       , VID: V01 , SN: POG2526K02Y
+RP/0/RP0/CPU0:swiEZ2#exit
+Connection to swiez2.switch.ch closed.

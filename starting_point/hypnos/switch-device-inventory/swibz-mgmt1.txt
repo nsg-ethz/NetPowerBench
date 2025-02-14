@@ -1,0 +1,10 @@
+show inventory
+NAME: "1", DESCR: "C1000-24T-4X-L"
+PID: C1000-24T-4X-L    , VID: V02  , SN: FOC2635YL2A
+
+NAME: "TenGigabitEthernet1/0/1", DESCR: "SFP-10GBase-LR"
+PID: SFP-10G-LR          , VID: V01  , SN: F78CPKZ         
+
+
+swiBZ-mgmt1#exit
+Connection to swiBZ-mgmt1.switch.ch closed.

@@ -1,0 +1,55 @@
+show inventory
+NAME: "Chassis", DESCR: "Cisco ASR920 Series - 24GE Fiber and 4-10GE - Modular PSU"
+PID: ASR-920-24SZ-M    , VID: V01, SN: CAT2223V2L9
+
+NAME: "subslot 0/0 transceiver 0", DESCR: "GE LX"
+PID: GLC-LH-SMD          , VID: A   , SN: F78H6WV         
+
+NAME: "subslot 0/0 transceiver 1", DESCR: "GE LX"
+PID: GLC-LH-SMD          , VID: A   , SN: F78AX8X         
+
+NAME: "subslot 0/0 transceiver 2", DESCR: "GE T"
+PID: QBCU-5798R        , VID:     , SN: AGS1003L1Q7     
+
+NAME: "subslot 0/0 transceiver 3", DESCR: "GE T"
+PID: GLC-T               , VID: A   , SN: F781ZL5         
+
+NAME: "subslot 0/0 transceiver 4", DESCR: "1000BASE BX10-U"
+PID: GLC-BX-U            , VID: A   , SN: F788B4N         
+
+NAME: "subslot 0/0 transceiver 5", DESCR: "GE CWDM 1490"
+PID: CWDM-SFP-1490       , VID: A   , SN: F783EUB         
+
+NAME: "subslot 0/0 transceiver 12", DESCR: "GE T"
+PID: GLC-T               , VID: A   , SN: F781ZL3         
+
+NAME: "subslot 0/0 transceiver 13", DESCR: "GE T"
+PID: GLC-T               , VID: A   , SN: F781ZL4         
+
+NAME: "subslot 0/0 transceiver 14", DESCR: "GE CWDM 1610"
+PID: CWDM-SFP-1610     , VID: 11.0, SN: C1002270295     
+
+NAME: "subslot 0/0 transceiver 24", DESCR: "10GE DWDM 31.90"
+PID: DWDM-SFP10G-31.90   , VID: A   , SN: F784K3V         
+
+NAME: "subslot 0/0 transceiver 25", DESCR: "SFP+ 10GBASE-LR"
+PID: SFP-10G-LR          , VID: A   , SN: F78WL4K         
+
+NAME: "subslot 0/0 transceiver 26", DESCR: "SFP+ 10GBASE-LR"
+PID: SFP-10G-LR          , VID: A   , SN: F78WL4L         
+
+NAME: "subslot 0/0 transceiver 27", DESCR: "SFP+ 10GBASE-LR"
+PID: SFP-10G-LR          , VID: A   , SN: F787D8C         
+
+NAME: "Power Supply Module 0", DESCR: "ASR 920 250W AC Power Supply"
+PID: ASR-920-PWR-A     , VID: V02, SN: ART2208F0NN
+
+NAME: "Power Supply Module 1", DESCR: "ASR 920 250W AC Power Supply"
+PID: ASR-920-PWR-A     , VID: V02, SN: ART2208F0MS
+
+NAME: "Fan Tray", DESCR: "ASR 920 Fan tray"
+PID: ASR-920-FAN-F     , VID: V01, SN: CAT2223V014
+
+
+swiLS3#exit
+Connection to swils3.switch.ch closed.

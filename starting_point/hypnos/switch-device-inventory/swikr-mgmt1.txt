@@ -1,0 +1,10 @@
+show inventory
+NAME: "1", DESCR: "WS-C2960X-24TD-L"
+PID: WS-C2960X-24TD-L  , VID: V02  , SN: FOC1749S32N
+
+NAME: "GigabitEthernet1/0/25", DESCR: "1000BaseLX SFP"
+PID:                   , VID:      , SN: P480XMZ         
+
+
+swiKR-mgmt1#exit
+Connection to swiKR-mgmt1.switch.ch closed.

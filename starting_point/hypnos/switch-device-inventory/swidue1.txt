@@ -1,0 +1,49 @@
+show inventory
+Mon Oct  7 15:44:17.089 CET
+NAME: "module 0/RSP0/CPU0", DESCR: "ASR 9001, Route Switch Processor with 8GB memory"
+PID: ASR9001-RP, VID: V01 , SN: FOC2051P2CT
+
+NAME: "module 0/0/CPU0", DESCR: "ASR 9001, Modular Line Card"
+PID: ASR9001-LC, VID: V01 , SN: FOC2051P2M6
+
+NAME: "module 0/0/0", DESCR: "ASR 9000 20-port 1GE Modular Port Adapter"
+PID: A9K-MPA-20X1GE, VID: V05, SN: FOC2051NBRV
+
+NAME: "GigabitEthernet0/0/0/0", DESCR: "Non-Cisco FLEXOPTIX SFP 1G Pluggable Optics Module"
+PID: S.1312.10.D, VID: A, SN: F78A2C8         
+
+NAME: "GigabitEthernet0/0/0/10", DESCR: "Non-Cisco FLEXOPTIX SFP 1G Pluggable Optics Module"
+PID: T.C12.02.G, VID: A, SN: F78MHVG         
+
+NAME: "GigabitEthernet0/0/0/11", DESCR: "Non-Cisco FLEXOPTIX SFP 1G Pluggable Optics Module"
+PID: T.C12.02.G, VID: A, SN: F78AGR1         
+
+NAME: "module 0/0/1", DESCR: "ASR 9000 4-port 10GE Modular Port Adapter"
+PID: A9K-MPA-4X10GE, VID: V04, SN: FOC1727N10S
+
+NAME: "TenGigE0/0/1/0", DESCR: "Non-Cisco FLEXOPTIX XFP 10G Pluggable Optics Module"
+PID: X.1396.10, VID: A, SN: F78715M         
+
+NAME: "TenGigE0/0/1/1", DESCR: "Non-Cisco FLEXOPTIX XFP 10G Pluggable Optics Module"
+PID: X.1396.10, VID: A, SN: F78715N         
+
+NAME: "TenGigE0/0/1/2", DESCR: "Non-Cisco FLEXOPTIX XFP 10G Pluggable Optics Module"
+PID: X.1395.10, VID: 1A, SN: F82007P         
+
+NAME: "module 0/0/2", DESCR: "ASR 9000 Virtual Module"
+PID: A9K-MODULEv, VID: N/A, SN: N/A
+
+NAME: "Unknown0/0/2/0", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.8596.02, VID: A, SN: F78DYKX         
+
+NAME: "Unknown0/0/2/1", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1696.23.K, VID: A, SN: F78CS6R         
+
+NAME: "Unknown0/0/2/2", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1696.23.L, VID: A, SN: F7825KH         
+
+NAME: "Unknown0/0/2/3", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1396.10, VID: A, SN: F78DWWL         
+
+RP/0/RSP0/CPU0:swiDUE1#exit
+Connection to swidue1.switch.ch closed.

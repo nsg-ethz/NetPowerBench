@@ -1,0 +1,76 @@
+show inventory
+NAME: "Chassis", DESCR: "Cisco ASR920 Series - 24GE Fiber and 4-10GE - Modular PSU"
+PID: ASR-920-24SZ-M    , VID: V01  , SN: CAT2034V0N8
+
+NAME: " FIXED IM subslot 0/0", DESCR: "FIXED : 24-port Gig & 4-port Ten Gig SFP Ethernet Interface Module"
+PID: 24xGE-4x10GE-FIXED-S, VID: V00  , SN: N/A        
+
+NAME: "subslot 0/0 transceiver 2", DESCR: "GE T"
+PID: GLC-T               , VID: V04  , SN: F789TAG         
+
+NAME: "subslot 0/0 transceiver 4", DESCR: "GE T"
+PID: GLC-T               , VID: V02  , SN: F783XWP         
+
+NAME: "subslot 0/0 transceiver 5", DESCR: "GE T"
+PID: GLC-T               , VID: V04  , SN: F78CQL2         
+
+NAME: "subslot 0/0 transceiver 8", DESCR: "GE T"
+PID: GLC-T               , VID: V04  , SN: F78CQ97         
+
+NAME: "subslot 0/0 transceiver 9", DESCR: "GE T"
+PID: GLC-T               , VID: V04  , SN: F78CQL0         
+
+NAME: "subslot 0/0 transceiver 12", DESCR: "GE LX"
+PID: GLC-LH-SMD          , VID: V01  , SN: F78AX90         
+
+NAME: "subslot 0/0 transceiver 13", DESCR: "GE T"
+PID: SFP-GE-T            , VID: V01  , SN: F7846NV         
+
+NAME: "subslot 0/0 transceiver 14", DESCR: "GE T"
+PID: GLC-T               , VID: V02  , SN: F785NUF         
+
+NAME: "subslot 0/0 transceiver 15", DESCR: "GE T"
+PID: T.C12.02.A        , VID: A    , SN: F783XWM         
+
+NAME: "subslot 0/0 transceiver 16", DESCR: "GE T"
+PID: GLC-T               , VID: V04  , SN: F789TAH         
+
+NAME: "subslot 0/0 transceiver 17", DESCR: "GE T"
+PID: GLC-T               , VID: V02  , SN: F785NUD         
+
+NAME: "subslot 0/0 transceiver 18", DESCR: "GE T"
+PID: GLC-T               , VID: V04  , SN: F78CQK8         
+
+NAME: "subslot 0/0 transceiver 19", DESCR: "GE LX"
+PID: SFP-BX-D          , VID: 1.0  , SN: SAGD00008       
+
+NAME: "subslot 0/0 transceiver 21", DESCR: "GE CWDM 1490"
+PID: CWDM-SFP-1490     , VID: 11.0 , SN: H97F3528        
+
+NAME: "subslot 0/0 transceiver 23", DESCR: "GE T"
+PID: GLC-T               , VID: V02  , SN: F785NUE         
+
+NAME: "subslot 0/0 transceiver 24", DESCR: "SFP+ 10GBASE-LR"
+PID: SFP-10G-LR          , VID: V02  , SN: F820JWQ         
+
+NAME: "subslot 0/0 transceiver 25", DESCR: "SFP+ 10GBASE-LR"
+PID: SFP-10G-LR          , VID: V02  , SN: F820JWR         
+
+NAME: "subslot 0/0 transceiver 26", DESCR: "10GE ZR"
+PID: SFP-10G-ZR          , VID: V01  , SN: F78AW6L         
+
+NAME: "subslot 0/0 transceiver 27", DESCR: "SFP+ 10GBASE-ER"
+PID: SFP-10G-ZR.C38      , VID: V01  , SN: F781093         
+
+NAME: "Power Supply Module 0", DESCR: "ASR 920 250W AC Power Supply"
+PID: ASR-920-PWR-A     , VID: V02  , SN: ART2028F6V9
+
+NAME: "Power Supply Module 1", DESCR: "ASR 920 250W AC Power Supply"
+PID: ASR-920-PWR-A     , VID: V02  , SN: ART2030F0X1
+
+NAME: "Fan Tray", DESCR: "ASR 920 Fan tray"
+PID: ASR-920-FAN-F     , VID: V01  , SN: CAT2033V0GL
+
+
+swiIX1#exit
+Connection to swiix1.switch.ch closed.

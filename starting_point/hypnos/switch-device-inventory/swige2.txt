@@ -1,0 +1,46 @@
+show inventory
+Mon Oct  7 15:43:29.338 CEST
+NAME: "0/RP0", DESCR: "NC55A1 24Q6H SS Route Processor Card"
+PID: NCS-55A1-24Q6H-SS , VID: V01, SN: FOC2528000Y
+
+NAME: "GigabitEthernet0/0/0/0", DESCR: "Non-Cisco SFP 1G 1000BASE-LX Pluggable Optics Module"
+PID: S.1312.10.D       , VID: A  , SN: F781ER5
+
+NAME: "TenGigE0/0/0/2", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.20         , VID: A  , SN: F798LLE
+
+NAME: "TenGigE0/0/0/3", DESCR: "Non-Cisco SFP+ 10G SR Pluggable Optics Module"
+PID: P.8596.02         , VID: A  , SN: F78E0RU
+
+NAME: "TenGigE0/0/0/4", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.20         , VID: A  , SN: F79CHME
+
+NAME: "TenGigE0/0/0/5", DESCR: "Non-Cisco SFP+ 10G ER Pluggable Optics Module"
+PID: P.B1696.40.AD     , VID: A  , SN: F78DRXL
+
+NAME: "HundredGigE0/0/1/0", DESCR: "Non-Cisco QSFP28 100G ER4L Pluggable Optics Module"
+PID: Q.161HG.25        , VID: 01 , SN: F79YQ75
+
+NAME: "HundredGigE0/0/1/1", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01 , SN: F7A98LP
+
+NAME: "HundredGigE0/0/1/2", DESCR: "Non-Cisco QSFP28 100G AOC Pluggable Optics Module"
+PID: QSFP-100G-AOC5M   , VID: A1 , SN: EB240327011
+
+NAME: "Rack 0", DESCR: "NCS55A1 24Q6H_SS 1RU Chassis"
+PID: NCS-55A1-24Q6H-SS , VID: V01, SN: FOC2523R3FZ
+
+NAME: "0/FT0", DESCR: "NC5501 Fan Tray Forward Flow"
+PID: NCS-1RU-FAN-FW    , VID: V01, SN: N/A
+
+NAME: "0/FT1", DESCR: "NC5501 Fan Tray Forward Flow"
+PID: NCS-1RU-FAN-FW    , VID: V01, SN: N/A
+
+NAME: "0/PM0", DESCR: "NCS 5500 AC 1100W Power Supply Port-S Intake/Front-to-back"
+PID: NCS-1100W-ACFW    , VID: V01, SN: ART2522F77H
+
+NAME: "0/PM1", DESCR: "NCS 5500 AC 1100W Power Supply Port-S Intake/Front-to-back"
+PID: NCS-1100W-ACFW    , VID: V01, SN: ART2522F77E
+
+RP/0/RP0/CPU0:swiGE2#exit
+Connection to swige2.switch.ch closed.

@@ -1,0 +1,60 @@
+0/0/0/11:
+  description: Non-Cisco SFP 1G 1000BASE-T Pluggable Optics Module
+  pid: SFP-GB-GE-T
+  port_type: SFP
+  trx_phy: 1000BASE-T
+  trx_speed: 1G
+0/0/0/12:
+  description: Non-Cisco SFP 1G 1000BASE-T Pluggable Optics Module
+  pid: SFP-GB-GE-T
+  port_type: SFP
+  trx_phy: 1000BASE-T
+  trx_speed: 1G
+0/0/0/15:
+  description: Non-Cisco SFP 1G 1000BASE-T Pluggable Optics Module
+  pid: SFP-GB-GE-T
+  port_type: SFP
+  trx_phy: 1000BASE-T
+  trx_speed: 1G
+0/0/0/30:
+  description: Non-Cisco SFP+ 10G LR Pluggable Optics Module
+  pid: P.1396.20
+  port_type: SFP+
+  trx_phy: LR
+  trx_speed: 10G
+0/0/0/31:
+  description: Non-Cisco SFP+ 10G LR Pluggable Optics Module
+  pid: P.1396.20
+  port_type: SFP+
+  trx_phy: LR
+  trx_speed: 10G
+0/0/0/4:
+  description: Non-Cisco SFP 1G 1000BASE-T Pluggable Optics Module
+  pid: SFP-GB-GE-T
+  port_type: SFP
+  trx_phy: 1000BASE-T
+  trx_speed: 1G
+0/0/0/5:
+  description: Non-Cisco SFP 1G 1000BASE-T Pluggable Optics Module
+  pid: SFP-GB-GE-T
+  port_type: SFP
+  trx_phy: 1000BASE-T
+  trx_speed: 1G
+0/0/0/6:
+  description: Non-Cisco SFP 1G 1000BASE-T Pluggable Optics Module
+  pid: SFP-GB-GE-T
+  port_type: SFP
+  trx_phy: 1000BASE-T
+  trx_speed: 1G
+0/0/0/7:
+  description: Non-Cisco SFP 1G 1000BASE-T Pluggable Optics Module
+  pid: SFP-GB-GE-T
+  port_type: SFP
+  trx_phy: 1000BASE-T
+  trx_speed: 1G
+0/0/0/8:
+  description: Non-Cisco SFP 1G 1000BASE-T Pluggable Optics Module
+  pid: SFP-GB-GE-T
+  port_type: SFP
+  trx_phy: 1000BASE-T
+  trx_speed: 1G

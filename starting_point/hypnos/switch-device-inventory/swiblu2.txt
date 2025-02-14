@@ -1,0 +1,34 @@
+show inventory
+Mon Oct  7 15:50:56.424 CEST
+
+NAME: "Rack 0", DESCR: "Cisco NCS 540 Series Fixed Router 12x1G, 4xCu, 8x1/10G, AC"
+PID: N540X-8Z16G-SYS-A , VID: V02, SN: FOC2746N2ZG
+
+NAME: "0/RP0/CPU0", DESCR: "Cisco NCS 540 Series Fixed Router 12x1G, 4xCu, 8x1/10G, AC"
+PID: N540X-8Z16G-SYS-A , VID: V02, SN: FOC2745N10J
+
+NAME: "TenGigE0/0/0/24", DESCR: "Cisco SFP+ 10G SR Pluggable Optics Module"
+PID: SFP-10G-SR        , VID: V03, SN: FNS19390V78
+
+NAME: "TenGigE0/0/0/25", DESCR: "Non-Cisco SFP+ 10G SR Pluggable Optics Module"
+PID: P.8596.02         , VID: A, SN: F78DYZF
+
+NAME: "TenGigE0/0/0/26", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.20         , VID: A, SN: F7AWB2Q
+
+NAME: "TenGigE0/0/0/27", DESCR: "Non-Cisco SFP+ 10G ZR Pluggable Optics Module"
+PID: P.1696.23.L       , VID: A, SN: F789H1V
+
+NAME: "TenGigE0/0/0/28", DESCR: "Non-Cisco SFP+ 10G SR Pluggable Optics Module"
+PID: P.8596.02         , VID: A, SN: F7AK9J6
+
+NAME: "0/FT0", DESCR: "NCS 540 FAN"
+PID: N540L-FAN         , VID: N/A, SN: N/A
+
+NAME: "0/PM0", DESCR: "NCS 540 PSU"
+PID: N540L-PSU-FIXED-A , VID: N/A, SN: N/A
+
+NAME: "0/PM1", DESCR: "NCS 540 PSU"
+PID: N540L-PSU-FIXED-A , VID: N/A, SN: N/A
+RP/0/RP0/CPU0:swiBLU2#exit
+Connection to swiBLU2.switch.ch closed.

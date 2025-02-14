@@ -1,0 +1,98 @@
+form_factor,speed,code,pid,vendor,power[W],range[km],unit_price[eur],data_source
+QSFP-DD,400G,FR4,D.164HG.2.C,Flexoptix,12,2,867,https://www.flexoptix.net/en/d-164hg-2-c.html
+QSFP-DD,400G,ER4 Lite,D.164HG.30,Flexoptix,12,30,3485,https://www.flexoptix.net/en/d-164hg-30.html
+QSFP-DD,400G,LR4,D.164HG.10.C,Flexoptix,10.5,10,1152,https://www.flexoptix.net/en/d-164hg-10-c.html
+QSFP-DD,400G,DR4,D.134HG.2,Flexoptix,12,2,740,https://www.flexoptix.net/en/d-134hg-2.html
+QSFP-DD,400G,ZR+,DP04QSDD-HE0-190,Cisco,21,1000,26100,https://stordis.com/product/acacia-dp04qsdd-he0-i-400g-openzr-bright-universal-qsfp-dd-coherent-transceiver/
+QSFP28,100G,LR,Q.13S1HG.10,Flexoptix,4.5,10,333,https://www.flexoptix.net/en/q-13s1hg-10.html
+QSFP28,100G,LR4,Q.161HG.10,Flexoptix,4,10,435,https://www.flexoptix.net/en/q-161hg-10.html
+QSFP28,100G,SR4,SFP-100G-SR4-S,Cisco,3.5,0.1,,https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/transceiver-modules/datasheet-c78-736282.html
+QSFP28,100G,SR4,Q.851HG.02,Flexoptix,3.5,0.1,79,https://www.flexoptix.net/en/q-851hg-02.html
+QSFP28,100G,ER4 Lite,Q.161HG.25,Flexoptix,5,30,1196,https://www.flexoptix.net/en/q-161hg-25.html
+QSFP28,100G,BiDi ER,Q.B161HG.40.ZY,Flexoptix,4.5,40,1004,https://www.flexoptix.net/en/q-b161hg-40-zy.html
+QSFP+,40G,LR4,Q.1640G.10,Flexoptix,3.5,10,280,https://www.flexoptix.net/en/q-1640g-10.html
+QSFP+,40G,LR,Q.1340G.10,Flexoptix,3.5,10,338,https://www.flexoptix.net/en/q-1340g-10.html
+SFP+,10G,LR,P.1396.20,Flexoptix,1.3,20,51,https://www.flexoptix.net/en/p-1396-20.html
+SFP+,10G,T,T.C96.02.KF,Flexoptix,3,0.03,122,https://www.flexoptix.net/en/t-c96-02-kf.html
+SFP+,10G,DWDM ZR,P.1696.23.58,Flexoptix,1.5,80,435,https://www.flexoptix.net/en/p-1696-23-yy.html
+SFP+,10G,CWDM ZR,P.1696.23.L,Flexoptix,1.5,70,515,https://www.flexoptix.net/en/p-1696-23-x.html
+SFP,1G,1000BASE-T,SFP-GB-GE-T,FS,1.2,0.1,33,https://www.fs.com/de-en/products/20057.html
+SFP+,10G,CWDM ZR,P.1696.23.K,Flexoptix,1.5,60,466,https://www.flexoptix.net/de/p-1696-23-x.html
+SFP+,10G,LR,P.1396.10,Flexoptix,1,10,42,https://www.flexoptix.net/de/p-1396-10.html
+SFP+,10G,CWDM ZR,P.1696.23.57,Flexoptix,1.5,70,573,https://www.flexoptix.net/de/p-1696-23-x.html
+SFP+,10G,CWDM ZR,P.1696.23.R,Flexoptix,2.2,80,516,https://www.flexoptix.net/en/p-1696-23-yy-r.html
+QSFP28,100G,LR4,QSFP-100G-LR4-S,Cisco,4,10,,https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/transceiver-modules/datasheet-c78-736282.html
+QSFP28,100G,SR4,QSFP-100G-SR4-S,Cisco,3.5,0.1,,https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/transceiver-modules/datasheet-c78-736282.html
+SFP+,10G,SR,SFP-10G-SR,Cisco,1,0.4,,https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/transceiver-modules/data_sheet_c78-455693.html
+SFP+,10G,LR,SFP-10G-LR,Cisco,1,10,,https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/transceiver-modules/data_sheet_c78-455693.html
+SFP+,10G,ER,SFP-10G-ER,Cisco,1.5,40,,https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/transceiver-modules/data_sheet_c78-455693.html
+SFP+,10G,ZR,SFP-10G-ZR,Cisco,1.5,80,,https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/transceiver-modules/data_sheet_c78-455693.html
+SFP+,10G,SR,P.8596.02,Flexoptix,1,0.3,,https://www.flexoptix.net/de/p-8596-02.html
+SFP+,10G,CWDM ZR,P.1696.23.Q,Flexoptix,1.5,70,573,https://www.flexoptix.net/de/p-1696-23-x.html
+SFP+,10G,CWDM ZR,P.1696.23.37,Flexoptix,1.5,80,483,https://www.flexoptix.net/de/p-1696-23-yy.html
+SFP,1G,CWDM ZX+,S.1612.37.QD,Flexoptix,1,140,178,https://www.flexoptix.net/de/s-1612-37-xd.html
+SFP,1G,CWDM ZX+,S.1612.37.LD,Flexoptix,1,140,178,https://www.flexoptix.net/de/s-1612-37-xd.html
+SFP+,10G,BIDI ER,P.B1696.40.AD,Flexoptix,1.5,40,79,https://www.flexoptix.net/de/p-b1696-40-ad.html
+SFP+,10G,CWDM ER,P.1696.14.Q,Flexoptix,1.5,40,501,https://www.flexoptix.net/de/p-1696-14-x.html
+QSFP28,100G,BIDI ER,Q.B161HG.40.YZ,Flexoptix,4.5,40,1004,https://www.flexoptix.net/de/q-b161hg-40-yz.html
+XFP,10G,CWDM ZR,X.1696.23.L,Flexoptix,3.5,70,704,https://www.flexoptix.net/en/x-1696-23-x.html
+SFP+,10G,CWDM,CWDM-SFP10G-1490,Cisco/FS,1.5,10,116,https://resource.fs.com/mall/doc/20231104100559gy6pv9.pdf
+SFP+,10G,DWDM,DWDM-SFP10G-31.90,FS,1.6,40,252,https://www.fs.com/de/products/50389.html
+XFP,10G,LR,X2-10GB-LR,Cisco,4,10,,https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/10-gigabit-modules/product_data_sheet0900aecd801f92aa.html
+XFP,10G,SR,X2-10GB-SR,Cisco,4,0.4,,https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/10-gigabit-modules/product_data_sheet0900aecd801f92aa.html
+SFP+,10G,DWDM ZR,P.1696.23.M,Flexoptix,1.5,80,435,https://www.flexoptix.net/de/p-1696-23-yy.html
+SFP+,10G,LR,SFP-10G-LRM,Cisco,1,0.3,,https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/transceiver-modules/data_sheet_c78-455693.html
+SFP+,10G,ER,P.1596.40,Flexoptix,1.5,40,212,https://www.flexoptix.net/de/p-1596-40.html
+XFP,10G,LR,X.1396.10,Flexoptix,2.5,10,81,https://www.flexoptix.net/de/x-1396-10.html
+SFP+,10G,DWDM,DWDM-SFP10G-31.12,Cisco/FS,1.6,80,319,https://www.fs.com/products/31204.html
+SFP+,10G,DWDM,DWDM-SFP10G-46.92,Cisco/FS,1.6,40,252,https://www.fs.com/de/products/38732.html
+QSFP28,100G,ER4,Q.161HG.40,Flexoptix,5,40,1709,https://www.flexoptix.net/de/q-161hg-40.html
+SFP+,10G,DWDM ZR,P.1696.23.32,Flexoptix,1.5,80,483,https://www.flexoptix.net/de/p-1696-23-yy.html
+SFP,1G,RJ-45,SFP-GE-T,Cisco/FS,1.2,0.1,28,https://www.fs.com/de-en/products/12626.html
+SFP+,10G,BIDI ER,P.B1696.40.DA,Flexoptix,1.5,40,71,https://www.flexoptix.net/de/p-b1696-40-da.html
+QSFP+,40G,LR4,QSFP-40G-LR4-S,Cisco,3.5,10,,https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/transceiver-modules/data_sheet_c78-660083.html
+QSFP28,100G,AOC-3M,Q.A851HG.3,Flexoptix,3.5,0.003,281,https://www.flexoptix.net/de/q-a851hg-z.html?option875=1&option570=261
+SFP,1G,LX,1000BASE-LX,Cisco,2,10,,https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/gigabit-ethernet-gbic-sfp-modules/datasheet-c78-366584.html
+SFP+,10G,LR,SFP-10G-LR-S,Cisco,1,10,,https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/transceiver-modules/data_sheet_c78-455693.html
+QSFP+,40G,LR,QSFP-4X10G-LR-S,Cisco,3.5,10,,https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/transceiver-modules/data_sheet_c78-660083.html
+SFP+,10G,DAC 0.5m,P.C30.H,Flexoptics,0.25,0.0005,32,https://www.flexoptix.net/de/p-czz-z.html
+SFP,1G,BIDI,SFP-BX-U31,Cisco/FS,1,10,10,https://www.fs.com/de/products/11802.html
+QSFP+,40G,LR4,QSFP-40G-LR4,Cisco,3.5,10,,https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/transceiver-modules/data_sheet_c78-660083.html
+SFP,1G,CWDM,CWDM-SFP-1550,Cisco/FS,1,80,49,https://www.fs.com/products/33234.html
+SFP,1G,BIDI,S.B1312.10.DL,Flexoptix,1,10,29,https://www.flexoptix.net/de/s-b1312-10-dl.html
+SFP,1G,CWDM ZX+,S.1612.37.KD,Flexoptix,1,140,178,https://www.flexoptix.net/de/s-1612-37-xd.html
+QSFP+,40G,SR4,QSFP-40G-SR4,Cisco,1.5,0.15,,https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/transceiver-modules/data_sheet_c78-660083.html
+SFP,1G,RJ45,T.C12.02.A,Flexoptix,1,0.1,65,https://www.flexoptix.net/de/t-c12-02-a.html
+SFP+,10G,Active DAC,SFP-H10GB-ACU7M,Cisco/FS,0.5,0.007,62,https://www.fs.com/de/products/36609.html
+SFP+,10G,CWDM ZR,P.1696.23.38,Flexoptix,1.5,80,483,https://www.flexoptix.net/de/p-1696-23-yy.html
+SFP+,10G,CWDM ZR,P.1696.23.31,Flexoptix,1.5,80,483,https://www.flexoptix.net/de/p-1696-23-yy.html
+SFP+,10G,CWDM ZR,P.1696.23.48,Flexoptix,1.5,80,483,https://www.flexoptix.net/de/p-1696-23-yy.html
+SFP+,10G,CWDM ZR,P.1696.23.xT,Flexoptix,10,80,1338,https://www.flexoptix.net/de/p-1696-23-xt.html
+SFP,1G,CWDM,CWDM-SFP-1270,Cisco/FS,1,80,49,https://www.fs.com/products/33234.html
+SFP,1G,CWDM,CWDM-SFP-1470,Cisco/FS,1,80,49,https://www.fs.com/products/33234.html
+SFP,1G,CWDM,CWDM-SFP-1490,Cisco/FS,1,80,49,https://www.fs.com/products/33234.html
+SFP,1G,CWDM,CWDM-SFP-1530,Cisco/FS,1,80,49,https://www.fs.com/products/33234.html
+SFP,1G,CWDM,CWDM-SFP-1570,Cisco/FS,1,80,49,https://www.fs.com/products/33234.html
+SFP,1G,CWDM,CWDM-SFP-1590,Cisco/FS,1,80,49,https://www.fs.com/products/33234.html
+SFP,1G,CWDM,CWDM-SFP-1610,Cisco/FS,1,80,49,https://www.fs.com/products/33234.html
+QSFP-DD,400G,ZR+,DP04QSDD-HE0,ACACIA,21,2500,,https://stordis.com/product/acacia-dp04qsdd-he0-i-400g-openzr-bright-universal-qsfp-dd-coherent-transceiver/
+QSFP28,100G,ZR,FTLC3351R3PL1,Coherent,5,300,,https://www.coherent.com/networking/transceivers/telecom/FTLC3351R3PL1
+SFP,1G,BIDI,GLC-BX-U,Cisco,1,10,,https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/gigabit-ethernet-gbic-sfp-modules/datasheet-c78-366584.html
+SFP,1G,BIDI,GLC-LH-SMD,Cisco,2,10,,https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/gigabit-ethernet-gbic-sfp-modules/datasheet-c78-366584.html
+SFP,1G,BIDI,GLC-SX-MM,Cisco,2,1,,https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/gigabit-ethernet-gbic-sfp-modules/datasheet-c78-366584.html
+SFP,1G,BIDI,GLC-SX-MMD,Cisco,2,1,,https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/gigabit-ethernet-gbic-sfp-modules/datasheet-c78-366584.html
+SFP,1G,BIDI,GLC-T,Cisco,2,0.1,,https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/gigabit-ethernet-gbic-sfp-modules/datasheet-c78-366584.html
+SFP+,10G,LRM,P.1396.2M,Flexoptix,1,0.22,52,https://www.flexoptix.net/de/p-1396-2m.html
+SFP+,10G,BIDI,P.B1696.20.DA,Flexoptix,1.5,20,67,https://www.flexoptix.net/de/p-b1696-20-da.html
+QSFP28,100G,CWDM4,Q.161HG.2.C,Flexoptix,3.5,2,233,https://www.flexoptix.net/de/q-161hg-2-c.html
+SFP,1G,RJ45,QBCU-5798R,Avago,1.1,0.1,,https://datasheet.octopart.com/ABCU-571NRZ-Avago-datasheet-11976557.pdf
+QSFP28,100G,AOC,QSFP-100G-AOC10M,Cisco,3.5,0.01,,https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/transceiver-modules/datasheet-c78-736282.html
+QSFP28,100G,AOC,QSFP-100G-AOC5M,Cisco,3.5,0.005,,https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/transceiver-modules/datasheet-c78-736282.html
+SFP,1G,LX,S.1312.10.D,Flexoptics,1,10,23,https://www.flexoptix.net/de/s-1312-10-d.html
+SFP,1G,CWDM ZX+,S.1612.37.OD,Flexoptix,1,140,178,https://www.flexoptix.net/de/s-1612-37-xd.html
+SFP,1G,BIDI,SFP-BX-D,Cisco,1,10,,https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/gigabit-ethernet-gbic-sfp-modules/datasheet-c78-366584.html
+SFP,1G,LX,SFP-GE-L,Cisco/FS,1,10,,https://www.fs.com/de/products/12622.html
+SFP,1G,RJ45,T.C12.02.G,Flexoptix,1,0.1,64,https://www.flexoptix.net/de/t-c12-02-g.html
+SFP+,10G,CWDM ZR,X.1696.23.K,Flexoptix,2,70,580,https://www.flexoptix.net/de/p-1696-23-x-i.html
+SFP+,10G,CWDM ZR,X.1696.23.Q,Flexoptix,1.5,60,466,https://www.flexoptix.net/en/p-1696-23-x.html
+XFP,10G,SR,X.8596.02,Flexoptix,3.5,300,80,https://www.flexoptix.net/de/x-8596-02.html

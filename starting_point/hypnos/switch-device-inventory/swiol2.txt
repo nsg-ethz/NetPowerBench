@@ -1,0 +1,14 @@
+show inventory
+NAME: "Chassis", DESCR: "Cisco ASR920 Series - 12GE and 2-10GE - AC model"
+PID: ASR-920-12CZ-A    , VID: V01, SN: CAT1916U03D
+
+NAME: "subslot 0/0 transceiver 12", DESCR: "10GE DWDM 31.12"
+PID: DWDM-SFP10G-31.12   , VID: A   , SN: F786ZFS         
+
+NAME: "subslot 0/0 transceiver 13", DESCR: "SFP+ 10GBASE-ER"
+PID: CWDM-SFP10G-1490    , VID: A   , SN: F7AHVTN         
+
+
+swiOL2#exit
+Connection to swiol2.switch.ch closed by remote host.
+Connection to swiol2.switch.ch closed.

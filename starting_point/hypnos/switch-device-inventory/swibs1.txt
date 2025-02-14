@@ -1,0 +1,52 @@
+show inventory
+Mon Oct  7 15:49:17.751 CEST
+NAME: "0/RP0", DESCR: "NC55A1 24H Route Processor Card"
+PID: NCS-55A1-24H      , VID: V01, SN: FOC2149350Q
+
+NAME: "HundredGigE0/0/0/0", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: QSFP-100G-LR4-S   , VID: V01, SN: F7ARQJB
+
+NAME: "HundredGigE0/0/0/1", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: QSFP-100G-LR4-S   , VID: V01, SN: F7ARQJC
+
+NAME: "HundredGigE0/0/0/2", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: QSFP-100G-LR4-S   , VID: V01, SN: F7ARQJD
+
+NAME: "HundredGigE0/0/0/3", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: QSFP-100G-LR4-S   , VID: V01, SN: F7ARQJE
+
+NAME: "HundredGigE0/0/0/4", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: QSFP-100G-LR4-S   , VID: V01, SN: F79E0WC
+
+NAME: "FortyGigE0/0/0/5", DESCR: "Non-Cisco QSFP+ 40G LR4 Pluggable Optics Module"
+PID: QSFP-40G-LR4-S    , VID: V01, SN: FPM01ZZ
+
+NAME: "HundredGigE0/0/0/6", DESCR: "Non-Cisco QSFP28 100G SR4 Pluggable Optics Module"
+PID: QSFP-100G-SR4-S   , VID: V01, SN: F78LL9W
+
+NAME: "TenGigE0/0/0/21", DESCR: "Non-Cisco SFP+ 10G ZR Pluggable Optics Module"
+PID: P.1696.23.K       , VID: V01, SN: F78CS6W
+
+NAME: "FortyGigE0/0/0/23", DESCR: "Non-Cisco QSFP+ 40G LR4 Pluggable Optics Module"
+PID: QSFP-4X10G-LR-S   , VID: V01, SN: FPM041M
+
+NAME: "Rack 0", DESCR: "NCS55A1 Fixed 24x100G Chassis"
+PID: NCS-55A1-24H      , VID: V01, SN: FOC2149R21G
+
+NAME: "0/FT0", DESCR: "NCS 5500 Fan Tray 1RU Chassis Port-S Intake/Front-to-back"
+PID: NC55-A1-FAN-FW    , VID: V01, SN: N/A
+
+NAME: "0/FT1", DESCR: "NCS 5500 Fan Tray 1RU Chassis Port-S Intake/Front-to-back"
+PID: NC55-A1-FAN-FW    , VID: V01, SN: N/A
+
+NAME: "0/FT2", DESCR: "NCS 5500 Fan Tray 1RU Chassis Port-S Intake/Front-to-back"
+PID: NC55-A1-FAN-FW    , VID: V01, SN: N/A
+
+NAME: "0/PM0", DESCR: "NCS 5500 AC 1100W Power Supply Port-S Intake/Front-to-back"
+PID: NCS-1100W-ACFW    , VID: V01, SN: ART2139F9WP
+
+NAME: "0/PM1", DESCR: "NCS 5500 AC 1100W Power Supply Port-S Intake/Front-to-back"
+PID: NCS-1100W-ACFW    , VID: V01, SN: ART2139F9WU
+
+RP/0/RP0/CPU0:swiBS1#exit
+Connection to swibs1.switch.ch closed.

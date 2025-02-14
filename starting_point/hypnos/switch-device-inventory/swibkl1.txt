@@ -1,0 +1,10 @@
+show inventory
+NAME: "1", DESCR: "ME-3400EG-2CS-A"
+PID: ME-3400EG-2CS-A   , VID: V01  , SN: FOC1328X0AU
+
+NAME: "GigabitEthernet0/3", DESCR: "CWDM-1530 SFP"
+PID: CWDM-SFP-1530@37    , VID: V01  , SN: F780QGC         
+
+
+swiBKL1#exit
+Connection to swibkl1.switch.ch closed.

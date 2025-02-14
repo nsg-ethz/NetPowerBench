@@ -1,0 +1,10 @@
+show inventory
+NAME: "1", DESCR: "WS-C2960X-24TD-L"
+PID: WS-C2960X-24TD-L  , VID: V02  , SN: FOC1725W0WS
+
+NAME: "TenGigabitEthernet1/0/1", DESCR: "SFP-10GBase-LR"
+PID: SFP-10G-LR          , VID: V02  , SN: F78BB02         
+
+
+swiEL-mgmt1#exit
+Connection to swiel-mgmt1.switch.ch closed.

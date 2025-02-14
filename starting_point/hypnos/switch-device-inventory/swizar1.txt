@@ -1,0 +1,29 @@
+show inventory
+NAME: "Chassis", DESCR: "Cisco ASR920 Series - 24GE Fiber and 4-10GE - Modular PSU"
+PID: ASR-920-24SZ-M    , VID: V01, SN: CAT2002V0ND
+
+NAME: "subslot 0/0 transceiver 24", DESCR: "GE CX"
+PID: DAC-SFP10-0.5M    , VID: A1  , SN: BA22073003729   
+
+NAME: "subslot 0/0 transceiver 25", DESCR: "SFP+ 10GBASE-LR"
+PID: SFP-10G-LR          , VID: A   , SN: F7A6K3S         
+
+NAME: "subslot 0/0 transceiver 26", DESCR: "SFP+ 10GBASE-LR"
+PID: SFP-10G-LR-S        , VID: A   , SN: F788P8C         
+
+NAME: "subslot 0/0 transceiver 27", DESCR: "SFP+ 10GBASE-LR"
+PID: SFP-10G-LR          , VID: A   , SN: F7A6K3X         
+
+NAME: "Power Supply Module 0", DESCR: "ASR 920 250W AC Power Supply"
+PID: ASR-920-PWR-A     , VID: V02, SN: ART2003F55B
+
+NAME: "Power Supply Module 1", DESCR: "ASR 920 250W AC Power Supply"
+PID: ASR-920-PWR-A     , VID: V02, SN: ART2003F52Y
+
+NAME: "Fan Tray", DESCR: "ASR 920 Fan tray"
+PID: ASR-920-FAN-F     , VID: V01, SN: CAT2006V01Q
+
+
+swiZAR1#exit
+Connection to swizar1.switch.ch closed by remote host.
+Connection to swizar1.switch.ch closed.

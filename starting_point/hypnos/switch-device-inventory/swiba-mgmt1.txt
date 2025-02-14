@@ -1,0 +1,13 @@
+show inventory
+NAME: "1", DESCR: "WS-C2960S-24TD-L"
+PID: WS-C2960S-24TD-L  , VID: V03  , SN: FOC1611X1TL
+
+NAME: "GigabitEthernet1/0/25", DESCR: "1000BaseLX SFP"
+PID:                   , VID:      , SN: H10L0008        
+
+NAME: "TenGigabitEthernet1/0/2", DESCR: "SFP-10GBase-LR"
+PID: SFP-10G-LR          , VID: V01  , SN: F78HV9C         
+
+
+swiBA-mgmt1#exit
+Connection to swiba-mgmt1.switch.ch closed.

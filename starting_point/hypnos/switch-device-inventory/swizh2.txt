@@ -1,0 +1,55 @@
+show inventory
+Mon Oct  7 15:49:39.031 CEST
+
+NAME: "Rack 0", DESCR: "Cisco 8200 1RU w/24x100G & 8x400G, XR SW & HBM"
+PID: 8201-24H8FH       , VID: V01, SN: FLM27200CYH
+
+NAME: "0/RP0/CPU0", DESCR: "Cisco 8200 1RU w/24x100G & 8x400G, XR SW & HBM"
+PID: 8201-24H8FH       , VID: V01, SN: FLM27200391
+
+NAME: "HundredGigE0/0/0/5", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01, SN: F79H5HW
+
+NAME: "FourHundredGigE0/0/0/14", DESCR: "Non-Cisco QSFPDD 400G FR4 Pluggable Optics Module"
+PID: D.164HG.30        , VID: 01, SN: F823PQD
+
+NAME: "TenGigE0/0/0/17", DESCR: "Non-Cisco SFP+ 10G ZR Pluggable Optics Module"
+PID: P.1696.23.K       , VID: A, SN: F7864TL
+
+NAME: "TenGigE0/0/0/19", DESCR: "Non-Cisco SFP+ 10G ZR Pluggable Optics Module"
+PID: P.1696.23.L       , VID: 1A, SN: F820HXX
+
+NAME: "FortyGigE0/0/0/23", DESCR: "Non-Cisco QSFP+ 40G 4x10G BASE LR Pluggable Optics Module"
+PID: Q.1340G.10        , VID: N/A, SN: FPM07DX
+
+NAME: "HundredGigE0/0/0/29", DESCR: "Non-Cisco QSFP28 100G LR Pluggable Optics Module"
+PID: Q.13S1HG.10       , VID: 01, SN: F7ALU8J
+
+NAME: "HundredGigE0/0/0/30", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01, SN: F79H6WB
+
+NAME: "0/FT0", DESCR: "Cisco 8000 Series 1RU Fan with Port-side Air Intake Ver 2"
+PID: FAN-1RU-PI-V2     , VID: V01 , SN: NCV2620Q6DI
+
+NAME: "0/FT1", DESCR: "Cisco 8000 Series 1RU Fan with Port-side Air Intake Ver 2"
+PID: FAN-1RU-PI-V2     , VID: V01 , SN: NCV2620Q6DF
+
+NAME: "0/FT2", DESCR: "Cisco 8000 Series 1RU Fan with Port-side Air Intake Ver 2"
+PID: FAN-1RU-PI-V2     , VID: V01 , SN: NCV2620Q6DD
+
+NAME: "0/FT3", DESCR: "Cisco 8000 Series 1RU Fan with Port-side Air Intake Ver 2"
+PID: FAN-1RU-PI-V2     , VID: V01 , SN: NCV2620Q6EE
+
+NAME: "0/FT4", DESCR: "Cisco 8000 Series 1RU Fan with Port-side Air Intake Ver 2"
+PID: FAN-1RU-PI-V2     , VID: V01 , SN: NCV2620Q6E5
+
+NAME: "0/FT5", DESCR: "Cisco 8000 Series 1RU Fan with Port-side Air Intake Ver 2"
+PID: FAN-1RU-PI-V2     , VID: V01 , SN: NCV2620Q6E4
+
+NAME: "0/PM0", DESCR: "2000W AC Power Module with Port-side Air Intake"
+PID: PSU2KW-ACPI       , VID: V01 , SN: POG2627K04A
+
+NAME: "0/PM1", DESCR: "2000W AC Power Module with Port-side Air Intake"
+PID: PSU2KW-ACPI       , VID: V01 , SN: POG2627K04B
+RP/0/RP0/CPU0:swiZH2#exit
+Connection to swizh2.switch.ch closed.

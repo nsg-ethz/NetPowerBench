@@ -1,0 +1,64 @@
+show inventory
+Mon Oct  7 15:44:30.323 CEST
+NAME: "0/RP0", DESCR: "NC55A1 24H Route Processor Card"
+PID: NCS-55A1-24H      , VID: V01, SN: FOC2149350S
+
+NAME: "HundredGigE0/0/0/0", DESCR: "Non-Cisco QSFP28 100G LR Pluggable Optics Module"
+PID: Q.13S1HG.10       , VID: 01 , SN: F7ALU8Q
+
+NAME: "HundredGigE0/0/0/2", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01 , SN: F79U9FT
+
+NAME: "HundredGigE0/0/0/3", DESCR: "Non-Cisco QSFP28 100G SR4 Pluggable Optics Module"
+PID: Q.851HG.02        , VID: 01 , SN: F78V1RK
+
+NAME: "HundredGigE0/0/0/4", DESCR: "Unknown Pluggable Optics Module"
+PID: N/A               , VID: N/A, SN: N/A
+
+NAME: "HundredGigE0/0/0/6", DESCR: "Non-Cisco QSFP28 100G LR Pluggable Optics Module"
+PID: Q.13S1HG.10       , VID: 02 , SN: F8234UB
+
+NAME: "HundredGigE0/0/0/7", DESCR: "Non-Cisco QSFP28 100G AOC Pluggable Optics Module"
+PID: Q.A851HG.3        , VID: 1A , SN: F820PNM-B
+
+NAME: "HundredGigE0/0/0/8", DESCR: "Non-Cisco QSFP28 100G CWDM4 MSA WITH FEC Pluggable Optics Module"
+PID: Q.161HG.2.C       , VID: 01 , SN: F78TNPE
+
+NAME: "GigabitEthernet0/0/0/10", DESCR: "Cisco SFP 1G 1000BASE-LX Pluggable Optics Module"
+PID: N/A               , VID: N/A, SN: FNS0840D2NA
+
+NAME: "HundredGigE0/0/0/14", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01 , SN: F7A32AC
+
+NAME: "HundredGigE0/0/0/15", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01 , SN: F79XNE8
+
+NAME: "HundredGigE0/0/0/16", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01 , SN: F79CG7N
+
+NAME: "TenGigE0/0/0/18", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.10         , VID: A  , SN: F78DV5S
+
+NAME: "TenGigE0/0/0/22", DESCR: "Non-Cisco SFP+ 10G SR Pluggable Optics Module"
+PID: T.C96.02.KF       , VID: 1.0, SN: F78N14C
+
+NAME: "Rack 0", DESCR: "NCS55A1 Fixed 24x100G Chassis"
+PID: NCS-55A1-24H      , VID: V01, SN: FOC2149R1V7
+
+NAME: "0/FT0", DESCR: "NCS 5500 Fan Tray 1RU Chassis Port-S Intake/Front-to-back"
+PID: NC55-A1-FAN-FW    , VID: V01, SN: N/A
+
+NAME: "0/FT1", DESCR: "NCS 5500 Fan Tray 1RU Chassis Port-S Intake/Front-to-back"
+PID: NC55-A1-FAN-FW    , VID: V01, SN: N/A
+
+NAME: "0/FT2", DESCR: "NCS 5500 Fan Tray 1RU Chassis Port-S Intake/Front-to-back"
+PID: NC55-A1-FAN-FW    , VID: V01, SN: N/A
+
+NAME: "0/PM0", DESCR: "NCS 5500 AC 1100W Power Supply Port-S Intake/Front-to-back"
+PID: NCS-1100W-ACFW    , VID: V01, SN: ART2139F9XD
+
+NAME: "0/PM1", DESCR: "NCS 5500 AC 1100W Power Supply Port-S Intake/Front-to-back"
+PID: NCS-1100W-ACFW    , VID: V01, SN: ART2139F9X5
+
+RP/0/RP0/CPU0:swiLAB55A1#exit
+Connection to swiLAB55A1.switch.ch closed.

@@ -1,0 +1,35 @@
+show inventory
+NAME: "Chassis", DESCR: "Cisco ASR920 Series - 24GE Fiber and 4-10GE - Modular PSU"
+PID: ASR-920-24SZ-M    , VID: V01, SN: CAT2223V24V
+
+NAME: "subslot 0/0 transceiver 1", DESCR: "GE T"
+PID: SFP-GE-T            , VID: A   , SN: F788XLY         
+
+NAME: "subslot 0/0 transceiver 22", DESCR: "GE LX"
+PID: SFP-GE-L            , VID: A   , SN: F781EQY         
+
+NAME: "subslot 0/0 transceiver 24", DESCR: "SFP+ 10GBASE-SR"
+PID: SFP-10G-SR          , VID: A   , SN: F78K5TW         
+
+NAME: "subslot 0/0 transceiver 25", DESCR: "SFP+ 10GBASE-SR"
+PID: SFP-10G-SR          , VID: A   , SN: F78K5TU         
+
+NAME: "subslot 0/0 transceiver 26", DESCR: "10GE ZR"
+PID: SFP-10G-ZR          , VID: 1A  , SN: F820LUN         
+
+NAME: "subslot 0/0 transceiver 27", DESCR: "10GE ZR"
+PID: SFP-10G-ZR          , VID: A   , SN: F7887WY         
+
+NAME: "Power Supply Module 0", DESCR: "ASR 920 250W AC Power Supply"
+PID: ASR-920-PWR-A     , VID: V02, SN: ART2213F1MS
+
+NAME: "Power Supply Module 1", DESCR: "ASR 920 250W AC Power Supply"
+PID: ASR-920-PWR-A     , VID: V02, SN: ART2213F1MC
+
+NAME: "Fan Tray", DESCR: "ASR 920 Fan tray"
+PID: ASR-920-FAN-F     , VID: V01, SN: CAT2223V0MS
+
+
+swiGL2#exit
+Connection to swigl2.switch.ch closed by remote host.
+Connection to swigl2.switch.ch closed.

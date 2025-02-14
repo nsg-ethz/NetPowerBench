@@ -1,0 +1,52 @@
+show inventory
+Mon Oct  7 15:51:16.750 CEST
+NAME: "0/RP0", DESCR: "NC55A1 48Q6H Route Processor Card"
+PID: NCS-55A1-48Q6H    , VID: V01, SN: FOC23130DB9
+
+NAME: "TenGigE0/0/0/0", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.10         , VID: V01, SN: F7857KM
+
+NAME: "TenGigE0/0/0/2", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.10         , VID: V01, SN: F78534J
+
+NAME: "GigabitEthernet0/0/0/4", DESCR: "Non-Cisco SFP 1G 1000BASE-LX Pluggable Optics Module"
+PID: S.1312.10.D       , VID: V01, SN: F78H8CC
+
+NAME: "TenGigE0/0/0/44", DESCR: "Non-Cisco SFP+ 10G ER Pluggable Optics Module"
+PID: P.1696.23.57      , VID: V01, SN: F7853AD
+
+NAME: "TenGigE0/0/0/45", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.20         , VID: V01, SN: F79EL25
+
+NAME: "TenGigE0/0/0/46", DESCR: "Non-Cisco SFP+ 10G ZR Pluggable Optics Module"
+PID: P.1696.23.K       , VID: V01, SN: F782WJV
+
+NAME: "TenGigE0/0/0/47", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.20         , VID: V01, SN: F79EL23
+
+NAME: "HundredGigE0/0/1/1", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: QSFP-100G-LR4-S   , VID: V01, SN: F79CG0P
+
+NAME: "FortyGigE0/0/1/2", DESCR: "Non-Cisco QSFP+ 40G LR4 Pluggable Optics Module"
+PID: QSFP-40G-LR4      , VID: V01, SN: F78Z08N
+
+NAME: "HundredGigE0/0/1/4", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: QSFP-100G-LR4-S   , VID: V01, SN: F79CG0Q
+
+NAME: "Rack 0", DESCR: "NCS55A1 48Q6H 1RU Chassis"
+PID: NCS-55A1-48Q6H    , VID: V01, SN: FOC2343R19M
+
+NAME: "0/FT0", DESCR: "NC5501 Fan Tray Forward Flow"
+PID: NCS-1RU-FAN-FW    , VID: V01, SN: N/A
+
+NAME: "0/FT1", DESCR: "NC5501 Fan Tray Forward Flow"
+PID: NCS-1RU-FAN-FW    , VID: V01, SN: N/A
+
+NAME: "0/PM0", DESCR: "NCS 5500 AC 1100W Power Supply Port-S Intake/Front-to-back"
+PID: NCS-1100W-ACFW    , VID: V01, SN: ART2338F8V7
+
+NAME: "0/PM1", DESCR: "NCS 5500 AC 1100W Power Supply Port-S Intake/Front-to-back"
+PID: NCS-1100W-ACFW    , VID: V01, SN: ART2341F1RD
+
+RP/0/RP0/CPU0:swiSI2#exit
+Connection to swisi2.switch.ch closed.

@@ -1,0 +1,28 @@
+show inventory
+Mon Oct  7 15:45:22.924 CEST
+
+NAME: "Rack 0", DESCR: "Cisco NCS 540 Series Fixed Router 12x1G, 4xCu, 8x1/10G, AC"
+PID: N540X-8Z16G-SYS-A , VID: V02, SN: FOC2651NAHJ
+
+NAME: "0/RP0/CPU0", DESCR: "Cisco NCS 540 Series Fixed Router 12x1G, 4xCu, 8x1/10G, AC"
+PID: N540X-8Z16G-SYS-A , VID: V02, SN: FOC2650N4Q7
+
+NAME: "TenGigE0/0/0/24", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.10         , VID: A, SN: F787D8A
+
+NAME: "TenGigE0/0/0/25", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.10         , VID: A, SN: F78BB06
+
+NAME: "TenGigE0/0/0/27", DESCR: "Non-Cisco SFP+ 10G LRM Pluggable Optics Module"
+PID: P.1396.2M         , VID: A, SN: F7ALM6U
+
+NAME: "0/FT0", DESCR: "NCS 540 FAN"
+PID: N540L-FAN         , VID: N/A, SN: N/A
+
+NAME: "0/PM0", DESCR: "NCS 540 PSU"
+PID: N540L-PSU-FIXED-A , VID: N/A, SN: N/A
+
+NAME: "0/PM1", DESCR: "NCS 540 PSU"
+PID: N540L-PSU-FIXED-A , VID: N/A, SN: N/A
+RP/0/RP0/CPU0:swiNPA1#exit
+Connection to swinpa1.switch.ch closed.

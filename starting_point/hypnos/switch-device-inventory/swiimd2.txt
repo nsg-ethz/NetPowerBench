@@ -1,0 +1,20 @@
+show inventory
+NAME: "Chassis", DESCR: "Cisco ASR920 Series - 2GE and 4-10GE - AC model"
+PID: ASR-920-4SZ-A     , VID: V01, SN: CAT1915U0NF
+
+NAME: "subslot 0/0 transceiver 2", DESCR: "SFP+ 10GBASE-LR"
+PID: SFP-10G-LR          , VID: A   , SN: F78DV5V         
+
+NAME: "subslot 0/0 transceiver 3", DESCR: "SFP+ 10GBASE-ER"
+PID: SFP-10G-ER          , VID: A   , SN: F785C3A         
+
+NAME: "subslot 0/0 transceiver 4", DESCR: "SFP+ 10GBASE-ER"
+PID: SFP-10G-ER          , VID: A   , SN: F785C39         
+
+NAME: "subslot 0/0 transceiver 5", DESCR: "SFP+ 10GBASE-LR"
+PID: SFP-10G-LR          , VID: A   , SN: F787D88         
+
+
+swiIMD2#exit
+Connection to swiIMD2.switch.ch closed by remote host.
+Connection to swiIMD2.switch.ch closed.

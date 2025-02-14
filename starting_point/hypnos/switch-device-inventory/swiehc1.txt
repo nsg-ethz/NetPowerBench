@@ -1,0 +1,13 @@
+show inventory
+NAME: "1", DESCR: "ME-3400EG-2CS-A"
+PID: ME-3400EG-2CS-A   , VID: V01  , SN: FOC1342X0UN
+
+NAME: "GigabitEthernet0/3", DESCR: "10/100/1000BaseTX SFP"
+PID: GLC-T               , VID: V04  , SN: F785NMK         
+
+NAME: "GigabitEthernet0/4", DESCR: "CWDM-1530 SFP"
+PID: Unspecified       , VID:      , SN: FNS1004M1GC     
+
+
+swiEHC1#exit
+Connection to swiEHC1.switch.ch closed.

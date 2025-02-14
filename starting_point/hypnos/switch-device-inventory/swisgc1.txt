@@ -1,0 +1,8 @@
+swiSGC1#show inventory
+NAME: "swiSGC1", DESCR: "Cisco Catalyst 3550 24 10/100 baseT ports + 2 Gig uplinks fixed configuration Layer 2/3 Ethernet Switch"
+PID: WS-C3550-24-SMI   , VID: J0 , SN: CAT0729Y0GE
+
+
+swiSGC1#exit
+Connection to swiSGC1.switch.ch closed.
+

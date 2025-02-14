@@ -1,0 +1,47 @@
+show inventory
+NAME: "Chassis", DESCR: "Cisco ASR920 Series - 24GE Fiber and 4-10GE - Modular PSU"
+PID: ASR-920-24SZ-M    , VID: V01, SN: CAT2032V129
+
+NAME: "subslot 0/0 transceiver 0", DESCR: "GE SX"
+PID: GLC-SX-MM         , VID: 1.0 , SN: WB2FC361        
+
+NAME: "subslot 0/0 transceiver 12", DESCR: "GE T"
+PID: SFP-GE-T            , VID: A   , SN: F78DT7J         
+
+NAME: "subslot 0/0 transceiver 14", DESCR: "GE T"
+PID: SFP-GE-T            , VID: A   , SN: F78DT7K         
+
+NAME: "subslot 0/0 transceiver 15", DESCR: "GE T"
+PID: SFP-GE-T            , VID: A   , SN: F78DT7L         
+
+NAME: "subslot 0/0 transceiver 16", DESCR: "GE T"
+PID: SFP-GE-T            , VID: A   , SN: F78DT7M         
+
+NAME: "subslot 0/0 transceiver 17", DESCR: "GE T"
+PID: SFP-GE-T            , VID: A   , SN: F78DT7N         
+
+NAME: "subslot 0/0 transceiver 24", DESCR: "SFP+ 10GBASE-SR"
+PID: SFP-10G-SR          , VID: A   , SN: F78K4A1         
+
+NAME: "subslot 0/0 transceiver 25", DESCR: "SFP+ 10GBASE-LR"
+PID: SFP-10G-LR          , VID: 1B  , SN: F820JWS         
+
+NAME: "subslot 0/0 transceiver 26", DESCR: "SFP+ 10GBASE-SR"
+PID: SFP-10G-SR          , VID: A   , SN: F7996Y7         
+
+NAME: "subslot 0/0 transceiver 27", DESCR: "10GE DWDM 31.90"
+PID: DWDM-SFP10G-31.90   , VID: A   , SN: F7853AG         
+
+NAME: "Power Supply Module 0", DESCR: "ASR 920 250W AC Power Supply"
+PID: ASR-920-PWR-A     , VID: V02, SN: ART2030F0XJ
+
+NAME: "Power Supply Module 1", DESCR: "ASR 920 250W AC Power Supply"
+PID: ASR-920-PWR-A     , VID: V02, SN: ART2030F0V1
+
+NAME: "Fan Tray", DESCR: "ASR 920 Fan tray"
+PID: ASR-920-FAN-F     , VID: V01, SN: CAT2032V04F
+
+
+swiRA1#exit
+Connection to swira1.switch.ch closed by remote host.
+Connection to swira1.switch.ch closed.

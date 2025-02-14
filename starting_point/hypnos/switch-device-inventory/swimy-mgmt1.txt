@@ -1,0 +1,10 @@
+show inventory
+NAME: "chassis", DESCR: "1812 chassis"
+PID: CISCO1812/K9      , VID: V07, SN: FCZ133092W7
+
+NAME: "motherboard", DESCR: "1800 Motherboard"
+PID: CISCO1812/K9      , VID: V07, SN: FOC13244BTT
+
+
+swiMY-mgmt1#exit
+Connection to swiMY-mgmt1.switch.ch closed.

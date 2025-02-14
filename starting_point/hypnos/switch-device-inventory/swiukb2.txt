@@ -1,0 +1,29 @@
+show inventory
+NAME: "Chassis", DESCR: "Cisco ASR920 Series - 24GE Fiber and 4-10GE - Modular PSU"
+PID: ASR-920-24SZ-M    , VID: V01, SN: CAT2223V1VQ
+
+NAME: "subslot 0/0 transceiver 0", DESCR: "GE T"
+PID: SFP-GE-T            , VID: A   , SN: F78JW44         
+
+NAME: "subslot 0/0 transceiver 24", DESCR: "SFP+ 10GBASE-SR"
+PID: SFP-10G-SR          , VID: A   , SN: F7AK9J5         
+
+NAME: "subslot 0/0 transceiver 25", DESCR: "SFP+ 10GBASE-ER"
+PID: SFP-10G-ER          , VID: A   , SN: F788FPU         
+
+NAME: "subslot 0/0 transceiver 26", DESCR: "SFP+ 10GBASE-LR"
+PID: SFP-10G-LR          , VID: A   , SN: F78HV9D         
+
+NAME: "Power Supply Module 0", DESCR: "ASR 920 250W AC Power Supply"
+PID: ASR-920-PWR-A     , VID: V02, SN: ART2213F1LT
+
+NAME: "Power Supply Module 1", DESCR: "ASR 920 250W AC Power Supply"
+PID: ASR-920-PWR-A     , VID: V02, SN: ART2213F1M3
+
+NAME: "Fan Tray", DESCR: "ASR 920 Fan tray"
+PID: ASR-920-FAN-F     , VID: V01, SN: CAT2223V0Y0
+
+
+swiUKB2#exit
+Connection to swiUKB2.switch.ch closed by remote host.
+Connection to swiUKB2.switch.ch closed.

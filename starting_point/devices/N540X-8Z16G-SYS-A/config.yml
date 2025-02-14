@@ -1,0 +1,22 @@
+# DUT parameters
+DUT:
+  id: "N540X-8Z16G-SYS-A"  # no space!
+  port_file: "ports.yml"
+  transceivers: "LR" # 
+  type: "router"
+  needs_commit: True          # commit to apply configs
+  manual_speed_setting: True  # two steps to change port speeds
+
+# Measurement parameters
+measurement_time_s:   30      # in seconds
+configuration_time_s: 15      # in seconds
+sampling_interval_ms: 100     # in milliseconds
+random_seed:                  # leave empty for uncontrolled seed
+
+# External dependencies
+pinpoint:
+  # binary: "/home/user/Workspace/Projects/green-networking/PowerProfilingTofino/pinpoint/build/pinpoint"
+  binary: "/local/home/jacobr/workspace/pinpoint/build/pinpoint"
+  workload: # currently unused
+serial_port: "/dev/ttyUSB0"
+baudrate: 115200

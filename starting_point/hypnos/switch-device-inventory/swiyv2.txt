@@ -1,0 +1,31 @@
+show inventory
+Mon Oct  7 15:49:28.582 CET
+NAME: "module 0/RSP0/CPU0", DESCR: "ASR 9001, Route Switch Processor with 8GB memory"
+PID: ASR9001-RP, VID: V01 , SN: FOC1842PJ53
+
+NAME: "module 0/0/CPU0", DESCR: "ASR 9001, Modular Line Card"
+PID: ASR9001-LC, VID: V01 , SN: FOC1842PJCB
+
+NAME: "module 0/0/0", DESCR: "ASR 9000 20-port 1GE Modular Port Adapter"
+PID: A9K-MPA-20X1GE, VID: V03, SN: FOC1841NVUT
+
+NAME: "module mau 0/0/0/0", DESCR: "1000BASE-LX/LH SFP transceiver module, MMF/SMF, 1310nm, DOM"
+PID: GLC-LH-SMD          , VID: V01 , SN: F79KFAV         
+
+NAME: "module 0/0/2", DESCR: "ASR 9000 Virtual Module"
+PID: A9K-MODULEv, VID: N/A, SN: N/A
+
+NAME: "Unknown0/0/2/0", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1696.23.K, VID: A, SN: F784R27         
+
+NAME: "Unknown0/0/2/1", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1696.23.L, VID: A, SN: F789H1W         
+
+NAME: "Unknown0/0/2/2", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1396.10, VID: A, SN: F789BSM         
+
+NAME: "Unknown0/0/2/3", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1396.10, VID: A, SN: F789BSP         
+
+RP/0/RSP0/CPU0:swiYV2#exit
+Connection to swiyv2.switch.ch closed.

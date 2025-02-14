@@ -1,0 +1,58 @@
+show inventory
+Mon Oct  7 15:46:40.909 CET
+NAME: "module 0/RSP0/CPU0", DESCR: "ASR 9001, Route Switch Processor with 8GB memory"
+PID: ASR9001-RP, VID: V01 , SN: FOC1805N1WG
+
+NAME: "module 0/0/CPU0", DESCR: "ASR 9001, Modular Line Card"
+PID: ASR9001-LC, VID: V01 , SN: FOC1804N6JD
+
+NAME: "module 0/0/0", DESCR: "ASR 9000 20-port 1GE Modular Port Adapter"
+PID: A9K-MPA-20X1GE, VID: V02, SN: FOC1803N67U
+
+NAME: "GigabitEthernet0/0/0/0", DESCR: "Non-Cisco FLEXOPTIX SFP 1G Pluggable Optics Module"
+PID: T.C12.02.G, VID: A, SN: F78DT2H         
+
+NAME: "GigabitEthernet0/0/0/1", DESCR: "Non-Cisco FLEXOPTIX SFP 1G Pluggable Optics Module"
+PID: S.1312.10.D, VID: A, SN: F79M89P         
+
+NAME: "module mau 0/0/0/2", DESCR: ""
+PID: N/A, VID: N/A, SN: H22L007         
+
+NAME: "GigabitEthernet0/0/0/17", DESCR: "Non-Cisco FLEXOPTIX SFP 1G Pluggable Optics Module"
+PID: T.C12.02.A, VID: A, SN: F78NRRZ         
+
+NAME: "GigabitEthernet0/0/0/18", DESCR: "Non-Cisco FLEXOPTIX SFP 1G Pluggable Optics Module"
+PID: T.C12.02.G, VID: A, SN: F78FWCF         
+
+NAME: "GigabitEthernet0/0/0/19", DESCR: "Non-Cisco FLEXOPTIX SFP 1G Pluggable Optics Module"
+PID: T.C12.02.G, VID: A, SN: F78B8S5         
+
+NAME: "module 0/0/1", DESCR: "ASR 9000 4-port 10GE Modular Port Adapter"
+PID: A9K-MPA-4X10GE, VID: V05, SN: FOC1802N6YY
+
+NAME: "TenGigE0/0/1/0", DESCR: "Non-Cisco FLEXOPTIX XFP 10G Pluggable Optics Module"
+PID: X.1396.10, VID: A, SN: F78715H         
+
+NAME: "TenGigE0/0/1/1", DESCR: "Non-Cisco FLEXOPTIX XFP 10G Pluggable Optics Module"
+PID: X.1396.10, VID: A, SN: F78715P         
+
+NAME: "TenGigE0/0/1/2", DESCR: "Non-Cisco FLEXOPTIX XFP 10G Pluggable Optics Module"
+PID: X.1396.10, VID: 1A, SN: F820EN8         
+
+NAME: "TenGigE0/0/1/3", DESCR: "Non-Cisco PeakOptical XFP 10G Pluggable Optics Module"
+PID: PXFP-2321SF, VID: A, SN: CI89XL018       
+
+NAME: "module 0/0/2", DESCR: "ASR 9000 Virtual Module"
+PID: A9K-MODULEv, VID: N/A, SN: N/A
+
+NAME: "Unknown0/0/2/0", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1396.10, VID: A, SN: F783QR0         
+
+NAME: "Unknown0/0/2/1", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1396.10, VID: A, SN: F789L8K         
+
+NAME: "Unknown0/0/2/3", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1396.10, VID: A, SN: F786HUF         
+
+RP/0/RSP0/CPU0:swiLAB9001#exit
+Connection to swilab9001.switch.ch closed.

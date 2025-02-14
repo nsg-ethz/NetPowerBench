@@ -1,0 +1,46 @@
+show inventory
+Mon Oct  7 15:44:32.254 CEST
+NAME: "0/RP0", DESCR: "NC55A1 48Q6H Route Processor Card"
+PID: NCS-55A1-48Q6H    , VID: V01, SN: FOC233054XW
+
+NAME: "TenGigE0/0/0/18", DESCR: "Non-Cisco SFP+ 10G ZR Pluggable Optics Module"
+PID: P.1696.23.K       , VID: A  , SN: F78CS6V
+
+NAME: "TenGigE0/0/0/47", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.20         , VID: A  , SN: F798LL9
+
+NAME: "HundredGigE0/0/1/0", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01 , SN: F79E0P8
+
+NAME: "HundredGigE0/0/1/1", DESCR: "Non-Cisco QSFP28 100G ER4L Pluggable Optics Module"
+PID: Q.161HG.25        , VID: 01 , SN: F823NW6
+
+NAME: "HundredGigE0/0/1/2", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01 , SN: F7ARQKE
+
+NAME: "HundredGigE0/0/1/3", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01 , SN: F79E0RE
+
+NAME: "HundredGigE0/0/1/4", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01 , SN: F79E0RF
+
+NAME: "HundredGigE0/0/1/5", DESCR: "Non-Cisco QSFP28 100G LR Pluggable Optics Module"
+PID: Q.13S1HG.10       , VID: 01 , SN: F7ALU8S
+
+NAME: "Rack 0", DESCR: "NCS55A1 48Q6H 1RU Chassis"
+PID: NCS-55A1-48Q6H    , VID: V01, SN: FOC2331R1RD
+
+NAME: "0/FT0", DESCR: "NC5501 Fan Tray Forward Flow"
+PID: NCS-1RU-FAN-FW    , VID: V01, SN: N/A
+
+NAME: "0/FT1", DESCR: "NC5501 Fan Tray Forward Flow"
+PID: NCS-1RU-FAN-FW    , VID: V01, SN: N/A
+
+NAME: "0/PM0", DESCR: "NCS 5500 AC 1100W Power Supply Port-S Intake/Front-to-back"
+PID: NCS-1100W-ACFW    , VID: V01, SN: ART2341F1Q9
+
+NAME: "0/PM1", DESCR: "NCS 5500 AC 1100W Power Supply Port-S Intake/Front-to-back"
+PID: NCS-1100W-ACFW    , VID: V01, SN: ART2339F7PL
+
+RP/0/RP0/CPU0:swiPS1#exit
+Connection to swips1.switch.ch closed.

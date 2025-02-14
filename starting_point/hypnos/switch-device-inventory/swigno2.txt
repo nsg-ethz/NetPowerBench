@@ -1,0 +1,28 @@
+show inventory
+Mon Oct  7 15:46:38.681 CEST
+
+NAME: "Rack 0", DESCR: "Cisco NCS 540 Series Fixed Router 12x1G, 4xCu, 8x1/10G, AC"
+PID: N540X-8Z16G-SYS-A , VID: V02, SN: FOC2651NAE6
+
+NAME: "0/RP0/CPU0", DESCR: "Cisco NCS 540 Series Fixed Router 12x1G, 4xCu, 8x1/10G, AC"
+PID: N540X-8Z16G-SYS-A , VID: V02, SN: FOC2650N4XF
+
+NAME: "TenGigE0/0/0/24", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.10         , VID: A, SN: F78DWWP
+
+NAME: "TenGigE0/0/0/25", DESCR: "Non-Cisco SFP+ 10G ER Pluggable Optics Module"
+PID: P.1696.23.L       , VID: 1., SN: FPM2B6N
+
+NAME: "TenGigE0/0/0/27", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.20         , VID: A, SN: F78WL4P
+
+NAME: "0/FT0", DESCR: "NCS 540 FAN"
+PID: N540L-FAN         , VID: N/A, SN: N/A
+
+NAME: "0/PM0", DESCR: "NCS 540 PSU"
+PID: N540L-PSU-FIXED-A , VID: N/A, SN: N/A
+
+NAME: "0/PM1", DESCR: "NCS 540 PSU"
+PID: N540L-PSU-FIXED-A , VID: N/A, SN: N/A
+RP/0/RP0/CPU0:swiGNO2#exit
+Connection to swigno2.switch.ch closed.

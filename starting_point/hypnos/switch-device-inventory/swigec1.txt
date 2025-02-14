@@ -1,0 +1,10 @@
+swiGEC1#show inventory
+NAME: "swiGEC1", DESCR: "Cisco Catalyst 3550 24 10/100 baseT ports + 2 Gig uplinks fixed configuration Layer 2/3 Ethernet Switch"
+PID: WS-C3550-24-SMI   , VID: G0 , SN: CAT0642X1CL
+
+NAME: "GigabitEthernet0/2 port adapter", DESCR: "longwave fiber gigabit ethernet port adapter"
+PID: GBIC_LX           , VID: 186 9B1C 8000 11FC, SN: F4112086087B
+
+
+swiGEC1#exit
+Connection to swiGEC1.switch.ch closed.

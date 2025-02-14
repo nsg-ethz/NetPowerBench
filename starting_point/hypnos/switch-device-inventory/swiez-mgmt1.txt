@@ -1,0 +1,13 @@
+show inventory
+NAME: "1", DESCR: "WS-C2960X-24TD-L"
+PID: WS-C2960X-24TD-L  , VID: V02  , SN: FOC1806Z0N2
+
+NAME: "TenGigabitEthernet1/0/1", DESCR: "SFP-10GBase-LR"
+PID: SFP-10G-LR          , VID: V01  , SN: F786HU9         
+
+NAME: "TenGigabitEthernet1/0/2", DESCR: "SFP-10GBase-ACUxM"
+PID: SFP-H10GB-ACU7M     , VID: V02  , SN: TED1730T18W     
+
+
+swiEZ-mgmt1#exit
+Connection to swiez-mgmt1.switch.ch closed.

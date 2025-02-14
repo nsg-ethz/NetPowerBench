@@ -1,0 +1,31 @@
+show inventory
+NAME: "Chassis", DESCR: "Cisco ASR920 Series - 24GE Fiber and 4-10GE - Modular PSU"
+PID: ASR-920-24SZ-M    , VID: V01, SN: CAT2032V13A
+
+NAME: "subslot 0/0 transceiver 0", DESCR: "GE SX"
+PID: FTRJ-8519-7D-CSC  , VID:     , SN: H11F151         
+
+NAME: "subslot 0/0 transceiver 24", DESCR: "SFP+ 10GBASE-SR"
+PID: SFP-10G-SR          , VID: A   , SN: F78K49W         
+
+NAME: "subslot 0/0 transceiver 25", DESCR: "SFP+ 10GBASE-LR"
+PID: SFP-10G-LR          , VID: 1B  , SN: F820JWT         
+
+NAME: "subslot 0/0 transceiver 26", DESCR: "SFP+ 10GBASE-SR"
+PID: SFP-10G-SR          , VID: A   , SN: F7996Y8         
+
+NAME: "subslot 0/0 transceiver 27", DESCR: "10GE ZR"
+PID: SFP-10G-ZR          , VID: 1A  , SN: F820LA7         
+
+NAME: "Power Supply Module 0", DESCR: "ASR 920 250W AC Power Supply"
+PID: ASR-920-PWR-A     , VID: V02, SN: ART2030F0ZT
+
+NAME: "Power Supply Module 1", DESCR: "ASR 920 250W AC Power Supply"
+PID: ASR-920-PWR-A     , VID: V02, SN: ART2030F0VG
+
+NAME: "Fan Tray", DESCR: "ASR 920 Fan tray"
+PID: ASR-920-FAN-F     , VID: V01, SN: CAT2033V0PN
+
+
+swiRA2#exit
+Connection to swira2.switch.ch closed.

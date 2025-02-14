@@ -1,0 +1,59 @@
+show inventory
+NAME: "WS-C6503-E", DESCR: "Cisco Systems Catalyst 6500 3-slot Chassis System"
+PID: WS-C6503-E        ,                     VID: V02, SN: FOX1618GNTJ
+
+NAME: "CLK-7600 1", DESCR: "OSR-7600 Clock FRU 1"
+PID: CLK-7600          ,                     VID:    , SN: NWG161304E6
+
+NAME: "CLK-7600 2", DESCR: "OSR-7600 Clock FRU 2"
+PID: CLK-7600          ,                     VID:    , SN: NWG161304E6
+
+NAME: "1", DESCR: "VS-SUP2T-10G 5 ports Supervisor Engine 2T 10GE w/ CTS Rev. 1.3"
+PID: VS-SUP2T-10G      ,                     VID: V03, SN: SAL1643QWPH
+
+NAME: "msfc sub-module of 1", DESCR: "VS-F6K-MSFC5 CPU Daughterboard Rev. 1.4"
+PID: VS-F6K-MSFC5      ,                     VID:    , SN: SAL1643QUNC
+
+NAME: "VS-F6K-PFC4XL Policy Feature Card 4 EARL 1 sub-module of 1", DESCR: "VS-F6K-PFC4XL Policy Feature Card 4 Rev. 1.0"
+PID: VS-F6K-PFC4XL     ,                     VID: V01, SN: SAL1632K7P2
+
+NAME: "Transceiver Gi1/1", DESCR: "SFP Transceiver 1000BaseBX10D Gi1/1"
+PID: Unspecified       ,                     VID: Unspecified, SN: FNS11B550030    
+
+NAME: "Transceiver Te1/5", DESCR: "X2 Transceiver 10Gbase-LR Te1/5"
+PID: X2 to SFP+        ,                     VID: V02 , SN: F7827YQ    
+
+NAME: "2", DESCR: "WS-X6908-10G DCEF2T 8 port 10GE Rev. 1.2"
+PID: WS-X6908-10G      ,                     VID: V01, SN: SAL1643QYVR
+
+NAME: "WS-F6K-DFC4-EXL Distributed Forwarding Card 4 EARL 1 sub-module of 2", DESCR: "WS-F6K-DFC4-EXL Distributed Forwarding Card 4 Rev. 1.1"
+PID: WS-F6K-DFC4-EXL   ,                     VID: V01, SN: SAL1642Q938
+
+NAME: "Transceiver Te2/1", DESCR: "X2 Transceiver 10Gbase-SR Te2/1"
+PID: X2-10GB-SR        ,                     VID: V03 , SN: FNS0232M026
+
+NAME: "Transceiver Te2/2", DESCR: "X2 Transceiver DWDM-31.12 Te2/2"
+PID: X2 to SFP+        ,                     VID: V02 , SN: F784T40    
+
+NAME: "Transceiver Te2/3", DESCR: "X2 Transceiver 10Gbase-ZR Te2/3"
+PID: X2 to SFP+        ,                     VID: V02 , SN: F7827XV    
+
+NAME: "Interface Adapter Module Te2/4", DESCR: "Interface Adapter Module Te2/4"
+PID: CVR-X2-SFP10G     ,                     VID: V02 , SN: FOX1528XY2Q
+
+NAME: "Transceiver Te2/4", DESCR: "SFP+ Transceiver 10Gbase-SR Te2/4"
+PID: SFP-10G-SR         ,                     VID: V03 , SN: F787AR1         
+
+NAME: "WS-C6503-E-FAN 1", DESCR: "Enhanced 3-slot Fan Tray 1"
+PID: WS-C6503-E-FAN    ,                     VID: V02, SN: DCH161800UL
+
+NAME: "PS 1 PWR-1400-AC", DESCR: "AC power supply, 1400 watt 1"
+PID: PWR-1400-AC       ,                     VID: V02, SN: DTM16370334
+
+NAME: "PS 2 PWR-1400-AC", DESCR: "AC power supply, 1400 watt 2"
+PID: PWR-1400-AC       ,                     VID: V02, SN: DTM1637031R
+
+
+swiSLF1#exit
+Connection to swislf1.switch.ch closed by remote host.
+Connection to swislf1.switch.ch closed.

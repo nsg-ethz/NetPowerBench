@@ -1,0 +1,37 @@
+show inventory
+Mon Oct  7 15:41:42.408 CET
+NAME: "module 0/RSP0/CPU0", DESCR: "ASR 9001, Route Switch Processor with 8GB memory"
+PID: ASR9001-RP, VID: V01 , SN: FOC1942N8X4
+
+NAME: "module 0/0/CPU0", DESCR: "ASR 9001, Modular Line Card"
+PID: ASR9001-LC, VID: V01 , SN: FOC1942N93N
+
+NAME: "module 0/0/1", DESCR: "ASR 9000 4-port 10GE Modular Port Adapter"
+PID: A9K-MPA-4X10GE, VID: V05, SN: FOC1941NL95
+
+NAME: "TenGigE0/0/1/1", DESCR: "Non-Cisco FLEXOPTIX XFP 10G Pluggable Optics Module"
+PID: X.8596.02, VID: A, SN: F78718U         
+
+NAME: "TenGigE0/0/1/2", DESCR: "Non-Cisco FLEXOPTIX XFP 10G Pluggable Optics Module"
+PID: X.1396.10, VID: A, SN: F78715G         
+
+NAME: "TenGigE0/0/1/3", DESCR: "Non-Cisco FLEXOPTIX XFP 10G Pluggable Optics Module"
+PID: X.8596.02, VID: A, SN: F78718V         
+
+NAME: "module 0/0/2", DESCR: "ASR 9000 Virtual Module"
+PID: A9K-MODULEv, VID: N/A, SN: N/A
+
+NAME: "Unknown0/0/2/0", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1696.23.L, VID: A, SN: F788YPM         
+
+NAME: "Unknown0/0/2/1", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1396.10, VID: A, SN: F784D13         
+
+NAME: "module mau 0/0/2/2", DESCR: "10GBASE-SR SFP+ Module for MMF"
+PID: SFP-10G-SR          , VID: V03 , SN: FNS18250H4A     
+
+NAME: "module mau 0/0/2/3", DESCR: "10GBASE-SR SFP+ Module for MMF"
+PID: SFP-10G-SR          , VID: V03 , SN: FNS18250CQC     
+
+RP/0/RSP0/CPU0:swiBUL2#exit
+Connection to swibul2.switch.ch closed.

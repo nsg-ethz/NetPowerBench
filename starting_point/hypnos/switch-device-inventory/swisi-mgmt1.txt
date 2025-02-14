@@ -1,0 +1,13 @@
+show inventory
+NAME: "1", DESCR: "WS-C2960X-24TD-L"
+PID: WS-C2960X-24TD-L  , VID: V02  , SN: FOC1826S4NU
+
+NAME: "TenGigabitEthernet1/0/1", DESCR: "SFP-10GBase-LR"
+PID: SFP-10G-LR          , VID: V01  , SN: F79EL22         
+
+NAME: "TenGigabitEthernet1/0/2", DESCR: "SFP-10GBase-LR"
+PID: SFP-10G-LR          , VID: V01  , SN: F79EL24         
+
+
+swiSI-mgmt1#exit
+Connection to swisi-mgmt1.switch.ch closed.

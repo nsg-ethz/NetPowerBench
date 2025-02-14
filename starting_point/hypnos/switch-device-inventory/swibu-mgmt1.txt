@@ -1,0 +1,7 @@
+show inventory
+NAME: "1", DESCR: "WS-C2960X-24TD-L"
+PID: WS-C2960X-24TD-L  , VID: V02  , SN: FCW1826B2ME
+
+
+swiBU-mgmt1#exit
+Connection to swiBU-mgmt1.switch.ch closed.

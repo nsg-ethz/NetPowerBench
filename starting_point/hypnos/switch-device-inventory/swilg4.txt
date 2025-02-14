@@ -1,0 +1,67 @@
+show inventory
+Mon Oct  7 15:46:31.918 CEST
+
+NAME: "Rack 0", DESCR: "Cisco 8200 1RU w/24x100G & 8x400G, XR SW & HBM"
+PID: 8201-24H8FH       , VID: V01, SN: FLM27200C4Q
+
+NAME: "0/RP0/CPU0", DESCR: "Cisco 8200 1RU w/24x100G & 8x400G, XR SW & HBM"
+PID: 8201-24H8FH       , VID: V01, SN: FLM272003E0
+
+NAME: "FourHundredGigE0/0/0/2", DESCR: "Non-Cisco QSFPDD 400G FR4 Pluggable Optics Module"
+PID: D.164HG.2.C       , VID: 01, SN: F823WYM
+
+NAME: "Optics0/0/0/4", DESCR: "Cisco QDD 400G BRT ZRP Pluggable Optics Module"
+PID: DP04QSDD-HE0      , VID: V01 , SN: ACA281000U6
+
+NAME: "FourHundredGigE0/0/0/6", DESCR: "Non-Cisco QSFPDD 400G FR4 Pluggable Optics Module"
+PID: D.164HG.2.C       , VID: 01, SN: F823WVP
+
+NAME: "FortyGigE0/0/0/7", DESCR: "Non-Cisco QSFP+ 40G LR4 Pluggable Optics Module"
+PID: Q.1640G.10        , VID: 01, SN: F78ZN4P
+
+NAME: "HundredGigE0/0/0/17", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01, SN: F7A98AD
+
+NAME: "HundredGigE0/0/0/18", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01, SN: F79H5HV
+
+NAME: "HundredGigE0/0/0/19", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01, SN: F79E0P9
+
+NAME: "HundredGigE0/0/0/20", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01, SN: F7A98A4
+
+NAME: "TenGigE0/0/0/24", DESCR: "Non-Cisco SFP+ 10G ZR Pluggable Optics Module"
+PID: P.1696.23.57      , VID: 1A, SN: F820B1N
+
+NAME: "TenGigE0/0/0/25", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.20         , VID: A, SN: F78RC86
+
+NAME: "TenGigE0/0/0/31", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.20         , VID: A, SN: F78HVA7
+
+NAME: "0/FT0", DESCR: "Cisco 8000 Series 1RU Fan with Port-side Air Intake Ver 2"
+PID: FAN-1RU-PI-V2     , VID: V01 , SN: NCV2623Q8W2
+
+NAME: "0/FT1", DESCR: "Cisco 8000 Series 1RU Fan with Port-side Air Intake Ver 2"
+PID: FAN-1RU-PI-V2     , VID: V01 , SN: NCV2623Q8SD
+
+NAME: "0/FT2", DESCR: "Cisco 8000 Series 1RU Fan with Port-side Air Intake Ver 2"
+PID: FAN-1RU-PI-V2     , VID: V01 , SN: NCV2623Q8H0
+
+NAME: "0/FT3", DESCR: "Cisco 8000 Series 1RU Fan with Port-side Air Intake Ver 2"
+PID: FAN-1RU-PI-V2     , VID: V01 , SN: NCV2623Q8I6
+
+NAME: "0/FT4", DESCR: "Cisco 8000 Series 1RU Fan with Port-side Air Intake Ver 2"
+PID: FAN-1RU-PI-V2     , VID: V01 , SN: NCV2620Q6DC
+
+NAME: "0/FT5", DESCR: "Cisco 8000 Series 1RU Fan with Port-side Air Intake Ver 2"
+PID: FAN-1RU-PI-V2     , VID: V01 , SN: NCV2620Q6IO
+
+NAME: "0/PM0", DESCR: "2000W AC Power Module with Port-side Air Intake"
+PID: PSU2KW-ACPI       , VID: V01 , SN: POG2627K05N
+
+NAME: "0/PM1", DESCR: "2000W AC Power Module with Port-side Air Intake"
+PID: PSU2KW-ACPI       , VID: V01 , SN: POG2627K05T
+RP/0/RP0/CPU0:swiLG4#exit
+Connection to swilg4.switch.ch closed.

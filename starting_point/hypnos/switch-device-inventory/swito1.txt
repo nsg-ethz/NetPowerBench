@@ -1,0 +1,64 @@
+show inventory
+Mon Oct  7 15:51:15.464 CEST
+NAME: "0/RP0", DESCR: "NC55A1 48Q6H Route Processor Card"
+PID: NCS-55A1-48Q6H    , VID: V01, SN: FOC233054X4
+
+NAME: "GigabitEthernet0/0/0/1", DESCR: "Non-Cisco SFP 1G 1000BASE-LX Pluggable Optics Module"
+PID: S.1312.10.D       , VID: A  , SN: F7887JE
+
+NAME: "GigabitEthernet0/0/0/2", DESCR: "Non-Cisco SFP 1G 1000BASE-ZX Pluggable Optics Module"
+PID: SFP-GE-Z          , VID: 11.0, SN: FNS1020K643
+
+NAME: "TenGigE0/0/0/13", DESCR: "Non-Cisco SFP+ 10G ER Pluggable Optics Module"
+PID: P.1696.14.Q       , VID: A  , SN: F788FPW
+
+NAME: "TenGigE0/0/0/14", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.20         , VID: A  , SN: F79CHMB
+
+NAME: "TenGigE0/0/0/15", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.20         , VID: A  , SN: F78HVA6
+
+NAME: "TenGigE0/0/0/16", DESCR: "Non-Cisco SFP+ 10G DWDM 1531.90nm Pluggable Optics Module"
+PID: P.1696.23.57      , VID: A  , SN: F7853AF
+
+NAME: "TenGigE0/0/0/17", DESCR: "Non-Cisco SFP+ 10G ZR Pluggable Optics Module"
+PID: P.1696.23.K       , VID: A  , SN: F784JVV
+
+NAME: "TenGigE0/0/0/18", DESCR: "Non-Cisco SFP+ 10G SR Pluggable Optics Module"
+PID: P.8596.02         , VID: A  , SN: F79KR8D
+
+NAME: "TenGigE0/0/0/22", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.20         , VID: A  , SN: F79CHMA
+
+NAME: "TenGigE0/0/0/47", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.10         , VID: A  , SN: F789YD5
+
+NAME: "HundredGigE0/0/1/0", DESCR: "Non-Cisco QSFP28 100G FR Pluggable Optics Module"
+PID: Q.B161HG.40.ZY    , VID: 01 , SN: F7AJY05
+
+NAME: "FortyGigE0/0/1/2", DESCR: "Non-Cisco QSFP+ 40G LR4 Pluggable Optics Module"
+PID: Q.1640G.10        , VID: 01 , SN: F79SDWL
+
+NAME: "HundredGigE0/0/1/4", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01 , SN: F7A98F9
+
+NAME: "HundredGigE0/0/1/5", DESCR: "Non-Cisco QSFP28 100G FR Pluggable Optics Module"
+PID: Q.B161HG.40.YZ    , VID: 01 , SN: F7AJXZ7
+
+NAME: "Rack 0", DESCR: "NCS55A1 48Q6H 1RU Chassis"
+PID: NCS-55A1-48Q6H    , VID: V01, SN: FOC2343R055
+
+NAME: "0/FT0", DESCR: "NC5501 Fan Tray Forward Flow"
+PID: NCS-1RU-FAN-FW    , VID: V01, SN: N/A
+
+NAME: "0/FT1", DESCR: "NC5501 Fan Tray Forward Flow"
+PID: NCS-1RU-FAN-FW    , VID: V01, SN: N/A
+
+NAME: "0/PM0", DESCR: "NCS 5500 AC 1100W Power Supply Port-S Intake/Front-to-back"
+PID: NCS-1100W-ACFW    , VID: V01, SN: ART2339F7KD
+
+NAME: "0/PM1", DESCR: "NCS 5500 AC 1100W Power Supply Port-S Intake/Front-to-back"
+PID: NCS-1100W-ACFW    , VID: V01, SN: ART2339F7QT
+
+RP/0/RP0/CPU0:swiTO1#exit
+Connection to swito1.switch.ch closed.

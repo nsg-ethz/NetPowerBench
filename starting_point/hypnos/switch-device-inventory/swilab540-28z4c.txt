@@ -1,0 +1,25 @@
+show inventory
+Mon Oct  7 15:49:21.299 CEST
+
+NAME: "Rack 0", DESCR: "Cisco NCS 540 Series Fixed Router 28x1/10G, 4x100G, DC Chassis"
+PID: N540-28Z4C-SYS-D  , VID: V03, SN: FOC2733N37J
+
+NAME: "0/RP0/CPU0", DESCR: "Cisco NCS 540 Series Fixed Router 28x1/10G, 4x100G, DC Chassis"
+PID: N540-28Z4C-SYS-D  , VID: V03, SN: FOC2733N37J
+
+NAME: "GigabitEthernet0/0/0/0", DESCR: "Non-Cisco SFP 1G 1000BASE-SX Pluggable Optics Module"
+PID: FTRJ-8519-7D-CSC  , VID: N/A, SN: P4Q03PJ
+
+NAME: "HundredGigE0/0/0/28", DESCR: "Non-Cisco QSFP28 100G LR Pluggable Optics Module"
+PID: Q.13S1HG.10       , VID: 01, SN: F7ALU8P
+
+NAME: "0/FT0", DESCR: "NCS 540 FAN"
+PID: N540-FAN          , VID: N/A, SN: N/A
+
+NAME: "0/PM0", DESCR: "NCS 540 PSU"
+PID: N540-PSU-FIXED-D  , VID: N/A, SN: N/A
+
+NAME: "0/PM1", DESCR: "NCS 540 PSU"
+PID: N540-PSU-FIXED-D  , VID: N/A, SN: N/A
+RP/0/RP0/CPU0:swiLAB540-28Z4C#exit
+Connection to swiLAB540-28Z4C.switch.ch closed.

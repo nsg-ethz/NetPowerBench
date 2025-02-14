@@ -1,0 +1,35 @@
+show inventory
+NAME: "Chassis", DESCR: "Cisco ASR920 Series - 24GE Fiber and 4-10GE - Modular PSU"
+PID: ASR-920-24SZ-M    , VID: V01, SN: CAT2034V0KD
+
+NAME: "subslot 0/0 transceiver 1", DESCR: "GE T"
+PID: GLC-T               , VID: A   , SN: F785NUH         
+
+NAME: "subslot 0/0 transceiver 3", DESCR: "GE T"
+PID: GLC-T               , VID: A   , SN: F785NUK         
+
+NAME: "subslot 0/0 transceiver 20", DESCR: "GE T"
+PID: GLC-T               , VID: A   , SN: F785NUJ         
+
+NAME: "subslot 0/0 transceiver 22", DESCR: "GE CWDM 1470"
+PID: CWDM-SFP-1470       , VID: A   , SN: F784M01         
+
+NAME: "subslot 0/0 transceiver 23", DESCR: "GE CWDM 1490"
+PID: CWDM-SFP-1490       , VID: A   , SN: F783EU8         
+
+NAME: "subslot 0/0 transceiver 24", DESCR: "SFP+ 10GBASE-SR"
+PID: SFP-10G-SR          , VID: A   , SN: F78WFLN         
+
+NAME: "Power Supply Module 0", DESCR: "ASR 920 250W AC Power Supply"
+PID: ASR-920-PWR-A     , VID: V02, SN: ART2028F6TN
+
+NAME: "Power Supply Module 1", DESCR: "ASR 920 250W AC Power Supply"
+PID: ASR-920-PWR-A     , VID: V02, SN: ART2028F6TH
+
+NAME: "Fan Tray", DESCR: "ASR 920 Fan tray"
+PID: ASR-920-FAN-F     , VID: V01, SN: CAT2034V18L
+
+
+swiJFJ2#exit
+Connection to swijfj2.switch.ch closed by remote host.
+Connection to swijfj2.switch.ch closed.

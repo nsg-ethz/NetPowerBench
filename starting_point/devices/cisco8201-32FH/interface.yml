@@ -1,0 +1,84 @@
+0/0/0/0:
+  description: Non-Cisco QSFPDD 400G FR4 Pluggable Optics Module
+  port_type: QSFPDD
+  trx_speed: 400G
+  trx_phy: FR4
+  pid: D.164HG.2.C
+0/0/0/9:
+  description: Non-Cisco QSFP28 100G LR4 Pluggable Optics Module
+  port_type: QSFP28
+  trx_speed: 100G
+  trx_phy: LR4
+  pid: Q.161HG.10
+0/0/0/10:
+  description: Non-Cisco QSFPDD 400G FR4 Pluggable Optics Module
+  port_type: QSFPDD
+  trx_speed: 400G
+  trx_phy: FR4
+  pid: D.164HG.30
+0/0/0/11:
+  description: Non-Cisco QSFP28 100G LR4 Pluggable Optics Module
+  port_type: QSFP28
+  trx_speed: 100G
+  trx_phy: LR4
+  pid: Q.161HG.10
+0/0/0/12:
+  description: Non-Cisco QSFP28 100G LR4 Pluggable Optics Module
+  port_type: QSFP28
+  trx_speed: 100G
+  trx_phy: LR4
+  pid: Q.161HG.10
+0/0/0/13:
+  description: Non-Cisco QSFP28 100G LR4 Pluggable Optics Module
+  port_type: QSFP28
+  trx_speed: 100G
+  trx_phy: LR4
+  pid: Q.161HG.10
+0/0/0/14:
+  description: Non-Cisco QSFP28 100G LR4 Pluggable Optics Module
+  port_type: QSFP28
+  trx_speed: 100G
+  trx_phy: LR4
+  pid: Q.161HG.10
+0/0/0/15:
+  description: Non-Cisco QSFP28 100G ER4L Pluggable Optics Module
+  port_type: QSFP28
+  trx_speed: 100G
+  trx_phy: ER4L
+  pid: Q.161HG.25
+0/0/0/1:
+  description: Non-Cisco QSFPDD 400G FR4 Pluggable Optics Module
+  port_type: QSFPDD
+  trx_speed: 400G
+  trx_phy: FR4
+  pid: D.164HG.2.C
+0/0/0/2:
+  description: Non-Cisco QSFPDD 400G LR4 Pluggable Optics Module
+  port_type: QSFPDD
+  trx_speed: 400G
+  trx_phy: LR4
+  pid: D.164HG.10.C
+0/0/0/29:
+  description: Non-Cisco QSFP28 100G LR4 Pluggable Optics Module
+  port_type: QSFP28
+  trx_speed: 100G
+  trx_phy: LR4
+  pid: Q.161HG.10
+0/0/0/30:
+  description: Non-Cisco QSFPDD 400G DR4 Pluggable Optics Module
+  port_type: QSFPDD
+  trx_speed: 400G
+  trx_phy: DR4
+  pid: D.134HG.2
+0/0/0/3:
+  description: Non-Cisco QSFPDD 400G FR4 Pluggable Optics Module
+  port_type: QSFPDD
+  trx_speed: 400G
+  trx_phy: FR4
+  pid: D.164HG.2.C
+0/0/0/8:
+  description: Non-Cisco QSFP28 100G LR4 Pluggable Optics Module
+  port_type: QSFP28
+  trx_speed: 100G
+  trx_phy: LR4
+  pid: Q.161HG.10

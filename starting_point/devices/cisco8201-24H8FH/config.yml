@@ -1,0 +1,20 @@
+# DUT parameters
+DUT:
+  id: "cisco8201-24H8FH"  # no space!
+  port_file: "ports.yml"
+  transceivers: "LR4" # Passive Copper Cable
+  type: "router"
+  needs_commit: True  # Does OS require commit to apply configs
+
+# Measurement parameters
+measurement_time_s:   30      # in seconds
+configuration_time_s: 15      # in seconds
+sampling_interval_ms: 100     # in milliseconds
+random_seed:                  # leave empty for uncontrolled seed
+
+# External dependencies
+pinpoint:
+  binary: "/local/home/jacobr/workspace/pinpoint/build/pinpoint"
+  workload: # currently unused
+serial_port: "/dev/ttyUSB0"
+baudrate: 115200

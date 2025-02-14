@@ -1,0 +1,59 @@
+show inventory
+NAME: "WS-C6503-E", DESCR: "Cisco Systems Catalyst 6500 3-slot Chassis System"
+PID: WS-C6503-E        ,                     VID: V02, SN: FOX103103DD
+
+NAME: "CLK-7600 1", DESCR: "OSR-7600 Clock FRU 1"
+PID: CLK-7600          ,                     VID:    , SN: NWG103002SY
+
+NAME: "CLK-7600 2", DESCR: "OSR-7600 Clock FRU 2"
+PID: CLK-7600          ,                     VID:    , SN: NWG103002SY
+
+NAME: "1", DESCR: "VS-SUP2T-10G 5 ports Supervisor Engine 2T 10GE w/ CTS Rev. 1.3"
+PID: VS-SUP2T-10G      ,                     VID: V03, SN: SAL1643R2CZ
+
+NAME: "msfc sub-module of 1", DESCR: "VS-F6K-MSFC5 CPU Daughterboard Rev. 1.4"
+PID: VS-F6K-MSFC5      ,                     VID:    , SN: SAL1643R1RD
+
+NAME: "VS-F6K-PFC4XL Policy Feature Card 4 EARL 1 sub-module of 1", DESCR: "VS-F6K-PFC4XL Policy Feature Card 4 Rev. 1.0"
+PID: VS-F6K-PFC4XL     ,                     VID: V01, SN: SAL1632JSGR
+
+NAME: "Transceiver Gi1/1", DESCR: "SFP Transceiver CWDM-1490 Gi1/1"
+PID: CWDM-SFP-1490      ,                     VID: V01 , SN: F782TAL         
+
+NAME: "Transceiver Gi1/3", DESCR: "SFP Transceiver 10/100/1000BaseT Gi1/3"
+PID: Unspecified       ,                     VID: Unspecified, SN: F783XWH         
+
+NAME: "Transceiver Te1/4", DESCR: "X2 Transceiver DWDM-31.90 Te1/4"
+PID: X2 to SFP+        ,                     VID: V02 , SN: F785SPQ    
+
+NAME: "Transceiver Te1/5", DESCR: "X2 Transceiver DWDM-31.90 Te1/5"
+PID: X2 to SFP+        ,                     VID: V02 , SN: F7827Y3    
+
+NAME: "3", DESCR: "WS-X6704-10GE CEF720 4 port 10-Gigabit Ethernet Rev. 2.2"
+PID: WS-X6704-10GE     ,                     VID:    , SN: SAL09475VN9
+
+NAME: "WS-F6700-CFC Centralized Forwarding Card EARL 1 sub-module of 3", DESCR: "WS-F6700-CFC Centralized Forwarding Card Rev. 2.0"
+PID: WS-F6700-CFC      ,                     VID:    , SN: SAL09496WP8
+
+NAME: "Transceiver Te3/1", DESCR: "Xenpak Transceiver 10Gbase-ZR Te3/1"
+PID: Xenpak-SFP+       ,                     VID: V02 , SN: F785ZUT    
+
+NAME: "Transceiver Te3/2", DESCR: "Xenpak Transceiver 10Gbase-LR Te3/2"
+PID: Xenpak-SFP+       ,                     VID: V02 , SN: F782CRN    
+
+NAME: "Transceiver Te3/4", DESCR: "Xenpak Transceiver 10Gbase-SR Te3/4"
+PID: XENPAK-10GB-SR    ,                     VID: V03 , SN: XK96S0089  
+
+NAME: "WS-C6503-E-FAN 1", DESCR: "Enhanced 3-slot Fan Tray 1"
+PID: WS-C6503-E-FAN    ,                     VID: V02, SN: DCH10373348
+
+NAME: "PS 1 PWR-1400-AC", DESCR: "AC power supply, 1400 watt 1"
+PID: PWR-1400-AC       ,                     VID: V02, SN: DTH1035J454
+
+NAME: "PS 2 PWR-1400-AC", DESCR: "AC power supply, 1400 watt 2"
+PID: PWR-1400-AC       ,                     VID: V02, SN: DTH1035J449
+
+
+swiHO1#exit
+Connection to swiHO1.switch.ch closed by remote host.
+Connection to swiHO1.switch.ch closed.

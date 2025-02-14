@@ -1,0 +1,54 @@
+metadata:
+  device_id: cisco8201-32FH
+  connected_PSUs: 2
+QSFP28:
+  PCC:
+    100G:
+      P_BASE: 253.85
+      P_PORT: 0.9353195187165753
+      P_TRX: 0.558172287390031
+      P_TRX_IN: 0.35096774193548463
+      P_TRX_UP: 0.20720454545454636
+      E_BIT: 3.200416136547381e-12
+      E_PKT: 1.335646478625022e-08
+      P_OFFSET: -0.03588228287652129
+  LR4:
+    100G:
+      default:
+        port_type: QSFP28
+        trx_phy: PCC
+        trx_speed: 100G
+  ER4L:
+    100G:
+      default:
+        port_type: QSFP28
+        trx_phy: PCC
+        trx_speed: 100G
+QSFP+:
+  LR:
+    40G:
+      default:
+        port_type: QSFP28
+        trx_phy: PCC
+        trx_speed: 100G
+
+QSFPDD:
+  FR4:
+    400G:
+      default:
+        port_type: QSFP28
+        trx_phy: PCC
+        trx_speed: 100G
+  LR4:
+    400G:
+      default:
+        port_type: QSFP28
+        trx_phy: PCC
+        trx_speed: 100G
+SFP+:
+  LR:
+    10G:
+      default:
+        port_type: QSFP28
+        trx_phy: PCC
+        trx_speed: 100G

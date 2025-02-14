@@ -1,0 +1,34 @@
+show inventory
+NAME: "Chassis", DESCR: "Cisco ASR920 Series - 24GE Fiber and 4-10GE - Modular PSU"
+PID: ASR-920-24SZ-M    , VID: V01  , SN: CAT1944V10Z
+
+NAME: " FIXED IM subslot 0/0", DESCR: "FIXED : 24-port Gig & 4-port Ten Gig SFP Ethernet Interface Module"
+PID: 24xGE-4x10GE-FIXED-S, VID: V00  , SN: N/A        
+
+NAME: "subslot 0/0 transceiver 0", DESCR: "GE T"
+PID: GLC-T               , VID: V02  , SN: F783XWG         
+
+NAME: "subslot 0/0 transceiver 24", DESCR: "SFP+ 10GBASE-LR"
+PID: SFP-10G-LR          , VID: V02  , SN: F78B8BK         
+
+NAME: "subslot 0/0 transceiver 25", DESCR: "SFP+ 10GBASE-LR"
+PID: SFP-10G-LR          , VID: V02  , SN: F789KMX         
+
+NAME: "subslot 0/0 transceiver 26", DESCR: "10GE CU3M"
+PID: SFP-H10GB-CU3M      , VID: V02  , SN: F78AS3A-B       
+
+NAME: "subslot 0/0 transceiver 27", DESCR: "10GE CU3M"
+PID: SFP-H10GB-CU3M      , VID: V02  , SN: F78AS37-B       
+
+NAME: "Power Supply Module 0", DESCR: "ASR 920 250W AC Power Supply"
+PID: ASR-920-PWR-A     , VID: V02  , SN: ART2003F52V
+
+NAME: "Power Supply Module 1", DESCR: "ASR 920 250W AC Power Supply"
+PID: ASR-920-PWR-A     , VID: V02  , SN: ART2003F52T
+
+NAME: "Fan Tray", DESCR: "ASR 920 Fan tray"
+PID: ASR-920-FAN-F     , VID: V01  , SN: CAT1905V0GE
+
+
+swiBR2#exit
+Connection to swiBR2.switch.ch closed.

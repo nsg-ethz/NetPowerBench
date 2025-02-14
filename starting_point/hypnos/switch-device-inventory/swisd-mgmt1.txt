@@ -1,0 +1,14 @@
+show inventory
+NAME: "C897VA-K9", DESCR: "C897VA-K9 chassis, Hw Serial#: FCZ1718C1Z8, Hw Revision: 1.0"
+PID: C897VA-K9         , VID: V01, SN: FCZ1718C1Z8
+
+NAME: "C897VA Mother board on Slot 0", DESCR: "C897VA Mother board"
+PID: C897VA-K9         , VID: V01, SN: FOC16491JD1
+
+NAME: "CWDM-1530 SFP", DESCR: "CWDM-1530 SFP"
+PID: FWDM-16217D53CSC  , VID: A1 , SN: FNS0952E0BM
+
+
+swiSD-mgmt1#exit
+Connection to swiSD-mgmt1.switch.ch closed by remote host.
+Connection to swiSD-mgmt1.switch.ch closed.

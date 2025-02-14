@@ -1,0 +1,120 @@
+0/0/0/1:
+  description: Cisco QSFP28 100G SR4 Pluggable Optics Module
+  pid: QSFP-100G-SR4-S
+  port_type: QSFP28
+  trx_phy: SR4
+  trx_speed: 100G
+0/0/0/10:
+  description: Non-Cisco QSFP28 100G LR4 Pluggable Optics Module
+  pid: Q.161HG.10
+  port_type: QSFP28
+  trx_phy: LR4
+  trx_speed: 100G
+0/0/0/11:
+  description: Non-Cisco QSFP28 100G LR4 Pluggable Optics Module
+  pid: Q.161HG.10
+  port_type: QSFP28
+  trx_phy: LR4
+  trx_speed: 100G
+0/0/0/12:
+  description: Non-Cisco SFP+ 10G ACU10M Pluggable Optics Module
+  pid: T.C96.02.KF
+  port_type: SFP+
+  trx_phy: ACU10M
+  trx_speed: 10G
+0/0/0/13:
+  description: Non-Cisco QSFP28 100G FR Pluggable Optics Module
+  pid: Q.B161HG.40.ZY
+  port_type: QSFP28
+  trx_phy: FR
+  trx_speed: 100G
+0/0/0/14:
+  description: Non-Cisco QSFP28 100G FR Pluggable Optics Module
+  pid: Q.B161HG.40.ZY
+  port_type: QSFP28
+  trx_phy: FR
+  trx_speed: 100G
+0/0/0/15:
+  description: Non-Cisco SFP+ 10G DWDM 1531.12nm Pluggable Optics Module
+  pid: P.1696.23.58
+  port_type: SFP+
+  trx_phy: DWDM
+  trx_speed: 10G
+0/0/0/18:
+  description: Non-Cisco SFP+ 10G ZR Pluggable Optics Module
+  pid: P.1696.23.L
+  port_type: SFP+
+  trx_phy: ZR
+  trx_speed: 10G
+0/0/0/19:
+  description: Non-Cisco QSFP28 100G LR Pluggable Optics Module
+  pid: Q.13S1HG.10
+  port_type: QSFP28
+  trx_phy: LR
+  trx_speed: 100G
+0/0/0/2:
+  description: Non-Cisco QSFP28 100G SR4 Pluggable Optics Module
+  pid: Q.851HG.02
+  port_type: QSFP28
+  trx_phy: SR4
+  trx_speed: 100G
+0/0/0/20:
+  description: Non-Cisco QSFP28 100G LR4 Pluggable Optics Module
+  pid: Q.161HG.10
+  port_type: QSFP28
+  trx_phy: LR4
+  trx_speed: 100G
+0/0/0/21:
+  description: Non-Cisco QSFP+ 40G 4x10G BASE LR Pluggable Optics Module
+  pid: Q.1340G.10
+  port_type: QSFP+
+  trx_phy: 4x10G
+  trx_speed: 40G
+0/0/0/22:
+  description: Non-Cisco QSFP+ 40G 4x10G BASE LR Pluggable Optics Module
+  pid: Q.1340G.10
+  port_type: QSFP+
+  trx_phy: 4x10G
+  trx_speed: 40G
+0/0/0/23:
+  description: Non-Cisco QSFP+ 40G 4x10G BASE LR Pluggable Optics Module
+  pid: Q.1340G.10
+  port_type: QSFP+
+  trx_phy: 4x10G
+  trx_speed: 40G
+0/0/0/3:
+  description: Non-Cisco QSFP28 100G LR4 Pluggable Optics Module
+  pid: Q.161HG.10
+  port_type: QSFP28
+  trx_phy: LR4
+  trx_speed: 100G
+0/0/0/5:
+  description: Non-Cisco QSFP28 100G FR Pluggable Optics Module
+  pid: Q.B161HG.40.ZY
+  port_type: QSFP28
+  trx_phy: FR
+  trx_speed: 100G
+0/0/0/6:
+  description: Non-Cisco QSFP+ 40G LR4 Pluggable Optics Module
+  pid: Q.1640G.10
+  port_type: QSFP+
+  trx_phy: LR4
+  trx_speed: 40G
+0/0/0/7:
+  description: Non-Cisco QSFP28 100G LR4 Pluggable Optics Module
+  pid: Q.161HG.10
+  port_type: QSFP28
+  trx_phy: LR4
+  trx_speed: 100G
+0/0/0/8:
+  description: Non-Cisco QSFP28 100G FR Pluggable Optics Module
+  pid: Q.B161HG.40.ZY
+  port_type: QSFP28
+  trx_phy: FR
+  trx_speed: 100G
+0/0/0/9:
+  description: Non-Cisco QSFP28 100G SR4 Pluggable Optics Module
+  pid: Q.851HG.02
+  port_type: QSFP28
+  trx_phy: SR4
+  trx_speed: 100G

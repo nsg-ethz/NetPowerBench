@@ -1,0 +1,11 @@
+show inventory
+NAME: "C897VA-K9", DESCR: "C897VA-K9 chassis, Hw Serial#: FCZ1815C1D3, Hw Revision: 1.0"
+PID: C897VA-K9         , VID: V01, SN: FCZ1815C1D3
+
+NAME: "C897VA Mother board on Slot 0", DESCR: "C897VA Mother board"
+PID: C897VA-K9         , VID: V01, SN: FOC18115NAC
+
+
+swiLO-mgmt1#exit
+Connection to swiLO-mgmt1.switch.ch closed by remote host.
+Connection to swiLO-mgmt1.switch.ch closed.

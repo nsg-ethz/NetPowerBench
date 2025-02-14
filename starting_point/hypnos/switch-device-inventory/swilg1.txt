@@ -1,0 +1,50 @@
+show inventory
+Mon Oct  7 15:51:14.332 CEST
+NAME: "0/RP0", DESCR: "NC55A1 24H Route Processor Card"
+PID: NCS-55A1-24H      , VID: V01, SN: FOC214935F3
+
+NAME: "HundredGigE0/0/0/1", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: QSFP-100G-LR4-S   , VID: V01, SN: F78M1PE
+
+NAME: "HundredGigE0/0/0/2", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: QSFP-100G-LR4-S   , VID: V01, SN: F79E0PY
+
+NAME: "HundredGigE0/0/0/3", DESCR: "Non-Cisco QSFP28 100G SR4 Pluggable Optics Module"
+PID: QSFP-100G-SR4-S   , VID: V01, SN: F78QP7V
+
+NAME: "HundredGigE0/0/0/6", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: QSFP-100G-LR4-S   , VID: V01, SN: F79E0PA
+
+NAME: "HundredGigE0/0/0/11", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: QSFP-100G-LR4-S   , VID: V01, SN: F79H5HU
+
+NAME: "HundredGigE0/0/0/17", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: QSFP-100G-LR4-S   , VID: V01, SN: F7ACM4Z
+
+NAME: "TenGigE0/0/0/19", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.10         , VID: V02, SN: F788EMJ
+
+NAME: "FortyGigE0/0/0/23", DESCR: "Non-Cisco QSFP+ 40G SR4 Pluggable Optics Module"
+PID: QSFP-40G-SR4      , VID: V03, SN: F820WJ7
+
+NAME: "Rack 0", DESCR: "NCS55A1 Fixed 24x100G Chassis"
+PID: NCS-55A1-24H      , VID: V01, SN: FOC2149R1V8
+
+NAME: "0/FT0", DESCR: "NCS 5500 Fan Tray 1RU Chassis Port-S Intake/Front-to-back"
+PID: NC55-A1-FAN-FW    , VID: V01, SN: N/A
+
+NAME: "0/FT1", DESCR: "NCS 5500 Fan Tray 1RU Chassis Port-S Intake/Front-to-back"
+PID: NC55-A1-FAN-FW    , VID: V01, SN: N/A
+
+NAME: "0/FT2", DESCR: "NCS 5500 Fan Tray 1RU Chassis Port-S Intake/Front-to-back"
+PID: NC55-A1-FAN-FW    , VID: V01, SN: N/A
+
+NAME: "0/PM0", DESCR: "NCS 5500 AC 1100W Power Supply Port-S Intake/Front-to-back"
+PID: NCS-1100W-ACFW    , VID: V01, SN: ART2139F9WQ
+
+NAME: "0/PM1", DESCR: "NCS 5500 AC 1100W Power Supply Port-S Intake/Front-to-back"
+PID: NCS-1100W-ACFW    , VID: V01, SN: ART2139F9W7
+
+RP/0/RP0/CPU0:swiLG1#exit
+Connection to swiLG1.switch.ch closed by remote host.
+Connection to swiLG1.switch.ch closed.

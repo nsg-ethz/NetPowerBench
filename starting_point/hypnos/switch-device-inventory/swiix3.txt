@@ -1,0 +1,67 @@
+show inventory
+Mon Oct  7 15:48:42.840 CEST
+NAME: "0/RP0", DESCR: "NC55A1 24H Route Processor Card"
+PID: NCS-55A1-24H      , VID: V02, SN: FOC253901CZ
+
+NAME: "HundredGigE0/0/0/0", DESCR: "Non-Cisco QSFP28 100G FR Pluggable Optics Module"
+PID: Q.B161HG.40.YZ    , VID: 01 , SN: F7AJXZ6
+
+NAME: "HundredGigE0/0/0/1", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01 , SN: F7A98A7
+
+NAME: "HundredGigE0/0/0/2", DESCR: "Non-Cisco QSFP28 100G FR Pluggable Optics Module"
+PID: Q.B161HG.40.YZ    , VID: 01 , SN: F7AJXZ8
+
+NAME: "HundredGigE0/0/0/3", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01 , SN: F7ALQV4
+
+NAME: "HundredGigE0/0/0/12", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01 , SN: F7ALQ7V
+
+NAME: "HundredGigE0/0/0/14", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01 , SN: F7ACLNR
+
+NAME: "HundredGigE0/0/0/15", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01 , SN: F7ACLN6
+
+NAME: "HundredGigE0/0/0/16", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01 , SN: F7A32AD
+
+NAME: "GigabitEthernet0/0/0/18", DESCR: "Cisco SFP 1G CWDM 1470nm Pluggable Optics Module"
+PID: N/A               , VID: N/A, SN: H97F3532
+
+NAME: "HundredGigE0/0/0/19", DESCR: "Non-Cisco QSFP28 100G LR4 Pluggable Optics Module"
+PID: Q.161HG.10        , VID: 01 , SN: F7ACLQ0
+
+NAME: "FortyGigE0/0/0/20", DESCR: "Non-Cisco QSFP+ 40G 4x10G BASE LR Pluggable Optics Module"
+PID: Q.1340G.10        , VID: N/A, SN: FPM2AB1
+
+NAME: "TenGigE0/0/0/21", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.10         , VID: A  , SN: F783QR1
+
+NAME: "FortyGigE0/0/0/22", DESCR: "Non-Cisco QSFP+ 40G 4x10G BASE LR Pluggable Optics Module"
+PID: Q.1340G.10        , VID: N/A, SN: FPM2AB2
+
+NAME: "FortyGigE0/0/0/23", DESCR: "Non-Cisco QSFP+ 40G 4x10G BASE LR Pluggable Optics Module"
+PID: Q.1340G.10        , VID: N/A, SN: FPM2AB3
+
+NAME: "Rack 0", DESCR: "NCS55A1 Fixed 24x100G Chassis"
+PID: NCS-55A1-24H      , VID: V02, SN: FOC2538R0JQ
+
+NAME: "0/FT0", DESCR: "NCS 5500 Fan Tray 1RU Chassis Port-S Intake/Front-to-back"
+PID: NC55-A1-FAN-FW    , VID: V01, SN: N/A
+
+NAME: "0/FT1", DESCR: "NCS 5500 Fan Tray 1RU Chassis Port-S Intake/Front-to-back"
+PID: NC55-A1-FAN-FW    , VID: V01, SN: N/A
+
+NAME: "0/FT2", DESCR: "NCS 5500 Fan Tray 1RU Chassis Port-S Intake/Front-to-back"
+PID: NC55-A1-FAN-FW    , VID: V01, SN: N/A
+
+NAME: "0/PM0", DESCR: "NCS 5500 AC 1100W Power Supply Port-S Intake/Front-to-back"
+PID: NCS-1100W-ACFW    , VID: V01, SN: ART2451FAGN
+
+NAME: "0/PM1", DESCR: "NCS 5500 AC 1100W Power Supply Port-S Intake/Front-to-back"
+PID: NCS-1100W-ACFW    , VID: V01, SN: ART2451FAG2
+
+RP/0/RP0/CPU0:swiIX3#exit
+Connection to swiix3.switch.ch closed.

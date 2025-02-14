@@ -1,0 +1,118 @@
+show inventory
+Mon Oct  7 16:13:51.011 CET
+NAME: "module 0/RSP0/CPU0", DESCR: "ASR9K Route Switch Processor with 880G/slot Fabric and 16GB"
+PID: A9K-RSP880-TR, VID: V02, SN: FOC2020N2BK
+
+NAME: "module 0/RSP1/CPU0", DESCR: "ASR9K Route Switch Processor with 880G/slot Fabric and 16GB"
+PID: A9K-RSP880-TR, VID: V01, SN: FOC1915NGSJ
+
+NAME: "module 0/0/CPU0", DESCR: "160G Modular Linecard, Packet Transport Optimized"
+PID: A9K-MOD160-TR, VID: V06, SN: FOC1748N7K5
+
+NAME: "module 0/0/0", DESCR: "ASR 9000 8-port 10GE Modular Port Adapter"
+PID: A9K-MPA-8X10GE, VID: V02, SN: FOC1807N4UH
+
+NAME: "TenGigE0/0/0/0", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1696.23.K, VID: A, SN: F784R25         
+
+NAME: "TenGigE0/0/0/1", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1696.23.L, VID: A, SN: F789H1X         
+
+NAME: "TenGigE0/0/0/2", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1696.23.L, VID: A, SN: F789H1Y         
+
+NAME: "TenGigE0/0/0/3", DESCR: "Non-Cisco PeakOptical SFP+ 10G Pluggable Optics Module"
+PID: PSFP10-2321SF, VID: A, SN: CI89LR005       
+
+NAME: "TenGigE0/0/0/4", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.8596.02, VID: A, SN: F784T9C         
+
+NAME: "TenGigE0/0/0/5", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1696.23.K, VID: A, SN: F78CRLU         
+
+NAME: "TenGigE0/0/0/6", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1696.23.L, VID: A, SN: F7892CD         
+
+NAME: "TenGigE0/0/0/7", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1396.10, VID: A, SN: F78534F         
+
+NAME: "module 0/0/1", DESCR: "ASR 9000 8-port 10GE Modular Port Adapter"
+PID: A9K-MPA-8X10GE, VID: V02, SN: FOC1802NANB
+
+NAME: "TenGigE0/0/1/0", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1396.10, VID: A, SN: F786HUC         
+
+NAME: "TenGigE0/0/1/1", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1396.10, VID: A, SN: F786HUD         
+
+NAME: "TenGigE0/0/1/2", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1396.20, VID: A, SN: F7ALW6M         
+
+NAME: "TenGigE0/0/1/3", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1396.20, VID: A, SN: F7ALW6N         
+
+NAME: "TenGigE0/0/1/4", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.B1696.20.DA, VID: A, SN: F78XT7F         
+
+NAME: "TenGigE0/0/1/5", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1396.10, VID: A, SN: F789KMQ         
+
+NAME: "module mau 0/0/1/7", DESCR: "SFP+ Active Twinax cable assembly, 7m"
+PID: SFP-H10GB-ACU7M     , VID: V02 , SN: TED1730T18W     
+
+NAME: "module 0/1/CPU0", DESCR: "8x100GE, Service Edge Optimized LC"
+PID: A9K-8X100GE-L-SE, VID: V01, SN: FOC1912NAL3
+
+NAME: "module mau HundredGigE0/1/CPU0/0", DESCR: "CPAK 100G LR4"
+PID: CPAK-100G-LR4   , VID: V03 , SN: FBN19480554     
+
+NAME: "module mau HundredGigE0/1/CPU0/1", DESCR: "CPAK 100G LR4"
+PID: CPAK-100G-LR4   , VID: V03 , SN: FBN19340164     
+
+NAME: "module mau HundredGigE0/1/CPU0/3", DESCR: "CPAK 10X10G LR"
+PID: CPAK-10X10G-LR  , VID: V01 , SN: FBN19423472     
+
+NAME: "module mau HundredGigE0/1/CPU0/5", DESCR: "CPAK 100G LR4"
+PID: CPAK-100G-LR4   , VID: V03 , SN: FBN19500002     
+
+NAME: "module mau FortyGigE0/1/CPU0/6/0", DESCR: "CPAK to QSFP40G adapter"
+PID: CVR-CPAK-QSFP40 , VID: VES2, SN: DTY192700YU
+
+NAME: "module mau FortyGigE0/1/CPU0/6/0", DESCR: "40G-LR4 QSFP+ Module for SMF LAN/OTN mode"
+PID: QSFP-40G-LR4    , VID: V01 , SN: F8212Z1         
+
+NAME: "module mau FortyGigE0/1/CPU0/7/0", DESCR: "CPAK to QSFP40G adapter"
+PID: CVR-CPAK-QSFP40 , VID: VES2, SN: DTY192700Y9
+
+NAME: "module mau FortyGigE0/1/CPU0/7/0", DESCR: "40G-LR4 QSFP+ Module for SMF LAN/OTN mode"
+PID: QSFP-40G-LR4    , VID: V01 , SN: F78ZN4N         
+
+NAME: "module 0/2/CPU0", DESCR: "ASR 9000 8-port 100GE Consumption Model Line Card"
+PID: A9K-8X100GE-CM, VID: V04, SN: FOC2023NR0Z
+
+NAME: "module mau HundredGigE0/2/CPU0/0", DESCR: "CPAK 100G LR4"
+PID: CPAK-100G-LR4   , VID: V03 , SN: FBN19510374     
+
+NAME: "module mau HundredGigE0/2/CPU0/1", DESCR: "CPAK 100G LR4"
+PID: CPAK-100G-LR4   , VID: V03 , SN: FBN19340165     
+
+NAME: "module mau HundredGigE0/2/CPU0/2", DESCR: "CPAK 100G LR4"
+PID: CPAK-100G-LR4   , VID: V03 , SN: FBN19480522     
+
+NAME: "module mau HundredGigE0/2/CPU0/3", DESCR: "CPAK 100G LR4"
+PID: CPAK-100G-LR4   , VID: V03 , SN: FBN19340166     
+
+NAME: "module mau HundredGigE0/2/CPU0/4", DESCR: "CPAK 100G SR10"
+PID: CPAK-100G-SR10  , VID: V01 , SN: FBN19112129     
+
+NAME: "module mau HundredGigE0/2/CPU0/5", DESCR: "CPAK 100G LR4"
+PID: CPAK-100G-LR4   , VID: V04 , SN: FBN20140543     
+
+NAME: "module mau FortyGigE0/2/CPU0/6/0", DESCR: "CPAK to QSFP40G adapter"
+PID: CVR-CPAK-QSFP40 , VID: VES2, SN: DTY192700Y0
+
+NAME: "module mau FortyGigE0/2/CPU0/6/0", DESCR: "40GE-LR4 QSFP+ Module for SMF LAN mode only"
+PID: QSFP-40GE-LR4   , VID: V01 , SN: F820BVN         
+
+RP/0/RSP1/CPU0:swiEZ3#exit
+Connection to swiez3.switch.ch closed.

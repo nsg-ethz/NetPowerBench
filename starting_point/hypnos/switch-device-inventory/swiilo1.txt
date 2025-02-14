@@ -1,0 +1,16 @@
+show inventory
+NAME: "1", DESCR: "ME-3400EG-2CS-A"
+PID: ME-3400EG-2CS-A   , VID: V01  , SN: FOC1342X0RN
+
+NAME: "GigabitEthernet0/2", DESCR: "CWDM-1610 SFP"
+PID: Unspecified       , VID:      , SN: C1008250467     
+
+NAME: "GigabitEthernet0/3", DESCR: "CWDM-1490 SFP"
+PID: Unspecified       , VID:      , SN: C1007150974     
+
+NAME: "GigabitEthernet0/4", DESCR: "CWDM-1470 SFP"
+PID: CWDM-SFP-1470       , VID: V01  , SN: F785S7Q         
+
+
+swiILO1#exit
+Connection to swiILO1.switch.ch closed.

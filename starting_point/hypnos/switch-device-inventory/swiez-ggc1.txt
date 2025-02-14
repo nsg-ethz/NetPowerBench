@@ -1,0 +1,49 @@
+show inventory
+Mon Oct  7 15:44:46.708 CEST
+
+NAME: "Rack 0", DESCR: "Cisco NCS 540 Series Fixed Router 12x1G, 4xCu, 8x1/10G, AC"
+PID: N540X-8Z16G-SYS-A , VID: V02, SN: FOC2651NAFM
+
+NAME: "0/RP0/CPU0", DESCR: "Cisco NCS 540 Series Fixed Router 12x1G, 4xCu, 8x1/10G, AC"
+PID: N540X-8Z16G-SYS-A , VID: V02, SN: FOC2650N3WH
+
+NAME: "GigabitEthernet0/0/0/11", DESCR: "Non-Cisco SFP 1G 1000BASE-T Pluggable Optics Module"
+PID: SFP-GB-GE-T       , VID: F, SN: F2210193837
+
+NAME: "GigabitEthernet0/0/0/12", DESCR: "Non-Cisco SFP 1G 1000BASE-T Pluggable Optics Module"
+PID: SFP-GB-GE-T       , VID: F, SN: F2210193819
+
+NAME: "GigabitEthernet0/0/0/15", DESCR: "Non-Cisco SFP 1G 1000BASE-T Pluggable Optics Module"
+PID: SFP-GB-GE-T       , VID: F, SN: F2210193814
+
+NAME: "TenGigE0/0/0/30", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.20         , VID: A, SN: F7ALW6K
+
+NAME: "TenGigE0/0/0/31", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.20         , VID: A, SN: F7ALW6L
+
+NAME: "GigabitEthernet0/0/0/4", DESCR: "Non-Cisco SFP 1G 1000BASE-T Pluggable Optics Module"
+PID: SFP-GB-GE-T       , VID: F, SN: F2210193816
+
+NAME: "GigabitEthernet0/0/0/5", DESCR: "Non-Cisco SFP 1G 1000BASE-T Pluggable Optics Module"
+PID: SFP-GB-GE-T       , VID: F, SN: F2210193812
+
+NAME: "GigabitEthernet0/0/0/6", DESCR: "Non-Cisco SFP 1G 1000BASE-T Pluggable Optics Module"
+PID: SFP-GB-GE-T       , VID: F, SN: F2210193818
+
+NAME: "GigabitEthernet0/0/0/7", DESCR: "Non-Cisco SFP 1G 1000BASE-T Pluggable Optics Module"
+PID: SFP-GB-GE-T       , VID: F, SN: F2210193820
+
+NAME: "GigabitEthernet0/0/0/8", DESCR: "Non-Cisco SFP 1G 1000BASE-T Pluggable Optics Module"
+PID: SFP-GB-GE-T       , VID: F, SN: F2210193811
+
+NAME: "0/FT0", DESCR: "NCS 540 FAN"
+PID: N540L-FAN         , VID: N/A, SN: N/A
+
+NAME: "0/PM0", DESCR: "NCS 540 PSU"
+PID: N540L-PSU-FIXED-A , VID: N/A, SN: N/A
+
+NAME: "0/PM1", DESCR: "NCS 540 PSU"
+PID: N540L-PSU-FIXED-A , VID: N/A, SN: N/A
+RP/0/RP0/CPU0:swiEZ-GGC1#exit
+Connection to swiez-ggc1.switch.ch closed.

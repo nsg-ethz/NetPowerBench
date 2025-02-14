@@ -1,0 +1,22 @@
+# DUT parameters
+DUT:
+  id: "ciscoNCS55A1-24H"  # no space!
+  port_file: "ports.yml"
+  transceivers: "PCC" # Passive Copper Cable
+  type: "router"
+  # OS requirements
+  needs_commit: True          # commit to apply configs
+  manual_speed_setting: True  # two steps to change port speeds
+
+# Measurement parameters
+measurement_time_s:   30      # in seconds
+configuration_time_s: 15      # in seconds
+sampling_interval_ms: 100     # in milliseconds
+random_seed:                  # leave empty for uncontrolled seed
+
+# External dependencies
+pinpoint:
+  binary: "/local/home/jacobr/workspace/pinpoint/build/pinpoint"
+  workload: # currently unused
+serial_port: "/dev/ttyUSB0"
+baudrate: 115200

@@ -1,0 +1,28 @@
+show inventory
+Mon Oct  7 15:49:36.150 CEST
+
+NAME: "Rack 0", DESCR: "Cisco NCS 540 Series Fixed Router 12x1G, 4xCu, 8x1/10G, AC"
+PID: N540X-8Z16G-SYS-A , VID: V02, SN: FOC2651NAB6
+
+NAME: "0/RP0/CPU0", DESCR: "Cisco NCS 540 Series Fixed Router 12x1G, 4xCu, 8x1/10G, AC"
+PID: N540X-8Z16G-SYS-A , VID: V02, SN: FOC2650N4ZU
+
+NAME: "TenGigE0/0/0/24", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.20         , VID: A, SN: F7ALW6F
+
+NAME: "TenGigE0/0/0/25", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.20         , VID: A, SN: F7ALW6E
+
+NAME: "TenGigE0/0/0/27", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.20         , VID: A, SN: F7ALW69
+
+NAME: "0/FT0", DESCR: "NCS 540 FAN"
+PID: N540L-FAN         , VID: N/A, SN: N/A
+
+NAME: "0/PM0", DESCR: "NCS 540 PSU"
+PID: N540L-PSU-FIXED-A , VID: N/A, SN: N/A
+
+NAME: "0/PM1", DESCR: "NCS 540 PSU"
+PID: N540L-PSU-FIXED-A , VID: N/A, SN: N/A
+RP/0/RP0/CPU0:swiMAA1#exit
+Connection to swiMAA1.switch.ch closed.

@@ -1,0 +1,7 @@
+show inventory
+NAME: "1", DESCR: "WS-C2960X-24TD-L"
+PID: WS-C2960X-24TD-L  , VID: V02  , SN: FOC1826S4NE
+
+
+swiDV-mgmt1#exit
+Connection to swiDV-mgmt1.switch.ch closed.

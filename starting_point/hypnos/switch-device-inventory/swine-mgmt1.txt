@@ -1,0 +1,10 @@
+show inventory
+NAME: "1", DESCR: "WS-C2960X-24TD-L"
+PID: WS-C2960X-24TD-L  , VID: V02  , SN: FOC1826S4N1
+
+NAME: "GigabitEthernet1/0/25", DESCR: "1000BaseLX SFP"
+PID: GLC-LH-SMD          , VID: V01  , SN: F7882BJ         
+
+
+swiNE-mgmt1#exit
+Connection to swine-mgmt1.switch.ch closed.

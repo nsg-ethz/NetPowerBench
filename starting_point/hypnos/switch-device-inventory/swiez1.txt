@@ -1,0 +1,125 @@
+show inventory
+NAME: "WS-C6504-E", DESCR: "Cisco Systems Cisco 6500 4-slot Chassis System"
+PID: WS-C6504-E        ,                     VID: V01, SN: FXS1641Q2A0
+
+NAME: "CLK-7600 1", DESCR: "OSR-7600 Clock FRU 1"
+PID: CLK-7600          ,                     VID:    , SN: FXS164108MP
+
+NAME: "CLK-7600 2", DESCR: "OSR-7600 Clock FRU 2"
+PID: CLK-7600          ,                     VID:    , SN: FXS164108MP
+
+NAME: "1", DESCR: "VS-SUP2T-10G 5 ports Supervisor Engine 2T 10GE w/ CTS Rev. 1.3"
+PID: VS-SUP2T-10G      ,                     VID: V03, SN: SAL1632K9N9
+
+NAME: "msfc sub-module of 1", DESCR: "VS-F6K-MSFC5 CPU Daughterboard Rev. 1.4"
+PID: VS-F6K-MSFC5      ,                     VID:    , SN: SAL1633KEC5
+
+NAME: "VS-F6K-PFC4XL Policy Feature Card 4 EARL 1 sub-module of 1", DESCR: "VS-F6K-PFC4XL Policy Feature Card 4 Rev. 1.0"
+PID: VS-F6K-PFC4XL     ,                     VID: V01, SN: SAL1620CL34
+
+NAME: "Transceiver Te1/4", DESCR: "X2 Transceiver 10Gbase-LR Te1/4"
+PID: X2-10GB-LR        ,                     VID: V04 , SN: CI31X2LR234
+
+NAME: "Transceiver Te1/5", DESCR: "X2 Transceiver 10Gbase-LR Te1/5"
+PID: X2-10GB-LR        ,                     VID: V03 , SN: CI31X2LR049
+
+NAME: "2", DESCR: "WS-X6908-10G DCEF2T 8 port 10GE Rev. 1.2"
+PID: WS-X6908-10G      ,                     VID: V01, SN: SAL1643QYVS
+
+NAME: "WS-F6K-DFC4-EXL Distributed Forwarding Card 4 EARL 1 sub-module of 2", DESCR: "WS-F6K-DFC4-EXL Distributed Forwarding Card 4 Rev. 1.1"
+PID: WS-F6K-DFC4-EXL   ,                     VID: V01, SN: SAL1642Q93W
+
+NAME: "Interface Adapter Module Te2/1", DESCR: "Interface Adapter Module Te2/1"
+PID: CVR-X2-SFP10G     ,                     VID: V02 , SN: FOX1525XY2E
+
+NAME: "Transceiver Te2/3", DESCR: "X2 Transceiver 10Gbase-ZR Te2/3"
+PID: X2 to SFP+        ,                     VID: V02 , SN: F783V9Z    
+
+NAME: "Transceiver Te2/4", DESCR: "X2 Transceiver 10Gbase-LR Te2/4"
+PID: X2 to SFP+        ,                     VID: V02 , SN: F7862WY    
+
+NAME: "Interface Adapter Module Te2/5", DESCR: "Interface Adapter Module Te2/5"
+PID: CVR-X2-SFP10G     ,                     VID: V02 , SN: FOX1552XY5K
+
+NAME: "Transceiver Te2/5", DESCR: "SFP+ Transceiver 10Gbase-LR Te2/5"
+PID: SFP-10G-LR         ,                     VID: V01 , SN: F784D0Z         
+
+NAME: "Transceiver Te2/6", DESCR: "X2 Transceiver 10Gbase-LR Te2/6"
+PID: X2 to SFP+        ,                     VID: V02 , SN: F785YNZ    
+
+NAME: "Transceiver Te2/7", DESCR: "X2 Transceiver 10Gbase-LR Te2/7"
+PID: X2 to SFP+        ,                     VID: V02 , SN: F783FV4    
+
+NAME: "Transceiver Te2/8", DESCR: "X2 Transceiver 10Gbase-ZR Te2/8"
+PID: X2 to SFP+        ,                     VID: V02 , SN: F7862W2    
+
+NAME: "3", DESCR: "WS-X6908-10G DCEF2T 8 port 10GE Rev. 1.1"
+PID: WS-X6908-10G      ,                     VID: V01, SN: SAL1539QX7A
+
+NAME: "WS-F6K-DFC4-EXL Distributed Forwarding Card 4 EARL 1 sub-module of 3", DESCR: "WS-F6K-DFC4-EXL Distributed Forwarding Card 4 Rev. 1.0"
+PID: WS-F6K-DFC4-EXL   ,                     VID: V01, SN: SAL1532M1WB
+
+NAME: "Transceiver Te3/1", DESCR: "X2 Transceiver DWDM-31.90 Te3/1"
+PID: X2 to SFP+        ,                     VID: V02 , SN: F783V9R    
+
+NAME: "Transceiver Te3/2", DESCR: "X2 Transceiver 10Gbase-LR Te3/2"
+PID: X2 to SFP+        ,                     VID: V02 , SN: F783VA9    
+
+NAME: "Transceiver Te3/3", DESCR: "X2 Transceiver 10Gbase-LR Te3/3"
+PID: X2-10GB-LR        ,                     VID: V03 , SN: CI31X2LR046
+
+NAME: "Transceiver Te3/4", DESCR: "X2 Transceiver 10Gbase-SR Te3/4"
+PID: X2-10GB-SR        ,                     VID: V03 , SN: CI89X2SR183
+
+NAME: "Transceiver Te3/5", DESCR: "X2 Transceiver 10Gbase-ZR Te3/5"
+PID: X2 to SFP+        ,                     VID: V02 , SN: F7862W0    
+
+NAME: "Transceiver Te3/6", DESCR: "X2 Transceiver 10Gbase-LR Te3/6"
+PID: X2-10GB-LR        ,                     VID: V03 , SN: CI31X2LR073
+
+NAME: "Transceiver Te3/7", DESCR: "X2 Transceiver 10Gbase-LR Te3/7"
+PID: X2-10GB-LR        ,                     VID: V03 , SN: CI89X2LR007
+
+NAME: "Transceiver Te3/8", DESCR: "X2 Transceiver 10Gbase-LR Te3/8"
+PID: X2 to SFP+        ,                     VID: V02 , SN: F783V9W    
+
+NAME: "4", DESCR: "WS-X6904-40G DCEF2T 4 port 40GE / 16 port 10GE Rev. 1.1"
+PID: WS-X6904-40G      ,                     VID: V01, SN: SAL19027YRH
+
+NAME: "WS-F6K-DFC4-EXL Distributed Forwarding Card 4 EARL 1 sub-module of 4", DESCR: "WS-F6K-DFC4-EXL Distributed Forwarding Card 4 Rev. 1.2"
+PID: WS-F6K-DFC4-EXL   ,                     VID: V02, SN: SAL19027U5V
+
+NAME: "4X Interface Adapter Module Fo4/1", DESCR: "4X Interface Adapter Module Fo4/1"
+PID: CVR-CFP-4SFP10G   ,                     VID: V02 , SN: DTY184800N8
+
+NAME: "4X Interface Adapter Module Fo4/2", DESCR: "4X Interface Adapter Module Fo4/2"
+PID: CVR-CFP-4SFP10G   ,                     VID: V01 , SN: DTY1717000B
+
+NAME: "4X Interface Adapter Module Fo4/3", DESCR: "4X Interface Adapter Module Fo4/3"
+PID: CVR-CFP-4SFP10G   ,                     VID: V02 , SN: DTY184800EX
+
+NAME: "4X Interface Adapter Module Fo4/4", DESCR: "4X Interface Adapter Module Fo4/4"
+PID: CVR-CFP-4SFP10G   ,                     VID: V01 , SN: DTY17170008
+
+NAME: "Transceiver Te4/16", DESCR: "SFP+ Transceiver 10Gbase-LR Te4/16"
+PID: SFP-10G-LR         ,                     VID: V01 , SN: F781GS8         
+
+NAME: "Transceiver Te4/17", DESCR: "SFP+ Transceiver 10Gbase-LR Te4/17"
+PID: SFP-10G-LR         ,                     VID: V02 , SN: F789KMP         
+
+NAME: "Transceiver Te4/18", DESCR: "SFP+ Transceiver 10Gbase-LR Te4/18"
+PID: SFP-10G-LR         ,                     VID: V01 , SN: F7857L2         
+
+NAME: "FAN-MOD-4HS 1", DESCR: "High Speed Fan Module for CISCO7604 1"
+PID: FAN-MOD-4HS       ,                     VID: V01, SN: DCH1635008B
+
+NAME: "PS 1 PWR-2700-AC/4", DESCR: "2700W AC power supply for CISCO7604 1"
+PID: PWR-2700-AC/4     ,                     VID: V03, SN: APS16410013
+
+NAME: "PS 2 PWR-2700-AC/4", DESCR: "2700W AC power supply for CISCO7604 2"
+PID: PWR-2700-AC/4     ,                     VID: V03, SN: APS16410011
+
+
+swiEZ1#exit
+Connection to swiEZ1.switch.ch closed by remote host.
+Connection to swiEZ1.switch.ch closed.

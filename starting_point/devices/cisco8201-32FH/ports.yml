@@ -1,0 +1,141 @@
+ports:
+  PCC:
+    ids:
+      - 0
+      - 2 
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+      - 15
+      - 16
+      - 17
+      - 18
+      - 19
+      - 20
+      - 21
+      - 22
+      - 23
+      - 24
+      - 25
+      - 26
+      - 27
+      - 28
+      - 29
+      - 30
+      - 31
+      - 1
+    speeds:
+    commands:
+      snake-test:
+        - interface HundredGigE0/0/0/PORT
+        - mtu 6000
+        - l2transport
+        - exit
+        - exit
+        - l2vpn
+        - bridge group g_VLAN_NUMBER
+        - bridge-domain d_VLAN_NUMBER
+        - mtu 6000
+        - interface HundredGigE 0/0/0/PORT
+        - exit
+        - exit
+        - exit
+        - exit
+      enable:
+        - interface HundredGigE0/0/0/PORT
+        - no shutdown
+        - exit
+      disable:
+        - no l2vpn
+        - interface HundredGigE0/0/0/PORT
+        - shutdown
+        - exit
+  LR4:
+    ids:
+      - 0
+      - 2
+      - 4
+      - 6
+      # - 8
+      # - 10
+      # - 12
+      # - 14
+    speeds:
+    commands:
+      enable:
+        - interface FourHundredGigE0/0/0/PORT
+        - no shutdown
+        - exit
+      disable:
+        - interface FourHundredGigE0/0/0/PORT
+        - shutdown
+        - exit
+  FR4:
+    ids:
+      - 0
+      - 2
+      - 4
+      - 6
+      - 8
+      - 10
+      - 12
+      - 14
+    speeds:
+    commands:
+      enable:
+        - interface FourHundredGigE0/0/0/PORT
+        - no shutdown
+        - exit
+      disable:
+        - interface FourHundredGigE0/0/0/PORT
+        - shutdown
+        - exit
+  PCC_in_400G:
+    ids:
+      - 0
+      - 2
+      - 4
+      - 6
+      - 8
+      - 10
+      - 12
+      - 14
+    speeds:
+    commands:
+      enable:
+        - interface HundredGigE0/0/0/PORT
+        - no shutdown
+        - exit
+      disable:
+        - interface HundredGigE0/0/0/PORT
+        - shutdown
+        - exit
+  ER4:
+    ids:
+      - 0
+      # - 2
+      # - 4
+      # - 6
+      # - 8
+      # - 10
+      # - 12
+      # - 14
+    speeds:
+    commands:
+      enable:
+        - interface FourHundredGigE0/0/0/PORT
+        - no shutdown
+        - exit
+      disable:
+        - interface FourHundredGigE0/0/0/PORT
+        - shutdown
+        - exit

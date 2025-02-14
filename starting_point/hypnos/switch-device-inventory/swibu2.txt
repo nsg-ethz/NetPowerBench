@@ -1,0 +1,71 @@
+show inventory
+NAME: "WS-C6503-E", DESCR: "Cisco Systems Catalyst 6500 3-slot Chassis System"
+PID: WS-C6503-E        ,                     VID: V02, SN: FOX103103D6
+
+NAME: "CLK-7600 1", DESCR: "OSR-7600 Clock FRU 1"
+PID: CLK-7600          ,                     VID:    , SN: NWG103002JH
+
+NAME: "CLK-7600 2", DESCR: "OSR-7600 Clock FRU 2"
+PID: CLK-7600          ,                     VID:    , SN: NWG103002JH
+
+NAME: "1", DESCR: "VS-SUP2T-10G 5 ports Supervisor Engine 2T 10GE w/ CTS Rev. 1.3"
+PID: VS-SUP2T-10G      ,                     VID: V03, SN: SAL1643QWK7
+
+NAME: "msfc sub-module of 1", DESCR: "VS-F6K-MSFC5 CPU Daughterboard Rev. 1.4"
+PID: VS-F6K-MSFC5      ,                     VID:    , SN: SAL1643QUJ6
+
+NAME: "VS-F6K-PFC4XL Policy Feature Card 4 EARL 1 sub-module of 1", DESCR: "VS-F6K-PFC4XL Policy Feature Card 4 Rev. 1.0"
+PID: VS-F6K-PFC4XL     ,                     VID: V01, SN: SAL1632JSD9
+
+NAME: "Transceiver Te1/4", DESCR: "X2 Transceiver DWDM-31.12 Te1/4"
+PID: X2 to SFP+        ,                     VID: V02 , SN: F785SP7    
+
+NAME: "Transceiver Te1/5", DESCR: "X2 Transceiver DWDM-31.12 Te1/5"
+PID: X2 to SFP+        ,                     VID: V02 , SN: F785YP5    
+
+NAME: "2", DESCR: "WS-X6724-SFP CEF720 24 port 1000mb SFP Rev. 2.0"
+PID: WS-X6724-SFP      ,                     VID:    , SN: SAD080808MS
+
+NAME: "WS-F6700-CFC Centralized Forwarding Card EARL 1 sub-module of 2", DESCR: "WS-F6700-CFC Centralized Forwarding Card Rev. 1.2"
+PID: WS-F6700-CFC      ,                     VID:    , SN: SAD07500541
+
+NAME: "Transceiver Gi2/1", DESCR: "SFP Transceiver 1000BaseSX Gi2/1"
+PID: Unspecified       ,                     VID: Unspecified, SN: P4S1BV3         
+
+NAME: "Transceiver Gi2/2", DESCR: "SFP Transceiver 1000BaseSX Gi2/2"
+PID: Unspecified       ,                     VID: Unspecified, SN: FNS0905G0SU     
+
+NAME: "Transceiver Gi2/3", DESCR: "SFP Transceiver 1000BaseSX Gi2/3"
+PID: Unspecified       ,                     VID: Unspecified, SN: FNS0952Q490     
+
+NAME: "Transceiver Gi2/4", DESCR: "SFP Transceiver 1000BaseSX Gi2/4"
+PID: Unspecified       ,                     VID: Unspecified, SN: FNS0932K14K     
+
+NAME: "Transceiver Gi2/5", DESCR: "SFP Transceiver 1000BaseSX Gi2/5"
+PID: Unspecified       ,                     VID: Unspecified, SN: P4P164T         
+
+NAME: "3", DESCR: "WS-X6704-10GE CEF720 4 port 10-Gigabit Ethernet Rev. 3.2"
+PID: WS-X6704-10GE     ,                     VID: V04, SN: SAL1516C2JN
+
+NAME: "WS-F6700-CFC Centralized Forwarding Card EARL 1 sub-module of 3", DESCR: "WS-F6700-CFC Centralized Forwarding Card Rev. 4.1"
+PID: WS-F6700-CFC      ,                     VID: V06, SN: SAL1516BXVG
+
+NAME: "Transceiver Te3/2", DESCR: "Xenpak Transceiver 10Gbase-LR Te3/2"
+PID: Xenpak-SFP+       ,                     VID: V02 , SN: F782CRQ    
+
+NAME: "Transceiver Te3/4", DESCR: "Xenpak Transceiver 10Gbase-LR Te3/4"
+PID: Xenpak-SFP+       ,                     VID: V02 , SN: F7827ZG    
+
+NAME: "WS-C6503-E-FAN 1", DESCR: "Enhanced 3-slot Fan Tray 1"
+PID: WS-C6503-E-FAN    ,                     VID: V02, SN: DCH10373330
+
+NAME: "PS 1 PWR-1400-AC", DESCR: "AC power supply, 1400 watt 1"
+PID: PWR-1400-AC       ,                     VID: V02, SN: DTH1035J458
+
+NAME: "PS 2 PWR-1400-AC", DESCR: "AC power supply, 1400 watt 2"
+PID: PWR-1400-AC       ,                     VID: V02, SN: DTH1035J452
+
+
+swiBU2#exit
+Connection to swiBU2.switch.ch closed by remote host.
+Connection to swiBU2.switch.ch closed.

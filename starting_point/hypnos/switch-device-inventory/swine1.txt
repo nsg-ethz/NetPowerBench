@@ -1,0 +1,52 @@
+show inventory
+Mon Oct  7 15:45:16.448 CET
+NAME: "module 0/RSP0/CPU0", DESCR: "ASR 9001, Route Switch Processor with 8GB memory"
+PID: ASR9001-RP, VID: V01 , SN: FOC1841NDKF
+
+NAME: "module 0/0/CPU0", DESCR: "ASR 9001, Modular Line Card"
+PID: ASR9001-LC, VID: V01 , SN: FOC1841ND80
+
+NAME: "module 0/0/0", DESCR: "ASR 9000 20-port 1GE Modular Port Adapter"
+PID: A9K-MPA-20X1GE, VID: V03, SN: FOC1841NW2E
+
+NAME: "module mau 0/0/0/0", DESCR: ""
+PID: N/A, VID: N/A, SN: FNS0833R03P     
+
+NAME: "module mau 0/0/0/1", DESCR: ""
+PID: N/A, VID: N/A, SN: F060350007      
+
+NAME: "GigabitEthernet0/0/0/3", DESCR: "Non-Cisco FLEXOPTIX SFP 1G Pluggable Optics Module"
+PID: S.1612.37.LD, VID: A, SN: F783EU7         
+
+NAME: "GigabitEthernet0/0/0/4", DESCR: "Non-Cisco FINISAR CORP. SFP 1G Pluggable Optics Module"
+PID: FTRJ-1319-7D-CSC, VID: N/A, SN: P11V6EF         
+
+NAME: "GigabitEthernet0/0/0/19", DESCR: "Non-Cisco FLEXOPTIX SFP 1G Pluggable Optics Module"
+PID: T.C12.02.G, VID: A, SN: F78AGR0         
+
+NAME: "module 0/0/1", DESCR: "ASR 9000 4-port 10GE Modular Port Adapter"
+PID: A9K-MPA-4X10GE, VID: V06, SN: FOC2101NEX2
+
+NAME: "TenGigE0/0/1/0", DESCR: "Non-Cisco FLEXOPTIX XFP 10G Pluggable Optics Module"
+PID: X.1396.10, VID: A, SN: F78A6VJ         
+
+NAME: "TenGigE0/0/1/3", DESCR: "Non-Cisco XFP 10G Pluggable Optics Module"
+PID: N/A, VID: N/A, SN: 
+
+NAME: "module 0/0/2", DESCR: "ASR 9000 Virtual Module"
+PID: A9K-MODULEv, VID: N/A, SN: N/A
+
+NAME: "Unknown0/0/2/0", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1396.10, VID: A, SN: F783QR4         
+
+NAME: "Unknown0/0/2/1", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.8596.02, VID: A, SN: F784T9J         
+
+NAME: "Unknown0/0/2/2", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1696.23.57, VID: A, SN: F78AZS6         
+
+NAME: "Unknown0/0/2/3", DESCR: "Non-Cisco FLEXOPTIX SFP+ 10G Pluggable Optics Module"
+PID: P.1696.23.K, VID: A, SN: F788P33         
+
+RP/0/RSP0/CPU0:swiNE1#exit
+Connection to swiNE1.switch.ch closed.

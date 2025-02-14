@@ -1,0 +1,78 @@
+swiEZ31#show inventory
+System information
+  Model                    Description
+  ------------------------ -------------------------------------------------------------------------------
+  DCS-7280CR3K-32D4        32x100GbE (QSFP100) & 4x400GbE (QSFP-DD) Ethernet Switch with large routes, SSD
+
+  HW Version  Serial Number  Mfg Date   Epoch
+  ----------- -------------- ---------- -----
+  12.30       JPA2318P28J    2023-05-17 01.00
+
+System has 2 power supply slots
+  Slot Model            Serial Number
+  ---- ---------------- ----------------
+  1    PWR-1011-AC-RED  6A0010103240DN2
+  2    PWR-1011-AC-RED  6A0010103240DNV
+
+System has 3 fan modules
+  Module  Number of Fans  Model            Serial Number
+  ------- --------------- ---------------- ----------------
+  1       2               FAN-7011H-F      N/A
+  2       2               FAN-7011H-F      N/A
+  3       2               FAN-7011H-F      N/A
+
+System has 129 ports
+  Type               Count
+  ------------------ ----
+  Management         1
+  Switched           124
+  SwitchedBootstrap  4
+
+System has 36 switched transceiver slots
+  Port Manufacturer     Model            Serial Number    Rev
+  ---- ---------------- ---------------- ---------------- ----
+  1    FLEXOPTIX        Q.13S1HG.10      F8240T4          03
+  2    Not Present
+  3    Not Present
+  4    Not Present
+  5    Not Present
+  6    Not Present
+  7    Not Present
+  8    Not Present
+  9    Not Present
+  10   Not Present
+  11   Not Present
+  12   Not Present
+  13   Not Present
+  14   Not Present
+  15   Not Present
+  16   Not Present
+  17   FLEXOPTIX        Q.1640G.10       FPM01ZP          01
+  18   Not Present
+  19   Not Present
+  20   Not Present
+  21   Not Present
+  22   Not Present
+  23   Not Present
+  24   Not Present
+  25   Not Present
+  26   Not Present
+  27   Not Present
+  28   Not Present
+  29   FLEXOPTIX        Q.1340G.10       FPM4E6Y
+  30   Not Present
+  31   FLEXOPTIX        Q.1340G.10       FPM2A8R
+  32   Not Present
+  33   FLEXOPTIX        D.164HG.2.C      F823W3W          01
+  34   CISCO-ACACIA     DP04QSDD-HE0-190 ACA281000U5      A
+  35   Not Present
+  36   Not Present
+
+System has 2 storage devices
+  Mount      Type Model                    Serial Number        Rev      Size (GB)
+  ---------- ---- ------------------------ -------------------- -------- ---------
+  /mnt/flash eMMC Smart Modular 16GP1A     801033b0             1.0      8
+  /mnt/drive SSD  StorFly VSFBM8CC120G-ARI P1T14005958611020287 0202-000 120
+
+swiEZ31#exit
+Connection to swiez31.switch.ch closed.

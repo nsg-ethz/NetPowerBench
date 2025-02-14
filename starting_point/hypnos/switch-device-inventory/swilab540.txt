@@ -1,0 +1,43 @@
+show inventory
+Mon Oct  7 15:43:30.393 CEST
+NAME: "0/RP0", DESCR: "Cisco NCS 540 Series Fixed Router 24x10G, 8x25G, 2x100G"
+PID: N540-24Z8Q2C-M    , VID: V01, SN: FOC2252N70F
+
+NAME: "TenGigE0/0/0/21", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.10         , VID: A  , SN: F78BFUK
+
+NAME: "TenGigE0/0/0/22", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.10         , VID: A  , SN: F78BFUL
+
+NAME: "TenGigE0/0/0/23", DESCR: "Non-Cisco SFP+ 10G LR Pluggable Optics Module"
+PID: P.1396.10         , VID: A  , SN: F781GSA
+
+NAME: "HundredGigE0/0/1/0", DESCR: "Non-Cisco QSFP28 100G LR Pluggable Optics Module"
+PID: FTLC3351R3PL1     , VID: 10 , SN: 2435W0MW4
+
+NAME: "HundredGigE0/0/1/1", DESCR: "Non-Cisco QSFP28 100G LR Pluggable Optics Module"
+PID: Q.13S1HG.10       , VID: 02 , SN: F8234U6
+
+NAME: "Rack 0", DESCR: "NCS 540 Series 24x1/10GE, 8x10/25GE, 2x100GE Fixed Chassis"
+PID: N540-24Z8Q2C-M    , VID: V01, SN: FOC2301PEQY
+
+NAME: "0/FT0", DESCR: "NCS 540 Fan"
+PID: N540-FAN          , VID: V01, SN: N/A
+
+NAME: "0/FT1", DESCR: "NCS 540 Fan"
+PID: N540-FAN          , VID: V01, SN: N/A
+
+NAME: "0/FT2", DESCR: "NCS 540 Fan"
+PID: N540-FAN          , VID: V01, SN: N/A
+
+NAME: "0/FT3", DESCR: "NCS 540 Fan"
+PID: N540-FAN          , VID: V01, SN: N/A
+
+NAME: "0/PM0", DESCR: "NCS 540 400W AC power supply"
+PID: N540-PWR400-A     , VID: V01, SN: SDG2252EWAL
+
+NAME: "0/PM1", DESCR: "NCS 540 400W AC power supply"
+PID: N540-PWR400-A     , VID: V01, SN: SDG2252EWAN
+
+RP/0/RP0/CPU0:swiLAB540#exit
+Connection to swiLAB540.switch.ch closed.

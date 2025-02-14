@@ -1,0 +1,53 @@
+show inventory
+NAME: "CISCO7604", DESCR: "Cisco Systems Cisco 7600 4-slot Chassis System"
+PID: CISCO7604         ,                     VID: V01, SN: FOX1445GBV1
+
+NAME: "CLK-7600 1", DESCR: "OSR-7600 Clock FRU 1"
+PID: CLK-7600          ,                     VID:    , SN: NWG144104YZ
+
+NAME: "CLK-7600 2", DESCR: "OSR-7600 Clock FRU 2"
+PID: CLK-7600          ,                     VID:    , SN: NWG144104YZ
+
+NAME: "1", DESCR: "VS-SUP2T-10G 5 ports Supervisor Engine 2T 10GE w/ CTS Rev. 1.3"
+PID: VS-SUP2T-10G      ,                     VID: V03, SN: SAL1643R255
+
+NAME: "msfc sub-module of 1", DESCR: "VS-F6K-MSFC5 CPU Daughterboard Rev. 1.4"
+PID: VS-F6K-MSFC5      ,                     VID:    , SN: SAL1643R1XZ
+
+NAME: "VS-F6K-PFC4XL Policy Feature Card 4 EARL 1 sub-module of 1", DESCR: "VS-F6K-PFC4XL Policy Feature Card 4 Rev. 1.0"
+PID: VS-F6K-PFC4XL     ,                     VID: V01, SN: SAL1632JSDR
+
+NAME: "Transceiver Gi1/3", DESCR: "SFP Transceiver 1000BaseSX Gi1/3"
+PID: Unspecified       ,                     VID: Unspecified, SN: FNS0932B1G1     
+
+NAME: "3", DESCR: "WS-X6704-10GE CEF720 4 port 10-Gigabit Ethernet Rev. 2.2"
+PID: WS-X6704-10GE     ,                     VID:    , SN: SAL09370KAD
+
+NAME: "WS-F6700-CFC Centralized Forwarding Card EARL 1 sub-module of 3", DESCR: "WS-F6700-CFC Centralized Forwarding Card Rev. 2.0"
+PID: WS-F6700-CFC      ,                     VID:    , SN: SAL093816XV
+
+NAME: "Transceiver Te3/1", DESCR: "Xenpak Transceiver 10Gbase-ZR Te3/1"
+PID: Xenpak-SFP+       ,                     VID: V02 , SN: F7862XK    
+
+NAME: "Transceiver Te3/2", DESCR: "Xenpak Transceiver 10Gbase-SR Te3/2"
+PID: XENPAK-10GB-SR    ,                     VID: V02 , SN: ONT1232011W
+
+NAME: "Transceiver Te3/3", DESCR: "Xenpak Transceiver DWDM-31.12 Te3/3"
+PID: Xenpak-SFP+       ,                     VID: V02 , SN: F7827Z7    
+
+NAME: "Transceiver Te3/4", DESCR: "Xenpak Transceiver DWDM-31.12 Te3/4"
+PID: Xenpak-SFP+       ,                     VID: V02 , SN: F783A06    
+
+NAME: "FAN-MOD-4HS 1", DESCR: "High Speed Fan Module for CISCO7604 1"
+PID: FAN-MOD-4HS       ,                     VID: V01, SN: NID13280109
+
+NAME: "PS 1 PWR-2700-AC/4", DESCR: "2700W AC power supply for CISCO7604 1"
+PID: PWR-2700-AC/4     ,                     VID: V02, SN: APS144900BA
+
+NAME: "PS 2 PWR-2700-AC/4", DESCR: "2700W AC power supply for CISCO7604 2"
+PID: PWR-2700-AC/4     ,                     VID: V02, SN: APS1449004P
+
+
+swiSG2#exit
+Connection to swiSG2.switch.ch closed by remote host.
+Connection to swiSG2.switch.ch closed.

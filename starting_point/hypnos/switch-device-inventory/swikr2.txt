@@ -1,0 +1,77 @@
+swiKR2#show inventory
+NAME: "CISCO7604", DESCR: "Cisco Systems Cisco 7600 4-slot Chassis System"
+PID: CISCO7604         ,                     VID: V01, SN: FOX1146154F
+
+NAME: "CLK-7600 1", DESCR: "OSR-7600 Clock FRU 1"
+PID: CLK-7600          ,                     VID:    , SN: NWG114302SD
+
+NAME: "CLK-7600 2", DESCR: "OSR-7600 Clock FRU 2"
+PID: CLK-7600          ,                     VID:    , SN: NWG114302SD
+
+NAME: "1", DESCR: "VS-SUP2T-10G 5 ports Supervisor Engine 2T 10GE w/ CTS Rev. 1.1"
+PID: VS-SUP2T-10G      ,                     VID: V01, SN: SAL1534NB4V
+
+NAME: "msfc sub-module of 1", DESCR: "VS-F6K-MSFC5 CPU Daughterboard Rev. 1.1"
+PID: VS-F6K-MSFC5      ,                     VID:    , SN: SAL1534NA5F
+
+NAME: "VS-F6K-PFC4XL Policy Feature Card 4 EARL 1 sub-module of 1", DESCR: "VS-F6K-PFC4XL Policy Feature Card 4 Rev. 1.0"
+PID: VS-F6K-PFC4XL     ,                     VID: V01, SN: SAL1535NTY2
+
+NAME: "Transceiver Gi1/2", DESCR: "SFP Transceiver 1000BaseLH Gi1/2"
+PID: %%%%%%%%%%%%%%%%%%%,                     VID: %%%%, SN: ESP1942314
+
+NAME: "Transceiver Te1/4", DESCR: "X2 Transceiver 10Gbase-LR Te1/4"
+PID: X2-10GB-LR        ,                     VID: V03 , SN: CI89X2LR005
+
+NAME: "Transceiver Te1/5", DESCR: "X2 Transceiver 10Gbase-LR Te1/5"
+PID: X2-10GB-LR        ,                     VID: V03 , SN: CI31X2LR040
+
+NAME: "2", DESCR: "WS-X6908-10G DCEF2T 8 port 10GE Rev. 1.1"
+PID: WS-X6908-10G      ,                     VID: V01, SN: SAL16117C1W
+
+NAME: "WS-F6K-DFC4-EXL Distributed Forwarding Card 4 EARL 1 sub-module of 2", DESCR: "WS-F6K-DFC4-EXL Distributed Forwarding Card 4 Rev. 1.1"
+PID: WS-F6K-DFC4-EXL   ,                     VID: V01, SN: SAL16117CMZ
+
+NAME: "Transceiver Te2/1", DESCR: "X2 Transceiver DWDM-31.90 Te2/1"
+PID: X2 to SFP+        ,                     VID: V02 , SN: F783FVQ
+
+NAME: "Transceiver Te2/2", DESCR: "X2 Transceiver 10Gbase-SR Te2/2"
+PID: X2-10GB-SR        ,                     VID: V05 , SN: AGA1521X08G
+
+NAME: "Transceiver Te2/3", DESCR: "X2 Transceiver DWDM-31.90 Te2/3"
+PID: X2 to SFP+        ,                     VID: V02 , SN: F783AQA
+
+NAME: "Transceiver Te2/4", DESCR: "X2 Transceiver 10Gbase-LR Te2/4"
+PID: X2 to SFP+        ,                     VID: V02 , SN: F7862WZ
+
+NAME: "3", DESCR: "WS-X6704-10GE CEF720 4 port 10-Gigabit Ethernet Rev. 3.2"
+PID: WS-X6704-10GE     ,                     VID: V04, SN: SAL1436T6ML
+
+NAME: "WS-F6700-CFC Centralized Forwarding Card EARL 1 sub-module of 3", DESCR: "WS-F6700-CFC Centralized Forwarding Card Rev. 4.1"
+PID: WS-F6700-CFC      ,                     VID: V06, SN: SAL1438TRCH
+
+NAME: "Transceiver Te3/1", DESCR: "Xenpak Transceiver 10Gbase-ZR Te3/1"
+PID: Xenpak-SFP+       ,                     VID: V02 , SN: F784UFY
+
+NAME: "Transceiver Te3/2", DESCR: "Xenpak Transceiver DWDM-31.12 Te3/2"
+PID: Xenpak-SFP+       ,                     VID: V02 , SN: F7827ZN
+
+NAME: "Transceiver Te3/3", DESCR: "Xenpak Transceiver DWDM-31.12 Te3/3"
+PID: Xenpak-SFP+       ,                     VID: V02 , SN: F7827Z3
+
+NAME: "Transceiver Te3/4", DESCR: "Xenpak Transceiver 10Gbase-ZR Te3/4"
+PID: Xenpak-SFP+       ,                     VID: V02 , SN: F784LJ9
+
+NAME: "FAN-MOD-4HS 1", DESCR: "High Speed Fan Module for CISCO7604 1"
+PID: FAN-MOD-4HS       ,                     VID: V01, SN: DCH11361875
+
+NAME: "PS 1 PWR-2700-AC/4", DESCR: "2700W AC power supply for CISCO7604 1"
+PID: PWR-2700-AC/4     ,                     VID: V02, SN: APQ1139006X
+
+NAME: "PS 2 PWR-2700-AC/4", DESCR: "2700W AC power supply for CISCO7604 2"
+PID: PWR-2700-AC/4     ,                     VID: V02, SN: APQ104600D0
+
+
+swiKR2#exit
+Connection to swikr2.switch.ch closed by remote host.
+Connection to swikr2.switch.ch closed.
