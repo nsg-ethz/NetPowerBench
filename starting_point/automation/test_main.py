@@ -33,6 +33,20 @@ def get_port_config(metadata, config_type, port_list = None, ssh = False):
 
     # Return generated command
 
+def configure_ports(configuration_command, metadata): #Former push_cmd_over_serial
+    """
+    Opens a serial port and sends the configuration command for the ports
+    """
+    # Read out information needed from metadata
+
+    # Open serial port
+
+    # Send over command
+
+    # If not successful raise error
+
+    # Verify whether configuration was completed
+
 def run_test(device_id, exp_type, port_speed, port_type): # Former main
     """
     Executes a test on the specified device with given experiment parameters.
