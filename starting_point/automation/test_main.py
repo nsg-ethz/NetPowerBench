@@ -64,14 +64,54 @@ def get_randomized_port_selection(metadata, one_per_pair = True, seed = None):
         metadata (dict): Dictionary containing all the metadata of the experiment
         one_per_pair (bool): Bool for whether only one port per pair should be activated
         seed (int): Seed for randomization
+
+    Returns:
+        list: List of lists of ports that should be activated in the respective iteration
     """
 
-    # Set seed to random value if not goven
+    # Set seed to random value if not given
 
     # Sanity check for pairing
 
     # Generate that port list
 
+
+def get_randomized_traffic_settings(metadata, seed = None):
+    """
+    Gives a list that contains as an element randomized traffic settings
+
+    Args:
+        metadata (dict): Dictionary containing all the metadata of the experiment
+        seed (int): Seed for randomization
+
+    Returns:
+        list: List of traffic settings for an iteration
+    """
+
+    # Set seed to random value if not given
+
+    # Load the traffic settings
+
+    # Generate that list
+
+
+def save_traffic_output(metadata, output_file):
+    """
+    Extract the relevant outputs from the traffic generation and saves them
+
+    Args:
+        metadata (dict): Dictionary containing all the metadata of the experiment
+        output_file (str): Name of the file where the output should be saved
+    
+    Returns:
+        None
+    """
+
+    # Load respective output file
+
+    # Based on method save respective output
+
+    # Return of metadata not necessary?
 
 
 def run_test(device_id, exp_type, port_speed, port_type): # Former main
