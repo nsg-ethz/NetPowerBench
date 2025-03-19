@@ -33,9 +33,16 @@ def get_port_config(metadata, config_type, port_list = None, ssh = False):
 
     # Return generated command
 
-def configure_ports(configuration_command, metadata): #Former push_cmd_over_serial
+def configure_ports(metadata, configuration_command): #Former push_cmd_over_serial
     """
     Opens a serial port and sends the configuration command for the ports
+
+    Args: 
+        metadata (dict): Dictionary containing all the metadata of the experiment
+        configuration_command (str): Command that configures the ports as desired
+        
+    Returns: 
+        None
     """
     # Read out information needed from metadata
 
@@ -46,6 +53,26 @@ def configure_ports(configuration_command, metadata): #Former push_cmd_over_seri
     # If not successful raise error
 
     # Verify whether configuration was completed
+
+def get_randomized_port_selection(metadata, one_per_pair = True, seed = None): 
+    """
+    Gives a list that contains as element a randomized selection of ports to enable.
+
+    Meant for switch and trx
+
+    Args:
+        metadata (dict): Dictionary containing all the metadata of the experiment
+        one_per_pair (bool): Bool for whether only one port per pair should be activated
+        seed (int): Seed for randomization
+    """
+
+    # Set seed to random value if not goven
+
+    # Sanity check for pairing
+
+    # Generate that port list
+
+
 
 def run_test(device_id, exp_type, port_speed, port_type): # Former main
     """
