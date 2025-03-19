@@ -17,6 +17,22 @@ def get_port_config(metadata, config_type, port_list = None, ssh = False):
     
     """
 
+    # Load variables from metadata
+
+    # Load port data
+
+    # Check validity of arguments 
+
+    # Check whether there are commands for the speedconfig
+
+    # Check whether ports are in the port list
+
+    # Get commands from port data for each port and format them
+
+    # If needed, add commit, and exit
+
+    # Return generated command
+
 def run_test(device_id, exp_type, port_speed, port_type): # Former main
     """
     Executes a test on the specified device with given experiment parameters.
