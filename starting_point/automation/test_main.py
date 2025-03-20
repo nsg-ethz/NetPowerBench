@@ -113,6 +113,27 @@ def save_traffic_output(metadata, output_file):
 
     # Return of metadata not necessary?
 
+def run_measurements(metadata):
+    """
+    Runs the measurements on the device and stores them in the respecitve log
+
+    Args:
+        metadata (dict): Dictionary containing all the metadata of the experiment
+    
+    Returns:
+        None
+    """
+
+    # Set timestamps in metadata
+
+    # Get log path (with respective helper function)
+
+    # Run the pinpoint script (maybe even here?) while not successful
+
+    # Save output -> Maybe separate function
+
+
+
 
 def run_test(device_id, exp_type, port_speed, port_type): # Former main
     """
@@ -133,9 +154,63 @@ def run_test(device_id, exp_type, port_speed, port_type): # Former main
     # Print some logging information
     # Print exspected duration here 
 
-    # The list of ports should be loaded separately
+    # Should reset configuration be precomputed here?
 
-    # Case distinction for different experiment types
+
+    match exp_type: # TODO: Add arguments
+        case 'base':
+            # Check with user whether no transceivers are plugged in 
+
+            # Configure ports with reset configuration (disable all ports)
+            
+            # Run measurments
+            return
+        case 'idle':
+            # Check with user whether all transceivers are plugged in
+
+            # Configure ports with restet configuration
+
+            # Run measurements
+            return
+        case 'switch':
+            # Get list with ports for the iterations
+
+            # In case of manual speed settings -> configure ports and enable all ports
+
+
+            # for each port selection:
+            #   Enable the ports
+            #   Run measurements
+            #   Reset ports
+
+            return
+        case 'trx': # Could be merged with switch, the difference should be only one argument
+            # Get list with ports for the iterations
+
+            # In case of manual speed settings -> configure ports and enable all ports
+
+            # for each port selection:
+            #   Enable the ports
+            #   Run measurements
+            #   Reset ports
+
+
+            return
+        case 'snake-test':
+            # Get randomized traffic settings
+
+            # In case of manual speed settings -> configure ports and enable all ports
+
+            # Configure ports for snake tests
+
+            # For each traffic configuration
+            #   Start traffic
+            #   Run measurements
+            #   Stop traffic
+
+            return
+        case _:
+            raise ValueError(f"Unknown experiment type: {exp_type}")
 
     
 
@@ -155,3 +230,5 @@ if __name__ == '__main__':
     #
     # Proposal: Instead of hardcoding the experiment parameters, have them in a separate yml 
     #   so that the code doesn't have to be changed for different experiments
+
+    print("Hello world")
