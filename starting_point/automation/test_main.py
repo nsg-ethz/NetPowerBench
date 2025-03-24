@@ -113,7 +113,7 @@ def save_traffic_output(metadata, output_file):
 
     # Return of metadata not necessary?
 
-def run_measurements(metadata):
+def measure_and_store(metadata):
     """
     Runs the measurements on the device and stores them in the respecitve log
 
@@ -154,63 +154,36 @@ def run_test(device_id, exp_type, port_speed, port_type): # Former main
     # Print some logging information
     # Print exspected duration here 
 
-    # Should reset configuration be precomputed here?
+    if exp_type == 'base' or exp_type == 'idle':
+        # Check with user whether transceivers are correct (depends on the case)
 
+        # Disable all ports
+        # Check successful configuration?
 
-    match exp_type: # TODO: Add arguments
-        case 'base':
-            # Check with user whether no transceivers are plugged in 
+        # Run measurements and store them
+        return
+    elif exp_type == 'switch' or exp_type == 'trx':
+        # Get the list with the ports for each iteration (one per pair based on case)
 
-            # Configure ports with reset configuration (disable all ports)
-            
-            # Run measurments
-            return
-        case 'idle':
-            # Check with user whether all transceivers are plugged in
-
-            # Configure ports with restet configuration
-
-            # Run measurements
-            return
-        case 'switch':
-            # Get list with ports for the iterations
-
-            # In case of manual speed settings -> configure ports and enable all ports
-
-
-            # for each port selection:
+        # for each port selection:
             #   Enable the ports
             #   Run measurements
             #   Reset ports
+        return
+    elif exp_type == 'snake-test':
+        
+        # Get randomized traffic settings
 
-            return
-        case 'trx': # Could be merged with switch, the difference should be only one argument
-            # Get list with ports for the iterations
+        # Configure ports for snake tests
 
-            # In case of manual speed settings -> configure ports and enable all ports
+        # For each traffic configuration
+        #   Start traffic
+        #   Run measurements
+        #   Verify traffic
+        return
+    else:
+        raise ValueError(f"Unknown experiment type: {exp_type}")
 
-            # for each port selection:
-            #   Enable the ports
-            #   Run measurements
-            #   Reset ports
-
-
-            return
-        case 'snake-test':
-            # Get randomized traffic settings
-
-            # In case of manual speed settings -> configure ports and enable all ports
-
-            # Configure ports for snake tests
-
-            # For each traffic configuration
-            #   Start traffic
-            #   Run measurements
-            #   Stop traffic
-
-            return
-        case _:
-            raise ValueError(f"Unknown experiment type: {exp_type}")
 
     
 
