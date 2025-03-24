@@ -140,6 +140,8 @@ def verify_pinpoint(metadata):
         None
     """
 
+    # Check whether there are any output lines in the log
+
 def save_pinpoint_log(log_path):
     """
     Saves the pinpoint log at the respective destination.
@@ -237,9 +239,12 @@ if __name__ == '__main__':
     #  - port_type: List of types of ports
     #  - repeats_per_test: How often a test should be repeated (former n_runs)
     # 
+    # If there are arguments when the program was called, use those arguments
+    # If there is a exp.yml use those
+    # Otherwise give missing experiment parameters error
+    # 
     # Then for all combinations of the test paramenters and repeats we should call run_test
     #
-    # Proposal: Instead of hardcoding the experiment parameters, have them in a separate yml 
-    #   so that the code doesn't have to be changed for different experiments
+
 
     print("Hello world")
