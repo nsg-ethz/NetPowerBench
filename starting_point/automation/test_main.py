@@ -113,6 +113,33 @@ def save_traffic_output(metadata, output_file):
 
     # Return of metadata not necessary?
 
+
+def run_pinpoint(metadata):
+    """
+    Runs the pinpoint_sleep.sh script to measure the energy usage
+
+    Args:
+        metadata (dict):Dictionary containing all the metadata of the experiment
+
+    Returns:
+        None
+    """
+
+    # Extract the relevant data
+
+    # Start an extra process to run the script
+
+def verify_pinpoint(metadata): 
+    """
+    Verifies that pinpoint actually measured some values.
+
+    Args:
+        metadata (dict):Dictionary containing all the metadata of the experiment
+
+    Returns:
+        None
+    """
+
 def measure_and_store(metadata):
     """
     Runs the measurements on the device and stores them in the respecitve log
@@ -130,7 +157,7 @@ def measure_and_store(metadata):
 
     # Run the pinpoint script (maybe even here?) while not successful
 
-    # Save output -> Maybe separate function
+    # Save output 
 
 
 
