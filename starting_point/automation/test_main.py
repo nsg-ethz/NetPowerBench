@@ -1,4 +1,4 @@
-
+# TODO: Proper imports
 
 
 
@@ -35,7 +35,7 @@ def get_port_config(metadata, config_type, port_list = None, ssh = False):
 
 def configure_ports(metadata, configuration_command): #Former push_cmd_over_serial
     """
-    Opens a serial port and sends the configuration command for the ports
+    Opens a serial port and sends the configuration command for the ports so they get configured
 
     Args: 
         metadata (dict): Dictionary containing all the metadata of the experiment
@@ -140,6 +140,17 @@ def verify_pinpoint(metadata):
         None
     """
 
+def save_pinpoint_log(log_path):
+    """
+    Saves the pinpoint log at the respective destination.
+
+    Args:
+        log_path (str): Location where data is stored
+
+    Returns:
+        None
+    """
+
 def measure_and_store(metadata):
     """
     Runs the measurements on the device and stores them in the respecitve log
@@ -155,7 +166,7 @@ def measure_and_store(metadata):
 
     # Get log path (with respective helper function)
 
-    # Run the pinpoint script (maybe even here?) while not successful
+    # Run the pinpoint script while not successful
 
     # Save output 
 
