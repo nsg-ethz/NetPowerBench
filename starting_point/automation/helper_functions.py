@@ -1,3 +1,30 @@
+import argparse
+import yaml
+
+def parse_cli_args():
+    """
+    Parses command-line arguments for running device experiments.
+
+    Recognized arguments:
+        -d, --device_id     : Identifier for the device to test (str)
+        -e, --exp           : List of experiment types to run (e.g., base, idle, switch) (list of str)
+        -s, --speed         : List of port speeds to test (e.g., 100G, 400G) (list of str)
+        -p, --port_type     : Type of port to use (e.g., QSFP28) (str)
+        -r, --repeats       : Number of times to repeat each test (int, default: 1)
+
+    Returns:
+        dict: A dictionary containing all parsed arguments.
+    """
+    parser = argparse.ArgumentParser(description='Run device experiment tests.')
+    parser.add_argument('-d', '--device_id', type=str, help='Device identifier')
+    parser.add_argument('-e', '--exp', nargs='+', help='Experiment types (e.g., base idle switch)')
+    parser.add_argument('-s', '--speed', nargs='+', help='Speeds to test (e.g., 100G 400G)')
+    parser.add_argument('-p', '--port_type', type=str, help='Port type (e.g., QSFP28)')
+    parser.add_argument('-r', '--repeats', type=int, default=1, help='Number of repeats per test')
+    
+    args = parser.parse_args()
+    return vars(args)
+
 def print_experiment_duration(time_per_run_s, number_of_runs):
     """
     Prints the expected duration of the experiment
@@ -24,6 +51,9 @@ def load_yml(yaml_file):
     """
     Simple helper to load yaml data
     """
+
+    with open(yaml_file, "r") as file:
+        return yaml.safe_load(file)
 
 def save_as_json(data, destination, name):
     """

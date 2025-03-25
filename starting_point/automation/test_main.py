@@ -1,4 +1,9 @@
-# TODO: Proper imports
+import random
+import itertools
+import os
+
+
+from helper_functions import *
 
 
 
@@ -226,18 +231,38 @@ def run_test(device_id, exp_type, port_speed, port_type): # Former main
 
 
     
+def get_experiment_params():
+    """
+    
+    """
+    args = parse_cli_args()
 
+    if all(args.get(k) for k in ['device_id', 'exp', 'speed', 'port_type']):
+        return args
+
+    if os.path.exists('exp.yml'): # TODO: Path
+        yaml_config = load_yml('exp.yml')
+        if yaml_config and all(k in yaml_config for k in ['device_id', 'exp', 'speed', 'port_type']):
+            return {
+                'device_id': yaml_config['device_id'],
+                'exp': yaml_config['exp'],
+                'speed': yaml_config['speed'],
+                'port_type': yaml_config['port_type'],
+                'repeats': yaml_config.get('repeats', 1),
+            }
+    raise RuntimeError("Missing experiment parameters. Provide CLI args or a valid exp.yml file.")
+    
 
 
 
 if __name__ == '__main__':
 
-    # Here the experiment parameters should be chosen. Namely we need:
+    # Here the experiment parameters are chosen. Namely we need:
     #  - device_id: Identifier for the device we want to test
     #  - exp: List of the experiment types we want to set
     #  - speed: List of speeds we want to set the port to 
-    #  - port_type: List of types of ports
-    #  - repeats_per_test: How often a test should be repeated (former n_runs)
+    #  - port_type: Type of ports
+    #  - repeats: How often a test should be repeated (former n_runs)
     # 
     # If there are arguments when the program was called, use those arguments
     # If there is a exp.yml use those
@@ -246,5 +271,21 @@ if __name__ == '__main__':
     # Then for all combinations of the test paramenters and repeats we should call run_test
     #
 
+    params = get_experiment_params()
+    
+    device_id = params['device_id']
+    exp = params['exp']
+    speed = params['speed']
+    port_type = [params['port_type']]
+    repeats_per_test = params['repeats']
 
-    print("Hello world")
+    exp_list = [
+        [e, s, t]
+        for e, s, t in itertools.product(exp, speed, port_type)
+        for _ in range(repeats_per_test)
+    ]
+    random.shuffle(exp_list)
+
+    for e, s, t in exp_list:
+        run_test(device_id, e, s, t)
+
