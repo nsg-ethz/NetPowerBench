@@ -1,5 +1,7 @@
 import argparse
 import yaml
+import os
+
 
 def parse_cli_args():
     """
@@ -24,6 +26,35 @@ def parse_cli_args():
     
     args = parser.parse_args()
     return vars(args)
+
+def get_experiment_params():
+    """
+    Gets experiment parameters either from the CLI or from exp.yml
+
+    If parameters can not be loaded, an error is thrown.
+
+    Args:
+        None
+
+    Returns:
+        dict: Dictionary containing the experiment parameters
+    """
+    args = parse_cli_args()
+
+    if all(args.get(k) for k in ['device_id', 'exp', 'speed', 'port_type']):
+        return args
+
+    if os.path.exists('exp.yml'): # TODO: Path
+        yaml_config = load_yml('exp.yml')
+        if yaml_config and all(k in yaml_config for k in ['device_id', 'exp', 'speed', 'port_type']):
+            return {
+                'device_id': yaml_config['device_id'],
+                'exp': yaml_config['exp'],
+                'speed': yaml_config['speed'],
+                'port_type': yaml_config['port_type'],
+                'repeats': yaml_config.get('repeats', 1),
+            }
+    raise RuntimeError("Missing experiment parameters. Provide CLI args or a valid exp.yml file.")
 
 def print_experiment_duration(time_per_run_s, number_of_runs):
     """

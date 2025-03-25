@@ -1,7 +1,5 @@
 import random
 import itertools
-import os
-
 
 from helper_functions import *
 
@@ -229,29 +227,6 @@ def run_test(device_id, exp_type, port_speed, port_type): # Former main
     else:
         raise ValueError(f"Unknown experiment type: {exp_type}")
 
-
-    
-def get_experiment_params():
-    """
-    
-    """
-    args = parse_cli_args()
-
-    if all(args.get(k) for k in ['device_id', 'exp', 'speed', 'port_type']):
-        return args
-
-    if os.path.exists('exp.yml'): # TODO: Path
-        yaml_config = load_yml('exp.yml')
-        if yaml_config and all(k in yaml_config for k in ['device_id', 'exp', 'speed', 'port_type']):
-            return {
-                'device_id': yaml_config['device_id'],
-                'exp': yaml_config['exp'],
-                'speed': yaml_config['speed'],
-                'port_type': yaml_config['port_type'],
-                'repeats': yaml_config.get('repeats', 1),
-            }
-    raise RuntimeError("Missing experiment parameters. Provide CLI args or a valid exp.yml file.")
-    
 
 
 
