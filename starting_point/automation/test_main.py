@@ -1,5 +1,6 @@
 import random
 import itertools
+from pathlib import Path
 
 from helper_functions import *
 
@@ -191,10 +192,34 @@ def run_test(device_id, exp_type, port_speed, port_type): # Former main
     Returns:
         None
     """
+    print(f"Running {exp_type} for {device_id} with port type {port_type} and port speed {port_speed}")
+    # Load metadata
+    config_path = None # TODO: Path
 
-    # Load metadata, make sure all necessary information are set
+    meta_config = Path('devices', device_id) # TODO: Path
+    try: meta_config = load_yml(config_path / 'config.yml')
+    except EncodingWarning:
+        print('Device config not found. Could not run test for {}'.format(device_id))
+        return
 
-    # Print some logging information
+    metadata = dict(
+        device               = meta_config['DUT']['id'],
+        port_file            = meta_config['DUT']['port_file'],
+        transceivers         = meta_config['DUT']['transceivers'],
+        dut_type             = meta_config['DUT']['type'],
+        experiment_type      = exp_type,
+        port_type            = port_type,
+        port_speed           = port_speed, 
+        seed                 = meta_config['random_seed'],
+        workload             = meta_config['pinpoint']['workload'],
+        needs_commit         = meta_config['DUT']['needs_commit'],
+        manual_speed_setting = meta_config['DUT']['manual_speed_setting'],
+        measurement_time_s   = meta_config['measurement_time_s'],        # in seconds
+        configuration_time_s = meta_config['configuration_time_s'],      # in seconds
+        sampling_interval_ms = meta_config['sampling_interval_ms'],      # in milliseconds 
+    )
+    # TODO: LogPrint some logging information
+
     # Print exspected duration here 
 
     if exp_type == 'base' or exp_type == 'idle':
@@ -261,6 +286,6 @@ if __name__ == '__main__':
     ]
     random.shuffle(exp_list)
 
-    for e, s, t in exp_list:
-        run_test(device_id, e, s, t)
+    for exp_type, port_speed, port_type in exp_list:
+        run_test(device_id, exp_type, port_speed, port_type)
 
