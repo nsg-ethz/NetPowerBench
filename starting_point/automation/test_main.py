@@ -1,6 +1,8 @@
 import random
 import itertools
 import datetime
+import serial
+import numpy as np
 from pathlib import Path
 
 from helper_functions import *
@@ -72,7 +74,7 @@ def get_port_config(metadata, config_type, port_list = None, ssh = False):
 
     return config
 
-def configure_ports(metadata, configuration_command): #Former push_cmd_over_serial
+def configure_ports(metadata, conf_cmd): #Former push_cmd_over_serial
     """
     Opens a serial port and sends the configuration command for the ports so they get configured
 
@@ -83,15 +85,26 @@ def configure_ports(metadata, configuration_command): #Former push_cmd_over_seri
     Returns: 
         None
     """
+
+    if conf_cmd == "":
+        return
     # Read out information needed from metadata
+    bauderate = metadata['bauderate']
+    serial_port = metadata['serial_port']
 
     # Open serial port
+    ser_port = serial.Serial(serial_port, bauderate, rtscts=False, dsrdtr=False)
 
     # Send over command
+    out_bytes = ser_port.write(conf_cmd.encode('utf-8'))
 
     # If not successful raise error
+    if out_bytes == 0:
+        raise RuntimeError('Writing cmd over serial failed.')
 
-    # Verify whether configuration was completed
+    # TODO: Verify whether configuration was completed
+
+    return
 
 def get_randomized_port_selection(metadata, one_per_pair = True, seed = None): 
     """
@@ -107,10 +120,47 @@ def get_randomized_port_selection(metadata, one_per_pair = True, seed = None):
     Returns:
         list: List of lists of ports that should be activated in the respective iteration
     """
+    port_file = metadata['port_file']
+    port_type = metadata['port_type']
+    device = metadata['device']
 
     # Set seed to random value if not given
+    if seed is not None:
+        print('Random seed is set to:\t {}'.format(seed))
+        random.seed(seed)
+
+    config_path = Path('..','devices',device) # TODO: Path
+    port_data = load_yml(config_path / port_file)
+    ports = port_data['ports'][port_type]['ids']
+
+    iterations = []
+
+    port_pairs = np.reshape(ports,(-1,2))
 
     # Sanity check for pairing
+    print(f"The pairing of the ports is this: {port_pairs}. ")
+    inp = input("Please verify that the ports are connected accordingly. (y/n)")
+    if inp == 'n':
+        return 
+
+    num_pairs = np.shape(port_pairs)[0]
+    num_pairs_in_use = np.arange(1,num_pairs+1)
+    random.shuffle(num_pairs_in_use)
+
+    for i in num_pairs_in_use:
+        pairs_in_use = port_pairs[np.random.choice(num_pairs, i, replace=False), :]
+
+        if one_per_pair:
+            port_list = []
+            for j in np.arange(i):
+                port_list.append(pairs_in_use[j,random.randint(0,1)])
+            iterations.append(port_list)
+        else:
+            iterations.append(np.reshape(pairs_in_use, -1).tolist())
+
+    return iterations
+
+
 
     # Generate that port list
 
@@ -264,6 +314,8 @@ def run_test(device_id, exp_type, port_speed, port_type): # Former main
         measurement_time_s   = meta_config['measurement_time_s'],        # in seconds
         configuration_time_s = meta_config['configuration_time_s'],      # in seconds
         sampling_interval_ms = meta_config['sampling_interval_ms'],      # in milliseconds 
+        bauderate            = meta_config['bauderate'],
+        serial_port          = meta_config['serial_port']           
     )
     # TODO: LogPrint some logging information
 
