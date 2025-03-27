@@ -193,9 +193,9 @@ def run_test(device_id, exp_type, port_speed, port_type): # Former main
         None
     """
     print(f"Running {exp_type} for {device_id} with port type {port_type} and port speed {port_speed}")
+
     # Load metadata
     config_path = None # TODO: Path
-
     meta_config = Path('devices', device_id) # TODO: Path
     try: meta_config = load_yml(config_path / 'config.yml')
     except EncodingWarning:
@@ -224,11 +224,21 @@ def run_test(device_id, exp_type, port_speed, port_type): # Former main
 
     if exp_type == 'base' or exp_type == 'idle':
         # Check with user whether transceivers are correct (depends on the case)
+        q = "No" if exp_type == 'base' else "All"
+        print(f"{q} transceivers should be plugged in.")
+        inp = input("Do you want to continue? (y/n)")
+        if inp == 'n':
+            return
+        else: 
 
-        # Disable all ports
-        # Check successful configuration?
+            # Disable all ports
+            disable_command = get_port_config(metadata, 'disable') #TODO: Check ssh
+            configure_ports(metadata, disable_command)
+        
+            # TODO Check successful configuration?
 
-        # Run measurements and store them
+            # Run measurements and store them
+            measure_and_store(metadata)
         return
     elif exp_type == 'switch' or exp_type == 'trx':
         # Get the list with the ports for each iteration (one per pair based on case)
