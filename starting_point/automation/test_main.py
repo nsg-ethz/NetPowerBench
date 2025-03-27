@@ -23,20 +23,54 @@ def get_port_config(metadata, config_type, port_list = None, ssh = False):
     """
 
     # Load variables from metadata
+    port_file = metadata['port_file']
+    port_type = metadata['port_type']
+    port_speed = metadata['port_speed']
+    device = metadata['device']
+    needs_commit = metadata['needs_commit']
+    config_path = Path('..','devices',device)
 
     # Load port data
+    port_data = load_yml(config_path / port_file) #TODO: Path
+
+    if port_list == None:
+        port_list = port_data['ports'][port_type]['ids']
 
     # Check validity of arguments 
+    valid_config_types = ['enable','disable','snake-test']
+    if config_type in valid_config_types:
+        OPS = config_type
+    else:
+        raise ValueError('Invalid `config_type`. Valid options are: %s'.format(','.join(valid_config_types)))
 
-    # Check whether there are commands for the speedconfig
+    if port_speed not in port_data['ports'][port_type]['speeds']:
+        raise ValueError('Invalid `speed`: {}. \nAvailable options for this router model are: {}'.format(port_speed,port_data['ports'][port_type]['speeds'].keys()))
 
-    # Check whether ports are in the port list
+    config = 'conf t\n'
+    port_counter = 0
 
-    # Get commands from port data for each port and format them
+    for PORT in port_list:
+        if PORT not in port_data['ports'][port_type]['ids']:
+            raise ValueError('Port number {} not listed among the {} ports.'.format(PORT,port_type))
 
-    # If needed, add commit, and exit
+        speed = port_data['ports'][port_type]['speeds'][port_speed]['speed_label']
+        interface = port_data['ports'][port_type]['speeds'][port_speed]['interface_label']
 
-    # Return generated command
+        for CMD in port_data['ports'][port_type]['commands'][OPS]:
+            vlan_number = 100+int(port_counter/2)
+            config += CMD.replace("INTERFACE_LABEL",interface).replace("PORT",str(PORT)).replace("SPEED_LABEL",str(speed)).replace("VLAN_NUMBER",str(vlan_number))
+            config += '\n'
+        
+        port_counter += 1
+
+    if needs_commit:
+        config += 'commit\n'
+    config += 'exit\n'
+
+    if ssh:
+        config += 'exit\n'
+
+    return config
 
 def configure_ports(metadata, configuration_command): #Former push_cmd_over_serial
     """
