@@ -61,14 +61,19 @@ def print_experiment_duration(time_per_run_s, number_of_runs):
     Prints the expected duration of the experiment
     """
 
-def get_log_path(metadata):
+def get_log_name(metadata):
     """
-    Returns the path including file name for logging the experiment
+    Returns the file name for logging the experiment
     """
 
     # Code currently in measure_and_store
 
-def start_traffic(metadata):
+def get_log_path(metadata, log_name):
+    """
+    Returns the log path for logging the experiment
+    """
+
+def start_traffic(metadata, settings):
     """
     Starts traffic generation
     """

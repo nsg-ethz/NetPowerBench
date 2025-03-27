@@ -1,5 +1,6 @@
 import random
 import itertools
+import datetime
 from pathlib import Path
 
 from helper_functions import *
@@ -141,14 +142,14 @@ def verify_pinpoint(metadata):
         metadata (dict):Dictionary containing all the metadata of the experiment
 
     Returns:
-        None
+        bool: True if pinpoint was successful, False otherwise
     """
 
     # Check whether there are any output lines in the log
 
-def save_pinpoint_log(log_path):
+def save_pinpoint_log(log_path): 
     """
-    Saves the pinpoint log at the respective destination.
+    Saves the pinpoint log at the respective destination as yml.
 
     Args:
         log_path (str): Location where data is stored
@@ -156,6 +157,8 @@ def save_pinpoint_log(log_path):
     Returns:
         None
     """
+    # Note that the old version does not store it in a yml --> See measure_and_store
+
 
 def measure_and_store(metadata):
     """
@@ -167,14 +170,24 @@ def measure_and_store(metadata):
     Returns:
         None
     """
+    # TODO: Logging
 
     # Set timestamps in metadata
+    metadata['time'] = str(datetime.datetime.now()).split('.')[0]
+    metadata['timestamp'] = int(datetime.datetime.now(datetime.timezone.utc).timestamp()*1e6)
 
     # Get log path (with respective helper function)
+    log_name = get_log_name(metadata)
+    log_path = get_log_path(metadata, log_name)
 
     # Run the pinpoint script while not successful
-
+    while True:
+        run_pinpoint(metadata)
+        if verify_pinpoint(metadata):
+            break
+    
     # Save output 
+    save_pinpoint_log(metadata, log_path)
 
 
 
