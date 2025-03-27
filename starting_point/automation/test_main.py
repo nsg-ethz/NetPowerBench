@@ -227,37 +227,59 @@ def run_test(device_id, exp_type, port_speed, port_type): # Former main
         q = "No" if exp_type == 'base' else "All"
         print(f"{q} transceivers should be plugged in.")
         inp = input("Do you want to continue? (y/n)")
+
         if inp == 'n':
             return
         else: 
-
             # Disable all ports
             disable_command = get_port_config(metadata, 'disable') #TODO: Check ssh
             configure_ports(metadata, disable_command)
-        
-            # TODO Check successful configuration?
 
             # Run measurements and store them
             measure_and_store(metadata)
         return
     elif exp_type == 'switch' or exp_type == 'trx':
-        # Get the list with the ports for each iteration (one per pair based on case)
+        print("All transceiver should be plugged in")
 
-        # for each port selection:
-            #   Enable the ports
+        # Get the list with the ports for each iteration (one per pair based on case)
+        one_per_pair = exp_type == 'switch'
+        ports_per_iteration = get_randomized_port_selection(metadata, one_per_pair)
+
+        reset_command = get_port_config(metadata, 'disable')
+        
+        for port_list in ports_per_iteration:
+            enable_command = get_port_config(metadata, 'enable', port_list) #TODO: Check ssh
+            configure_ports(metadata, enable_command)
+
+            metadata['port_list'] = port_list #TODO reviwe where port_list is needed
+            
             #   Run measurements
+            measure_and_store(metadata)
+
             #   Reset ports
+            configure_ports(reset_command)
         return
     elif exp_type == 'snake-test':
-        
         # Get randomized traffic settings
+        traffic_settings_list = get_randomized_traffic_settings(metadata)
 
         # Configure ports for snake tests
+        config_command = get_port_config(metadata, 'snake-test')
+        configure_ports(metadata, config_command)
 
-        # For each traffic configuration
-        #   Start traffic
-        #   Run measurements
-        #   Verify traffic
+        for traffic_settings in traffic_settings_list:
+            #   Start traffic
+            metadata['packet_size_bytes']   = traffic_settings[0]
+            metadata['bandwidth_gbps']      = traffic_settings[1]
+            start_traffic(metadata)
+
+            #   Run measurements
+            measure_and_store(metadata)
+
+            # TODO: Verify whether we need to stop traffic
+        
+        reset_command = get_port_config(metadata, 'disable')
+        configure_ports(reset_command)
         return
     else:
         raise ValueError(f"Unknown experiment type: {exp_type}")
