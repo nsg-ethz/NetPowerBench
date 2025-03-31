@@ -33,7 +33,7 @@ def get_port_config(metadata, config_type, port_list = None, ssh = False):
     config_path = Path('..','devices',device)
 
     # Load port data
-    port_data = load_yml(config_path / port_file) #TODO: Path
+    port_data = load_yml(config_path / port_file) 
 
     if port_list == None:
         port_list = port_data['ports'][port_type]['ids']
@@ -129,7 +129,7 @@ def get_randomized_port_selection(metadata, one_per_pair = True, seed = None):
         print('Random seed is set to:\t {}'.format(seed))
         random.seed(seed)
 
-    config_path = Path('..','devices',device) # TODO: Path
+    config_path = Path('..','devices',device) 
     port_data = load_yml(config_path / port_file)
     ports = port_data['ports'][port_type]['ids']
 
@@ -292,8 +292,9 @@ def run_test(device_id, exp_type, port_speed, port_type): # Former main
     print(f"Running {exp_type} for {device_id} with port type {port_type} and port speed {port_speed}")
 
     # Load metadata
-    config_path = None # TODO: Path
-    meta_config = Path('devices', device_id) # TODO: Path
+    check_cwd()
+    config_path = Path('..','devices',device_id)
+    meta_config = Path('devices', device_id) 
     try: meta_config = load_yml(config_path / 'config.yml')
     except EncodingWarning:
         print('Device config not found. Could not run test for {}'.format(device_id))
