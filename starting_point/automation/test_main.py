@@ -147,6 +147,7 @@ def get_randomized_port_selection(metadata, one_per_pair = True, seed = None):
     num_pairs_in_use = np.arange(1,num_pairs+1)
     random.shuffle(num_pairs_in_use)
 
+    # Generate that port list
     for i in num_pairs_in_use:
         pairs_in_use = port_pairs[np.random.choice(num_pairs, i, replace=False), :]
 
@@ -162,10 +163,10 @@ def get_randomized_port_selection(metadata, one_per_pair = True, seed = None):
 
 
 
-    # Generate that port list
 
 
-def get_randomized_traffic_settings(metadata, seed = None):
+
+def get_randomized_traffic_settings(metadata, seed = None): # TODO Check whether we actually need metadata (e.g. for logging)
     """
     Gives a list that contains as an element randomized traffic settings
 
@@ -178,10 +179,24 @@ def get_randomized_traffic_settings(metadata, seed = None):
     """
 
     # Set seed to random value if not given
+    if seed is not None:
+        print('Random seed is set to:\t {}'.format(seed))
+        random.seed(seed)
 
     # Load the traffic settings
+    traffic_settings = load_yml('../traffic_gen/config.yml')
 
     # Generate that list
+    iterations = []
+    for packet_size in traffic_settings['packet_sizes']:
+        bytes = packet_size['bytes']
+        for bandwidth in traffic_settings['bandwidth_gbps']:
+            if (not('max_bandwidth' in packet_size) or (bandwidth <= packet_size['max_bandwidth'])):
+                iterations.append([bytes, bandwidth])
+
+    # Randomize
+    random.shuffle(iterations)
+    return iterations
 
 
 def save_traffic_output(metadata, output_file):
