@@ -1,0 +1,10 @@
+device_id: ciscoNexus9336-FX2
+exp:
+  - base
+  - idle
+speed:
+  - 100G
+  - 400G
+port_type: QSFP28
+repeats: 2
+user_confirm: False
