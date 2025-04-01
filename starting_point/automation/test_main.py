@@ -108,7 +108,7 @@ def configure_ports(metadata, conf_cmd): #Former push_cmd_over_serial
 
     return
 
-def get_randomized_port_selection(metadata, one_per_pair = True, seed = None): 
+def get_randomized_port_selection(metadata, user_confirm, one_per_pair = True, seed = None): 
     """
     Gives a list that contains as element a randomized selection of ports to enable.
 
@@ -141,9 +141,10 @@ def get_randomized_port_selection(metadata, one_per_pair = True, seed = None):
 
     # Sanity check for pairing
     print(f"The pairing of the ports is this: {port_pairs}. ")
-    inp = input("Please verify that the ports are connected accordingly. (y/n)")
-    if inp == 'n':
-        return 
+    if user_confirm:
+        inp = input("Please verify that the ports are connected accordingly. (y/n)")
+        if inp == 'n':
+            return 
 
     num_pairs = np.shape(port_pairs)[0]
     num_pairs_in_use = np.arange(1,num_pairs+1)
@@ -327,7 +328,7 @@ def measure_and_store(metadata):
 
 
 
-def run_test(device_id, exp_type, port_speed, port_type): # Former main
+def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former main
     """
     Executes a test on the specified device with given experiment parameters.
 
@@ -336,6 +337,7 @@ def run_test(device_id, exp_type, port_speed, port_type): # Former main
         exp_type (str): Type of experiment to run ('base', 'idle', 'switch', 'trx', 'snake-test').
         port_speed (str): Speed of the ports
         port_type (str): Type of port hardware used 
+        user_confirm (bool): Whether a user confirmation is wished
 
     Returns:
         None
@@ -374,24 +376,25 @@ def run_test(device_id, exp_type, port_speed, port_type): # Former main
         # Check with user whether transceivers are correct (depends on the case)
         q = "No" if exp_type == 'base' else "All"
         print(f"{q} transceivers should be plugged in.")
-        inp = input("Do you want to continue? (y/n)")
 
-        if inp == 'n':
-            return
-        else: 
-            # Disable all ports
-            disable_command = get_port_config(metadata, 'disable') #TODO: Check ssh
-            configure_ports(metadata, disable_command)
+        if(user_confirm):
+            inp = input("Do you want to continue? (y/n)")
+            if inp == 'n':
+                return
+        
+        # Disable all ports
+        disable_command = get_port_config(metadata, 'disable') #TODO: Check ssh
+        configure_ports(metadata, disable_command)
 
-            # Run measurements and store them
-            measure_and_store(metadata)
+        # Run measurements and store them
+        measure_and_store(metadata)
         return
     elif exp_type == 'switch' or exp_type == 'trx':
         print("All transceiver should be plugged in")
 
         # Get the list with the ports for each iteration (one per pair based on case)
         one_per_pair = exp_type == 'switch'
-        ports_per_iteration = get_randomized_port_selection(metadata, one_per_pair)
+        ports_per_iteration = get_randomized_port_selection(metadata, user_confirm, one_per_pair)
 
         reset_command = get_port_config(metadata, 'disable')
         
@@ -458,6 +461,7 @@ if __name__ == '__main__':
     speed = params['speed']
     port_type = [params['port_type']]
     repeats_per_test = params['repeats']
+    user_confirm = params['user_confirm']
 
     exp_list = [
         [e, s, t]
@@ -467,5 +471,5 @@ if __name__ == '__main__':
     random.shuffle(exp_list)
 
     for exp_type, port_speed, port_type in exp_list:
-        run_test(device_id, exp_type, port_speed, port_type)
+        run_test(device_id, exp_type, port_speed, port_type, user_confirm)
 
