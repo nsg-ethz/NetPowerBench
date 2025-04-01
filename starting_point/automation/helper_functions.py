@@ -1,6 +1,8 @@
 import argparse
+import subprocess
 import yaml
 import os
+import time
 from pathlib import Path
 
 
@@ -96,15 +98,30 @@ def get_log_path(metadata):
     dut_type = metadata['dut_type']
     device = metadata['device']
     time = str(metadata['time']).replace(' ','_').split('.')[0]
-    
+
     log_path = Path(workspace, 'data', dut_type, device, 'static', log_name, time)
     return log_path
 
 
-def start_traffic(metadata, settings):
+def start_traffic(metadata):
     """
     Starts traffic generation
     """
+    workspace = get_parent_directory()
+    location = os.path.join(workspace, "traffic_gen", "traffic_gen.py"), 
+    time = str(metadata['measurement_time_s'] + metadata['configuration_time_s'])
+    bandwidth = str(metadata['bandwidth_gbps'])
+    packet_size = str(metadata['packet_size_bytes'])
+    
+    traffic_gen = subprocess.Popen(['python', location, time, bandwidth, packet_size])
+    return traffic_gen
+
+def stop_traffic(traffic_process):
+    """
+    Waits for the traffic to end
+    """
+    traffic_process.wait()
+    time.sleep(1)
 
 def load_json(json_file):
     """

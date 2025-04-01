@@ -370,8 +370,6 @@ def run_test(device_id, exp_type, port_speed, port_type): # Former main
     )
     # TODO: LogPrint some logging information
 
-    # Print exspected duration here 
-
     if exp_type == 'base' or exp_type == 'idle':
         # Check with user whether transceivers are correct (depends on the case)
         q = "No" if exp_type == 'base' else "All"
@@ -421,12 +419,12 @@ def run_test(device_id, exp_type, port_speed, port_type): # Former main
             #   Start traffic
             metadata['packet_size_bytes']   = traffic_settings[0]
             metadata['bandwidth_gbps']      = traffic_settings[1]
-            start_traffic(metadata)
+            traffic_process = start_traffic(metadata)
 
             #   Run measurements
             measure_and_store(metadata)
 
-            # TODO: Verify whether we need to stop traffic
+            stop_traffic(traffic_process)
         
         reset_command = get_port_config(metadata, 'disable')
         configure_ports(reset_command)
