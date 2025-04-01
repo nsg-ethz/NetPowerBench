@@ -2,6 +2,7 @@ import random
 import itertools
 import datetime
 import serial
+import subprocess
 import numpy as np
 from pathlib import Path
 
@@ -237,8 +238,23 @@ def run_pinpoint(metadata):
     """
 
     # Extract the relevant data
+    measure_time        = metadata['measurement_time_s']
+    sampling_interval   = metadata['sampling_interval_ms']
+    start_up_delay      = metadata['configuration_time_s']
+    device              = metadata['device']
+
+    config_path = Path('..','devices',device)
+    config = load_yml(config_path / 'config.yml')
+    workspace = get_parent_directory()
+    Path(workspace / 'data' / 'log').mkdir(parents=True, exist_ok=True)
 
     # Start an extra process to run the script
+    subprocess.run([os.path.join(workspace, "command", "pinpoint_sleep.sh"), 
+            str(measure_time + start_up_delay),
+            config['pinpoint']['binary'],
+            str(sampling_interval),
+            str(start_up_delay*1000)
+        ])
 
 def verify_pinpoint(metadata): 
     """
@@ -252,6 +268,12 @@ def verify_pinpoint(metadata):
     """
 
     # Check whether there are any output lines in the log
+    workspace = get_parent_directory()
+    num_lines = sum(1 for line in open(os.path.join(workspace, "data", "log", "pinpoint.log")))
+    if num_lines <= 3:
+        print("Pinpoint issue detected.")
+        return False
+    return True
 
 def save_pinpoint_log(log_path): 
     """
@@ -331,7 +353,6 @@ def run_test(device_id, exp_type, port_speed, port_type): # Former main
         port_type            = port_type,
         port_speed           = port_speed, 
         seed                 = meta_config['random_seed'],
-        workload             = meta_config['pinpoint']['workload'],
         needs_commit         = meta_config['DUT']['needs_commit'],
         manual_speed_setting = meta_config['DUT']['manual_speed_setting'],
         measurement_time_s   = meta_config['measurement_time_s'],        # in seconds
