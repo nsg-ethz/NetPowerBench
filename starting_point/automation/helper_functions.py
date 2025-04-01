@@ -1,5 +1,6 @@
 import argparse
 import subprocess
+import json
 import yaml
 import os
 import time
@@ -127,6 +128,8 @@ def load_json(json_file):
     """
     Simple helper to load json data
     """
+    with open(json_file, 'r') as file:
+        return json.load(file)
 
 def load_yml(yaml_file):
     """
@@ -136,27 +139,52 @@ def load_yml(yaml_file):
     with open(yaml_file, "r") as file:
         return yaml.safe_load(file)
 
-def save_as_json(data, destination, name):
+def save_as_json(dict, destination, name):
     """
-    Saves data at destination as JSON with respecitve name
+    Saves a dictionary at destination as JSON with respecitve name
     """
+    data = json.dumps(dict, indent=4)
+    Path(destination).mkdir(parents=True, exist_ok=True)
+    f = Path(destination, name)
+    with open(f, "w") as file:
+        file.write(data)
+    
+
 
 def save_as_yml(data, destionation, name, sort_keys = False):
     """
     Saves data at destination as YAML with respecitve name
     """
+    Path(destionation).mkdir(parents=True, exist_ok=True)
+
+    f = Path(destionation, name)
+    with open(f, "w") as file:
+        yaml.dump(data, file, sort_keys=sort_keys)
 
 def check_cwd():
     """ 
     Checks whether we call the scripts in the correct directory (automation).
     """
+    cwd_name = os.path.basename(os.getcwd())
+    if cwd_name != 'automation':
+        raise Exception("Check working directory. Please run from the automation directory")
 
 def get_parent_directory():
     """
     Returns the parent of the directory the script is run from.
     """
+    check_cwd()         # Assumes we are in automation directory
+    cwd = os.getcwd()
+    workspace = os.path.dirname(cwd)
+    return Path(workspace)
 
 def check_existing_directory(target_directory):
     """
     Checks whether a directory with name target_directory exists and gives a warning to the user if it does.
     """
+    if (os.path.exists(target_directory) is True):
+        i = input("WARNING: Directory {} exists... potentially override stored data in this directory? (y/n)".format(target_directory))
+        if (i == 'y'):
+            return
+        else:
+            raise Exception("User input")
