@@ -205,18 +205,25 @@ def save_traffic_output(metadata, output_file):
 
     Args:
         metadata (dict): Dictionary containing all the metadata of the experiment
-        output_file (str): Name of the file where the output should be saved
+        output_file (str): Name of the file where the traffic output was stored
     
     Returns:
         None
     """
 
-    # Load respective output file
+    # Load output file
+    perftest_out = load_json(output_file)
 
     # Based on method save respective output
+    if float(metadata['bandwidth_gbps']) >= 2.5: # RDMA traffic case
+        BW_average = perftest_out['results']['BW_average']
+    else: # iperf3 traffic case
+        BW_average = perftest_out['end']['sum']['bits_per_second']/1e9
 
-    # Return of metadata not necessary?
+    metadata['bandwidth_reached_gbps'] = BW_average
 
+    os.remove(output_file)
+    return
 
 def run_pinpoint(metadata):
     """
