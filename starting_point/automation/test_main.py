@@ -3,6 +3,7 @@ import itertools
 import datetime
 import serial
 import subprocess
+import shutil
 import numpy as np
 from pathlib import Path
 
@@ -277,7 +278,7 @@ def verify_pinpoint(metadata):
 
 def save_pinpoint_log(log_path): 
     """
-    Saves the pinpoint log at the respective destination as yml.
+    Saves the pinpoint log at the respective destination.
 
     Args:
         log_path (str): Location where data is stored
@@ -285,7 +286,13 @@ def save_pinpoint_log(log_path):
     Returns:
         None
     """
-    # Note that the old version does not store it in a yml --> See measure_and_store
+
+    workspace = get_parent_directory()
+    log_path.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(
+        workspace / "data" / "log" / 'pinpoint.log',
+        log_path/'power.log'
+    )
 
 
 def measure_and_store(metadata):
