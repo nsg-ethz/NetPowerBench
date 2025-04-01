@@ -1,6 +1,7 @@
 import argparse
 import yaml
 import os
+from pathlib import Path
 
 
 def parse_cli_args():
@@ -56,22 +57,49 @@ def get_experiment_params():
             }
     raise RuntimeError("Missing experiment parameters. Provide CLI args or a valid exp.yml file.")
 
-def print_experiment_duration(time_per_run_s, number_of_runs):
-    """
-    Prints the expected duration of the experiment
-    """
 
 def get_log_name(metadata):
     """
     Returns the file name for logging the experiment
     """
 
-    # Code currently in measure_and_store
+    exp_type = metadata['experiment_type']
+    port_type = metadata['port_type']
+    speed_label = metadata['port_speed']
+    number_ports = len(metadata['port_list'])
 
-def get_log_path(metadata, log_name):
+    match exp_type:
+        case 'base':
+            log_name = exp_type
+        case 'idle':
+            log_name = f'{exp_type}_{port_type}'
+        case 'switch':
+            log_name = f'{exp_type}_{port_type}_{speed_label}_{number_ports}p'
+        case 'trx':
+            log_name = f'{exp_type}_{port_type}_{speed_label}_{number_ports}p'
+        case 'snake-test':
+            packet_size = metadata['packet_size_bytes']
+            bandwidth = metadata['bandwidth_gbps']
+            log_name = f'{exp_type}_{port_type}_{speed_label}_{packet_size}B_{bandwidth}Gbps'
+        case _:
+            raise ValueError(f"Unknown experiment type: {exp_type}")
+    
+    return log_name
+
+
+def get_log_path(metadata):
     """
     Returns the log path for logging the experiment
     """
+    workspace = get_parent_directory()
+    log_name = get_log_name(metadata)
+    dut_type = metadata['dut_type']
+    device = metadata['device']
+    time = str(metadata['time']).replace(' ','_').split('.')[0]
+    
+    log_path = Path(workspace, 'data', dut_type, device, 'static', log_name, time)
+    return log_path
+
 
 def start_traffic(metadata, settings):
     """
