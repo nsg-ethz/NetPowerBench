@@ -11,7 +11,7 @@ from helper_functions import *
 
 
 
-def get_port_config(metadata, config_type, port_list = None, ssh = False):
+def get_port_config(metadata, config_type, port_list = None):
     """
     Prepares the string of commands needed in order to configure a port for the respective config type
     
@@ -26,6 +26,8 @@ def get_port_config(metadata, config_type, port_list = None, ssh = False):
     
     """
 
+    print(f"Generating port configuration for type {port_list} ...")
+
     # Load variables from metadata
     port_file = metadata['port_file']
     port_type = metadata['port_type']
@@ -39,6 +41,8 @@ def get_port_config(metadata, config_type, port_list = None, ssh = False):
 
     if port_list == None:
         port_list = port_data['ports'][port_type]['ids']
+
+    print(f"Port list: {port_list}")
 
     # Check validity of arguments 
     valid_config_types = ['enable','disable','snake-test']
@@ -71,8 +75,7 @@ def get_port_config(metadata, config_type, port_list = None, ssh = False):
         config += 'commit\n'
     config += 'exit\n'
 
-    if ssh:
-        config += 'exit\n'
+    print("Port configuration command generated\n")
 
     return config
 
@@ -88,6 +91,7 @@ def configure_ports(metadata, conf_cmd): #Former push_cmd_over_serial
         None
     """
 
+    print(f"Configuring ports with command {conf_cmd}...")
     if conf_cmd == "":
         return
     # Read out information needed from metadata
@@ -98,6 +102,7 @@ def configure_ports(metadata, conf_cmd): #Former push_cmd_over_serial
     ser_port = serial.Serial(serial_port, bauderate, rtscts=False, dsrdtr=False)
 
     # Send over command
+    print("Sending command...")
     out_bytes = ser_port.write(conf_cmd.encode('utf-8'))
 
     # If not successful raise error
@@ -105,7 +110,7 @@ def configure_ports(metadata, conf_cmd): #Former push_cmd_over_serial
         raise RuntimeError('Writing cmd over serial failed.')
 
     # TODO: Verify whether configuration was completed
-
+    print("Sending command was successful\n")
     return
 
 def get_randomized_port_selection(metadata, user_confirm, one_per_pair = True, seed = None): 
@@ -122,6 +127,8 @@ def get_randomized_port_selection(metadata, user_confirm, one_per_pair = True, s
     Returns:
         list: List of lists of ports that should be activated in the respective iteration
     """
+
+    print("Generating randomized port selection...")
     port_file = metadata['port_file']
     port_type = metadata['port_type']
     device = metadata['device']
@@ -161,6 +168,9 @@ def get_randomized_port_selection(metadata, user_confirm, one_per_pair = True, s
             iterations.append(port_list)
         else:
             iterations.append(np.reshape(pairs_in_use, -1).tolist())
+    print("Porst per iterations are:")
+    print(iterations)
+    print()
 
     return iterations
 
@@ -180,7 +190,7 @@ def get_randomized_traffic_settings(metadata, seed = None): # TODO Check whether
     Returns:
         list: List of traffic settings for an iteration
     """
-
+    print("Generating randomized traffic settings")
     # Set seed to random value if not given
     if seed is not None:
         print('Random seed is set to:\t {}'.format(seed))
@@ -199,6 +209,7 @@ def get_randomized_traffic_settings(metadata, seed = None): # TODO Check whether
 
     # Randomize
     random.shuffle(iterations)
+    print()
     return iterations
 
 
@@ -213,7 +224,7 @@ def save_traffic_output(metadata, output_file):
     Returns:
         None
     """
-
+    print(f"Traffic output from {output_file} is stored...")
     # Load output file
     perftest_out = load_json(output_file)
 
@@ -226,6 +237,8 @@ def save_traffic_output(metadata, output_file):
     metadata['bandwidth_reached_gbps'] = BW_average
 
     os.remove(output_file)
+
+    print(f"Bandwidth reached: {BW_average}\n")
     return
 
 def run_pinpoint(metadata):
@@ -238,7 +251,7 @@ def run_pinpoint(metadata):
     Returns:
         None
     """
-
+    print("Running pinpoint...")
     # Extract the relevant data
     measure_time        = metadata['measurement_time_s']
     sampling_interval   = metadata['sampling_interval_ms']
@@ -257,6 +270,7 @@ def run_pinpoint(metadata):
             str(sampling_interval),
             str(start_up_delay*1000)
         ])
+    print("Pinpoint done\n")
 
 def verify_pinpoint(metadata): 
     """
@@ -275,6 +289,7 @@ def verify_pinpoint(metadata):
     if num_lines <= 3:
         print("Pinpoint issue detected.")
         return False
+    print("No pinpoint issue detected")
     return True
 
 def save_pinpoint_log(log_path): 
@@ -294,6 +309,7 @@ def save_pinpoint_log(log_path):
         workspace / "data" / "log" / 'pinpoint.log',
         log_path/'power.log'
     )
+    print("Pinpoint log has been copied to power.log")
 
 
 def measure_and_store(metadata):
@@ -306,8 +322,7 @@ def measure_and_store(metadata):
     Returns:
         None
     """
-    # TODO: Logging
-
+    print("Starting measurements...")
     # Set timestamps in metadata
     metadata['time'] = str(datetime.datetime.now()).split('.')[0]
     metadata['timestamp'] = int(datetime.datetime.now(datetime.timezone.utc).timestamp()*1e6)
@@ -315,6 +330,8 @@ def measure_and_store(metadata):
     # Get log path (with respective helper function)
     log_name = get_log_name(metadata)
     log_path = get_log_path(metadata, log_name)
+    print(f"Log name: {log_name}")
+    print(f"Stored at {log_path}")
 
     # Run the pinpoint script while not successful
     while True:
@@ -324,6 +341,7 @@ def measure_and_store(metadata):
     
     # Save output 
     save_pinpoint_log(metadata, log_path)
+    print("Measure and store done\n")
 
 
 
@@ -342,7 +360,7 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
     Returns:
         None
     """
-    print(f"Running {exp_type} for {device_id} with port type {port_type} and port speed {port_speed}")
+    print(f"Running {exp_type} for {device_id} with port type {port_type} and port speed {port_speed}...")
 
     # Load metadata
     check_cwd()
@@ -352,7 +370,8 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
     except EncodingWarning:
         print('Device config not found. Could not run test for {}'.format(device_id))
         return
-
+    
+    print("Loading metadata...")
     metadata = dict(
         device               = meta_config['DUT']['id'],
         port_file            = meta_config['DUT']['port_file'],
@@ -370,12 +389,13 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
         bauderate            = meta_config['bauderate'],
         serial_port          = meta_config['serial_port']           
     )
-    # TODO: LogPrint some logging information
+    
 
+    print(f"Starting {exp_type}...")
     if exp_type == 'base' or exp_type == 'idle':
         # Check with user whether transceivers are correct (depends on the case)
         q = "No" if exp_type == 'base' else "All"
-        print(f"{q} transceivers should be plugged in.")
+        print(f"{exp_type} test: {q} transceivers should be plugged in.")
 
         if(user_confirm):
             inp = input("Do you want to continue? (y/n)")
@@ -383,11 +403,13 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
                 return
         
         # Disable all ports
-        disable_command = get_port_config(metadata, 'disable') #TODO: Check ssh
+        disable_command = get_port_config(metadata, 'disable') 
         configure_ports(metadata, disable_command)
+        print("Ports have been disabled")
 
         # Run measurements and store them
         measure_and_store(metadata)
+        print("Experiment done\n")
         return
     elif exp_type == 'switch' or exp_type == 'trx':
         print("All transceiver should be plugged in")
@@ -399,7 +421,7 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
         reset_command = get_port_config(metadata, 'disable')
         
         for port_list in ports_per_iteration:
-            enable_command = get_port_config(metadata, 'enable', port_list) #TODO: Check ssh
+            enable_command = get_port_config(metadata, 'enable', port_list) 
             configure_ports(metadata, enable_command)
 
             metadata['port_list'] = port_list #TODO reviwe where port_list is needed
@@ -409,12 +431,16 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
 
             #   Reset ports
             configure_ports(reset_command)
+
+        print("Experiment done\n")
         return
     elif exp_type == 'snake-test':
+        print("All transceiver should be plugged in")
         # Get randomized traffic settings
         traffic_settings_list = get_randomized_traffic_settings(metadata)
 
         # Configure ports for snake tests
+        print("Configure ports...")
         config_command = get_port_config(metadata, 'snake-test')
         configure_ports(metadata, config_command)
 
@@ -428,9 +454,10 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
             measure_and_store(metadata)
 
             stop_traffic(traffic_process)
-        
+        print("Reset ports...")
         reset_command = get_port_config(metadata, 'disable')
         configure_ports(reset_command)
+        print("Experiment done\n")
         return
     else:
         raise ValueError(f"Unknown experiment type: {exp_type}")
