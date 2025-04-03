@@ -27,6 +27,7 @@ def parse_cli_args():
     parser.add_argument('-s', '--speed', nargs='+', help='Speeds to test (e.g., 100G 400G)')
     parser.add_argument('-p', '--port_type', type=str, help='Port type (e.g., QSFP28)')
     parser.add_argument('-r', '--repeats', type=int, default=1, help='Number of repeats per test')
+    parser.add_argument('-u', '--user_confirm', type=bool, default=True, help='Manual user confirmation enabled/disabled')
     
     args = parser.parse_args()
     return vars(args)
@@ -57,6 +58,7 @@ def get_experiment_params():
                 'speed': yaml_config['speed'],
                 'port_type': yaml_config['port_type'],
                 'repeats': yaml_config.get('repeats', 1),
+                'user_confirm': yaml_config.get('user_confirm', True)
             }
     raise RuntimeError("Missing experiment parameters. Provide CLI args or a valid exp.yml file.")
 
