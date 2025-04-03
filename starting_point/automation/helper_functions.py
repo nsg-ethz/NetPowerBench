@@ -113,12 +113,12 @@ def start_traffic(metadata):
     Starts traffic generation
     """
     workspace = get_parent_directory()
-    location = os.path.join(workspace, "traffic_gen", "traffic_gen.py"), 
-    time = str(metadata['measurement_time_s'] + metadata['configuration_time_s'])
+    location = os.path.join(workspace, "traffic_gen", "traffic_gen.py")
+    total_time = str(metadata['measurement_time_s'] + metadata['configuration_time_s'])
     bandwidth = str(metadata['bandwidth_gbps'])
     packet_size = str(metadata['packet_size_bytes'])
     
-    traffic_gen = subprocess.Popen(['python', location, time, bandwidth, packet_size])
+    traffic_gen = subprocess.Popen(['python', location, total_time, bandwidth, packet_size])
     return traffic_gen
 
 def stop_traffic(traffic_process):
@@ -127,6 +127,7 @@ def stop_traffic(traffic_process):
     """
     traffic_process.wait()
     time.sleep(1)
+    print("Traffic stopped")
 
 def load_json(json_file):
     """
