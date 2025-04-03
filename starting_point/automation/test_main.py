@@ -26,7 +26,7 @@ def get_port_config(metadata, config_type, port_list = None):
     
     """
 
-    print(f"Generating port configuration for type {port_list} ...")
+    print(f"Generating port configuration for type {config_type} ...")
 
     # Load variables from metadata
     port_file = metadata['port_file']
@@ -91,7 +91,7 @@ def configure_ports(metadata, conf_cmd): #Former push_cmd_over_serial
         None
     """
 
-    print(f"Configuring ports with command {conf_cmd}...")
+    print(f"Configuring ports over serial...")
     if conf_cmd == "":
         return
     # Read out information needed from metadata
@@ -431,7 +431,7 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
             measure_and_store(metadata)
 
             #   Reset ports
-            configure_ports(reset_command)
+            configure_ports(metadata, reset_command)
 
         print("Experiment done\n")
         return
@@ -449,6 +449,7 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
             #   Start traffic
             metadata['packet_size_bytes']   = traffic_settings[0]
             metadata['bandwidth_gbps']      = traffic_settings[1]
+            print(f"Running snake test with packetsize {metadata['packet_size_bytes']} and {metadata['bandwidth_gbps']}")
             traffic_process = start_traffic(metadata)
 
             #   Run measurements
@@ -457,7 +458,7 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
             stop_traffic(traffic_process)
         print("Reset ports...")
         reset_command = get_port_config(metadata, 'disable')
-        configure_ports(reset_command)
+        configure_ports(metadata, reset_command)
         print("Experiment done\n")
         return
     else:
