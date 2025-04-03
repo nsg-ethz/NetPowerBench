@@ -71,7 +71,7 @@ def get_log_name(metadata):
     exp_type = metadata['experiment_type']
     port_type = metadata['port_type']
     speed_label = metadata['port_speed']
-    number_ports = len(metadata['port_list'])
+    
 
     match exp_type:
         case 'base':
@@ -79,8 +79,10 @@ def get_log_name(metadata):
         case 'idle':
             log_name = f'{exp_type}_{port_type}'
         case 'switch':
+            number_ports = len(metadata['port_list'])
             log_name = f'{exp_type}_{port_type}_{speed_label}_{number_ports}p'
         case 'trx':
+            number_ports = len(metadata['port_list'])
             log_name = f'{exp_type}_{port_type}_{speed_label}_{number_ports}p'
         case 'snake-test':
             packet_size = metadata['packet_size_bytes']

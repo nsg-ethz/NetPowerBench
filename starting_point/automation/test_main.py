@@ -329,7 +329,7 @@ def measure_and_store(metadata):
 
     # Get log path (with respective helper function)
     log_name = get_log_name(metadata)
-    log_path = get_log_path(metadata, log_name)
+    log_path = get_log_path(metadata)
     print(f"Log name: {log_name}")
     print(f"Stored at {log_path}")
 
@@ -340,7 +340,7 @@ def measure_and_store(metadata):
             break
     
     # Save output 
-    save_pinpoint_log(metadata, log_path)
+    save_pinpoint_log(log_path)
     print("Measure and store done\n")
 
 
@@ -390,6 +390,7 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
         serial_port          = meta_config['serial_port']           
     )
     
+    # Get the list of all ports
 
     print(f"Starting {exp_type}...")
     if exp_type == 'base' or exp_type == 'idle':
