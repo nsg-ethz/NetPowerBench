@@ -95,11 +95,11 @@ def configure_ports(metadata, conf_cmd): #Former push_cmd_over_serial
     if conf_cmd == "":
         return
     # Read out information needed from metadata
-    bauderate = metadata['bauderate']
+    baudrate = metadata['baudrate']
     serial_port = metadata['serial_port']
 
     # Open serial port
-    ser_port = serial.Serial(serial_port, bauderate, rtscts=False, dsrdtr=False)
+    ser_port = serial.Serial(serial_port, baudrate, rtscts=False, dsrdtr=False)
 
     # Send over command
     print("Sending command...")
@@ -386,7 +386,7 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
         measurement_time_s   = meta_config['measurement_time_s'],        # in seconds
         configuration_time_s = meta_config['configuration_time_s'],      # in seconds
         sampling_interval_ms = meta_config['sampling_interval_ms'],      # in milliseconds 
-        bauderate            = meta_config['bauderate'],
+        baudrate            = meta_config['baudrate'],
         serial_port          = meta_config['serial_port']           
     )
     
