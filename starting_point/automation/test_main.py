@@ -110,7 +110,7 @@ def configure_ports(metadata, conf_cmd): #Former push_cmd_over_serial
     print("Sending command was successful\n")
     return
 
-def get_randomized_port_selection(metadata, user_confirm, one_per_pair = True, seed = None): 
+def get_randomized_port_selection(metadata, user_confirm, one_per_pair = True): 
     """
     Gives a list that contains as element a randomized selection of ports to enable.
 
@@ -119,7 +119,6 @@ def get_randomized_port_selection(metadata, user_confirm, one_per_pair = True, s
     Args:
         metadata (dict): Dictionary containing all the metadata of the experiment
         one_per_pair (bool): Bool for whether only one port per pair should be activated
-        seed (int): Seed for randomization
 
     Returns:
         list: List of lists of ports that should be activated in the respective iteration
@@ -129,6 +128,7 @@ def get_randomized_port_selection(metadata, user_confirm, one_per_pair = True, s
     port_file = metadata['port_file']
     port_type = metadata['port_type']
     device = metadata['device']
+    seed = metadata['seed']
 
     # Set seed to random value if not given
     if seed is not None:
@@ -179,18 +179,19 @@ def get_randomized_port_selection(metadata, user_confirm, one_per_pair = True, s
 
 
 
-def get_randomized_traffic_settings(seed = None): # TODO Check whether we actually need metadata (e.g. for logging)
+def get_randomized_traffic_settings(metadata): # TODO Check whether we actually need metadata (e.g. for logging)
     """
     Gives a list that contains as an element randomized traffic settings
 
     Args:
-        seed (int): Seed for randomization
+        metadata (dict): Dictionary containing all the metadata of the experiment
 
     Returns:
         list: List of traffic settings for an iteration
     """
     print("Generating randomized traffic settings...")
     # Set seed to random value if not given
+    seed = metadata['seed']
     if seed is not None:
         print('Random seed is set to:\t {}'.format(seed))
         random.seed(seed)
@@ -385,7 +386,7 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
         measurement_time_s   = meta_config['measurement_time_s'],        # in seconds
         configuration_time_s = meta_config['configuration_time_s'],      # in seconds
         sampling_interval_ms = meta_config['sampling_interval_ms'],      # in milliseconds 
-        baudrate            = meta_config['baudrate'],
+        baudrate             = meta_config['baudrate'],
         serial_port          = meta_config['serial_port']           
     )
     
@@ -447,7 +448,7 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
     elif exp_type == 'snake-test':
         
         # Get randomized traffic settings
-        traffic_settings_list = get_randomized_traffic_settings()
+        traffic_settings_list = get_randomized_traffic_settings(seed=metadata['seed'])
 
         # Configure ports for snake tests
         print("Configure ports...")
