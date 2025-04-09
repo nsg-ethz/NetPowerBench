@@ -179,12 +179,11 @@ def get_randomized_port_selection(metadata, user_confirm, one_per_pair = True, s
 
 
 
-def get_randomized_traffic_settings(metadata, seed = None): # TODO Check whether we actually need metadata (e.g. for logging)
+def get_randomized_traffic_settings(seed = None): # TODO Check whether we actually need metadata (e.g. for logging)
     """
     Gives a list that contains as an element randomized traffic settings
 
     Args:
-        metadata (dict): Dictionary containing all the metadata of the experiment
         seed (int): Seed for randomization
 
     Returns:
@@ -272,12 +271,12 @@ def run_pinpoint(metadata):
         ])
     print("Pinpoint done\n")
 
-def verify_pinpoint(metadata): 
+def verify_pinpoint(): 
     """
     Verifies that pinpoint actually measured some values.
 
     Args:
-        metadata (dict):Dictionary containing all the metadata of the experiment
+        None
 
     Returns:
         bool: True if pinpoint was successful, False otherwise
@@ -336,7 +335,7 @@ def measure_and_store(metadata):
     # Run the pinpoint script while not successful
     while True:
         run_pinpoint(metadata)
-        if verify_pinpoint(metadata):
+        if verify_pinpoint():
             break
     
     # Save output 
@@ -448,7 +447,7 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
     elif exp_type == 'snake-test':
         
         # Get randomized traffic settings
-        traffic_settings_list = get_randomized_traffic_settings(metadata)
+        traffic_settings_list = get_randomized_traffic_settings()
 
         # Configure ports for snake tests
         print("Configure ports...")
