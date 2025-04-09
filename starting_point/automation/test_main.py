@@ -42,8 +42,6 @@ def get_port_config(metadata, config_type, port_list = None):
     if port_list == None:
         port_list = port_data['ports'][port_type]['ids']
 
-    print(f"Port list: {port_list}")
-
     # Check validity of arguments 
     valid_config_types = ['enable','disable','snake-test']
     if config_type in valid_config_types:
@@ -102,7 +100,6 @@ def configure_ports(metadata, conf_cmd): #Former push_cmd_over_serial
     ser_port = serial.Serial(serial_port, baudrate, rtscts=False, dsrdtr=False)
 
     # Send over command
-    print("Sending command...")
     out_bytes = ser_port.write(conf_cmd.encode('utf-8'))
 
     # If not successful raise error
@@ -147,11 +144,14 @@ def get_randomized_port_selection(metadata, user_confirm, one_per_pair = True, s
     port_pairs = np.reshape(ports,(-1,2))
 
     # Sanity check for pairing
-    print(f"The pairing of the ports is this: {port_pairs}. ")
+    print(f"The pairing of the ports is this: ")
+    for i in port_pairs:
+        print(i)
+
     if user_confirm:
-        inp = input("Please verify that the ports are connected accordingly. (y/n)")
+        inp = input("Please verify that the ports are connected accordingly. (y/n)\n")
         if inp == 'n':
-            return 
+            raise ValueError("Invalid port pairing: Experiment stopped. Please list the ports in ports.yml according to the wiring.") 
 
     num_pairs = np.shape(port_pairs)[0]
     num_pairs_in_use = np.arange(1,num_pairs+1)
@@ -190,7 +190,7 @@ def get_randomized_traffic_settings(metadata, seed = None): # TODO Check whether
     Returns:
         list: List of traffic settings for an iteration
     """
-    print("Generating randomized traffic settings")
+    print("Generating randomized traffic settings...")
     # Set seed to random value if not given
     if seed is not None:
         print('Random seed is set to:\t {}'.format(seed))
@@ -209,7 +209,7 @@ def get_randomized_traffic_settings(metadata, seed = None): # TODO Check whether
 
     # Randomize
     random.shuffle(iterations)
-    print()
+    print("Random traffic settings generated\n")
     return iterations
 
 
@@ -289,7 +289,7 @@ def verify_pinpoint(metadata):
     if num_lines <= 3:
         print("Pinpoint issue detected.")
         return False
-    print("No pinpoint issue detected")
+    print("No pinpoint issue detected\n")
     return True
 
 def save_pinpoint_log(log_path): 
@@ -309,7 +309,7 @@ def save_pinpoint_log(log_path):
         workspace / "data" / "log" / 'pinpoint.log',
         log_path/'power.log'
     )
-    print("Pinpoint log has been copied to power.log")
+    print("Pinpoint log has been copied to power.log\n")
 
 
 def measure_and_store(metadata):
@@ -392,17 +392,19 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
     
     # Get the list of all ports
 
+    # Check with user whether transceivers are correct (depends on the case)
+    q = "No" if exp_type == 'base' else "All"
+    print(f"{exp_type} test: {q} transceivers should be plugged in.")
+
+    if(user_confirm):
+        inp = input("Do you want to continue? (y/n)\n")
+        if inp == 'n':
+            return
+    print()
+
     print(f"Starting {exp_type}...")
     if exp_type == 'base' or exp_type == 'idle':
-        # Check with user whether transceivers are correct (depends on the case)
-        q = "No" if exp_type == 'base' else "All"
-        print(f"{exp_type} test: {q} transceivers should be plugged in.")
 
-        if(user_confirm):
-            inp = input("Do you want to continue? (y/n)")
-            if inp == 'n':
-                return
-        
         # Disable all ports
         disable_command = get_port_config(metadata, 'disable') 
         configure_ports(metadata, disable_command)
@@ -413,30 +415,38 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
         print("Experiment done\n")
         return
     elif exp_type == 'switch' or exp_type == 'trx':
-        print("All transceiver should be plugged in")
 
         # Get the list with the ports for each iteration (one per pair based on case)
         one_per_pair = exp_type == 'switch'
-        ports_per_iteration = get_randomized_port_selection(metadata, user_confirm, one_per_pair)
+        try: 
+            ports_per_iteration = get_randomized_port_selection(metadata, user_confirm, one_per_pair)
+        except ValueError as err:
+            print(err)
+            return
 
         reset_command = get_port_config(metadata, 'disable')
-        
+
+        number_tests = len(ports_per_iteration)
+        i = 1
         for port_list in ports_per_iteration:
             enable_command = get_port_config(metadata, 'enable', port_list) 
             configure_ports(metadata, enable_command)
 
             metadata['port_list'] = port_list #TODO reviwe where port_list is needed
+
+            print(f"Running {exp_type} {i} out of {number_tests} with {len(port_list)} ports")
             
             #   Run measurements
             measure_and_store(metadata)
 
             #   Reset ports
             configure_ports(metadata, reset_command)
+            i += 1
 
         print("Experiment done\n")
         return
     elif exp_type == 'snake-test':
-        print("All transceiver should be plugged in")
+        
         # Get randomized traffic settings
         traffic_settings_list = get_randomized_traffic_settings(metadata)
 
@@ -445,17 +455,21 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
         config_command = get_port_config(metadata, 'snake-test')
         configure_ports(metadata, config_command)
 
+        number_tests = len(traffic_settings_list)
+        i = 1
         for traffic_settings in traffic_settings_list:
             #   Start traffic
             metadata['packet_size_bytes']   = traffic_settings[0]
             metadata['bandwidth_gbps']      = traffic_settings[1]
-            print(f"Running snake test with packetsize {metadata['packet_size_bytes']} and {metadata['bandwidth_gbps']}")
+            print(f"Running snake test {i} out of {number_tests} with packetsize {metadata['packet_size_bytes']} and {metadata['bandwidth_gbps']}")
             traffic_process = start_traffic(metadata)
 
             #   Run measurements
             measure_and_store(metadata)
 
             stop_traffic(traffic_process)
+            i += 1
+        
         print("Reset ports...")
         reset_command = get_port_config(metadata, 'disable')
         configure_ports(metadata, reset_command)
