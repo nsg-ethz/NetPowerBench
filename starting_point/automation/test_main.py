@@ -34,13 +34,14 @@ def get_port_config(metadata, config_type, port_list = None):
     port_speed = metadata['port_speed']
     device = metadata['device']
     needs_commit = metadata['needs_commit']
+    if port_list == None:
+        port_list = metadata['all_ports']
+        
     config_path = Path('..','devices',device)
 
     # Load port data
     port_data = load_yml(config_path / port_file) 
 
-    if port_list == None:
-        port_list = port_data['ports'][port_type]['ids']
 
     # Check validity of arguments 
     valid_config_types = ['enable','disable','snake-test']
@@ -125,20 +126,15 @@ def get_randomized_port_selection(metadata, user_confirm, one_per_pair = True):
     """
 
     print("Generating randomized port selection...")
-    port_file = metadata['port_file']
-    port_type = metadata['port_type']
-    device = metadata['device']
-    seed = metadata['seed']
+    
 
     # Set seed to random value if not given
+    seed = metadata['seed']
     if seed is not None:
         print('Random seed is set to:\t {}'.format(seed))
         random.seed(seed)
 
-    config_path = Path('..','devices',device) 
-    port_data = load_yml(config_path / port_file)
-    ports = port_data['ports'][port_type]['ids']
-
+    ports = metadata['all_ports']
     iterations = []
 
     port_pairs = np.reshape(ports,(-1,2))
@@ -391,6 +387,12 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
     )
     
     # Get the list of all ports
+    port_file = metadata['port_file']
+    port_type = metadata['port_type']
+    device = metadata['device']
+    config_path = Path('..','devices',device) 
+    port_data = load_yml(config_path / port_file)
+    metadata['all_ports'] = port_data['ports'][port_type]['ids']
 
     # Check with user whether transceivers are correct (depends on the case)
     q = "No" if exp_type == 'base' else "All"
