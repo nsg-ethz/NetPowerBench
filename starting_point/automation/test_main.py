@@ -36,7 +36,7 @@ def get_port_config(metadata, config_type, port_list = None):
     needs_commit = metadata['needs_commit']
     if port_list == None:
         port_list = metadata['all_ports']
-        
+
     config_path = Path('..','devices',device)
 
     # Load port data
@@ -308,20 +308,21 @@ def save_pinpoint_log(log_path):
     print("Pinpoint log has been copied to power.log\n")
 
 
-def measure_and_store(metadata):
+def measure_and_store(metadata, measurement_data):
     """
     Runs the measurements on the device and stores them in the respecitve log
 
     Args:
         metadata (dict): Dictionary containing all the metadata of the experiment
+        measurement_data (dict): Dictionary containing metadata specific to this measurement run
     
     Returns:
         None
     """
     print("Starting measurements...")
     # Set timestamps in metadata
-    metadata['time'] = str(datetime.datetime.now()).split('.')[0]
-    metadata['timestamp'] = int(datetime.datetime.now(datetime.timezone.utc).timestamp()*1e6)
+    measurement_data['time'] = str(datetime.datetime.now()).split('.')[0]
+    measurement_data['timestamp'] = int(datetime.datetime.now(datetime.timezone.utc).timestamp()*1e6)
 
     # Get log path (with respective helper function)
     log_name = get_log_name(metadata)
@@ -337,6 +338,7 @@ def measure_and_store(metadata):
     
     # Save output 
     save_pinpoint_log(log_path)
+    save_as_yml(metadata, measure_and_store, log_path, 'metadata.yml')
     print("Measure and store done\n")
 
 
@@ -394,6 +396,8 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
     port_data = load_yml(config_path / port_file)
     metadata['all_ports'] = port_data['ports'][port_type]['ids']
 
+    measurement_data = {}
+
     # Check with user whether transceivers are correct (depends on the case)
     q = "No" if exp_type == 'base' else "All"
     print(f"{exp_type} test: {q} transceivers should be plugged in.")
@@ -413,7 +417,7 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
         print("Ports have been disabled")
 
         # Run measurements and store them
-        measure_and_store(metadata)
+        measure_and_store(metadata, measurement_data)
         print("Experiment done\n")
         return
     elif exp_type == 'switch' or exp_type == 'trx':
@@ -431,15 +435,15 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
         number_tests = len(ports_per_iteration)
         i = 1
         for port_list in ports_per_iteration:
+            measurement_data['port_list'] = port_list 
             enable_command = get_port_config(metadata, 'enable', port_list) 
             configure_ports(metadata, enable_command)
 
-            metadata['port_list'] = port_list #TODO reviwe where port_list is needed
 
             print(f"Running {exp_type} {i} out of {number_tests} with {len(port_list)} ports")
             
             #   Run measurements
-            measure_and_store(metadata)
+            measure_and_store(metadata, measurement_data)
 
             #   Reset ports
             configure_ports(metadata, reset_command)
@@ -461,13 +465,13 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
         i = 1
         for traffic_settings in traffic_settings_list:
             #   Start traffic
-            metadata['packet_size_bytes']   = traffic_settings[0]
-            metadata['bandwidth_gbps']      = traffic_settings[1]
+            measurement_data['packet_size_bytes']   = traffic_settings[0]
+            measurement_data['bandwidth_gbps']      = traffic_settings[1]
             print(f"Running snake test {i} out of {number_tests} with packetsize {metadata['packet_size_bytes']} and {metadata['bandwidth_gbps']}")
-            traffic_process = start_traffic(metadata)
+            traffic_process = start_traffic(metadata, measurement_data)
 
             #   Run measurements
-            measure_and_store(metadata)
+            measure_and_store(metadata, measurement_data)
 
             stop_traffic(traffic_process)
             i += 1

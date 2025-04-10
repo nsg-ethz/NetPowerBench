@@ -94,7 +94,7 @@ def get_log_name(metadata):
     return log_name
 
 
-def get_log_path(metadata):
+def get_log_path(metadata, measurement_data):
     """
     Returns the log path for logging the experiment
     """
@@ -102,21 +102,21 @@ def get_log_path(metadata):
     log_name = get_log_name(metadata)
     dut_type = metadata['dut_type']
     device = metadata['device']
-    time = str(metadata['time']).replace(' ','_').split('.')[0]
+    time = str(measurement_data['time']).replace(' ','_').split('.')[0]
 
     log_path = Path(workspace, 'data', dut_type, device, 'static', log_name, time)
     return log_path
 
 
-def start_traffic(metadata):
+def start_traffic(metadata, measurement_data):
     """
     Starts traffic generation
     """
     workspace = get_parent_directory()
     location = os.path.join(workspace, "traffic_gen", "traffic_gen.py")
     total_time = str(metadata['measurement_time_s'] + metadata['configuration_time_s'])
-    bandwidth = str(metadata['bandwidth_gbps'])
-    packet_size = str(metadata['packet_size_bytes'])
+    bandwidth = str(measurement_data['bandwidth_gbps'])
+    packet_size = str(measurement_data['packet_size_bytes'])
     
     traffic_gen = subprocess.Popen(['python', location, total_time, bandwidth, packet_size])
     return traffic_gen
