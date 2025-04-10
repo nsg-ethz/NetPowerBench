@@ -326,7 +326,7 @@ def measure_and_store(metadata, measurement_data):
 
     # Get log path (with respective helper function)
     log_name = get_log_name(metadata)
-    log_path = get_log_path(metadata)
+    log_path = get_log_path(metadata, measurement_data)
     print(f"Log name: {log_name}")
     print(f"Stored at {log_path}")
 
