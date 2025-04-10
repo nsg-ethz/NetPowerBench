@@ -156,13 +156,18 @@ def save_as_json(dict, destination, name):
     
 
 
-def save_as_yml(data, destionation, name, sort_keys = False):
+def save_as_yml(metadata, measurement_data, destination, name, sort_keys = False):
     """
-    Saves data at destination as YAML with respecitve name
+    Saves metadata and measurement data as YAML in the given destination with the specified file name.
     """
-    Path(destionation).mkdir(parents=True, exist_ok=True)
+    Path(destination).mkdir(parents=True, exist_ok=True)
 
-    f = Path(destionation, name)
+    data = {
+        'Metadata': metadata,
+        'Measurement_Data': measurement_data
+    }
+
+    f = Path(destination, name)
     with open(f, "w") as file:
         yaml.dump(data, file, sort_keys=sort_keys)
 
