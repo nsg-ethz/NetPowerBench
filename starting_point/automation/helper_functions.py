@@ -6,6 +6,17 @@ import os
 import time
 from pathlib import Path
 
+def str2bool(v):
+    if isinstance(v, bool):
+        return v
+    if v.lower() in ('yes', 'true', 't', '1'):
+        return True
+    elif v.lower() in ('no', 'false', 'f', '0'):
+        return False
+    else:
+        raise argparse.ArgumentTypeError('Boolean value expected.')
+
+
 
 def parse_cli_args():
     """
@@ -27,7 +38,7 @@ def parse_cli_args():
     parser.add_argument('-s', '--speed', nargs='+', help='Speeds to test (e.g., 100G 400G)')
     parser.add_argument('-p', '--port_type', type=str, help='Port type (e.g., QSFP28)')
     parser.add_argument('-r', '--repeats', type=int, default=1, help='Number of repeats per test')
-    parser.add_argument('-u', '--user_confirm', type=bool, default=True, help='Manual user confirmation enabled/disabled')
+    parser.add_argument('-u', '--user_confirm', type=str2bool, default=True, help='Manual user confirmation enabled/disabled')
     
     args = parser.parse_args()
     return vars(args)
