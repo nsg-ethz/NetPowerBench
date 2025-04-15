@@ -74,7 +74,7 @@ def get_experiment_params():
     raise RuntimeError("Missing experiment parameters. Provide CLI args or a valid exp.yml file.")
 
 
-def get_log_name(metadata):
+def get_log_name(metadata, measurement_data):
     """
     Returns the file name for logging the experiment
     """
@@ -90,14 +90,14 @@ def get_log_name(metadata):
         case 'idle':
             log_name = f'{exp_type}_{port_type}'
         case 'switch':
-            number_ports = len(metadata['port_list'])
+            number_ports = len(measurement_data['port_list'])
             log_name = f'{exp_type}_{port_type}_{speed_label}_{number_ports}p'
         case 'trx':
-            number_ports = len(metadata['port_list'])
+            number_ports = len(measurement_data['port_list'])
             log_name = f'{exp_type}_{port_type}_{speed_label}_{number_ports}p'
         case 'snake-test':
-            packet_size = metadata['packet_size_bytes']
-            bandwidth = metadata['bandwidth_gbps']
+            packet_size = measurement_data['packet_size_bytes']
+            bandwidth = measurement_data['bandwidth_gbps']
             log_name = f'{exp_type}_{port_type}_{speed_label}_{packet_size}B_{bandwidth}Gbps'
         case _:
             raise ValueError(f"Unknown experiment type: {exp_type}")
@@ -110,7 +110,7 @@ def get_log_path(metadata, measurement_data):
     Returns the log path for logging the experiment
     """
     workspace = get_parent_directory()
-    log_name = get_log_name(metadata)
+    log_name = get_log_name(metadata, measurement_data)
     dut_type = metadata['dut_type']
     device = metadata['device']
     time = str(measurement_data['time']).replace(' ','_').split('.')[0]

@@ -175,7 +175,7 @@ def get_randomized_port_selection(metadata, user_confirm, one_per_pair = True):
 
 
 
-def get_randomized_traffic_settings(metadata): # TODO Check whether we actually need metadata (e.g. for logging)
+def get_randomized_traffic_settings(metadata): 
     """
     Gives a list that contains as an element randomized traffic settings
 
@@ -325,7 +325,7 @@ def measure_and_store(metadata, measurement_data):
     measurement_data['timestamp'] = int(datetime.datetime.now(datetime.timezone.utc).timestamp()*1e6)
 
     # Get log path (with respective helper function)
-    log_name = get_log_name(metadata)
+    log_name = get_log_name(metadata, measurement_data)
     log_path = get_log_path(metadata, measurement_data)
     print(f"Log name: {log_name}")
     print(f"Stored at {log_path}")
@@ -454,7 +454,7 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
     elif exp_type == 'snake-test':
         
         # Get randomized traffic settings
-        traffic_settings_list = get_randomized_traffic_settings(seed=metadata['seed'])
+        traffic_settings_list = get_randomized_traffic_settings(metadata)
 
         # Configure ports for snake tests
         print("Configure ports...")
@@ -467,7 +467,7 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
             #   Start traffic
             measurement_data['packet_size_bytes']   = traffic_settings[0]
             measurement_data['bandwidth_gbps']      = traffic_settings[1]
-            print(f"Running snake test {i} out of {number_tests} with packetsize {metadata['packet_size_bytes']} and {metadata['bandwidth_gbps']}")
+            print(f"Running snake test {i} out of {number_tests} with packetsize {measurement_data['packet_size_bytes']} and {measurement_data['bandwidth_gbps']}")
             traffic_process = start_traffic(metadata, measurement_data)
 
             #   Run measurements
