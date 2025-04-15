@@ -160,11 +160,11 @@ def get_randomized_port_selection(metadata, user_confirm, one_per_pair = True):
         if one_per_pair:
             port_list = []
             for j in np.arange(i):
-                port_list.append(pairs_in_use[j,random.randint(0,1)])
+                port_list.append(int(pairs_in_use[j,random.randint(0,1)]))
             iterations.append(port_list)
         else:
             iterations.append(np.reshape(pairs_in_use, -1).tolist())
-    print("Porst per iterations are:")
+    print("Ports per iterations are:")
     print(iterations)
     print()
 
@@ -338,7 +338,7 @@ def measure_and_store(metadata, measurement_data):
     
     # Save output 
     save_pinpoint_log(log_path)
-    save_as_yml(metadata, measure_and_store, log_path, 'metadata.yml')
+    save_as_yml(metadata, measurement_data, log_path, 'metadata.yml')
     print("Measure and store done\n")
 
 
