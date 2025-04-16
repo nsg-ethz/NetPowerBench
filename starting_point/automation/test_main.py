@@ -111,7 +111,7 @@ def configure_ports(metadata, conf_cmd): #Former push_cmd_over_serial
     print("Sending command was successful\n")
     return
 
-def get_randomized_port_selection(metadata, user_confirm, one_per_pair = True): 
+def get_randomized_port_selection(metadata, one_per_pair = True): 
     """
     Gives a list that contains as element a randomized selection of ports to enable.
 
@@ -134,6 +134,7 @@ def get_randomized_port_selection(metadata, user_confirm, one_per_pair = True):
         print('Random seed is set to:\t {}'.format(seed))
         random.seed(seed)
 
+    user_confirm = metadata['user_confirm']
     ports = metadata['all_ports']
     iterations = []
 
@@ -378,6 +379,7 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
         experiment_type      = exp_type,
         port_type            = port_type,
         port_speed           = port_speed, 
+        user_confirm         = user_confirm,
         seed                 = meta_config['random_seed'],
         needs_commit         = meta_config['DUT']['needs_commit'],
         manual_speed_setting = meta_config['DUT']['manual_speed_setting'],
@@ -425,7 +427,7 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
         # Get the list with the ports for each iteration (one per pair based on case)
         one_per_pair = exp_type == 'switch'
         try: 
-            ports_per_iteration = get_randomized_port_selection(metadata, user_confirm, one_per_pair)
+            ports_per_iteration = get_randomized_port_selection(metadata, one_per_pair)
         except ValueError as err:
             print(err)
             return
