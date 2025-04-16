@@ -109,7 +109,7 @@ def get_log_path(metadata, measurement_data):
     """
     Returns the log path for logging the experiment
     """
-    workspace = get_parent_directory()
+    workspace = get_workspace_directory()
     log_name = get_log_name(metadata, measurement_data)
     dut_type = metadata['dut_type']
     device = metadata['device']
@@ -123,7 +123,7 @@ def start_traffic(metadata, measurement_data):
     """
     Starts traffic generation
     """
-    workspace = get_parent_directory()
+    workspace = get_workspace_directory()
     location = os.path.join(workspace, "traffic_gen", "traffic_gen.py")
     total_time = str(metadata['measurement_time_s'] + metadata['configuration_time_s'])
     bandwidth = str(measurement_data['bandwidth_gbps'])
@@ -190,7 +190,7 @@ def check_cwd():
     if cwd_name != 'automation':
         raise Exception("Check working directory. Please run from the automation directory")
 
-def get_parent_directory():
+def get_workspace_directory(): 
     """
     Returns the parent of the directory the script is run from.
     """

@@ -256,7 +256,7 @@ def run_pinpoint(metadata):
 
     config_path = Path('..','devices',device)
     config = load_yml(config_path / 'config.yml')
-    workspace = get_parent_directory()
+    workspace = get_workspace_directory()
     Path(workspace / 'data' / 'log').mkdir(parents=True, exist_ok=True)
 
     # Start an extra process to run the script
@@ -280,7 +280,7 @@ def verify_pinpoint():
     """
 
     # Check whether there are any output lines in the log
-    workspace = get_parent_directory()
+    workspace = get_workspace_directory()
     num_lines = sum(1 for line in open(os.path.join(workspace, "data", "log", "pinpoint.log")))
     if num_lines <= 3:
         print("Pinpoint issue detected.")
@@ -299,7 +299,7 @@ def save_pinpoint_log(log_path):
         None
     """
 
-    workspace = get_parent_directory()
+    workspace = get_workspace_directory()
     log_path.mkdir(parents=True, exist_ok=True)
     shutil.copy2(
         workspace / "data" / "log" / 'pinpoint.log',
@@ -478,7 +478,7 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
         
         print("Reset ports...")
         reset_command = get_port_config(metadata, 'disable')
-        configure_ports(metadata, reset_command)
+        # configure_ports(metadata, reset_command)
         print("Experiment done\n")
         return
     else:
