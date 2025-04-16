@@ -1,6 +1,7 @@
 ports:
   QSFP28:
     ids:
+      - 36
       - 1
       - 2
       - 3
@@ -11,46 +12,48 @@ ports:
       - 8
       - 9
       - 10
-      # - 11
-      # - 12
-      # - 13
-      # - 14
-      # - 15
-      # - 16
-      # - 17
-      # - 18
-      # - 19
-      # - 20
-      # - 21
-      # - 22
-      # - 23
-      # - 24
-      # - 25
-      # - 26
-      # - 27
-      # - 28
-      # - 29
-      # - 30
-      # - 31
-      # - 32
-      # - 33
-      # - 34
-      # - 35
-      # - 36
+      - 11
+      - 12
+      - 13
+      - 14
+      - 15
+      - 16
+      - 17
+      - 18
+      - 19
+      - 20
+      - 21
+      - 22
+      - 23
+      - 24
+      - 25
+      - 26
+      - 27
+      - 28
+      - 29
+      - 30
+      - 31
+      - 32
+      - 33
+      - 34
+      - 35
     speeds:
       100G:
         speed_label: 100000   
         interface_label: Ethernet 1/PORT
     commands:
+      system:
+        - system jumbomtu 6000
       snake-test:
         - vlan VLAN_NUMBER
         - exit
         - interface INTERFACE_LABEL
+        - no shutdown
         - switchport
         - switchport mode access
         - switchport access vlan VLAN_NUMBER
         - mtu 6000
-        - speed SPEED
+        - speed SPEED_LABEL
         - exit
       enable:
         - interface INTERFACE_LABEL

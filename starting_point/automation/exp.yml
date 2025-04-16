@@ -1,10 +1,12 @@
 device_id: ciscoNexus9336-FX2
 exp:
-  - base
-  - idle
+  # - base
+  # - idle 
+  # - switch
+  # - trx
+  - snake-test
 speed:
   - 100G
-  - 400G
 port_type: QSFP28
-repeats: 2
+repeats: 1
 user_confirm: False

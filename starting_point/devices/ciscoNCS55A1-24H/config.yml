@@ -16,7 +16,7 @@ random_seed:                  # leave empty for uncontrolled seed
 
 # External dependencies
 pinpoint:
-  binary: "/local/home/jacobr/workspace/pinpoint/build/pinpoint"
+  binary: "/local/home/psteinebrunn/pinpoint/build/pinpoint"
   workload: # currently unused
 serial_port: "/dev/ttyUSB0"
 baudrate: 115200
