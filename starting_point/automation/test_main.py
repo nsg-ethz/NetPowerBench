@@ -31,7 +31,6 @@ def get_port_config(metadata, config_type, port_list = None):
     # Load variables from metadata
     port_file = metadata['port_file']
     port_type = metadata['port_type']
-    port_speed = metadata['port_speed']
     device = metadata['device']
     needs_commit = metadata['needs_commit']
     if port_list == None:
@@ -50,18 +49,18 @@ def get_port_config(metadata, config_type, port_list = None):
     else:
         raise ValueError('Invalid `config_type`. Valid options are: %s'.format(','.join(valid_config_types)))
 
-    if port_speed not in port_data['ports'][port_type]['speeds']:
-        raise ValueError('Invalid `speed`: {}. \nAvailable options for this router model are: {}'.format(port_speed,port_data['ports'][port_type]['speeds'].keys()))
     
+    config = 'conf t\n'
 
     if OPS == 'system':
-        config = 'conf t\n'
-
         for CMD in port_data['ports'][port_type]['commands'][OPS]:
             config += CMD
             config += '\n'
 
     else:
+        port_speed = metadata['port_speed']
+        if port_speed not in port_data['ports'][port_type]['speeds']:
+            raise ValueError('Invalid `speed`: {}. \nAvailable options for this router model are: {}'.format(port_speed,port_data['ports'][port_type]['speeds'].keys()))
         port_counter = 0
 
         for PORT in port_list:
@@ -353,7 +352,7 @@ def measure_and_store(metadata, measurement_data):
 
 
 
-def run_test(device_id, exp_type, port_speed, port_type, metadata): # Former main
+def run_test(device_id, exp_type, port_speed, metadata): # Former main
     """
     Executes a test on the specified device with given experiment parameters.
 
@@ -361,21 +360,21 @@ def run_test(device_id, exp_type, port_speed, port_type, metadata): # Former mai
         device_id (str): Identifier or model name of the device under test.
         exp_type (str): Type of experiment to run ('base', 'idle', 'switch', 'trx', 'snake-test').
         port_speed (str): Speed of the ports
-        port_type (str): Type of port hardware used 
         metadata (dict):Dictionary containing all the metadata of the experiment
 
     Returns:
         None
     """
-    print(f"Running {exp_type} for {device_id} with port type {port_type} and port speed {port_speed}...")
-    
+
     # Put current parameters into metadata
     metadata['experiment_type'] = exp_type
-    metadata['port_type'] = port_type
     metadata['port_speed'] = port_speed 
     
     # Load variables
+    port_type = metadata['port_type']
     user_confirm = metadata['user_confirm']
+
+    print(f"Running {exp_type} for {device_id} with port type {port_type} and port speed {port_speed}...")
 
     measurement_data = {}
 
@@ -468,6 +467,9 @@ def run_test(device_id, exp_type, port_speed, port_type, metadata): # Former mai
 
 def prepare_experiments(params):
     print("Preparing experiment ...")
+    
+    device_id = params['device_id']
+    
     # Load metadata
     check_cwd()
     config_path = Path('..','devices',device_id)
@@ -490,6 +492,7 @@ def prepare_experiments(params):
         sampling_interval_ms = meta_config['sampling_interval_ms'],      # in milliseconds 
         baudrate             = meta_config['baudrate'],
         serial_port          = meta_config['serial_port'],
+        port_type    = params['port_type'],
         user_confirm = params['user_confirm']
 
     )
@@ -535,16 +538,15 @@ if __name__ == '__main__':
     device_id = params['device_id']
     exp = params['exp']
     speed = params['speed']
-    port_type = [params['port_type']]
     repeats_per_test = params['repeats']
 
     exp_list = [
-        [e, s, t]
-        for e, s, t in itertools.product(exp, speed, port_type)
+        [e, s]
+        for e, s in itertools.product(exp, speed)
         for _ in range(repeats_per_test)
     ]
     random.shuffle(exp_list)
 
-    for exp_type, port_speed, port_type in exp_list:
-        run_test(device_id, exp_type, port_speed, port_type, metadata)
+    for exp_type, port_speed in exp_list:
+        run_test(device_id, exp_type, port_speed,  metadata)
 
