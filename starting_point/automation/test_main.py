@@ -345,7 +345,7 @@ def measure_and_store(metadata, measurement_data):
 
 
 
-def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former main
+def run_test(device_id, exp_type, port_speed, port_type, metadata): # Former main
     """
     Executes a test on the specified device with given experiment parameters.
 
@@ -354,42 +354,21 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
         exp_type (str): Type of experiment to run ('base', 'idle', 'switch', 'trx', 'snake-test').
         port_speed (str): Speed of the ports
         port_type (str): Type of port hardware used 
-        user_confirm (bool): Whether a user confirmation is wished
+        metadata (dict):Dictionary containing all the metadata of the experiment
 
     Returns:
         None
     """
     print(f"Running {exp_type} for {device_id} with port type {port_type} and port speed {port_speed}...")
+    
+    # Put current parameters into metadata
+    metadata['experiment_type'] = exp_type
+    metadata['port_type'] = port_type
+    metadata['port_speed'] = port_speed 
+    
+    # Load variables
+    user_confirm = metadata['user_confirm']
 
-    # Load metadata
-    check_cwd()
-    config_path = Path('..','devices',device_id)
-    meta_config = Path('devices', device_id) 
-    try: meta_config = load_yml(config_path / 'config.yml')
-    except EncodingWarning:
-        print('Device config not found. Could not run test for {}'.format(device_id))
-        return
-    
-    print("Loading metadata...")
-    metadata = dict(
-        device               = meta_config['DUT']['id'],
-        port_file            = meta_config['DUT']['port_file'],
-        transceivers         = meta_config['DUT']['transceivers'],
-        dut_type             = meta_config['DUT']['type'],
-        experiment_type      = exp_type,
-        port_type            = port_type,
-        port_speed           = port_speed, 
-        user_confirm         = user_confirm,
-        seed                 = meta_config['random_seed'],
-        needs_commit         = meta_config['DUT']['needs_commit'],
-        manual_speed_setting = meta_config['DUT']['manual_speed_setting'],
-        measurement_time_s   = meta_config['measurement_time_s'],        # in seconds
-        configuration_time_s = meta_config['configuration_time_s'],      # in seconds
-        sampling_interval_ms = meta_config['sampling_interval_ms'],      # in milliseconds 
-        baudrate             = meta_config['baudrate'],
-        serial_port          = meta_config['serial_port']           
-    )
-    
     # Get the list of all ports
     port_file = metadata['port_file']
     port_type = metadata['port_type']
@@ -487,6 +466,38 @@ def run_test(device_id, exp_type, port_speed, port_type, user_confirm): # Former
         raise ValueError(f"Unknown experiment type: {exp_type}")
 
 
+def prepare_experiments(params):
+    # Load metadata
+    check_cwd()
+    config_path = Path('..','devices',device_id)
+    try: meta_config = load_yml(config_path / 'config.yml')
+    except EncodingWarning:
+        print('Device config not found. Could not run test for {}'.format(device_id))
+        return
+    
+    print("Loading metadata...")
+    metadata = dict(
+        device               = meta_config['DUT']['id'],
+        port_file            = meta_config['DUT']['port_file'],
+        transceivers         = meta_config['DUT']['transceivers'],
+        dut_type             = meta_config['DUT']['type'],
+        seed                 = meta_config['random_seed'],
+        needs_commit         = meta_config['DUT']['needs_commit'],
+        manual_speed_setting = meta_config['DUT']['manual_speed_setting'],
+        measurement_time_s   = meta_config['measurement_time_s'],        # in seconds
+        configuration_time_s = meta_config['configuration_time_s'],      # in seconds
+        sampling_interval_ms = meta_config['sampling_interval_ms'],      # in milliseconds 
+        baudrate             = meta_config['baudrate'],
+        serial_port          = meta_config['serial_port'],
+        user_confirm = params['user_confirm']
+
+    )
+    # Set up device 
+    cmd = get_port_config(metadata, 'system') # TODO: Adapt get_port_config
+    configure_ports(metadata, cmd) 
+
+    return metadata
+    
 
 
 if __name__ == '__main__':
@@ -506,13 +517,14 @@ if __name__ == '__main__':
     #
 
     params = get_experiment_params()
+
+    metadata = prepare_experiments(params)
     
     device_id = params['device_id']
     exp = params['exp']
     speed = params['speed']
     port_type = [params['port_type']]
     repeats_per_test = params['repeats']
-    user_confirm = params['user_confirm']
 
     exp_list = [
         [e, s, t]
@@ -522,5 +534,5 @@ if __name__ == '__main__':
     random.shuffle(exp_list)
 
     for exp_type, port_speed, port_type in exp_list:
-        run_test(device_id, exp_type, port_speed, port_type, user_confirm)
+        run_test(device_id, exp_type, port_speed, port_type, metadata)
 
