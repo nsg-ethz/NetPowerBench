@@ -1,10 +1,67 @@
+import sys
+import random
 from test_main import *
 
-# Load port list
-# Put everything needed into metadata
-# Reset all ports 
-# Get User confirmation that all ports are off
-# Chose a random set of port with possibility of controlled randomization
-# Get user confirmation for config 
-# Configure ports for snake test
-# Get user confirmation
+# This code uses the same functions to load data then the main code. 
+# The list of experiment types wanted corresponds here to the type of configurations, where a user confirmation is wanted.
+# The user confirmation is for the user to have enough time to check with an external tool (e.g.) whether the device has been configured successfully.
+# The mapping between the configuration, where a manual input is needed and the experiment types is the following
+#  - system configuration: reset_only
+#  - disable everything (reset): base and idle
+#  - enable a random selection of ports: switch and trx
+#  - configure ports for a snake-tese: snake-test
+# If all pass successfully in the end all ports will be disabled
+
+if __name__ == '__main__':
+    params = get_experiment_params()
+    metadata = prepare_experiments(params)
+    metadata['port_speed'] = params['speed'][0] # We just configure with the first speed listed
+    exp_list = params['exp']
+
+    print("The system should have been configured")
+    if 'reset_only':
+        usr1 = input("Continue? (y/n)\n")
+        if usr1.lower() == 'n':
+            sys.exit(0)
+
+    # Disabling all ports
+    reset_cmd = get_port_config(metadata, 'disable')
+    configure_ports(metadata, reset_cmd)
+    print("All ports should have been disabled.")
+    if 'base' in exp_list or 'idle' in exp_list:
+        usr2 = input("Continue? (y/n)\n")
+        if usr2.lower() == 'n':
+            sys.exit(0)
+
+    # Activating a random subset of the ports
+    all_ports = metadata['all_ports']
+    if 'seed' in metadata:
+        random.seed(metadata['seed'])
+
+    num_active_ports = random.randint(1, len(all_ports))
+    active_ports = random.sample(all_ports, num_active_ports)
+
+    activate_cmd = get_port_config(metadata, 'enable', active_ports)
+    configure_ports(metadata, activate_cmd)
+
+    print("The following ports should have been enabled:")
+    print(sorted(active_ports))
+    if 'switch' in exp_list or 'trx' in exp_list:
+        usr3 = input("Continue? (y/n)\n")
+        if usr3.lower() == 'n':
+            sys.exit(0)
+
+    # Reset again
+    configure_ports(metadata, reset_cmd)
+
+    # Configure for snake-test
+    snake_cmd = get_port_config(metadata, 'snake-test')
+    configure_ports(metadata, snake_cmd)
+    print("All ports should have been configured for snake-test.")
+    if 'snake-test' in exp_list:
+        usr4 = input("Continue? (y/n)\n")
+        if usr4.lower() == 'n':
+            sys.exit(0)
+
+    configure_ports(metadata, reset_cmd)
+    print("All ports have been disabled")
