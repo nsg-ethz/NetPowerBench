@@ -10,3 +10,7 @@ speed:
 port_type: QSFP28
 repeats: 1
 user_confirm: False
+disable_reset: False
+not_reconfigure: False
+
+# python test_main.py -d ciscoNexus9336-FX2 -e snake-test -s 100G -p QSFP28 -r 1 -u false --disable_reset true --not_reconfigure t

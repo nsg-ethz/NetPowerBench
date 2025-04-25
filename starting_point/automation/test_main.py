@@ -391,10 +391,13 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
     print(f"Starting {exp_type}...")
     if exp_type == 'base' or exp_type == 'idle':
 
-        # Disable all ports
-        disable_command = get_port_config(metadata, 'disable') 
-        configure_ports(metadata, disable_command)
-        print("Ports have been disabled")
+        if metadata['not_reconfigure']:
+            print("WARNING: Reconfiguration is disabled. It is assumed the device is already correctly configured")
+        else:
+            # Disable all ports
+            disable_command = get_port_config(metadata, 'disable') 
+            configure_ports(metadata, disable_command)
+            print("Ports have been disabled")
 
         # Run measurements and store them
         measure_and_store(metadata, measurement_data)
@@ -436,10 +439,13 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
         # Get randomized traffic settings
         traffic_settings_list = get_randomized_traffic_settings(metadata)
 
-        # Configure ports for snake tests
-        print("Configure ports...")
-        config_command = get_port_config(metadata, 'snake-test')
-        configure_ports(metadata, config_command)
+        if metadata['not_reconfigure']:
+            print("WARNING: Reconfiguration is disabled. It is assumed the device is already correctly configured")
+        else:
+            # Configure ports for snake tests
+            print("Configure ports...")
+            config_command = get_port_config(metadata, 'snake-test')
+            configure_ports(metadata, config_command)
 
         number_tests = len(traffic_settings_list)
         i = 1
@@ -460,6 +466,7 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
         else:
             print("Reset ports...")
             reset_command = get_port_config(metadata, 'disable')
+            
         # configure_ports(metadata, reset_command)
         print("Experiment done\n")
         return
@@ -496,7 +503,8 @@ def prepare_experiments(params):
         serial_port          = meta_config['serial_port'],
         port_type            = params['port_type'],
         user_confirm         = params['user_confirm'],
-        disable_reset        = params['disable_reset']
+        disable_reset        = params['disable_reset'],
+        not_reconfigure      = params['not_reconfigure']
 
     )
 
@@ -508,10 +516,13 @@ def prepare_experiments(params):
     port_data = load_yml(config_path / port_file)
     metadata['all_ports'] = port_data['ports'][port_type]['ids']
 
-    # Get command 
-    cmd = get_port_config(metadata, 'system')
-    # Set up device 
-    configure_ports(metadata, cmd) 
+    if metadata['not_reconfigure']:
+        print("WARNING: Reconfiguration is disabled. It is assumed the device is already correctly configured")
+    else:
+        # Get command 
+        cmd = get_port_config(metadata, 'system')
+        # Set up device 
+        configure_ports(metadata, cmd) 
     
     print("Preparation done\n")
     return metadata
