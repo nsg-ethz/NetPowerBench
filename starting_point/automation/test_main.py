@@ -455,9 +455,11 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
 
             stop_traffic(traffic_process)
             i += 1
-        
-        print("Reset ports...")
-        reset_command = get_port_config(metadata, 'disable')
+        if metadata['disable_reset']:
+            print("WARNING: Resetting ports after snake-test is disabled and could possibly lead to wrong results if tests are repeated. ")
+        else:
+            print("Reset ports...")
+            reset_command = get_port_config(metadata, 'disable')
         # configure_ports(metadata, reset_command)
         print("Experiment done\n")
         return
@@ -492,8 +494,9 @@ def prepare_experiments(params):
         sampling_interval_ms = meta_config['sampling_interval_ms'],      # in milliseconds 
         baudrate             = meta_config['baudrate'],
         serial_port          = meta_config['serial_port'],
-        port_type    = params['port_type'],
-        user_confirm = params['user_confirm']
+        port_type            = params['port_type'],
+        user_confirm         = params['user_confirm'],
+        disable_reset        = params['disable_reset']
 
     )
 
