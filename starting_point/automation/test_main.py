@@ -358,7 +358,7 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
 
     Args:
         device_id (str): Identifier or model name of the device under test.
-        exp_type (str): Type of experiment to run ('base', 'idle', 'switch', 'trx', 'snake-test').
+        exp_type (str): Type of experiment to run ('base', 'idle', 'switch', 'trx', 'snake-test', 'reset_only').
         port_speed (str): Speed of the ports
         metadata (dict):Dictionary containing all the metadata of the experiment
 
@@ -374,7 +374,15 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
     port_type = metadata['port_type']
     user_confirm = metadata['user_confirm']
 
-    print(f"Running {exp_type} for {device_id} with port type {port_type} and port speed {port_speed}...")
+    print(f"Running {exp_type} for {device_id} with port type {port_type} and port speed {port_speed}...\n")
+
+    if exp_type == 'reset_only':
+        print("Resetting device: Disabeling all ports...")
+        disable_command = get_port_config(metadata, 'disable') 
+        configure_ports(metadata, disable_command)
+        print("Ports have been disabled")
+        print("reset_only has been completed\n")
+        return
 
     measurement_data = {}
 
@@ -466,7 +474,7 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
         else:
             print("Reset ports...")
             reset_command = get_port_config(metadata, 'disable')
-            
+
         # configure_ports(metadata, reset_command)
         print("Experiment done\n")
         return

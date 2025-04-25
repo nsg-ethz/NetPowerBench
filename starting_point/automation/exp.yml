@@ -4,7 +4,8 @@ exp:
   # - idle 
   # - switch
   # - trx
-  - snake-test
+  # - snake-test
+  - reset_only
 speed:
   - 100G
 port_type: QSFP28
