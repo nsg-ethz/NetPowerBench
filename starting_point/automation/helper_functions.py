@@ -29,8 +29,8 @@ def parse_cli_args():
         -p, --port_type     : Type of port to use (e.g., QSFP28) (str)
         -r, --repeats       : Number of times to repeat each test (int, default: 1)
         -u, --user_confirm  : Manual user confirmation enabled/disabled (bool, default: True)
-        --disable_reset     : Disable device reset after snake-test (bool, default: False)
-        --not_reconfigure   : Disables configuration before running a base, idle or snake-test (bool, default: False)
+        --disable_reset     : Disable device reset after snake-test (bool, default: False). Note that this option does not make sense to have for all other cases.
+        --not_reconfigure   : Disables configuration before running a base, idle or snake-test (bool, default: False) Note that this option does not make sense to have for all other cases.
 
     Returns:
         dict: A dictionary containing all parsed arguments.
