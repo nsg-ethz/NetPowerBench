@@ -85,15 +85,16 @@ def get_port_config(metadata, config_type, port_list = None):
 
     return config
 
-def configure_ports(metadata, conf_cmd, longer_wait = False): #Former push_cmd_over_serial
+def configure_ports(metadata, conf_cmd, longer_wait = False, ports_impacted = None): #Former push_cmd_over_serial
     """
     Opens a serial port and sends the configuration command for the ports so they get configured
 
     Args: 
         metadata (dict): Dictionary containing all the metadata of the experiment
         configuration_command (str): Command that configures the ports as desired
-        longer_wait (bool): if set, the waiting time after sending the commands is increased. 
+        longer_wait (bool): If set, the waiting time after sending the commands is increased. 
                             This is recommended if the configuration time is longer like e.g for snake test
+        port_impacted (int): this gives the option of giving a better estimate of how long the configuration will take
         
     Returns: 
         None
@@ -112,9 +113,10 @@ def configure_ports(metadata, conf_cmd, longer_wait = False): #Former push_cmd_o
     # Send over command
     out_bytes = ser_port.write(conf_cmd.encode('utf-8'))
 
-    factor = 2.8 if longer_wait else 1.7
+    factor = 2.8 if longer_wait else 1
+    port_num = len(metadata['all_ports']) if ports_impacted == None else ports_impacted
 
-    sleeping_time = len(metadata['all_ports'])*factor
+    sleeping_time = port_num*factor
     time.sleep(sleeping_time)
 
     # If not successful raise error
@@ -435,7 +437,7 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
         for port_list in ports_per_iteration:
             measurement_data['port_list'] = port_list 
             enable_command = get_port_config(metadata, 'enable', port_list) 
-            configure_ports(metadata, enable_command)
+            configure_ports(metadata, enable_command, ports_impacted=len(port_list))
 
 
             print(f"Running {exp_type} {i} out of {number_tests} with {len(port_list)} ports")
@@ -444,7 +446,7 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
             measure_and_store(metadata, measurement_data)
 
             #   Reset ports
-            configure_ports(metadata, reset_command)
+            configure_ports(metadata, reset_command, ports_impacted=len(port_list))
             i += 1
 
         print("Experiment done\n")
