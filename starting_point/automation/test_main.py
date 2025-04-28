@@ -115,7 +115,7 @@ def configure_ports(metadata, conf_cmd, longer_wait = False, ports_impacted = No
     out_bytes = ser_port.write(conf_cmd.encode('utf-8'))
     
     if not no_wait:
-        factor = 2.8 if longer_wait else 1
+        factor = 2.8 if longer_wait else 1.5
         port_num = len(metadata['all_ports']) if ports_impacted == None else ports_impacted
 
         sleeping_time = port_num*factor
