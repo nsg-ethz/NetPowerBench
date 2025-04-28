@@ -85,7 +85,7 @@ def get_port_config(metadata, config_type, port_list = None):
 
     return config
 
-def configure_ports(metadata, conf_cmd, longer_wait = False, ports_impacted = None): #Former push_cmd_over_serial
+def configure_ports(metadata, conf_cmd, longer_wait = False, ports_impacted = None, no_wait = False): #Former push_cmd_over_serial
     """
     Opens a serial port and sends the configuration command for the ports so they get configured
 
@@ -95,6 +95,7 @@ def configure_ports(metadata, conf_cmd, longer_wait = False, ports_impacted = No
         longer_wait (bool): If set, the waiting time after sending the commands is increased. 
                             This is recommended if the configuration time is longer like e.g for snake test
         port_impacted (int): this gives the option of giving a better estimate of how long the configuration will take
+        no_wait (bool): gives option to have no waiting time after sending over the command
         
     Returns: 
         None
@@ -112,12 +113,13 @@ def configure_ports(metadata, conf_cmd, longer_wait = False, ports_impacted = No
 
     # Send over command
     out_bytes = ser_port.write(conf_cmd.encode('utf-8'))
+    
+    if not no_wait:
+        factor = 2.8 if longer_wait else 1
+        port_num = len(metadata['all_ports']) if ports_impacted == None else ports_impacted
 
-    factor = 2.8 if longer_wait else 1
-    port_num = len(metadata['all_ports']) if ports_impacted == None else ports_impacted
-
-    sleeping_time = port_num*factor
-    time.sleep(sleeping_time)
+        sleeping_time = port_num*factor
+        time.sleep(sleeping_time)
 
     # If not successful raise error
     if out_bytes == 0:
@@ -462,7 +464,7 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
             # Configure ports for snake tests
             print("Configure ports...")
             config_command = get_port_config(metadata, 'snake-test')
-            configure_ports(metadata, config_command, True)
+            configure_ports(metadata, config_command, longer_wait=True)
 
         number_tests = len(traffic_settings_list)
         i = 1
@@ -539,7 +541,7 @@ def prepare_experiments(params):
         # Get command 
         cmd = get_port_config(metadata, 'system')
         # Set up device 
-        configure_ports(metadata, cmd) 
+        configure_ports(metadata, cmd, no_wait=True) 
     
     print("Preparation done\n")
     return metadata
