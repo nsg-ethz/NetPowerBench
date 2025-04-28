@@ -11,7 +11,8 @@ from test_main import *
 #  - enable a random selection of ports: switch and trx
 #  - configure ports for a snake-tese: snake-test
 # If all pass successfully in the end all ports will be disabled
-# not_reconfigure will be ignored in this script.
+# disable_reset will lead to the configurations not being reset after configuring. 
+# repeats, user_confirm and not_reconfigure will be ignored in this script.
 
 if __name__ == '__main__':
     params = get_experiment_params()
@@ -53,8 +54,11 @@ if __name__ == '__main__':
         if usr3.lower() == 'n':
             sys.exit(0)
 
-        # Reset again
-        configure_ports(metadata, reset_cmd)
+        if not params['disable_reset']:
+            configure_ports(metadata, reset_cmd)
+            print("All ports have been disabled")
+        else:
+            print("Port will not be reset")
 
     if 'snake-test' in exp_list:
         # Configure for snake-test
@@ -65,5 +69,8 @@ if __name__ == '__main__':
         if usr4.lower() == 'n':
             sys.exit(0)
 
-    configure_ports(metadata, reset_cmd)
-    print("All ports have been disabled")
+        if not params['disable_reset']:
+            configure_ports(metadata, reset_cmd)
+            print("All ports have been disabled")
+        else:
+            print("Port will not be reset")
