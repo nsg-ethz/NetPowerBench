@@ -11,16 +11,18 @@ from test_main import *
 #  - enable a random selection of ports: switch and trx
 #  - configure ports for a snake-tese: snake-test
 # If all pass successfully in the end all ports will be disabled
+# not_reconfigure will be ignored in this script.
 
 if __name__ == '__main__':
     params = get_experiment_params()
+    exp_list = params['exp']
+    params['not_reconfigure'] = 'reset_only' not in exp_list # Using not reconfigure to disable system config independant of not reconfigure
     metadata = prepare_experiments(params)
     metadata['port_speed'] = params['speed'][0] # We just configure with the first speed listed
-    exp_list = params['exp']
     reset_cmd = get_port_config(metadata, 'disable')
 
-    print("The system should have been configured")
-    if 'reset_only':
+    if 'reset_only' in exp_list:
+        print("The system should have been configured")
         usr1 = input("Continue? (y/n)\n")
         if usr1.lower() == 'n':
             sys.exit(0)

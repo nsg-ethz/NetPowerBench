@@ -525,7 +525,7 @@ def prepare_experiments(params):
     metadata['all_ports'] = port_data['ports'][port_type]['ids']
 
     if metadata['not_reconfigure']:
-        print("WARNING: Reconfiguration is disabled. It is assumed the device is already correctly configured")
+        print("WARNING: Reconfiguration is disabled. It is assumed the device's system is already correctly configured")
     else:
         # Get command 
         cmd = get_port_config(metadata, 'system')
