@@ -63,7 +63,7 @@ if __name__ == '__main__':
     if 'snake-test' in exp_list:
         # Configure for snake-test
         snake_cmd = get_port_config(metadata, 'snake-test')
-        configure_ports(metadata, snake_cmd)
+        configure_ports(metadata, snake_cmd, True)
         print("All ports should have been configured for snake-test.")
         usr4 = input("Continue? (y/n)\n")
         if usr4.lower() == 'n':
@@ -73,4 +73,4 @@ if __name__ == '__main__':
             configure_ports(metadata, reset_cmd)
             print("All ports have been disabled")
         else:
-            print("Port will not be reset")
+            print("Ports will not be reset")

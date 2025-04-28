@@ -85,13 +85,15 @@ def get_port_config(metadata, config_type, port_list = None):
 
     return config
 
-def configure_ports(metadata, conf_cmd): #Former push_cmd_over_serial
+def configure_ports(metadata, conf_cmd, longer_wait = False): #Former push_cmd_over_serial
     """
     Opens a serial port and sends the configuration command for the ports so they get configured
 
     Args: 
         metadata (dict): Dictionary containing all the metadata of the experiment
         configuration_command (str): Command that configures the ports as desired
+        longer_wait (bool): if set, the waiting time after sending the commands is increased. 
+                            This is recommended if the configuration time is longer like e.g for snake test
         
     Returns: 
         None
@@ -109,6 +111,11 @@ def configure_ports(metadata, conf_cmd): #Former push_cmd_over_serial
 
     # Send over command
     out_bytes = ser_port.write(conf_cmd.encode('utf-8'))
+
+    factor = 2.8 if longer_wait else 1.7
+
+    sleeping_time = len(metadata['all_ports'])*factor
+    time.sleep(sleeping_time)
 
     # If not successful raise error
     if out_bytes == 0:
@@ -453,7 +460,7 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
             # Configure ports for snake tests
             print("Configure ports...")
             config_command = get_port_config(metadata, 'snake-test')
-            configure_ports(metadata, config_command)
+            configure_ports(metadata, config_command, True)
 
         number_tests = len(traffic_settings_list)
         i = 1
