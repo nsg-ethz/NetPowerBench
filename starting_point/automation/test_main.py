@@ -437,12 +437,12 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
         number_tests = len(ports_per_iteration)
         i = 1
         for port_list in ports_per_iteration:
+            print(f"Running {exp_type} {i} out of {number_tests} with {len(port_list)} ports")
             measurement_data['port_list'] = port_list 
             enable_command = get_port_config(metadata, 'enable', port_list) 
             configure_ports(metadata, enable_command, ports_impacted=len(port_list))
 
 
-            print(f"Running {exp_type} {i} out of {number_tests} with {len(port_list)} ports")
             
             #   Run measurements
             measure_and_store(metadata, measurement_data)
