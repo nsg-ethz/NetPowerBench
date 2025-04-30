@@ -46,7 +46,7 @@ if __name__ == '__main__':
         active_ports = random.sample(all_ports, num_active_ports)
 
         activate_cmd = get_port_config(metadata, 'enable', active_ports)
-        configure_ports(metadata, activate_cmd)
+        configure_ports(metadata, activate_cmd, ports_impacted=num_active_ports)
 
         print("The following ports should have been enabled:")
         print(sorted(active_ports))
@@ -55,7 +55,7 @@ if __name__ == '__main__':
             sys.exit(0)
 
         if not params['disable_reset']:
-            configure_ports(metadata, reset_cmd)
+            configure_ports(metadata, reset_cmd, num_active_ports)
             print("All ports have been disabled")
         else:
             print("Port will not be reset")
