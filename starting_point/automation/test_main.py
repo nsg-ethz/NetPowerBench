@@ -85,17 +85,15 @@ def get_port_config(metadata, config_type, port_list = None):
 
     return config
 
-def configure_ports(metadata, conf_cmd, longer_wait = False, ports_impacted = None, no_wait = False): #Former push_cmd_over_serial
+def configure_ports(metadata, conf_cmd, longer_wait = False, ports_impacted = None): #Former push_cmd_over_serial
     """
     Opens a serial port and sends the configuration command for the ports so they get configured
 
     Args: 
         metadata (dict): Dictionary containing all the metadata of the experiment
         configuration_command (str): Command that configures the ports as desired
-        longer_wait (bool): If set, the waiting time after sending the commands is increased. 
-                            This is recommended if the configuration time is longer like e.g for snake test
+        longer_wait (bool): If set, the waiting time after sending the commands is increased. This is recommended if the configuration time is longer like e.g for snake test
         port_impacted (int): this gives the option of giving a better estimate of how long the configuration will take
-        no_wait (bool): gives option to have no waiting time after sending over the command
         
     Returns: 
         None
@@ -107,6 +105,8 @@ def configure_ports(metadata, conf_cmd, longer_wait = False, ports_impacted = No
     # Read out information needed from metadata
     baudrate = metadata['baudrate']
     serial_port = metadata['serial_port']
+    short_factor = metadata['wait_factor_short_s']
+    long_factor = metadata['wait_factor_long_s']
 
     # Open serial port
     ser_port = serial.Serial(serial_port, baudrate, rtscts=False, dsrdtr=False)
@@ -114,12 +114,11 @@ def configure_ports(metadata, conf_cmd, longer_wait = False, ports_impacted = No
     # Send over command
     out_bytes = ser_port.write(conf_cmd.encode('utf-8'))
     
-    if not no_wait:
-        factor = 2.8 if longer_wait else 1.5
-        port_num = len(metadata['all_ports']) if ports_impacted == None else ports_impacted
+    factor = long_factor if longer_wait else short_factor
+    port_num = len(metadata['all_ports']) if ports_impacted == None else ports_impacted
 
-        sleeping_time = port_num*factor
-        time.sleep(sleeping_time)
+    sleeping_time = port_num*factor
+    time.sleep(sleeping_time)
 
     # If not successful raise error
     if out_bytes == 0:
@@ -517,6 +516,8 @@ def prepare_experiments(params):
         manual_speed_setting = meta_config['DUT']['manual_speed_setting'],
         measurement_time_s   = meta_config['measurement_time_s'],        # in seconds
         configuration_time_s = meta_config['configuration_time_s'],      # in seconds
+        wait_factor_short_s  = meta_config['wait_factor_short_s'],       # in seconds
+        wait_factor_long_s   = meta_config['wait_factor_long_s'],        # in seconds
         sampling_interval_ms = meta_config['sampling_interval_ms'],      # in milliseconds 
         baudrate             = meta_config['baudrate'],
         serial_port          = meta_config['serial_port'],
@@ -541,7 +542,7 @@ def prepare_experiments(params):
         # Get command 
         cmd = get_port_config(metadata, 'system')
         # Set up device 
-        configure_ports(metadata, cmd, no_wait=True) 
+        configure_ports(metadata, cmd, ports_impacted=0) 
     
     print("Preparation done\n")
     return metadata

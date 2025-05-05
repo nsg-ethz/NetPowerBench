@@ -10,6 +10,8 @@ DUT:
 # Measurement parameters
 measurement_time_s:   6      # in seconds
 configuration_time_s: 0      # in seconds, also serves as warm-up interval for the traffic generation
+wait_factor_short_s: 1.5  # Factors that gets multiplied with the number of ports impacted
+wait_factor_long_s: 2.8
 sampling_interval_ms: 1000     # in milliseconds
 random_seed:                  # leave empty for uncontrolled seed
 
