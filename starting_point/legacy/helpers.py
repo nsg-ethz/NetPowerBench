@@ -102,6 +102,12 @@ def run_pinpoint(metadata):
     # Make sure the output directory for pinpoint measurements exists
     Path(workspace / 'data' / 'log').mkdir(parents=True, exist_ok=True)
     if workload == None:
+        #print("---------- no workload ----------")
+        #print("Arguments:")
+        #print(str(measure_time + start_up_delay),
+        #    config['pinpoint']['binary'],
+        #    str(sampling_interval),
+        #    str(start_up_delay*1000))
         subprocess.run([os.path.join(
             workspace, 
             "command", 
@@ -110,7 +116,8 @@ def run_pinpoint(metadata):
             config['pinpoint']['binary'],
             str(sampling_interval),
             str(start_up_delay*1000)
-        ])
+        ], check=True)
+        #print("-------- got past the check----")
     else: 
         assert(type(workload) == str)
         subprocess.run([os.path.join(workspace, "command", "pinpoint_workload.sh"), str(workload)])

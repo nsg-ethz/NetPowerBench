@@ -581,9 +581,9 @@ if __name__ == '__main__':
     # exp = ['switch','trx']
     # exp = ['trx']
     # exp = ['switch']
-    exp = ['base']
+    # exp = ['base']
     # exp = ['idle']
-    # exp = ['snake-test']
+    exp = ['snake-test']
     speed = ['100G'] # 400G
     # speed = ['400G'] # 400G
     port_type = ['QSFP28']
