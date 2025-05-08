@@ -1,0 +1,12 @@
+ports:
+  QSFP28:
+    ids:
+    speeds:
+      100G:
+        speed_label:    
+        interface_label: 
+    commands:
+      system:
+      snake-test:
+      enable:
+      disable:
