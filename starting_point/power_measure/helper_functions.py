@@ -191,10 +191,10 @@ def save_as_yml(metadata, measurement_data, destination, name, sort_keys = False
 
 def check_cwd():
     """ 
-    Checks whether we call the scripts in the correct directory (automation).
+    Checks whether we call the scripts in the correct directory (power_measure).
     """
     cwd_name = os.path.basename(os.getcwd())
-    if cwd_name != 'automation':
+    if cwd_name != 'power_measure':
         raise Exception("Check working directory. Please run from the automation directory")
 
 def get_workspace_directory(): 
