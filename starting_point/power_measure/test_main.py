@@ -190,9 +190,6 @@ def get_randomized_port_selection(metadata, one_per_pair = True):
 
 
 
-
-
-
 def get_randomized_traffic_settings(metadata): 
     """
     Gives a list that contains as an element randomized traffic settings
@@ -227,12 +224,13 @@ def get_randomized_traffic_settings(metadata):
     return iterations
 
 
-def save_traffic_output(metadata, output_file):
+def save_traffic_output(metadata, measurement_data, output_file):
     """
-    Extract the relevant outputs from the traffic generation and saves them
+    Extract the relevant outputs from the traffic generation and put them into metadata
 
     Args:
         metadata (dict): Dictionary containing all the metadata of the experiment
+        measurement_data (dict): Dictionary containing metadata specific to this measurement run
         output_file (str): Name of the file where the traffic output was stored
     
     Returns:
@@ -248,7 +246,7 @@ def save_traffic_output(metadata, output_file):
     else: # iperf3 traffic case
         BW_average = perftest_out['end']['sum']['bits_per_second']/1e9
 
-    metadata['bandwidth_reached_gbps'] = BW_average
+    measurement_data['bandwidth_reached_gbps'] = BW_average
 
     os.remove(output_file)
 
@@ -326,9 +324,9 @@ def save_pinpoint_log(log_path):
     print("Pinpoint log has been copied to power.log\n")
 
 
-def measure_and_store(metadata, measurement_data):
+def measure(metadata, measurement_data):
     """
-    Runs the measurements on the device and stores them in the respecitve log
+    Runs the measurements on the device 
 
     Args:
         metadata (dict): Dictionary containing all the metadata of the experiment
@@ -342,22 +340,38 @@ def measure_and_store(metadata, measurement_data):
     measurement_data['time'] = str(datetime.datetime.now()).split('.')[0]
     measurement_data['timestamp'] = int(datetime.datetime.now(datetime.timezone.utc).timestamp()*1e6)
 
+    # Run the pinpoint script while not successful
+    while True:
+        run_pinpoint(metadata)
+        if verify_pinpoint():
+            break
+
+    print("Measurements done")
+    
+    
+
+def log(metadata, measurement_data):
+    """
+    Stores the measurements respecitve log
+
+    Args:
+        metadata (dict): Dictionary containing all the metadata of the experiment
+        measurement_data (dict): Dictionary containing metadata specific to this measurement run
+    
+    Returns:
+        None
+    """
     # Get log path (with respective helper function)
     log_name = get_log_name(metadata, measurement_data)
     log_path = get_log_path(metadata, measurement_data)
     print(f"Log name: {log_name}")
     print(f"Stored at {log_path}")
 
-    # Run the pinpoint script while not successful
-    while True:
-        run_pinpoint(metadata)
-        if verify_pinpoint():
-            break
-    
     # Save output 
     save_pinpoint_log(log_path)
     save_as_yml(metadata, measurement_data, log_path, 'metadata.yml')
-    print("Measure and store done\n")
+    print("Logging done\n")
+
 
 
 
@@ -418,7 +432,8 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
             print("Ports have been disabled")
 
         # Run measurements and store them
-        measure_and_store(metadata, measurement_data)
+        measure(metadata, measurement_data)
+        log(metadata, measurement_data)
         print("Experiment done\n")
         return
     elif exp_type == 'switch' or exp_type == 'trx':
@@ -444,7 +459,8 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
 
             
             #   Run measurements
-            measure_and_store(metadata, measurement_data)
+            measure(metadata, measurement_data)
+            log(metadata, measurement_data)
 
             #   Reset ports
             configure_ports(metadata, reset_command, ports_impacted=len(port_list))
@@ -475,9 +491,10 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
             traffic_process = start_traffic(metadata, measurement_data)
 
             #   Run measurements
-            measure_and_store(metadata, measurement_data)
-
+            measure(metadata, measurement_data)
             stop_traffic(traffic_process)
+            save_traffic_output(metadata, measurement_data, 'perftest_out.json')
+            log(metadata, measurement_data)
             i += 1
         if metadata['disable_reset']:
             print("WARNING: Resetting ports after snake-test is disabled and could possibly lead to wrong results if tests are repeated. ")
