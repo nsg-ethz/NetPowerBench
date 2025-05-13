@@ -132,7 +132,7 @@ def get_randomized_port_selection(metadata, one_per_pair = True):
     """
     Gives a list that contains as element a randomized selection of ports to enable.
 
-    Meant for switch and trx
+    Meant for port and trx
 
     Args:
         metadata (dict): Dictionary containing all the metadata of the experiment
@@ -382,7 +382,7 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
 
     Args:
         device_id (str): Identifier or model name of the device under test.
-        exp_type (str): Type of experiment to run ('base', 'idle', 'switch', 'trx', 'snake-test', 'reset_only').
+        exp_type (str): Type of experiment to run ('base', 'idle', 'port', 'trx', 'snake-test', 'reset_only').
         port_speed (str): Speed of the ports
         metadata (dict):Dictionary containing all the metadata of the experiment
 
@@ -436,10 +436,10 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
         log(metadata, measurement_data)
         print("Experiment done\n")
         return
-    elif exp_type == 'switch' or exp_type == 'trx':
+    elif exp_type == 'port' or exp_type == 'trx':
 
         # Get the list with the ports for each iteration (one per pair based on case)
-        one_per_pair = exp_type == 'switch'
+        one_per_pair = exp_type == 'port'
         try: 
             ports_per_iteration = get_randomized_port_selection(metadata, one_per_pair)
         except ValueError as err:

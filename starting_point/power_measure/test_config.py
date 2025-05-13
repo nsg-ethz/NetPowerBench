@@ -8,7 +8,7 @@ from test_main import *
 # The mapping between the configuration that is tested and the experiment types is the following
 #  - system configuration: reset_only
 #  - disable everything (reset): base and idle
-#  - enable a random selection of ports: switch and trx
+#  - enable a random selection of ports: port and trx
 #  - configure ports for a snake-tese: snake-test
 # If all pass successfully in the end all ports will be disabled
 # disable_reset will lead to the configurations not being reset after configuring. 
@@ -36,7 +36,7 @@ if __name__ == '__main__':
         if usr2.lower() == 'n':
             sys.exit(0)
 
-    if 'switch' in exp_list or 'trx' in exp_list:
+    if 'port' in exp_list or 'trx' in exp_list:
         # Activating a random subset of the ports
         all_ports = metadata['all_ports']
         if 'seed' in metadata:
