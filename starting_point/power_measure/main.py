@@ -240,13 +240,20 @@ def save_traffic_output(metadata, measurement_data, output_file):
     # Load output file
     perftest_out = load_json(output_file)
 
+    bw = float(metadata['bandwidth_gbps']) 
+
     # Based on method save respective output
-    if float(metadata['bandwidth_gbps']) >= 2.5: # RDMA traffic case
+    if bw >= 2.5: # RDMA traffic case
         BW_average = perftest_out['results']['BW_average']
     else: # iperf3 traffic case
         BW_average = perftest_out['end']['sum']['bits_per_second']/1e9
 
     measurement_data['bandwidth_reached_gbps'] = BW_average
+
+    deviation = abs(BW_average - bw) / bw
+
+    if deviation > 0.10:
+        print (f"WARNING: Expected bandwidth was {bw} but only {BW_average} was reached. This could indicate an error in the device configuration or traffic generation. ")
 
     os.remove(output_file)
 
