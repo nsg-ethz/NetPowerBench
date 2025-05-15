@@ -224,12 +224,11 @@ def get_randomized_traffic_settings(metadata):
     return iterations
 
 
-def save_traffic_output(metadata, measurement_data, output_file):
+def save_traffic_output(measurement_data, output_file):
     """
     Extract the relevant outputs from the traffic generation and put them into metadata
 
     Args:
-        metadata (dict): Dictionary containing all the metadata of the experiment
         measurement_data (dict): Dictionary containing metadata specific to this measurement run
         output_file (str): Name of the file where the traffic output was stored
     
@@ -240,7 +239,7 @@ def save_traffic_output(metadata, measurement_data, output_file):
     # Load output file
     perftest_out = load_json(output_file)
 
-    bw = float(metadata['bandwidth_gbps']) 
+    bw = float(measurement_data['bandwidth_gbps']) 
 
     # Based on method save respective output
     if bw >= 2.5: # RDMA traffic case
@@ -498,7 +497,7 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
             #   Run measurements
             measure(metadata, measurement_data)
             stop_traffic(traffic_process)
-            save_traffic_output(metadata, measurement_data, 'perftest_out.json')
+            save_traffic_output(measurement_data, 'perftest_out.json')
             save_to_log(metadata, measurement_data)
             i += 1
         if metadata['disable_reset']:
