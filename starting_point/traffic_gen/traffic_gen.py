@@ -53,14 +53,14 @@ def traffic(duration, bandwidth, packet_size, busy_wait=True):
         print("\n \n")
         print(result2.communicate()[0].decode("utf-8"))
 
-        post_process = subprocess.Popen(f'sudo chmod 666 {workspace}/automation/perftest_out.json', shell=True, stdout=subprocess.PIPE)
+        post_process = subprocess.Popen(f'sudo chmod 666 {workspace}/power_measure/perftest_out.json', shell=True, stdout=subprocess.PIPE)
         post_process.wait()
 
     elif runner=='iperf3':
         
         print('Generating UDP traffic with iperf3...')
         
-        clean_process = subprocess.Popen(f'rm -f {workspace}/automation/perftest_out.json', shell=True, stdout=subprocess.PIPE)
+        clean_process = subprocess.Popen(f'rm -f {workspace}/power_measure/perftest_out.json', shell=True, stdout=subprocess.PIPE)
         clean_process.wait()
     
         result1 = subprocess.Popen(f'sudo ip netns exec ns1 iperf3 -s -D -B 192.168.1.1', shell=True, stdout=subprocess.PIPE)
@@ -70,7 +70,7 @@ def traffic(duration, bandwidth, packet_size, busy_wait=True):
         time.sleep(int(duration))
         subprocess.Popen(f'sudo ip netns exec ns1 pkill -HUP iperf3', shell=True, stdout=subprocess.PIPE)
         
-        post_process = subprocess.Popen(f'sudo chmod 666 {workspace}/automation/perftest_out.json', shell=True, stdout=subprocess.PIPE)
+        post_process = subprocess.Popen(f'sudo chmod 666 {workspace}/power_measure/perftest_out.json', shell=True, stdout=subprocess.PIPE)
         post_process.wait()
         
         

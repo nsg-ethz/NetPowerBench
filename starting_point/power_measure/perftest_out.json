@@ -21,10 +21,10 @@
 },
 "results": {
 "MsgSize": 65536,
-"n_iterations": 213632,
+"n_iterations": 8576,
 "BW_peak": 0.00,
-"BW_average": 28.00,
-"MsgRate": 0.053408,
-"CPU_util": 12.59
+"BW_average": 2.25,
+"MsgRate": 0.004288,
+"CPU_util": 12.68
 }
 }
