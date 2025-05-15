@@ -65,7 +65,7 @@ def traffic(duration, bandwidth, packet_size, busy_wait=True):
     
         result1 = subprocess.Popen(f'sudo ip netns exec ns1 iperf3 -s -D -B 192.168.1.1', shell=True, stdout=subprocess.PIPE)
         time.sleep(1)
-        result2 = subprocess.Popen(f'sudo ip netns exec ns2 iperf3 -u -B 192.168.1.2 -c 192.168.1.1 -b -J {bandwidth}G -l {packet_size} -t {duration} --logfile perftest_out.json', shell=True, stdout=subprocess.PIPE)
+        result2 = subprocess.Popen(f'sudo ip netns exec ns2 iperf3 -u -J -B 192.168.1.2 -c 192.168.1.1 -b {bandwidth}G -l {packet_size} -t {duration} --logfile perftest_out.json', shell=True, stdout=subprocess.PIPE)
         
         time.sleep(int(duration))
         subprocess.Popen(f'sudo ip netns exec ns1 pkill -HUP iperf3', shell=True, stdout=subprocess.PIPE)

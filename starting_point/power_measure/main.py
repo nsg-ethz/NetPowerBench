@@ -236,10 +236,10 @@ def save_traffic_output(measurement_data, output_file):
         None
     """
     print(f"Traffic output from {output_file} is stored...")
+    
+    bw = float(measurement_data['bandwidth_gbps']) 
     # Load output file
     perftest_out = load_json(output_file)
-
-    bw = float(measurement_data['bandwidth_gbps']) 
 
     # Based on method save respective output
     if bw >= 2.5: # RDMA traffic case
