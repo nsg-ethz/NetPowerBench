@@ -350,7 +350,7 @@ def measure(metadata, measurement_data):
     
     
 
-def log(metadata, measurement_data):
+def save_to_log(metadata, measurement_data):
     """
     Stores the measurements respecitve log
 
@@ -433,7 +433,7 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
 
         # Run measurements and store them
         measure(metadata, measurement_data)
-        log(metadata, measurement_data)
+        save_to_log(metadata, measurement_data)
         print("Experiment done\n")
         return
     elif exp_type == 'port' or exp_type == 'trx':
@@ -456,11 +456,9 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
             enable_command = get_port_config(metadata, 'enable', port_list) 
             configure_ports(metadata, enable_command, ports_impacted=len(port_list))
 
-
-            
             #   Run measurements
             measure(metadata, measurement_data)
-            log(metadata, measurement_data)
+            save_to_log(metadata, measurement_data)
 
             #   Reset ports
             configure_ports(metadata, reset_command, ports_impacted=len(port_list))
@@ -494,7 +492,7 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
             measure(metadata, measurement_data)
             stop_traffic(traffic_process)
             save_traffic_output(metadata, measurement_data, 'perftest_out.json')
-            log(metadata, measurement_data)
+            save_to_log(metadata, measurement_data)
             i += 1
         if metadata['disable_reset']:
             print("WARNING: Resetting ports after snake-test is disabled and could possibly lead to wrong results if tests are repeated. ")
