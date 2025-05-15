@@ -1,6 +1,6 @@
 import sys
 import random
-from power_measure.main import *
+from main import *
 
 # This code uses the same functions to load data then the main code. 
 # The list of experiment types wanted corresponds here to the type of configurations that are tested.
