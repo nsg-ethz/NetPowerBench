@@ -74,7 +74,10 @@ def traffic(duration, bandwidth, packet_size, busy_wait=True):
         post_process.wait()
         
         
-        
+def check_namespace(ns_name):
+    result = subprocess.run(f"sudo ip netns exec {ns_name} echo '{ns_name} exists'",shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    return result.returncode == 0
+
 
 def setup():
     result = subprocess.run("sudo modprobe cpufreq_userspace",shell=True,capture_output=True, text=True)
@@ -87,6 +90,25 @@ def setup():
     print(result.stdout)
     print("fix cpu performance")
 
+    try:
+        ns1_exists = check_namespace("ns1")
+        ns2_exists = check_namespace("ns2")
+
+        if not (ns1_exists and ns2_exists):
+            raise RuntimeError()
+        print("Namespace existence check successful")
+
+    except Exception:
+        setup = subprocess.run("sudo bash ../traffic_gen/setup.sh",shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+        ns1_exists = check_namespace("ns1")
+        ns2_exists = check_namespace("ns2")
+
+        if not (ns1_exists and ns2_exists):
+            print("WARNING: Setup of network namespaces failed")
+        else:
+            print("Network namespaces created successfully")
+        
 
 
 
