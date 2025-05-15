@@ -122,7 +122,7 @@ def get_log_path(metadata, measurement_data):
     device = metadata['device']
     time = str(measurement_data['time']).replace(' ','_').split('.')[0]
 
-    log_path = Path(workspace, 'data', dut_type, device, 'static', log_name, time)
+    log_path = Path(workspace, 'data', dut_type, device, log_name, time)
     return log_path
 
 
