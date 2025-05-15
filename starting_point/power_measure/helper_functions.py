@@ -24,7 +24,7 @@ def parse_cli_args():
 
     Recognized arguments:
         -d, --device_id     : Identifier for the device to test (str)
-        -e, --exp           : List of experiment types to run (e.g., base, idle, switch) (list of str)
+        -e, --exp           : List of experiment types to run (e.g., base, idle, port) (list of str)
         -s, --speed         : List of port speeds to test (e.g., 100G, 400G) (list of str)
         -p, --port_type     : Type of port to use (e.g., QSFP28) (str)
         -r, --repeats       : Number of times to repeat each test (int, default: 1)
@@ -37,7 +37,7 @@ def parse_cli_args():
     """
     parser = argparse.ArgumentParser(description='Run device experiment tests.')
     parser.add_argument('-d', '--device_id', type=str, help='Device identifier')
-    parser.add_argument('-e', '--exp', nargs='+', help='Experiment types (e.g., base idle switch)')
+    parser.add_argument('-e', '--exp', nargs='+', help='Experiment types (e.g., base idle port)')
     parser.add_argument('-s', '--speed', nargs='+', help='Speeds to test (e.g., 100G 400G)')
     parser.add_argument('-p', '--port_type', type=str, help='Port type (e.g., QSFP28)')
     parser.add_argument('-r', '--repeats', type=int, default=1, help='Number of repeats per test')
@@ -96,7 +96,7 @@ def get_log_name(metadata, measurement_data):
             log_name = exp_type
         case 'idle':
             log_name = f'{exp_type}_{port_type}'
-        case 'switch':
+        case 'port':
             number_ports = len(measurement_data['port_list'])
             log_name = f'{exp_type}_{port_type}_{speed_label}_{number_ports}p'
         case 'trx':
