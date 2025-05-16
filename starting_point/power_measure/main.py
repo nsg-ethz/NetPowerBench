@@ -275,6 +275,8 @@ def run_pinpoint(metadata):
     sampling_interval   = metadata['sampling_interval_ms']
     start_up_delay      = metadata['configuration_time_s']
     device              = metadata['device']
+    counter_1           = metadata['counter_1']
+    counter_2           = metadata['counter_2']
 
     config_path = Path('..','devices',device)
     config = load_yml(config_path / 'config.yml')
@@ -286,7 +288,9 @@ def run_pinpoint(metadata):
             str(measure_time + start_up_delay),
             config['pinpoint']['binary'],
             str(sampling_interval),
-            str(start_up_delay*1000)
+            str(start_up_delay*1000),
+            counter_1,
+            counter_2
         ])
     print("Pinpoint done\n")
 
@@ -542,6 +546,8 @@ def prepare_experiments(params):
         sampling_interval_ms = meta_config['sampling_interval_ms'],      # in milliseconds 
         baudrate             = meta_config['baudrate'],
         serial_port          = meta_config['serial_port'],
+        counter_1            = meta_config['counter_1'],
+        counter_2            = meta_config['counter_2'],
         port_type            = params['port_type'],
         user_confirm         = params['user_confirm'],
         disable_reset        = params['disable_reset'],

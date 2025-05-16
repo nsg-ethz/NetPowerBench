@@ -1,17 +1,17 @@
 device_id: ciscoNexus9336-FX2
 exp:
   - base
-  - idle 
-  - port
-  - trx
-  - snake-test
-  - reset_only
+  # - idle 
+  # - port
+  # - trx
+  # - snake-test
+  # - reset_only
 speed:
   - 100G
 port_type: QSFP28
-repeats: 5
+repeats: 1
 user_confirm: False
-disable_reset: False
+disable_reset: True
 not_reconfigure: True
 
 # python test_main.py -d ciscoNexus9336-FX2 -e snake-test -s 100G -p QSFP28 -r 1 -u false --disable_reset true --not_reconfigure t

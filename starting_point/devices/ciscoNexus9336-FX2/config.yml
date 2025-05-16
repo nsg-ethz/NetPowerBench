@@ -22,3 +22,6 @@ pinpoint:
   workload: # currently unused
 serial_port: "/dev/ttyUSB0"
 baudrate: 9600
+counter_1: mcp:dev0ch1
+counter_2: mcp:dev0ch2
+
