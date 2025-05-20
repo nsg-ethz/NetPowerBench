@@ -1,5 +1,5 @@
 ports:
-  QSFP:
+  QSFP28:
     ids:
       - 1
       - 2 
@@ -48,6 +48,8 @@ ports:
         interface_label: Ethernet PORT/1
 
     commands:
+      system:
+        - system jumbomtu 6000
       snake-test:
         - interface INTERFACE_LABEL
         - no shutdown
@@ -76,8 +78,13 @@ ports:
       400G:
         speed_label: 400g
         interface_label: Ethernet PORT/1
+      100G:
+        speed_label: 100g
+        interface_label: Ethernet PORT/1
 
     commands:
+      system:
+        - system jumbomtu 6000
       snake-test:
         - interface INTERFACE_LABEL
         - no shutdown
