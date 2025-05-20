@@ -89,23 +89,24 @@ def get_log_name(metadata, measurement_data):
     exp_type = metadata['experiment_type']
     port_type = metadata['port_type']
     speed_label = metadata['port_speed']
+    transceiver = metadata['transceivers']
     
 
     match exp_type:
         case 'base':
             log_name = exp_type
         case 'idle':
-            log_name = f'{exp_type}_{port_type}'
+            log_name = f'{exp_type}_{port_type}_{transceiver}'
         case 'port':
             number_ports = len(measurement_data['port_list'])
-            log_name = f'{exp_type}_{port_type}_{speed_label}_{number_ports}p'
+            log_name = f'{exp_type}_{port_type}_{transceiver}_{speed_label}_{number_ports}p'
         case 'trx':
             number_ports = len(measurement_data['port_list'])
-            log_name = f'{exp_type}_{port_type}_{speed_label}_{number_ports}p'
+            log_name = f'{exp_type}_{port_type}_{transceiver}_{speed_label}_{number_ports}p'
         case 'snake-test':
             packet_size = measurement_data['packet_size_bytes']
             bandwidth = measurement_data['bandwidth_gbps']
-            log_name = f'{exp_type}_{port_type}_{speed_label}_{packet_size}B_{bandwidth}Gbps'
+            log_name = f'{exp_type}_{port_type}_{transceiver}_{speed_label}_{packet_size}B_{bandwidth}Gbps'
         case _:
             raise ValueError(f"Unknown experiment type: {exp_type}")
     
