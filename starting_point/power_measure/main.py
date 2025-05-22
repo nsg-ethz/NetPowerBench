@@ -53,9 +53,10 @@ def get_port_config(metadata, config_type, port_list = None):
     config = 'conf t\n'
 
     if OPS == 'system':
-        for CMD in port_data['ports'][port_type]['commands'][OPS]:
-            config += CMD
-            config += '\n'
+        if port_data['ports'][port_type]['commands'][OPS] != None:
+            for CMD in port_data['ports'][port_type]['commands'][OPS]:
+                config += CMD
+                config += '\n'
 
     else:
         port_speed = metadata['port_speed']
@@ -538,7 +539,6 @@ def prepare_experiments(params):
         dut_type             = meta_config['DUT']['type'],
         seed                 = meta_config['random_seed'],
         needs_commit         = meta_config['DUT']['needs_commit'],
-        manual_speed_setting = meta_config['DUT']['manual_speed_setting'],
         measurement_time_s   = meta_config['measurement_time_s'],        # in seconds
         configuration_time_s = meta_config['configuration_time_s'],      # in seconds
         wait_factor_short_s  = meta_config['wait_factor_short_s'],       # in seconds
