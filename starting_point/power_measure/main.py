@@ -17,7 +17,7 @@ def get_port_config(metadata, config_type, port_list = None):
     
     Args:
         metadata (dict): Dictionary containing all the metadata
-        config_type (str): The way the ports should get configured
+        config_type (str): The way the ports should get configured ('enable','disable','snake-test','system', 'disable_all')
         port_list (list): The ports that should get configured (if None, all ports will get configured)
         ssh (bool): Whether the ports will be configured over a ssh connection.
 
@@ -28,11 +28,19 @@ def get_port_config(metadata, config_type, port_list = None):
 
     print(f"Generating port configuration for type {config_type} ...")
 
+    # Check validity of arguments 
+    valid_config_types = ['enable','disable','snake-test','system', 'disable_all']
+    if config_type in valid_config_types:
+        OPS = config_type
+    else:
+        raise ValueError('Invalid `config_type`. Valid options are: %s'.format(','.join(valid_config_types)))
+
     # Load variables from metadata
     port_file = metadata['port_file']
     port_type = metadata['port_type']
     device = metadata['device']
     needs_commit = metadata['needs_commit']
+
     if port_list == None:
         port_list = metadata['all_ports']
 
@@ -41,15 +49,6 @@ def get_port_config(metadata, config_type, port_list = None):
     # Load port data
     port_data = load_yml(config_path / port_file) 
 
-
-    # Check validity of arguments 
-    valid_config_types = ['enable','disable','snake-test','system']
-    if config_type in valid_config_types:
-        OPS = config_type
-    else:
-        raise ValueError('Invalid `config_type`. Valid options are: %s'.format(','.join(valid_config_types)))
-
-    
     config = 'conf t\n'
 
     if OPS == 'system':
@@ -58,18 +57,34 @@ def get_port_config(metadata, config_type, port_list = None):
                 config += CMD
                 config += '\n'
 
+    elif OPS == 'disable_all':
+        port_type_list = port_data['ports'].keys()
+        count_ports = 0
+        for PT in port_type_list:
+            default = port_data['ports'][PT]['speeds']['default']
+            speed = port_data['ports'][PT]['speeds'][default]['speed_label']
+            interface = port_data['ports'][PT]['speeds'][default]['interface_label']
+            
+            port_list = port_data['ports'][PT]['ids']
+            for PORT in port_list:
+                for CMD in port_data['ports'][port_type]['commands']['disable']:
+                    config += CMD.replace("INTERFACE_LABEL",interface).replace("PORT",str(PORT)).replace("SPEED_LABEL",str(speed))
+                    config += '\n'
+                count_ports += 1
+        
+        metadata['total_port_number'] = count_ports
+
     else:
-        port_speed = metadata['port_speed']
         if port_speed not in port_data['ports'][port_type]['speeds']:
             raise ValueError('Invalid `speed`: {}. \nAvailable options for this router model are: {}'.format(port_speed,port_data['ports'][port_type]['speeds'].keys()))
         port_counter = 0
+        
+        speed = port_data['ports'][port_type]['speeds'][port_speed]['speed_label']
+        interface = port_data['ports'][port_type]['speeds'][port_speed]['interface_label']
 
         for PORT in port_list:
             if PORT not in port_data['ports'][port_type]['ids']:
                 raise ValueError('Port number {} not listed among the {} ports.'.format(PORT,port_type))
-
-            speed = port_data['ports'][port_type]['speeds'][port_speed]['speed_label']
-            interface = port_data['ports'][port_type]['speeds'][port_speed]['interface_label']
 
             for CMD in port_data['ports'][port_type]['commands'][OPS]:
                 vlan_number = 100+int(port_counter/2)
@@ -439,21 +454,22 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
         if metadata['not_reconfigure']:
             print("\n" + "*" * 80)
             print("WARNING: Reconfiguration is DISABLED.")
-            print("It is assumed the device is already correctly configured, otherwise this might lead to wrong results.")
+            print("It is assumed that all ports are disabled, otherwise this might lead to wrong results")
             print("*" * 80 + "\n")
 
-        else:
-            # Disable all ports
-            disable_command = get_port_config(metadata, 'disable') 
-            configure_ports(metadata, disable_command)
-            print("Ports have been disabled")
-
+        
         # Run measurements and store them
         measure(metadata, measurement_data)
         save_to_log(metadata, measurement_data)
         print("Experiment done\n")
         return
     elif exp_type == 'port' or exp_type == 'trx':
+
+        if metadata['not_reconfigure']:
+            print("\n" + "*" * 80)
+            print("WARNING: Reconfiguration is DISABLED.")
+            print("It is assumed that all ports are disabled, otherwise this might lead to wrong results")
+            print("*" * 80 + "\n")
 
         # Get the list with the ports for each iteration (one per pair based on case)
         one_per_pair = exp_type == 'port'
@@ -463,7 +479,6 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
             print(err)
             return
 
-        reset_command = get_port_config(metadata, 'disable')
 
         number_tests = len(ports_per_iteration)
         i = 1
@@ -478,6 +493,7 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
             save_to_log(metadata, measurement_data)
 
             #   Reset ports
+            reset_command = get_port_config(metadata, 'disable', port_list)
             configure_ports(metadata, reset_command, ports_impacted=len(port_list))
             i += 1
 
@@ -550,10 +566,11 @@ def prepare_experiments(params):
     metadata = dict(
         device               = meta_config['DUT']['id'],
         port_file            = meta_config['DUT']['port_file'],
+        port_type            = params['port_type'],
         transceivers         = meta_config['DUT']['transceivers'],
         dut_type             = meta_config['DUT']['type'],
-        seed                 = meta_config['random_seed'],
         needs_commit         = meta_config['DUT']['needs_commit'],
+        seed                 = meta_config['random_seed'],
         measurement_time_s   = meta_config['measurement_time_s'],        # in seconds
         configuration_time_s = meta_config['configuration_time_s'],      # in seconds
         wait_factor_short_s  = meta_config['wait_factor_short_s'],       # in seconds
@@ -563,7 +580,6 @@ def prepare_experiments(params):
         serial_port          = meta_config['serial_port'],
         counter_1            = meta_config['counter_1'],
         counter_2            = meta_config['counter_2'],
-        port_type            = params['port_type'],
         user_confirm         = params['user_confirm'],
         disable_reset        = params['disable_reset'],
         not_reconfigure      = params['not_reconfigure']
@@ -588,6 +604,11 @@ def prepare_experiments(params):
         cmd = get_port_config(metadata, 'system')
         # Set up device 
         configure_ports(metadata, cmd, ports_impacted=0) 
+
+        # Get full reset command
+        cmd = get_port_config(metadata, 'disable_all')
+        # Reset all port types
+        configure_ports(metadata, cmd, ports_impacted=metadata['total_port_number'])
     
     print("Preparation done\n")
     return metadata
