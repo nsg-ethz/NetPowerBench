@@ -640,11 +640,14 @@ if __name__ == '__main__':
     speed = params['speed']
     repeats_per_test = params['repeats']
 
-    exp_list = [
-        [e, s]
-        for e, s in itertools.product(exp, speed)
-        for _ in range(repeats_per_test)
-    ]
+
+    exp_list = []
+    for e, s in itertools.product(exp, speed):
+        if e =='reset_only':
+            exp_list.append([e, s])  
+        else:
+            exp_list.extend([[e, s]] * repeats_per_test)  
+
     random.shuffle(exp_list)
 
     for exp_type, port_speed in exp_list:
