@@ -206,14 +206,3 @@ def get_workspace_directory():
     cwd = os.getcwd()
     workspace = os.path.dirname(cwd)
     return Path(workspace)
-
-def check_existing_directory(target_directory):
-    """
-    Checks whether a directory with name target_directory exists and gives a warning to the user if it does.
-    """
-    if (os.path.exists(target_directory) is True):
-        i = input("WARNING: Directory {} exists... potentially override stored data in this directory? (y/n)".format(target_directory))
-        if (i == 'y'):
-            return
-        else:
-            raise Exception("User input")
