@@ -1,17 +1,17 @@
 # DUT parameters
 DUT:
-  id: "ciscoNCS55A1-24H"  # no space!
+  id: "ciscoNCS55A1-24H"
   port_file: "ports.yml"
-  transceivers: "PCC" # Passive Copper Cable
+  transceivers: "PCC"
   type: "router"
-  # OS requirements
-  needs_commit: True          # commit to apply configs
-  manual_speed_setting: True  # two steps to change port speeds
-
+  needs_commit: True # Does OS require commit to apply configs
+  
 # Measurement parameters
-measurement_time_s:   30      # in seconds
-configuration_time_s: 15      # in seconds
-sampling_interval_ms: 100     # in milliseconds
+measurement_time_s: 30   # in seconds
+configuration_time_s: 0      # in seconds, also serves as warm-up interval for the traffic generation
+wait_factor_short_s: 0.1  # Factors that gets multiplied with the number of ports impacted
+wait_factor_long_s: 0.2
+sampling_interval_ms: 100   # in milliseconds
 random_seed:                  # leave empty for uncontrolled seed
 
 # External dependencies
@@ -20,3 +20,5 @@ pinpoint:
   workload: # currently unused
 serial_port: "/dev/ttyUSB0"
 baudrate: 115200
+counter_1: mcp:dev0ch1
+counter_2: mcp:dev0ch2

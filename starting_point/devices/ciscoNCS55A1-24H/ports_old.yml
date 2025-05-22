@@ -1,7 +1,8 @@
 ports:
-  QSFP28:
+  PCC:
     ids:
       - 0
+      - 1
       - 2
       - 3
       - 4
@@ -11,20 +12,19 @@ ports:
       - 8
       - 9
       - 10
-      - 11
-      - 12
-      - 13
-      - 14
-      - 15
-      - 16
-      - 17
-      - 18
-      - 19
-      - 20
-      - 21
-      - 22
+      # - 11
+      # - 12
+      # - 13
+      # - 14
+      # - 15
+      # - 16
+      # - 17
+      # - 18
+      # - 19
+      # - 20
+      # - 21
+      # - 22
       - 23
-      - 1
     speeds:
       10G:
         speed_label: 10g
@@ -40,7 +40,10 @@ ports:
         interface_label: HundredGigE 0/0/0/PORT
 
     commands:
-      system:
+      speed_config:
+        - controller optics 0/0/0/PORT
+        - speed SPEED_LABEL
+        - exit
       snake-test:
         - interface INTERFACE_LABEL
         - mtu 6000
@@ -56,17 +59,7 @@ ports:
         - exit
         - exit
         - exit
-        - controller optics 0/0/0/PORT
-        - speed SPEED_LABEL
-        - exit
-        - commit
-        - interface INTERFACE_LABEL
-        - no shutdown
-        - exit
       enable:
-        - controller optics 0/0/0/PORT
-        - speed SPEED_LABEL
-        - exit
         - interface INTERFACE_LABEL
         - no shutdown
         - exit

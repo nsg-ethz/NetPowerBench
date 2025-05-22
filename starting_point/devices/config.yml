@@ -5,8 +5,7 @@ DUT:
   transceivers: 
   type: 
   needs_commit:  # Does OS require commit to apply configs
-  manual_speed_setting: False  # two steps to change port speeds
-
+  
 # Measurement parameters
 measurement_time_s:         # in seconds
 configuration_time_s:       # in seconds, also serves as warm-up interval for the traffic generation

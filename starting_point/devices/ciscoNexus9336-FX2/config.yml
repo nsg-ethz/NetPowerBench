@@ -5,7 +5,6 @@ DUT:
   transceivers: "LR" # Passive Copper Cable
   type: "router"
   needs_commit: False  # Does OS require commit to apply configs
-  manual_speed_setting: False  # two steps to change port speeds
 
 # Measurement parameters
 measurement_time_s:   6      # in seconds
