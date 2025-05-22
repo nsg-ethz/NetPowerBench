@@ -253,8 +253,10 @@ def save_traffic_output(measurement_data, output_file):
     deviation = abs(BW_average - bw) / bw
 
     if deviation > 0.10:
-        print (f"WARNING: Expected bandwidth was {bw} but only {BW_average} was reached. This could indicate an error in the device configuration or traffic generation. ")
-
+        print("\n" + "*" * 80)
+        print(f"WARNING: Expected bandwidth was {bw} but only {BW_average} was reached.")
+        print("This could indicate an error in the device configuration or traffic generation. ")
+        print("*" * 80 + "\n")
     os.remove(output_file)
 
     print(f"Bandwidth reached: {BW_average}\n")
@@ -435,7 +437,11 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
     if exp_type == 'base' or exp_type == 'idle':
 
         if metadata['not_reconfigure']:
-            print("WARNING: Reconfiguration is disabled. It is assumed the device is already correctly configured")
+            print("\n" + "*" * 80)
+            print("WARNING: Reconfiguration is DISABLED.")
+            print("It is assumed the device is already correctly configured, otherwise this might lead to wrong results.")
+            print("*" * 80 + "\n")
+
         else:
             # Disable all ports
             disable_command = get_port_config(metadata, 'disable') 
@@ -483,7 +489,10 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
         traffic_settings_list = get_randomized_traffic_settings(metadata)
 
         if metadata['not_reconfigure']:
-            print("WARNING: Reconfiguration is disabled. It is assumed the device is already correctly configured")
+            print("\n" + "*" * 80)
+            print("WARNING: Reconfiguration is DISABLED.")
+            print("It is assumed the device is already correctly configured, otherwise this might lead to wrong results.")
+            print("*" * 80 + "\n")
         else:
             # Configure ports for snake tests
             print("Configure ports...")
@@ -506,7 +515,10 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
             save_to_log(metadata, measurement_data)
             i += 1
         if metadata['disable_reset']:
-            print("WARNING: Resetting ports after snake-test is disabled and could possibly lead to wrong results if tests are repeated. ")
+            print("\n" + "*" * 80)
+            print("WARNING: Resetting ports after snake-test is  DISABLED.")
+            print("This could possibly lead to wrong results if tests are repeated. ")
+            print("*" * 80 + "\n")
         else:
             print("Reset ports...")
             reset_command = get_port_config(metadata, 'disable')
@@ -528,7 +540,10 @@ def prepare_experiments(params):
     config_path = Path('..','devices',device_id)
     try: meta_config = load_yml(config_path / 'config.yml')
     except EncodingWarning:
-        print('Device config not found. Could not run test for {}'.format(device_id))
+        print("\n" + "*" * 80)
+        print("WARNING: Device config not found.")
+        print(f"Could not run test for {device_id}")
+        print("*" * 80 + "\n")
         return
     
     print("Loading metadata...")
@@ -564,7 +579,10 @@ def prepare_experiments(params):
     metadata['all_ports'] = port_data['ports'][port_type]['ids']
 
     if metadata['not_reconfigure']:
-        print("WARNING: Reconfiguration is disabled. It is assumed the device's system is already correctly configured")
+        print("\n" + "*" * 80)
+        print("WARNING: Reconfiguration is DISABLED.")
+        print("It is assumed the device is already correctly configured, otherwise this might lead to wrong results.")
+        print("*" * 80 + "\n")
     else:
         # Get command 
         cmd = get_port_config(metadata, 'system')
