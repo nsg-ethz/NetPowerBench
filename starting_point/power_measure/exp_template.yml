@@ -1,0 +1,16 @@
+device_id: 
+exp: # Type of experiment to be run
+  - base # No transceivers are plugged in, all ports are disabled
+  - idle # All transceivers are plugged in, all ports are disabled
+  - port # Each port is connected to another port, half of the ports are enabled
+  - trx # Each port is connected to another port, all ports are enabled
+  - snake-test # Ports are connected for snake-test, ports are configured for traffic
+  - reset_only # Disables all ports of device without running any measurements
+speed: # List of speeds we want to run tests for e.g. 100G
+  - 
+port_type: # Type of ports, e.g. QSFP28
+transceivers: # Type of transceivers, e.g. "LR" 
+repeats: 1 # Repeats per experiment type
+user_confirm: False # Should there be a confirmation from the user after port configuration to check correct setup
+disable_reset: False # Disables resetting ports after running a snake test (for all other test type this does not make sense to have)
+not_reconfigure: False # If enabled, the script assumes the device is already correctly configured, so no system configuration, full reset or snake-test configuration will be done
