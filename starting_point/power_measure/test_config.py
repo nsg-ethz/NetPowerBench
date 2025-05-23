@@ -14,21 +14,76 @@ from main import *
 # disable_reset will lead to the configurations not being reset after configuring. 
 # repeats, user_confirm and not_reconfigure will be ignored in this script.
 
+def get_test_params():
+    if os.path.exists('test.yml'): # TODO: Path
+        yaml_config = load_yml('test.yml')
+        if yaml_config and all(k in yaml_config for k in ['device_id', 'test', 'speed', 'port_type', 'transceivers']):
+            return {
+                'device_id': yaml_config['device_id'],
+                'test': yaml_config['test'],
+                'speed': yaml_config['speed'],
+                'port_type': yaml_config['port_type'],
+                'transceivers':yaml_config['transceivers'],
+                'disable_reset': yaml_config.get('disable_reset', False),
+                'not_reconfigure': yaml_config.get('not_reconfigure', False)
+            }
+    raise RuntimeError("Missing experiment parameters. Provide CLI args or a valid exp.yml file.")
+
+def load_metadata(params):
+    device_id = params['device_id']
+    config_path = Path('..','devices',device_id)
+    try: meta_config = load_yml(config_path / 'config.yml')
+    except EncodingWarning:
+        print("\n" + "*" * 80)
+        print("WARNING: Device config not found.")
+        print(f"Could not run test for {device_id}")
+        print("*" * 80 + "\n")
+        return
+    
+    metadata = dict(
+        device               = meta_config['DUT']['id'],
+        port_file            = meta_config['DUT']['port_file'],
+        port_type            = params['port_type'],
+        transceivers         = params['transceivers'],
+        dut_type             = meta_config['DUT']['type'],
+        needs_commit         = meta_config['DUT']['needs_commit'],
+        seed                 = meta_config['random_seed'],
+        wait_factor_short_s  = meta_config['wait_factor_short_s'],       # in seconds
+        wait_factor_long_s   = meta_config['wait_factor_long_s'],        # in seconds
+        baudrate             = meta_config['baudrate'],
+        serial_port          = meta_config['serial_port'],
+        counter_1            = meta_config['counter_1'],
+        counter_2            = meta_config['counter_2'],
+        disable_reset        = params['disable_reset'],
+        port_speed           = params['speed'] 
+
+    )
+    return metadata
+
 if __name__ == '__main__':
-    params = get_experiment_params()
-    exp_list = params['exp']
-    params['not_reconfigure'] = 'reset_only' not in exp_list # Using not reconfigure to disable system config independant of not reconfigure
-    metadata = prepare_experiments(params)
-    metadata['port_speed'] = params['speed'][0] # We just configure with the first speed listed
+    check_cwd()
+    params = get_test_params()
+    tests = params['test']
+    metadata = load_metadata(params)
+    port_file = metadata['port_file']
+    port_type = metadata['port_type']
+    device = metadata['device']
+    config_path = Path('..','devices',device) 
+    port_data = load_yml(config_path / port_file)
+    metadata['all_ports'] = port_data['ports'][port_type]['ids']
+
+
     reset_cmd = get_port_config(metadata, 'disable')
 
-    if 'reset_only' in exp_list:
+    if 'system' in tests:
+        cmd = get_port_config(metadata, 'system')
+        configure_ports(metadata, cmd, ports_impacted=0) 
         print("The system should have been configured")
         usr1 = input("Continue? (y/n)\n")
         if usr1.lower() == 'n':
             sys.exit(0)
 
-    if 'base' in exp_list or 'idle' in exp_list:
+    if 'full_reset':
         # Disabling all ports
         cmd = get_port_config(metadata, 'disable_all')
         configure_ports(metadata, cmd)
@@ -37,7 +92,7 @@ if __name__ == '__main__':
         if usr2.lower() == 'n':
             sys.exit(0)
 
-    if 'port' in exp_list or 'trx' in exp_list:
+    if 'enable' in tests:
         # Activating a random subset of the ports
         all_ports = metadata['all_ports']
         if 'seed' in metadata:
@@ -61,7 +116,7 @@ if __name__ == '__main__':
         else:
             print("Port will not be reset")
 
-    if 'snake-test' in exp_list:
+    if 'snake-test' in tests:
         # Configure for snake-test
         snake_cmd = get_port_config(metadata, 'snake-test')
         configure_ports(metadata, snake_cmd, longer_wait=True)

@@ -75,6 +75,7 @@ def get_port_config(metadata, config_type, port_list = None):
         metadata['total_port_number'] = count_ports
 
     else:
+        port_speed = metadata['port_speed']
         if port_speed not in port_data['ports'][port_type]['speeds']:
             raise ValueError('Invalid `speed`: {}. \nAvailable options for this router model are: {}'.format(port_speed,port_data['ports'][port_type]['speeds'].keys()))
         port_counter = 0

@@ -2,11 +2,11 @@
 device_id: ciscoNexus9336-FX2
 exp:
   - base
-  # - idle 
-  # - port
-  # - trx
-  # - snake-test
-  # - reset_only
+  - idle 
+  - port
+  - trx
+  - snake-test
+  - reset_only
 speed:
   # - 400G
   - 100G
