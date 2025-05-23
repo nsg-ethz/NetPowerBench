@@ -43,7 +43,7 @@ def parse_cli_args():
     parser.add_argument('-p', '--port_type', type=str, help='Port type (e.g., QSFP28)')
     parser.add_argument('-t', '--transceivers', type=str, help='Transceiver type (e.g., LR)')
     parser.add_argument('-r', '--repeats', type=int, default=1, help='Number of repeats per test')
-    parser.add_argument('-u', '--user_confirm', type=str2bool, default=True, help='Manual user confirmation enabled/disabled (default: False)')
+    parser.add_argument('-u', '--user_confirm', type=str2bool, default=False, help='Manual user confirmation enabled/disabled (default: False)')
     parser.add_argument('--disable_reset', type=str2bool, default=False, help='Disable device reset after snake-test (default: False). Note that this can lead to wrong configurations in later test')
     parser.add_argument('--not_reconfigure', type=str2bool, default=False, help='Disables configuration before running a base, idle or snake-test (default: False). Note that this assumes the device is already correctly configured')
 
@@ -77,7 +77,7 @@ def get_experiment_params():
                 'port_type': yaml_config['port_type'],
                 'transceivers':yaml_config['transceivers'],
                 'repeats': yaml_config.get('repeats', 1),
-                'user_confirm': yaml_config.get('user_confirm', True),
+                'user_confirm': yaml_config.get('user_confirm', False),
                 'disable_reset': yaml_config.get('disable_reset', False),
                 'not_reconfigure': yaml_config.get('not_reconfigure', False)
             }
