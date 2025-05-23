@@ -30,8 +30,9 @@ if __name__ == '__main__':
 
     if 'base' in exp_list or 'idle' in exp_list:
         # Disabling all ports
-        configure_ports(metadata, reset_cmd)
-        print("All ports should have been disabled.")
+        cmd = get_port_config(metadata, 'disable_all')
+        configure_ports(metadata, cmd)
+        print("All ports should have been disabled with default label.")
         usr2 = input("Continue? (y/n)\n")
         if usr2.lower() == 'n':
             sys.exit(0)
