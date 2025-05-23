@@ -567,7 +567,7 @@ def prepare_experiments(params):
         device               = meta_config['DUT']['id'],
         port_file            = meta_config['DUT']['port_file'],
         port_type            = params['port_type'],
-        transceivers         = meta_config['DUT']['transceivers'],
+        transceivers         = params['transceivers'],
         dut_type             = meta_config['DUT']['type'],
         needs_commit         = meta_config['DUT']['needs_commit'],
         seed                 = meta_config['random_seed'],

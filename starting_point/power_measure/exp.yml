@@ -1,5 +1,5 @@
-device_id: aristaDCS-7280CR3K-32D4
-# device_id: ciscoNexus9336-FX2
+# device_id: aristaDCS-7280CR3K-32D4
+device_id: ciscoNexus9336-FX2
 exp:
   - base
   # - idle 
@@ -12,7 +12,7 @@ speed:
   - 100G
 # port_type: QSFP-DD
 port_type: QSFP28
-transceivers: # TODO
+transceivers: "LR" # Passive Copper Cable
 repeats: 1
 user_confirm: False
 disable_reset: False

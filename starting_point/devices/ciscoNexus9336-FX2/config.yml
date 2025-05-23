@@ -2,7 +2,6 @@
 DUT:
   id: "ciscoNexus9336-FX2"  # no space!
   port_file: "ports.yml"
-  transceivers: "LR" # Passive Copper Cable
   type: "router"
   needs_commit: False  # Does OS require commit to apply configs
 
