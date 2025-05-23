@@ -1,18 +1,19 @@
 device_id: aristaDCS-7280CR3K-32D4
-
+# device_id: ciscoNexus9336-FX2
 exp:
-  # - base
-  - idle 
-  - port
-  - trx
+  - base
+  # - idle 
+  # - port
+  # - trx
   # - snake-test
   # - reset_only
 speed:
-  - 400G
-  # - 100G
-port_type: QSFP-DD
-# port_type: QSFP28
-repeats: 5
+  # - 400G
+  - 100G
+# port_type: QSFP-DD
+port_type: QSFP28
+transceivers: # TODO
+repeats: 1
 user_confirm: False
 disable_reset: False
 # disable_reset: True

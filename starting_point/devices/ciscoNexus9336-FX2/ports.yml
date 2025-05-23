@@ -41,6 +41,7 @@ ports:
       100G:
         speed_label: 100000   
         interface_label: Ethernet 1/PORT
+      default: 100G
     commands:
       system:
         - system jumbomtu 6000

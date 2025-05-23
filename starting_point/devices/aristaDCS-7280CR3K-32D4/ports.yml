@@ -46,6 +46,7 @@ ports:
       10G:
         speed_label: 10g
         interface_label: Ethernet PORT/1
+      default: 100G
 
     commands:
       system:
@@ -81,6 +82,7 @@ ports:
       100G:
         speed_label: 100g
         interface_label: Ethernet PORT/1
+      default: 100G
 
     commands:
       system:
