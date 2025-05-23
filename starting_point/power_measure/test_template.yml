@@ -1,0 +1,10 @@
+device_id: 
+test:
+  - system # Configures device with command listed unter system
+  - disable_all # Disables ports of all types
+  - enable # Enables a random selection of ports
+  - snake-test # Configures ports for snake-test (includes traffic)
+speed: # Port speed needed for configuration, e.g. 100G
+port_type: # Type of port, e.g. QSFP28
+transceivers:  # Type of transceiver e.g. LR"
+disable_reset: False # Don't reset the ports after configuring them (enabling or snake-test)
