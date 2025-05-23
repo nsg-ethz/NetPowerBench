@@ -62,8 +62,13 @@ def get_port_config(metadata, config_type, port_list = None):
         count_ports = 0
         for PT in port_type_list:
             default = port_data['ports'][PT]['speeds']['default']
-            speed = port_data['ports'][PT]['speeds'][default]['speed_label']
-            interface = port_data['ports'][PT]['speeds'][default]['interface_label']
+            if PT == port_type and metadata['port_speed'] != None:
+                port_speed = metadata['port_speed']
+                speed = port_data['ports'][port_type]['speeds'][port_speed]['speed_label']
+                interface = port_data['ports'][port_type]['speeds'][port_speed]['interface_label']
+            else:
+                speed = port_data['ports'][PT]['speeds'][default]['speed_label']
+                interface = port_data['ports'][PT]['speeds'][default]['interface_label']
             
             port_list = port_data['ports'][PT]['ids']
             for PORT in port_list:
@@ -430,8 +435,8 @@ def run_test(device_id, exp_type, port_speed, metadata): # Former main
     print(f"Running {exp_type} for {device_id} with port type {port_type} and port speed {port_speed}...\n")
 
     if exp_type == 'reset_only':
-        print("Resetting device: Disabeling all ports...")
-        disable_command = get_port_config(metadata, 'disable') 
+        print("Resetting device: Disabeling all ports with default interface name...")
+        disable_command = get_port_config(metadata, 'disable_all') 
         configure_ports(metadata, disable_command)
         print("Ports have been disabled")
         print("reset_only has been completed\n")
