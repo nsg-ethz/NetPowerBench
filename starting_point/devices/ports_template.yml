@@ -1,0 +1,32 @@
+ports:
+  PORTTYPE: # Type of port we are working with, replace with actual port type name
+    ids: # List of all port ids of this type
+      - 
+    speeds: # The speeds the port supports
+      100G: # Speed name as used in exp.yml
+        speed_label: # E.g 100g 
+        interface_label: # Label of interface depending on speed, port id should be replaced with PORT, e.g. Ethernet PORT/1
+  
+      default: # Speed name of the speed used for port configuration in cases where speed is not specified
+
+    commands: # Commands needed for port configuration
+      system: # Will be used before any tests are run to configure the device's system, port independent, can be empty
+        - system jumbomtu 6000 # Example
+      snake-test:  # Command to configure interfaces for snake-test, should enable the interface INTERFACE_LABEL, put it into access mode and assign to vlan VLAN_NUMBER and speed SPEED_LABEL
+        - interface INTERFACE_LABEL # Example 
+        - no shutdown
+        - switchport
+        - switchport mode access
+        - switchport access vlan VLAN_NUMBER
+        - mtu 6000
+        - speed SPEED_LABEL
+        - exit
+      enable: # Command to enable interface INTERFACE_LABEL
+        - interface INTERFACE_LABEL # Example
+        - no shutdown
+        - exit
+      disable: # Command to disable interface INTERFACE_LABEL
+        - interface INTERFACE_LABEL # Example
+        - no switchport
+        - shutdown
+        - exit

@@ -1,0 +1,23 @@
+# DUT parameters
+DUT:
+  id: # ID of the device, no space!
+  port_file: "ports.yml" # Name of the file that contains the data for the port configuration
+  type: "router" # Type of the DUT, e.g. router, switch
+  needs_commit: False  # Does device OS require a commit at the end of a configruation command to apply a port configuration
+
+# Measurement parameters
+measurement_time_s:    # time that the powermeter spends measuring, in seconds
+configuration_time_s:     # constant waiting time before the measurement for correct config application and traffic generation warmup, in seconds
+wait_factor_short_s:  # Factors that gets multiplied with the number of ports impacted for linear waiting time after config application
+wait_factor_long_s: # Long waiting factor is used for applying the snake-test config, short for everything else
+sampling_interval_ms: 1000     # Sampling interval in milliseconds
+random_seed:                  # leave empty for uncontrolled seed
+
+# External dependencies
+pinpoint:
+  binary: # Location of the pinpoint data 
+serial_port: "/dev/ttyUSB0" # Port which is used for the Serial connection for device configuration
+baudrate: 9600
+counter_1: mcp:dev0ch1 # Counter connected to the powermeter
+counter_2: mcp:dev0ch2
+
