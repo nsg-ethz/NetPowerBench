@@ -62,7 +62,7 @@ def get_port_config(metadata, config_type, port_list = None):
         count_ports = 0
         for PT in port_type_list:
             default = port_data['ports'][PT]['speeds']['default']
-            if PT == port_type and metadata['port_speed'] != None:
+            if PT == port_type and 'port_speed' in metadata:
                 port_speed = metadata['port_speed']
                 speed = port_data['ports'][port_type]['speeds'][port_speed]['speed_label']
                 interface = port_data['ports'][port_type]['speeds'][port_speed]['interface_label']
