@@ -1,8 +1,12 @@
 #!/bin/bash
 
-# arg: DURATION     the number of seconds the workload should take
-# arg: PATH         path the to pinpoint binary
-# arg: WORKLOAD     path to the workload file
+# arg: DURATION           The number of seconds the workload (/bin/sleep) should run
+# arg: PATH               Path to the pinpoint binary
+# arg: SAMPLING_INTERVAL  Interval in milliseconds at which samples should be taken
+# arg: START_UP_DELAY     Delay in milliseconds before sampling starts
+# arg: COUNTER_1          First event/counter to monitor (e.g., MCP1, mcp:dev0ch1)
+# arg: COUNTER_2          Second event/counter to monitor (e.g., MCP2, mcp:dev0ch2)
+
 
 DURATION=$1
 PATH=$2
@@ -16,9 +20,4 @@ logname="../data/log/pinpoint.log"
 /bin/rm $logname
 
 # Run pinpoint
-# $PATH -c -e MCP1,MCP2 -i $SAMPLING_INTERVAL -b -$START_UP_DELAY -o  ../data/log/pinpoint.log --header -- /bin/sleep  $DURATION
-
 $PATH -c -e $COUNTER_1,$COUNTER_2 -i $SAMPLING_INTERVAL -b -$START_UP_DELAY -o  ../data/log/pinpoint.log --header -- /bin/sleep  $DURATION
-# -> currently there is a bug where the header does not get written to the output, so just leave it out.
-# $PATH -c -e MCP1,MCP2 -i $SAMPLING_INTERVAL -b -$START_UP_DELAY -o  ../data/log/pinpoint.log -- /bin/sleep  $DURATION
-# $PATH -c -e mcp:dev1ch1,mcp:dev1ch2 -i $SAMPLING_INTERVAL -b -$START_UP_DELAY -o  ../data/log/pinpoint.log -- /bin/sleep  $DURATION
