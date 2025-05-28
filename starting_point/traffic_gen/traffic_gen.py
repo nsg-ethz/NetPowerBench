@@ -35,19 +35,9 @@ def traffic(duration, bandwidth, packet_size, busy_wait=True):
 
         print('Generating RDMA traffic with ib_send_bw...')
 
-        # result1 = subprocess.Popen(f'sudo ip netns exec ns1 ib_read_bw -d mlx5_0 -b -D {duration} --cpu_util --report_gbits --rate_limit={bandwidth} --typical_pkt_size={packet_size} --rate_limit_type=PP', shell=True, stdout=subprocess.PIPE)
-        # time.sleep(1)
-        # result2 = subprocess.Popen(f'sudo ip netns exec ns2 ib_read_bw -d mlx5_1 -b -D {duration} --cpu_util --report_gbits --rate_limit={bandwidth} --typical_pkt_size={packet_size} --rate_limit_type=PP 192.168.1.1', shell=True, stdout=subprocess.PIPE)
-        # result1 = subprocess.Popen(f'sudo ip netns exec ns1 ib_read_bw -d mlx5_0 -D {duration} --cpu_util --report_gbits --rate_limit={bandwidth} --mtu={packet_size} -F', shell=True, stdout=subprocess.PIPE)
-        # time.sleep(1)
-        # result2 = subprocess.Popen(f'sudo ip netns exec ns2 ib_read_bw -d mlx5_1 -D {duration} --cpu_util --report_gbits --rate_limit={bandwidth} --mtu={packet_size} -F 192.168.1.1', shell=True, stdout=subprocess.PIPE)
-
         result1 = subprocess.Popen(f'sudo ip netns exec ns1 ib_send_bw -d mlx5_0 -D {duration} --cpu_util --report_gbits --rate_limit={bandwidth} --mtu={packet_size} -F', shell=True, stdout=subprocess.PIPE)
         time.sleep(1)
         result2 = subprocess.Popen(f'sudo ip netns exec ns2 ib_send_bw -d mlx5_1 -D {duration} --cpu_util --report_gbits --rate_limit={bandwidth} --mtu={packet_size} -F 192.168.1.1 --out_json', shell=True, stdout=subprocess.PIPE)
-
-        # result1.wait()
-        # result2.wait()
 
         print(result1.communicate()[0].decode("utf-8"))
         print("\n \n")
@@ -84,7 +74,6 @@ def setup():
     print(result.stdout)
 
     result = subprocess.run("sudo cpupower frequency-set --governor usermode",shell=True,capture_output=True, text=True)
-    #print(result.stdout)
 
     result = subprocess.run("sudo cpupower frequency-set --freq 2400MHz",shell=True,capture_output=True, text=True)
     print(result.stdout)
@@ -107,9 +96,7 @@ def setup():
         if not (ns1_exists and ns2_exists):
             print("WARNING: Setup of network namespaces failed")
         else:
-            print("Network namespaces created successfully")
-        
-
+            print("Network namespaces created successfully")  
 
 
 if __name__ == "__main__":
