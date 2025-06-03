@@ -1,7 +1,22 @@
 ports:
-  PORTTYPE: # Type of port we are working with, replace with actual port type name
-    ids: # List of all port ids of this type
-      - 
+  PORTTYPE: # Type of port we are working with, replace with actual port type name e.g. PCC, LR4, QSFP28
+    ids: # List of all port numbers of this type:
+      - 1 # Example
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+      - 15
+      - 16
     speeds: # The speeds the port supports
       100G: # Speed name as used in exp.yml
         speed_label: # E.g 100g 
@@ -11,7 +26,7 @@ ports:
 
     commands: # Commands needed for port configuration
       system: # Will be used before any tests are run to configure the device's system, port independent, can be empty
-        - system jumbomtu 6000 # Example
+        - system jumbomtu 6000 # Example command to set the router's Jumbo MTU size to 6000 Bytes
       snake-test:  # Command to configure interfaces for snake-test, should enable the interface INTERFACE_LABEL, put it into access mode and assign to vlan VLAN_NUMBER and speed SPEED_LABEL
         - interface INTERFACE_LABEL # Example 
         - no shutdown
