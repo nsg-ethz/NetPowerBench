@@ -1,7 +1,7 @@
 from helper_functions import *
 
 
-def preprocess_data(): # Preprocessing, discarding wrong 
+def preprocess_data(): # Preprocessing, discarding faulty 
 
 def prepare_data():
     # iterate:
