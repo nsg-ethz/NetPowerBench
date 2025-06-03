@@ -8,8 +8,8 @@ DUT:
 # Measurement parameters
 measurement_time_s:    # time that the powermeter spends measuring, in seconds
 configuration_time_s:     # constant waiting time before the measurement for correct config application and traffic generation warmup, in seconds
-wait_factor_short_s:  # Factors that gets multiplied with the number of ports impacted for linear waiting time after config application
-wait_factor_long_s: # Long waiting factor is used for applying the snake-test config, short for everything else
+wait_factor_per_port_others_s:  # Factors that gets multiplied with the number of ports impacted for linear waiting time after config application
+wait_factor_per_port_snake-test_s: # Long waiting factor is used for applying the snake-test config, short for everything else
 sampling_interval_ms: 1000     # Sampling interval in milliseconds
 random_seed:                  # leave empty for uncontrolled seed
 

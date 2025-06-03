@@ -48,8 +48,8 @@ def load_metadata(params):
         dut_type             = meta_config['DUT']['type'],
         needs_commit         = meta_config['DUT']['needs_commit'],
         seed                 = meta_config['random_seed'],
-        wait_factor_short_s  = meta_config['wait_factor_short_s'],       # in seconds
-        wait_factor_long_s   = meta_config['wait_factor_long_s'],        # in seconds
+        wait_factor_short_s  = meta_config['wait_factor_per_port_others_s'],
+        wait_factor_long_s   = meta_config['wait_factor_per_port_snake-test_s'],          # in seconds
         baudrate             = meta_config['baudrate'],
         serial_port          = meta_config['serial_port'],
         counter_1            = meta_config['counter_1'],

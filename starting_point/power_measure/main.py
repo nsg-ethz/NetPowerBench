@@ -579,8 +579,8 @@ def prepare_experiments(params):
         seed                 = meta_config['random_seed'],
         measurement_time_s   = meta_config['measurement_time_s'],        # in seconds
         configuration_time_s = meta_config['configuration_time_s'],      # in seconds
-        wait_factor_short_s  = meta_config['wait_factor_short_s'],       # in seconds
-        wait_factor_long_s   = meta_config['wait_factor_long_s'],        # in seconds
+        wait_factor_short_s  = meta_config['wait_factor_per_port_others_s'],
+        wait_factor_long_s   = meta_config['wait_factor_per_port_snake-test_s'],        # in seconds
         sampling_interval_ms = meta_config['sampling_interval_ms'],      # in milliseconds 
         baudrate             = meta_config['baudrate'],
         serial_port          = meta_config['serial_port'],
