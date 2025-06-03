@@ -2,7 +2,6 @@
 DUT:
   id: # ID of the device, no space!
   port_file: "ports_template.yml" # Name of the file that contains the data for the port configuration. The file is only searched in the same directory
-  type: "router" # Type of the DUT, e.g. router, switch
   needs_commit: False  # Does device OS require a commit at the end of a configruation command to apply a port configuration
 
 # Measurement parameters

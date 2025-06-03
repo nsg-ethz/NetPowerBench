@@ -122,11 +122,10 @@ def get_log_path(metadata, measurement_data):
     """
     workspace = get_workspace_directory()
     log_name = get_log_name(metadata, measurement_data)
-    dut_type = metadata['dut_type']
     device = metadata['device']
     time = str(measurement_data['time']).replace(' ','_').split('.')[0]
 
-    log_path = Path(workspace, 'data', dut_type, device, log_name, time)
+    log_path = Path(workspace, 'data', device, log_name, time)
     return log_path
 
 
@@ -176,8 +175,6 @@ def save_as_json(dict, destination, name):
     with open(f, "w") as file:
         file.write(data)
     
-
-
 def save_as_yml(metadata, measurement_data, destination, name, sort_keys = False):
     """
     Saves metadata and measurement data as YAML in the given destination with the specified file name.
@@ -205,7 +202,7 @@ def get_workspace_directory():
     """
     Returns the parent of the directory the script is run from.
     """
-    check_cwd()         # Assumes we are in automation directory
+    check_cwd()         
     cwd = os.getcwd()
     workspace = os.path.dirname(cwd)
     return Path(workspace)

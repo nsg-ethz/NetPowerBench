@@ -574,7 +574,6 @@ def prepare_experiments(params):
         port_file            = meta_config['DUT']['port_file'],
         port_type            = params['port_type'],
         transceivers         = params['transceivers'],
-        dut_type             = meta_config['DUT']['type'],
         needs_commit         = meta_config['DUT']['needs_commit'],
         seed                 = meta_config['random_seed'],
         measurement_time_s   = meta_config['measurement_time_s'],        # in seconds
