@@ -1,6 +1,7 @@
 import os
 import yaml
 import argparse
+from pathlib import Path
 
 def parse_cli_args():
     """
@@ -18,8 +19,8 @@ def parse_cli_args():
     """
     parser = argparse.ArgumentParser(description='Parse data derivation parameters.')
     parser.add_argument('-d', '--device_id', type=str, help='Device identifier')
-    parser.add_argument('--measurements_from', type=str, help='Start time for measurements, only data with timestamp later than this will be considered.')
-    parser.add_argument('--measurements_to', type=str, help='End time for measurements, only data with timestamp earlier than this will be considered.')
+    parser.add_argument('--measurements_from', type=str, help='Start time for measurements, only data with timestamp later than this will be considered for model.')
+    parser.add_argument('--measurements_to', type=str, help='End time for measurements, only data with timestamp earlier than this will be considered for model.')
     parser.add_argument('--preprocess_only', action='store_true', help='Run only preprocessing (default: False)')
     parser.add_argument('--derive_only', action='store_true', help='Run only derivation (default: False)')
 
@@ -64,3 +65,58 @@ def load_yml(yaml_file): # Doublicate of helper in power_measure
 
     with open(yaml_file, "r") as file:
         return yaml.safe_load(file)
+    
+def save_as_yml(data,dest,name,sort_keys=False):
+    """
+    Save dictionary as YAML
+    """
+    Path(dest).mkdir(parents=True, exist_ok=True)
+
+    f = Path(dest,name)
+    with open(f, "w") as file:
+        yaml.dump(data,file,sort_keys=sort_keys)
+
+
+def get_group(metadata):
+    exp_type = metadata['experiment_type']
+    
+    if exp_type == 'base':
+        group = {'exp_type': exp_type}
+    elif exp_type == 'idle':
+        group = {
+            'port_type'     : metadata['port_type'],
+            'trx'           : metadata['transceivers'],
+            'exp_type'      : metadata['experiment_type'],
+            'n_ports'       : metadata['port_number'],
+        }
+    elif exp_type == 'snake-test':
+        
+        exact_bw = metadata['bandwidth_reached_gbps']
+        target_bw = metadata['bandwidth_gbps']
+
+        precision_map = {1: 1, 0.5: 2, 0.1: 2, 0.05: 3, 0.01: 3,  0.005: 4, 0.001: 4}
+
+        if target_bw in precision_map:
+            rounded_bw = round(exact_bw, precision_map[target_bw])
+        else:
+            # For bandwidths > 2.5 Gbps, round to nearest 0.5
+            rounded_bw = round(2 * exact_bw, 0) / 2
+
+        group = {
+            'port_type'     : metadata['port_type'],
+            'trx'           : metadata['transceivers'],
+            'exp_type'      : metadata['experiment_type'],
+            'port_speed'    : metadata['port_speed'],
+            'n_ports'       : metadata['port_number'],
+            'packet_size_bytes' : metadata['packet_size_bytes'],
+            'bandwidth_gbps': rounded_bw
+        }
+    else:
+        group = {
+            'port_type'     : metadata['port_type'],
+            'trx'           : metadata['transceivers'],
+            'exp_type'      : metadata['experiment_type'],
+            'port_speed'    : metadata['port_speed'],
+            'n_ports'       : metadata['port_number'],
+        }
+    return group
