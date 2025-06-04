@@ -167,22 +167,32 @@ def derive_model(params):
     data_base = get_datapoints(params, power_data, exp_type='base')
     # TODO check whether we actually have data?
     P_BASE = np.median(data_base['power'])
+
     # Idle => P_IDLE, P_TRX_IN 
     data_idle = get_datapoints(params, power_data, exp_type='idle')
-    # Calculate
+    P_IDLE   = np.median(data_idle['power'])
+    P_TRX_IN = np.median((data_idle['power'] - P_BASE)/data_idle['n_ports'])
 
     # Port => P_PORT
     data_port = get_datapoints(params, power_data, exp_type='port')
-    # Calculate
+    df = pd.DataFrame(data_port)
+    df["power_without_idle"] = df["power"] - P_IDLE
+    fig = px.scatter(df, x="n_ports", y="power_without_idle", trendline="ols", trendline_options={"add_constant": False})
+    results = px.get_trendline_results(fig)
+    P_PORT = results.px_fit_results.iloc[0].params[0]
 
     # Trx => P_TRX_UP
     data_trx = get_datapoints(params, power_data, exp_type='trx')
-    # Calculate
+    df = pd.DataFrame(data_trx)
+    df["power_without_idle"] = df["power"] - P_IDLE
+    fig = px.scatter(df, x="n_ports", y="power_without_idle", trendline="ols", trendline_options={"add_constant": False})
+    results = px.get_trendline_results(fig)
+    slope = results.px_fit_results.iloc[0].params[0]
+    P_TRX_UP = slope - P_PORT
 
     # Snake-test => E_b, E_p, P_OFFSET
-    data_snake_test = get_datapoints(power_data, exp_type='snake-test')
-    # Calculate
-
+    data_snake = get_datapoints(power_data, exp_type='snake-test')
+    
     # Save model in yml
     return
 
