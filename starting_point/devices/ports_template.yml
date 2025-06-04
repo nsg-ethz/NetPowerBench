@@ -1,5 +1,5 @@
 ports:
-  PORTTYPE: # Type of port we are working with, replace with actual port type name e.g. PCC, LR4, QSFP28
+  PORTTYPE: # Type of port we are working with, replace with actual port type name; e.g., RJ45, QSFP28
     ids: # List of all port numbers of this type:
       - 1 # Example
       - 2
@@ -19,15 +19,22 @@ ports:
       - 16
     speeds: # The speeds the port supports
       100G: # Speed name as used in exp.yml
-        speed_label: # E.g 100g 
-        interface_label: # Label of interface depending on speed, port id should be replaced with PORT, e.g. Ethernet PORT/1
+        speed_label:       # E.g., 100g. Must match the OS label for the desired speed
+        interface_label:   # Label of the interface. The port ID should be replaced with PORT; e.g., Ethernet PORT/1. 
+                           # The label may depend on the port speed, depending on the DUT operating system; e.g., FourHundredGig0/0/0/PORT or HundredGig0/0/0/PORT
   
       default: # Speed name of the speed used for port configuration in cases where speed is not specified
 
     commands: # Commands needed for port configuration
-      system: # Will be used before any tests are run to configure the device's system, port independent, can be empty
+      system: # Will be used before any tests are run to configure the device's system (port-independent config). Can be empty.
         - system jumbomtu 6000 # Example command to set the router's Jumbo MTU size to 6000 Bytes
-      snake-test:  # Command to configure interfaces for snake-test, should enable the interface INTERFACE_LABEL, put it into access mode and assign to vlan VLAN_NUMBER and speed SPEED_LABEL
+      snake-test:  
+        # Command to configure interfaces for snake-test, should:
+        # - enable the interface INTERFACE_LABEL
+        # - put it into access mode
+        # - assign to vlan VLAN_NUMBER 
+        # - configure speed SPEED_LABEL
+        # The exact commands depend on the DUT operating system.
         - interface INTERFACE_LABEL # Example 
         - no shutdown
         - switchport
@@ -37,11 +44,11 @@ ports:
         - speed SPEED_LABEL
         - exit
       enable: # Command to enable interface INTERFACE_LABEL
-        - interface INTERFACE_LABEL # Example
+        - interface INTERFACE_LABEL
         - no shutdown
         - exit
       disable: # Command to disable interface INTERFACE_LABEL
-        - interface INTERFACE_LABEL # Example
+        - interface INTERFACE_LABEL 
         - no switchport
         - shutdown
         - exit
