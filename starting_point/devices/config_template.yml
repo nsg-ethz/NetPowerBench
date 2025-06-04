@@ -1,17 +1,17 @@
-# DUT parameters
+# Device Under Test (DUT) parameters
 DUT:
-  id: # ID of the device, no space!
-  port_file: "ports_template.yml" # Name of the file that contains the data for the port configuration. The file is only searched in the same directory
-  needs_commit: False  # Does device OS require a commit at the end of a configruation command to apply a port configuration
+  id: # ID of the DUT. No space!
+  port_file: "ports_template.yml" # Name of the file that contains the port configuration data. The file is only searched in the same directory.
+  needs_commit: False  # Does device OS require a commit at the end of a configuration command to apply a port configuration
 
 # Measurement parameters
 measurement_time_s:    # time that the powermeter spends measuring, in seconds
-configuration_time_s:     # constant waiting time before the measurement for correct config application and traffic generation warmup, in seconds
-wait_factor_per_port_others_s:  # Factors that gets multiplied with the number of ports impacted for linear waiting time after config application
-wait_factor_per_port_snake-test_s: # Long waiting factor is used for applying the snake-test config, short for everything else
-# The total waiting time between configuring and measuring is wait_factor * #Ports + configuration_time (simplified, in seconds)
-sampling_interval_ms: 1000     # Sampling interval in milliseconds
-random_seed:                  # Controlls randomization of the order of experiments executed and the selection of ports and traffic settings
+## The total waiting time between configuring and measuring is wait_factor * #Ports + configuration_time (simplified, in seconds)
+configuration_time_s:               # constant waiting time before the measurement for correct config application and traffic generation warmup, in seconds
+wait_factor_per_port_snake-test_s:  # Long waiting factor is used for applying the snake-test config, short for everything else
+wait_factor_per_port_others_s:      # Short waiting factor that gets multiplied with the number of ports impacted for linear waiting time after config application
+sampling_interval_ms: 1000          # Sampling interval in milliseconds
+random_seed:                        # Controls randomization of the order of experiments executed and the selection of ports and traffic settings
 
 # External dependencies
 pinpoint:
