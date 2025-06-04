@@ -19,6 +19,9 @@ def parse_cli_args():
     """
     parser = argparse.ArgumentParser(description='Parse data derivation parameters.')
     parser.add_argument('-d', '--device_id', type=str, help='Device identifier')
+    parser.add_argument('-s', '--port_speed', type=str, help='Speed of port used in the model (e.g., 100G 400G)')
+    parser.add_argument('-p', '--port_type', type=str, help='Port type used in the model (e.g., QSFP28)')
+    parser.add_argument('-t', '--transceivers', type=str, help='Transceiver type used in the model(e.g., LR)')
     parser.add_argument('--measurements_from', type=str, help='Start time for measurements, only data with timestamp later than this will be considered for model.')
     parser.add_argument('--measurements_to', type=str, help='End time for measurements, only data with timestamp earlier than this will be considered for model.')
     parser.add_argument('--preprocess_only', action='store_true', help='Run only preprocessing (default: False)')
@@ -41,14 +44,17 @@ def get_derivation_params():
     has_cli_input = any(v is not None and v is not False for k, v in args.items())
 
     if has_cli_input:
-        if args.get('device_id'):
+        if all(args.get(k) for k in ['device_id', 'port_speed', 'port_type', 'transceivers']):
             return args
     
     elif os.path.exists('exp.yml'): # TODO: Path
         yaml_config = load_yml('exp.yml')
-        if yaml_config and 'device_id' in yaml_config:
+        if yaml_config and all(k in yaml_config for k in ['device_id', 'speed', 'port_type', 'transceivers']):
             return {
                 'device_id': yaml_config['device_id'],
+                'port_speed': yaml_config['port_speed'],
+                'port_type': yaml_config['port_type'],
+                'transceivers':yaml_config['transceivers'],
                 'measurements_from': yaml_config.get('measurements_from'),
                 'measurements_to': yaml_config.get('measurements_to'),
                 'preprocess_only': yaml_config.get('preprocess_only', False),
