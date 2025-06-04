@@ -2,6 +2,7 @@ import os
 import yaml
 import argparse
 from pathlib import Path
+from datetime import datetime
 
 def parse_cli_args():
     """
@@ -126,3 +127,7 @@ def get_group(metadata):
             'n_ports'       : metadata['port_number'],
         }
     return group
+
+
+def parse_timestamp(ts_str):
+    return datetime.strptime(ts_str, "%Y-%m-%d_%H:%M:%S")

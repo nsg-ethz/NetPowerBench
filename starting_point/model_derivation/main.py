@@ -59,8 +59,131 @@ def prepare_data(params):
     # Put into file
     save_as_yml(power_data, output_data_path, 'power_data.yml', sort_keys=True)
 
+def get_datapoints(params, power_data, exp_type):
+    port_type = params['port_type']
+    port_speed = params['port_speed']
+    tranceivers = params['tranceivers']
+    # Get group
+    if exp_type == 'base':
+        group = {'exp_type':'base'}
+    elif exp_type == 'idle':
+        group = {
+            'port_type' : port_type,
+            'trx'       : tranceivers,
+            'exp_type'  : 'idle'
+        }
+    else:
+        group = {
+            'port_type' : port_type,
+            'trx'       : tranceivers,
+            'exp_type'  : exp_type,
+            'port_speed': port_speed,
+        }
 
-def derive_model():
+    # Iterate to bottom
+    tmp = power_data
+    for level in group.values():
+        tmp = tmp[level]
+
+    # Read, process and return
+    if exp_type == 'snake-test':
+        number_ports = []
+        timestamps = []
+        power_values = []
+        mtu_values = []
+        bandwidth = []
+
+        for n_port in tmp.keys():
+            tmp_n_port = tmp[n_port]
+            for mtu in tmp_n_port.keys():
+                tmp_mtu = tmp_n_port[mtu]
+                for bw in tmp_mtu.keys():
+                    number_ports = number_ports + (n_port * np.ones(len(tmp_mtu[bw]['ts']), dtype=int)).tolist()
+                    timestamps = timestamps + tmp_mtu[bw]['ts']
+                    power_values = power_values + tmp_mtu[bw]['power']
+                    mtu_values = mtu_values + (mtu * np.ones(len(tmp_mtu[bw]['ts']), dtype=int)).tolist()
+                    bandwidth = bandwidth + (bw * np.ones(len(tmp_mtu[bw]['ts']), dtype=int)).tolist()
+        data =  {
+            'n_ports'   : number_ports,
+            'ts'        : timestamps,
+            'power'     : power_values,
+            'mtu'       : mtu_values,
+            'bw'        : bandwidth
+        }
+    elif exp_type == 'base':
+        data = {
+            'n_ports'   : [0],
+            'ts'        : tmp['ts'],
+            'power'     : tmp['power'],
+        }
+    else:
+        for n_port in tmp.keys():
+            number_ports = number_ports + (n_port * np.ones(len(tmp[n_port]['ts']), dtype=int)).tolist()
+            timestamps = timestamps + tmp[n_port]['ts']
+            power_values = power_values + tmp[n_port]['power']
+
+        data = {
+            'n_ports'   : number_ports,
+            'ts'        : timestamps,
+            'power'     : power_values
+        }
+
+    # Discard data with timestamps out of range 
+    time_from = parse_timestamp(params['measurements_from']) if params['measurements_from'] != None else None
+    time_to   = parse_timestamp(params['measurements_to']) if params['measurements_to'] != None else None
+
+    parsed_ts = [parse_timestamp(ts)  for ts in data['ts']]
+
+    valid_indices = [
+        i for i, t in enumerate(parsed_ts)
+        if (time_from is None or t >= time_from) and (time_to is None or t <= time_to)
+    ]
+
+    return {
+        key: [values[i] for i in valid_indices]
+        for key, values in data.items()
+    }
+
+def derive_model(params):
+    # Load parameters into variables
+    device_id = params['device_id']
+    port_type = params['port_type']
+    port_speed = params['port_speed']
+    tranceivers = params['tranceivers']
+
+    input_data_path  = Path('..','devices',device_id)
+    power_data = load_yml(input_data_path/'power_data.yml')
+    # Prepare variables
+    P_BASE = np.nan
+    P_IDLE   = np.nan
+    P_TRX_IN = np.nan
+    P_PORT   = np.nan
+    P_TRX_UP = np.nan
+    E_b = np.nan
+    E_p = np.nan
+    P_OFFSET = np.nan
+
+    # Base => P_Base}
+    data_base = get_datapoints(params, power_data, exp_type='base')
+    # TODO check whether we actually have data?
+    P_BASE = np.median(data_base['power'])
+    # Idle => P_IDLE, P_TRX_IN 
+    data_idle = get_datapoints(params, power_data, exp_type='idle')
+    # Calculate
+
+    # Port => P_PORT
+    data_port = get_datapoints(params, power_data, exp_type='port')
+    # Calculate
+
+    # Trx => P_TRX_UP
+    data_trx = get_datapoints(params, power_data, exp_type='trx')
+    # Calculate
+
+    # Snake-test => E_b, E_p, P_OFFSET
+    data_snake_test = get_datapoints(power_data, exp_type='snake-test')
+    # Calculate
+
+    # Save model in yml
     return
 
 if __name__ == '__main__':
@@ -68,12 +191,12 @@ if __name__ == '__main__':
     params = get_derivation_params()
 
     if params['derive_only'] == False:
-        prepare_data()
+        prepare_data(params)
     else:
         print("WARNING: Preprocessing disabled, will only derive from existing data")
     
     if params['preprocess_only'] == False:
-        derive_model()
+        derive_model(params)
     else:
         print("WARNING: Derivation disabled, will only preprocess data")
     
