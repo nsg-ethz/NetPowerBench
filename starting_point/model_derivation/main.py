@@ -151,8 +151,8 @@ def derive_model(params):
     port_speed = params['port_speed']
     tranceivers = params['tranceivers']
 
-    input_data_path  = Path('..','devices',device_id)
-    power_data = load_yml(input_data_path/'power_data.yml')
+    io_data_path  = Path('..','devices',device_id)
+    power_data = load_yml(io_data_path/'power_data.yml')
     # Prepare variables
     P_BASE = np.nan
     P_IDLE   = np.nan
@@ -191,9 +191,56 @@ def derive_model(params):
     P_TRX_UP = slope - P_PORT
 
     # Snake-test => E_b, E_p, P_OFFSET
+    #Packet header length and packet sizes?
+    packet_header_length = 42 
+    packet_sizes = [256, 512, 1024, 2048, 4096]
+
     data_snake = get_datapoints(power_data, exp_type='snake-test')
+    df = pd.DataFrame(data_snake)
+    df = df.astype({'mtu' : str})
+    df['bw'] = df['bw']*1e9 
+    fig = px.scatter(df, x="bw", y="power", color="mtu", trendline="ols", hover_data=['ts'])
+    results = px.get_trendline_results(fig)
+    intercepts_per_L    = [results.px_fit_results.iloc[i].params[0] for i in [mtu for mtu in range(len(packet_sizes))]]
+    slopes_per_L        = [results.px_fit_results.iloc[i].params[1] for i in [mtu for mtu in range(len(packet_sizes))]]
+
+    tmp = power_data[port_type][tranceivers]['snake-test'][port_speed]
+    number_of_ports = next(iter(tmp))   
+
+    rhs = np.multiply([8*(L + packet_header_length)/number_of_ports for L in packet_sizes], slopes_per_L)
+    df = pd.DataFrame(data = {'packet_sizes' : packet_sizes, 'rhs': rhs})
+
+    fig = px.scatter(df, x='packet_sizes', y="rhs", trendline="ols",)    
+    results = px.get_trendline_results(fig)
+    intercept = results.px_fit_results.iloc[0].params[0]
+    slope = results.px_fit_results.iloc[0].params[1]
+    E_b = slope / 8
+    E_p = intercept - (8*packet_header_length*E_b)
+
+    extra_ports_on = 0 # TODO adapt so it is actually clean
+    corrected_intercepts = [i - extra_ports_on*(P_PORT+P_TRX_IN) for i in intercepts_per_L]
+    try: 
+        tmp = power_data[port_type][tranceivers]['trx'][port_speed][number_of_ports+extra_ports_on]
+        power_no_traffic = np.median(tmp['power'])
+    except KeyError:
+        print('Warning: we miss the power value for {} ports without traffic.'.format(number_of_ports+extra_ports_on))
+        print('-> Reconstructing based on other model parameters')
+        power_no_traffic = P_BASE + (number_of_ports+extra_ports_on) * (P_PORT + P_TRX_IN + P_TRX_UP)
     
+    P_OFFSET = np.median([corrected_intercepts - power_no_traffic])/number_of_ports
+
     # Save model in yml
+    model_data = {
+            'P_BASE': float(P_BASE),
+            'P_PORT': float(P_PORT),
+            'P_TRX' : float(P_TRX_IN+P_TRX_UP),
+            'P_TRX_IN' : float(P_TRX_IN),
+            'P_TRX_UP' : float(P_TRX_UP),
+            'E_BIT' : float(E_b),
+            'E_PKT' : float(E_p),
+            'P_OFFSET' : float(P_OFFSET)
+    }
+    save_as_yml(model_data, io_data_path)
     return
 
 if __name__ == '__main__':
