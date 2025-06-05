@@ -85,21 +85,21 @@ def save_as_yml(data,dest,name,sort_keys=False):
 
 
 def get_group(metadata):
-    exp_type = metadata['experiment_type']
+    exp_type = metadata['Metadata']['experiment_type']
     
     if exp_type == 'base':
         group = {'exp_type': exp_type}
     elif exp_type == 'idle':
         group = {
-            'port_type'     : metadata['port_type'],
-            'trx'           : metadata['transceivers'],
-            'exp_type'      : metadata['experiment_type'],
-            'n_ports'       : metadata['port_number'],
+            'port_type'     : metadata['Metadata']['port_type'],
+            'trx'           : metadata['Metadata']['transceivers'],
+            'exp_type'      : metadata['Metadata']['experiment_type'],
+            'n_ports'       : metadata['Metadata']['port_number'], #TODO Fix
         }
     elif exp_type == 'snake-test':
         
-        exact_bw = metadata['bandwidth_reached_gbps']
-        target_bw = metadata['bandwidth_gbps']
+        exact_bw = metadata['Measurement_Data']['bandwidth_reached_gbps']
+        target_bw = metadata['Measurement_Data']['bandwidth_gbps']
 
         precision_map = {1: 1, 0.5: 2, 0.1: 2, 0.05: 3, 0.01: 3,  0.005: 4, 0.001: 4}
 
@@ -110,21 +110,21 @@ def get_group(metadata):
             rounded_bw = round(2 * exact_bw, 0) / 2
 
         group = {
-            'port_type'     : metadata['port_type'],
-            'trx'           : metadata['transceivers'],
-            'exp_type'      : metadata['experiment_type'],
-            'port_speed'    : metadata['port_speed'],
-            'n_ports'       : metadata['port_number'],
-            'packet_size_bytes' : metadata['packet_size_bytes'],
+            'port_type'     : metadata['Metadata']['port_type'],
+            'trx'           : metadata['Metadata']['transceivers'],
+            'exp_type'      : metadata['Metadata']['experiment_type'],
+            'port_speed'    : metadata['Metadata']['port_speed'],
+            'n_ports'       : metadata['Metadata']['port_number'], #TODO Fix
+            'packet_size_bytes' : metadata['Measurement_Data']['packet_size_bytes'],
             'bandwidth_gbps': rounded_bw
         }
     else:
         group = {
-            'port_type'     : metadata['port_type'],
-            'trx'           : metadata['transceivers'],
-            'exp_type'      : metadata['experiment_type'],
-            'port_speed'    : metadata['port_speed'],
-            'n_ports'       : metadata['port_number'],
+            'port_type'     : metadata['Metadata']['port_type'],
+            'trx'           : metadata['Metadata']['transceivers'],
+            'exp_type'      : metadata['Metadata']['experiment_type'],
+            'port_speed'    : metadata['Metadata']['port_speed'],
+            'n_ports'       : metadata['Metadata']['port_number'], #TODO Fix 
         }
     return group
 
