@@ -191,7 +191,7 @@ def derive_model(params):
     P_TRX_UP = slope - P_PORT
 
     # Snake-test => E_b, E_p, P_OFFSET
-    #Packet header length and packet sizes?
+    # TODO: Packet header length and packet sizes?
     packet_header_length = 42 
     packet_sizes = [256, 512, 1024, 2048, 4096]
 
@@ -217,17 +217,15 @@ def derive_model(params):
     E_b = slope / 8
     E_p = intercept - (8*packet_header_length*E_b)
 
-    extra_ports_on = 0 # TODO adapt so it is actually clean
-    corrected_intercepts = [i - extra_ports_on*(P_PORT+P_TRX_IN) for i in intercepts_per_L]
     try: 
-        tmp = power_data[port_type][tranceivers]['trx'][port_speed][number_of_ports+extra_ports_on]
+        tmp = power_data[port_type][tranceivers]['trx'][port_speed][number_of_ports]
         power_no_traffic = np.median(tmp['power'])
     except KeyError:
-        print('Warning: we miss the power value for {} ports without traffic.'.format(number_of_ports+extra_ports_on))
+        print('Warning: we miss the power value for {} ports without traffic.'.format(number_of_ports))
         print('-> Reconstructing based on other model parameters')
-        power_no_traffic = P_BASE + (number_of_ports+extra_ports_on) * (P_PORT + P_TRX_IN + P_TRX_UP)
+        power_no_traffic = P_BASE + (number_of_ports) * (P_PORT + P_TRX_IN + P_TRX_UP)
     
-    P_OFFSET = np.median([corrected_intercepts - power_no_traffic])/number_of_ports
+    P_OFFSET = np.median([intercepts_per_L - power_no_traffic])/number_of_ports
 
     # Save model in yml
     model_data = {
