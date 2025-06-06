@@ -90,7 +90,7 @@ def get_datapoints(params, power_data, exp_type):
         number_ports = []
         timestamps = []
         power_values = []
-        mtu_values = []
+        packet_sizes = []
         bandwidth = []
 
         for n_port in tmp.keys():
@@ -101,15 +101,29 @@ def get_datapoints(params, power_data, exp_type):
                     number_ports = number_ports + (n_port * np.ones(len(tmp_mtu[bw]['ts']), dtype=int)).tolist()
                     timestamps = timestamps + tmp_mtu[bw]['ts']
                     power_values = power_values + tmp_mtu[bw]['power']
-                    mtu_values = mtu_values + (mtu * np.ones(len(tmp_mtu[bw]['ts']), dtype=int)).tolist()
+                    packet_sizes = packet_sizes + (mtu * np.ones(len(tmp_mtu[bw]['ts']), dtype=int)).tolist()
                     bandwidth = bandwidth + (bw * np.ones(len(tmp_mtu[bw]['ts']), dtype=int)).tolist()
         data =  {
-            'n_ports'   : number_ports,
-            'ts'        : timestamps,
-            'power'     : power_values,
-            'mtu'       : mtu_values, # Same as packet sizes
-            'bw'        : bandwidth
+            'n_ports'       : number_ports,
+            'ts'            : timestamps,
+            'power'         : power_values,
+            'packet_sizes'  : packet_sizes, # Same as packet sizes
+            'bw'            : bandwidth
         }
+
+        # Filter out measurements based on bw: 
+        filtered_indices = []
+        for i, bw_val in enumerate(data['bw']):
+            if params['traffic_generator'] == 'RDMA' and bw_val >= 2.5:
+                filtered_indices.append(i)
+            elif params['traffic_generator'] == 'iperf3' and bw_val < 2.5:
+                filtered_indices.append(i)
+
+        data = {
+            key: [values[i] for i in filtered_indices]
+            for key, values in data.items()
+        }
+
     elif exp_type == 'base':
         data = {
             'n_ports'   : [0],
@@ -128,8 +142,6 @@ def get_datapoints(params, power_data, exp_type):
             'power'     : power_values
         }
     
-    # TODO discard all
-
     # Discard data with timestamps out of range 
     time_from = parse_timestamp(params['measurements_from']) if params['measurements_from'] != None else None
     time_to   = parse_timestamp(params['measurements_to']) if params['measurements_to'] != None else None
@@ -210,8 +222,12 @@ def derive_model(params):
         print("WARNING: There seems to be no snake-test data present. ")
     else:
         # Snake-test => E_b, E_p, P_OFFSET
-        # TODO: Packet header length and packet sizes?
-        packet_header_length = 42 
+        if params['traffic_generator'] == 'RDMA':
+            packet_header_length = 58
+        else:
+            packet_header_length = 42 
+            
+        # TODO: packet sizes?
         packet_sizes = [256, 512, 1024, 2048, 4096]
         df = pd.DataFrame(data_snake)
         df = df.astype({'mtu' : str})

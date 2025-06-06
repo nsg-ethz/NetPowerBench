@@ -2,7 +2,7 @@ device_id:
 port_type:
 port_speed:
 tranceivers:
-traffic_generator:
+traffic_generator: # Either RDMA or iperf
 
 measurements_from:
 measurements_to: 
