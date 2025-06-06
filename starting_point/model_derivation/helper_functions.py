@@ -48,7 +48,7 @@ def get_derivation_params():
         if all(args.get(k) for k in ['device_id', 'port_speed', 'port_type', 'transceivers']):
             return args
     
-    elif os.path.exists('exp.yml'): # TODO: Path
+    elif os.path.exists('args.yml'): # TODO: Path
         yaml_config = load_yml('exp.yml')
         if yaml_config and all(k in yaml_config for k in ['device_id', 'speed', 'port_type', 'transceivers']):
             return {

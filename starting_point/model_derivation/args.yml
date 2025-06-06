@@ -1,0 +1,10 @@
+device_id: 
+port_type:
+port_speed:
+tranceivers:
+traffic_generator:
+
+measurements_from:
+measurements_to: 
+preprocess_only:
+derive_only:
