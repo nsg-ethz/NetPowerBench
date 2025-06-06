@@ -1,6 +1,8 @@
 import os
 import yaml
 import argparse
+import pandas as pd
+import plotly.express as px
 from pathlib import Path
 from datetime import datetime
 
@@ -28,6 +30,7 @@ def parse_cli_args():
     parser.add_argument('--measurements_to', type=str, help='End time for measurements, only data with timestamp earlier than this will be considered for model.')
     parser.add_argument('--preprocess_only', action='store_true', help='Run only preprocessing (default: False)')
     parser.add_argument('--derive_only', action='store_true', help='Run only derivation (default: False)')
+    parser.add_argument('--plot_data', action='store_true', help='Plot intermediate data (default: False)')
 
     args = parser.parse_args()
     return vars(args)
@@ -65,7 +68,8 @@ def get_derivation_params():
                 'measurements_from': yaml_config.get('measurements_from'),
                 'measurements_to': yaml_config.get('measurements_to'),
                 'preprocess_only': yaml_config.get('preprocess_only', False),
-                'derive_only': yaml_config.get('derive_only', False)
+                'derive_only': yaml_config.get('derive_only', False),
+                'plot_data': yaml_config.get('plot_data', False)
                 
             }
     raise RuntimeError("Missing experiment parameters. Provide CLI args or a valid exp.yml file.")
@@ -137,3 +141,15 @@ def get_group(metadata):
 
 def parse_timestamp(ts_str):
     return datetime.strptime(ts_str, "%Y-%m-%d_%H:%M:%S")
+
+def plot_intermediate_data(dict):
+    """
+    Simple helper to display intermediate power data
+    """
+    tmp = dict.copy()
+    tmp.pop('n_ports')
+    tmp = pd.DataFrame.from_dict(tmp)
+    tmp.sort_values(by='ts',inplace=True)
+    fig = px.scatter(tmp, x='ts',y='power')
+    fig.show()
+    return 

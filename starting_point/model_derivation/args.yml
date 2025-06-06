@@ -6,5 +6,6 @@ traffic_generator: # Either RDMA or iperf
 
 measurements_from:
 measurements_to: 
-preprocess_only:
-derive_only:
+preprocess_only: False
+derive_only: False
+plot_data: False

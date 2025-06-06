@@ -54,7 +54,7 @@ def prepare_data(params):
 
             metadata = load_yml(measurement_path/'metadata.yml')
             group = get_group(metadata)
-            value = analyse_data()
+            value = analyse_data(measurement_path, params['plot_data'])
             store_datapoint(measurement_path, value, group, power_data)    
     # Put into file
     save_as_yml(power_data, output_data_path, 'power_data.yml', sort_keys=True)
@@ -165,6 +165,7 @@ def derive_model(params):
     port_type = params['port_type']
     port_speed = params['port_speed']
     tranceivers = params['tranceivers']
+    plotting = params['plot_data']
 
     io_data_path  = Path('..','devices',device_id)
     power_data = load_yml(io_data_path/'power_data.yml')
@@ -183,6 +184,7 @@ def derive_model(params):
     if not data_base:
         print("WARNING: There seems to be no base data present.")
     else: 
+        if plotting: plot_intermediate_data(data_base)
         P_BASE = np.median(data_base['power'])
 
     # Idle => P_IDLE, P_TRX_IN 
@@ -190,6 +192,7 @@ def derive_model(params):
     if not data_idle:
         print("WARNING: There seems to be no idle data present.")
     else:
+        if plotting: plot_intermediate_data(data_idle)
         P_IDLE   = np.median(data_idle['power'])
         P_TRX_IN = np.median((data_idle['power'] - P_BASE)/data_idle['n_ports'])
 
@@ -198,9 +201,14 @@ def derive_model(params):
     if not data_port:
         print("WARNING: There seems to be no port data present. ")
     else:
+        if plotting: plot_intermediate_data(data_port)
+
         df = pd.DataFrame(data_port)
         df["power_without_idle"] = df["power"] - P_IDLE
         fig = px.scatter(df, x="n_ports", y="power_without_idle", trendline="ols", trendline_options={"add_constant": False})
+        
+        if plotting: fig.show()
+
         results = px.get_trendline_results(fig)
         P_PORT = results.px_fit_results.iloc[0].params[0]
 
@@ -209,26 +217,33 @@ def derive_model(params):
     if not data_trx:
         print("WARNING: There seems to be no idle data present. ")
     else:
+        if plotting: plot_intermediate_data(data_trx)
+
         df = pd.DataFrame(data_trx)
         df["power_without_idle"] = df["power"] - P_IDLE
         fig = px.scatter(df, x="n_ports", y="power_without_idle", trendline="ols", trendline_options={"add_constant": False})
+        
+        if plotting: fig.show()
+        
         results = px.get_trendline_results(fig)
         slope = results.px_fit_results.iloc[0].params[0]
         P_TRX_UP = slope - P_PORT
 
 
+    # Snake-test => E_b, E_p, P_OFFSET
     data_snake = get_datapoints(power_data, exp_type='snake-test')
     if not data_snake:
         print("WARNING: There seems to be no snake-test data present. ")
     else:
-        # Snake-test => E_b, E_p, P_OFFSET
+        if plotting: plot_intermediate_data(data_snake)
+
         if params['traffic_generator'] == 'RDMA':
             packet_header_length = 58
         else:
             packet_header_length = 42 
             
         packet_sizes = sorted(set(data_snake['packet_sizes']))
-        
+
         df = pd.DataFrame(data_snake)
         df = df.astype({'packet_sizes' : str})
         df['bw'] = df['bw']*1e9 
@@ -237,16 +252,24 @@ def derive_model(params):
         intercepts_per_L    = [results.px_fit_results.iloc[i].params[0] for i in [mtu for mtu in range(len(packet_sizes))]]
         slopes_per_L        = [results.px_fit_results.iloc[i].params[1] for i in [mtu for mtu in range(len(packet_sizes))]]
 
+        if plotting: fig.show()
+
         tmp = power_data[port_type][tranceivers]['snake-test'][port_speed]
         number_of_ports = next(iter(tmp))   
 
         rhs = np.multiply([8*(L + packet_header_length)/number_of_ports for L in packet_sizes], slopes_per_L)
         df = pd.DataFrame(data = {'packet_sizes' : packet_sizes, 'rhs': rhs})
 
-        fig = px.scatter(df, x='packet_sizes', y="rhs", trendline="ols",)    
+        fig = px.scatter(df, x='packet_sizes', y="rhs", trendline="ols",)   
+
+        if plotting: fig.show()
+
         results = px.get_trendline_results(fig)
         intercept = results.px_fit_results.iloc[0].params[0]
         slope = results.px_fit_results.iloc[0].params[1]
+
+        if plotting: print(results.px_fit_results.iloc[0].summary())
+
         E_b = slope / 8
         E_p = intercept - (8*packet_header_length*E_b)
 
