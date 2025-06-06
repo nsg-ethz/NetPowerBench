@@ -104,7 +104,7 @@ def get_group(metadata):
             'port_type'     : metadata['Metadata']['port_type'],
             'trx'           : metadata['Metadata']['transceivers'],
             'exp_type'      : metadata['Metadata']['experiment_type'],
-            'n_ports'       : metadata['Metadata']['port_number'], #TODO Fix
+            'n_ports'       : len(metadata['Metadata']['all_ports']), 
         }
     elif exp_type == 'snake-test':
         
@@ -124,7 +124,7 @@ def get_group(metadata):
             'trx'           : metadata['Metadata']['transceivers'],
             'exp_type'      : metadata['Metadata']['experiment_type'],
             'port_speed'    : metadata['Metadata']['port_speed'],
-            'n_ports'       : metadata['Metadata']['port_number'], #TODO Fix
+            'n_ports'       : len(metadata['Metadata']['all_ports']), 
             'packet_size_bytes' : metadata['Measurement_Data']['packet_size_bytes'],
             'bandwidth_gbps': rounded_bw
         }
@@ -134,7 +134,7 @@ def get_group(metadata):
             'trx'           : metadata['Metadata']['transceivers'],
             'exp_type'      : metadata['Metadata']['experiment_type'],
             'port_speed'    : metadata['Metadata']['port_speed'],
-            'n_ports'       : metadata['Metadata']['port_number'], #TODO Fix 
+            'n_ports'       : len(metadata['Measurement_data']['port_list']), 
         }
     return group
 
