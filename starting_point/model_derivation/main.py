@@ -227,12 +227,12 @@ def derive_model(params):
         else:
             packet_header_length = 42 
             
-        # TODO: packet sizes?
-        packet_sizes = [256, 512, 1024, 2048, 4096]
+        packet_sizes = sorted(set(data_snake['packet_sizes']))
+        
         df = pd.DataFrame(data_snake)
-        df = df.astype({'mtu' : str})
+        df = df.astype({'packet_sizes' : str})
         df['bw'] = df['bw']*1e9 
-        fig = px.scatter(df, x="bw", y="power", color="mtu", trendline="ols", hover_data=['ts'])
+        fig = px.scatter(df, x="bw", y="power", color="packet_sizes", trendline="ols", hover_data=['ts'])
         results = px.get_trendline_results(fig)
         intercepts_per_L    = [results.px_fit_results.iloc[i].params[0] for i in [mtu for mtu in range(len(packet_sizes))]]
         slopes_per_L        = [results.px_fit_results.iloc[i].params[1] for i in [mtu for mtu in range(len(packet_sizes))]]
