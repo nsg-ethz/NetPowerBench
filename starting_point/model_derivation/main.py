@@ -107,7 +107,7 @@ def get_datapoints(params, power_data, exp_type):
             'n_ports'   : number_ports,
             'ts'        : timestamps,
             'power'     : power_values,
-            'mtu'       : mtu_values,
+            'mtu'       : mtu_values, # Same as packet sizes
             'bw'        : bandwidth
         }
     elif exp_type == 'base':
@@ -127,6 +127,8 @@ def get_datapoints(params, power_data, exp_type):
             'ts'        : timestamps,
             'power'     : power_values
         }
+    
+    # TODO discard all
 
     # Discard data with timestamps out of range 
     time_from = parse_timestamp(params['measurements_from']) if params['measurements_from'] != None else None
@@ -143,6 +145,7 @@ def get_datapoints(params, power_data, exp_type):
         key: [values[i] for i in valid_indices]
         for key, values in data.items()
     }
+
 
 def derive_model(params):
     # Load parameters into variables
@@ -165,67 +168,81 @@ def derive_model(params):
 
     # Base => P_Base}
     data_base = get_datapoints(params, power_data, exp_type='base')
-    # TODO check whether we actually have data?
-    P_BASE = np.median(data_base['power'])
+    if not data_base:
+        print("WARNING: There seems to be no base data present.")
+    else: 
+        P_BASE = np.median(data_base['power'])
 
     # Idle => P_IDLE, P_TRX_IN 
     data_idle = get_datapoints(params, power_data, exp_type='idle')
-    P_IDLE   = np.median(data_idle['power'])
-    P_TRX_IN = np.median((data_idle['power'] - P_BASE)/data_idle['n_ports'])
+    if not data_idle:
+        print("WARNING: There seems to be no idle data present.")
+    else:
+        P_IDLE   = np.median(data_idle['power'])
+        P_TRX_IN = np.median((data_idle['power'] - P_BASE)/data_idle['n_ports'])
 
     # Port => P_PORT
     data_port = get_datapoints(params, power_data, exp_type='port')
-    df = pd.DataFrame(data_port)
-    df["power_without_idle"] = df["power"] - P_IDLE
-    fig = px.scatter(df, x="n_ports", y="power_without_idle", trendline="ols", trendline_options={"add_constant": False})
-    results = px.get_trendline_results(fig)
-    P_PORT = results.px_fit_results.iloc[0].params[0]
+    if not data_port:
+        print("WARNING: There seems to be no port data present. ")
+    else:
+        df = pd.DataFrame(data_port)
+        df["power_without_idle"] = df["power"] - P_IDLE
+        fig = px.scatter(df, x="n_ports", y="power_without_idle", trendline="ols", trendline_options={"add_constant": False})
+        results = px.get_trendline_results(fig)
+        P_PORT = results.px_fit_results.iloc[0].params[0]
 
     # Trx => P_TRX_UP
     data_trx = get_datapoints(params, power_data, exp_type='trx')
-    df = pd.DataFrame(data_trx)
-    df["power_without_idle"] = df["power"] - P_IDLE
-    fig = px.scatter(df, x="n_ports", y="power_without_idle", trendline="ols", trendline_options={"add_constant": False})
-    results = px.get_trendline_results(fig)
-    slope = results.px_fit_results.iloc[0].params[0]
-    P_TRX_UP = slope - P_PORT
+    if not data_trx:
+        print("WARNING: There seems to be no idle data present. ")
+    else:
+        df = pd.DataFrame(data_trx)
+        df["power_without_idle"] = df["power"] - P_IDLE
+        fig = px.scatter(df, x="n_ports", y="power_without_idle", trendline="ols", trendline_options={"add_constant": False})
+        results = px.get_trendline_results(fig)
+        slope = results.px_fit_results.iloc[0].params[0]
+        P_TRX_UP = slope - P_PORT
 
-    # Snake-test => E_b, E_p, P_OFFSET
-    # TODO: Packet header length and packet sizes?
-    packet_header_length = 42 
-    packet_sizes = [256, 512, 1024, 2048, 4096]
 
     data_snake = get_datapoints(power_data, exp_type='snake-test')
-    df = pd.DataFrame(data_snake)
-    df = df.astype({'mtu' : str})
-    df['bw'] = df['bw']*1e9 
-    fig = px.scatter(df, x="bw", y="power", color="mtu", trendline="ols", hover_data=['ts'])
-    results = px.get_trendline_results(fig)
-    intercepts_per_L    = [results.px_fit_results.iloc[i].params[0] for i in [mtu for mtu in range(len(packet_sizes))]]
-    slopes_per_L        = [results.px_fit_results.iloc[i].params[1] for i in [mtu for mtu in range(len(packet_sizes))]]
+    if not data_snake:
+        print("WARNING: There seems to be no snake-test data present. ")
+    else:
+        # Snake-test => E_b, E_p, P_OFFSET
+        # TODO: Packet header length and packet sizes?
+        packet_header_length = 42 
+        packet_sizes = [256, 512, 1024, 2048, 4096]
+        df = pd.DataFrame(data_snake)
+        df = df.astype({'mtu' : str})
+        df['bw'] = df['bw']*1e9 
+        fig = px.scatter(df, x="bw", y="power", color="mtu", trendline="ols", hover_data=['ts'])
+        results = px.get_trendline_results(fig)
+        intercepts_per_L    = [results.px_fit_results.iloc[i].params[0] for i in [mtu for mtu in range(len(packet_sizes))]]
+        slopes_per_L        = [results.px_fit_results.iloc[i].params[1] for i in [mtu for mtu in range(len(packet_sizes))]]
 
-    tmp = power_data[port_type][tranceivers]['snake-test'][port_speed]
-    number_of_ports = next(iter(tmp))   
+        tmp = power_data[port_type][tranceivers]['snake-test'][port_speed]
+        number_of_ports = next(iter(tmp))   
 
-    rhs = np.multiply([8*(L + packet_header_length)/number_of_ports for L in packet_sizes], slopes_per_L)
-    df = pd.DataFrame(data = {'packet_sizes' : packet_sizes, 'rhs': rhs})
+        rhs = np.multiply([8*(L + packet_header_length)/number_of_ports for L in packet_sizes], slopes_per_L)
+        df = pd.DataFrame(data = {'packet_sizes' : packet_sizes, 'rhs': rhs})
 
-    fig = px.scatter(df, x='packet_sizes', y="rhs", trendline="ols",)    
-    results = px.get_trendline_results(fig)
-    intercept = results.px_fit_results.iloc[0].params[0]
-    slope = results.px_fit_results.iloc[0].params[1]
-    E_b = slope / 8
-    E_p = intercept - (8*packet_header_length*E_b)
+        fig = px.scatter(df, x='packet_sizes', y="rhs", trendline="ols",)    
+        results = px.get_trendline_results(fig)
+        intercept = results.px_fit_results.iloc[0].params[0]
+        slope = results.px_fit_results.iloc[0].params[1]
+        E_b = slope / 8
+        E_p = intercept - (8*packet_header_length*E_b)
 
-    try: 
-        tmp = power_data[port_type][tranceivers]['trx'][port_speed][number_of_ports]
-        power_no_traffic = np.median(tmp['power'])
-    except KeyError:
-        print('Warning: we miss the power value for {} ports without traffic.'.format(number_of_ports))
-        print('-> Reconstructing based on other model parameters')
-        power_no_traffic = P_BASE + (number_of_ports) * (P_PORT + P_TRX_IN + P_TRX_UP)
-    
-    P_OFFSET = np.median([intercepts_per_L - power_no_traffic])/number_of_ports
+        try: 
+            tmp = power_data[port_type][tranceivers]['trx'][port_speed][number_of_ports]
+            power_no_traffic = np.median(tmp['power'])
+        except KeyError:
+            print('Warning: we miss the power value for {} ports without traffic.'.format(number_of_ports))
+            print('-> Reconstructing based on other model parameters')
+            power_no_traffic = P_BASE + (number_of_ports) * (P_PORT + P_TRX_IN + P_TRX_UP)
+        
+        P_OFFSET = np.median([intercepts_per_L - power_no_traffic])/number_of_ports
 
     # Save model in yml
     model_data = {
