@@ -6,17 +6,6 @@ import os
 import time
 from pathlib import Path
 
-def str2bool(v):
-    if isinstance(v, bool):
-        return v
-    if v.lower() in ('yes', 'true', 't', '1'):
-        return True
-    elif v.lower() in ('no', 'false', 'f', '0'):
-        return False
-    else:
-        raise argparse.ArgumentTypeError('Boolean value expected.')
-
-
 
 def parse_cli_args():
     """
@@ -25,7 +14,7 @@ def parse_cli_args():
     Recognized arguments:
         -d, --device_id     : Identifier for the device to test (str)
         -e, --exp           : List of experiment types to run (e.g., base, idle, port) (list of str)
-        -s, --speed         : List of port speeds to test (e.g., 100G, 400G) (list of str)
+        -s, --port_speed    : List of port speeds to test (e.g., 100G, 400G) (list of str)
         -p, --port_type     : Type of port to use (e.g., QSFP28) (str)
         -t, --transceivers  : Transceiver type (e.g., LR)
         -r, --repeats       : Number of times to repeat each test (int, default: 1)
@@ -39,13 +28,13 @@ def parse_cli_args():
     parser = argparse.ArgumentParser(description='Run device experiment tests.')
     parser.add_argument('-d', '--device_id', type=str, help='Device identifier')
     parser.add_argument('-e', '--exp', nargs='+', help='Experiment types (e.g., base idle port)')
-    parser.add_argument('-s', '--speed', nargs='+', help='Speeds to test (e.g., 100G 400G)')
+    parser.add_argument('-s', '--port_speed', nargs='+', help='Speeds of the port to test (e.g., 100G 400G)')
     parser.add_argument('-p', '--port_type', type=str, help='Port type (e.g., QSFP28)')
     parser.add_argument('-t', '--transceivers', type=str, help='Transceiver type (e.g., LR)')
     parser.add_argument('-r', '--repeats', type=int, default=1, help='Number of repeats per test')
-    parser.add_argument('-u', '--user_confirm', type=str2bool, default=False, help='Manual user confirmation enabled/disabled (default: False)')
-    parser.add_argument('--disable_reset', type=str2bool, default=False, help='Disable device reset after snake-test (default: False). Note that this can lead to wrong configurations in later test')
-    parser.add_argument('--not_reconfigure', type=str2bool, default=False, help='Disables configuration before running a base, idle or snake-test (default: False). Note that this assumes the device is already correctly configured')
+    parser.add_argument('-u', '--user_confirm', action='store_true', default=False, help='Manual user confirmation enabled/disabled (default: False)')
+    parser.add_argument('--disable_reset', action='store_true', default=False, help='Disable device reset after snake-test (default: False). Note that this can lead to wrong configurations in later test')
+    parser.add_argument('--not_reconfigure', action='store_true', default=False, help='Disables configuration before running a base, idle or snake-test (default: False). Note that this assumes the device is already correctly configured')
 
     args = parser.parse_args()
     return vars(args)
@@ -62,18 +51,21 @@ def get_experiment_params():
     Returns:
         dict: Dictionary containing the experiment parameters
     """
+    print("Fetching parameters ...")
     args = parse_cli_args()
+    has_cli_input = any(v is not None and v is not False for k, v in args.items())
 
-    if all(args.get(k) for k in ['device_id', 'exp', 'speed', 'port_type', 'transceivers']):
-        return args
+    if has_cli_input:
+        if all(args.get(k) for k in ['device_id', 'exp', 'port_speed', 'port_type', 'transceivers']):
+            return args
 
-    if os.path.exists('exp.yml'): # TODO: Path
+    elif os.path.exists('exp.yml'): # TODO: Path
         yaml_config = load_yml('exp.yml')
-        if yaml_config and all(k in yaml_config for k in ['device_id', 'exp', 'speed', 'port_type', 'transceivers']):
+        if yaml_config and all(k in yaml_config for k in ['device_id', 'exp', 'port_speed', 'port_type', 'transceivers']):
             return {
                 'device_id': yaml_config['device_id'],
                 'exp': yaml_config['exp'],
-                'speed': yaml_config['speed'],
+                'port_speed': yaml_config['port_speed'],
                 'port_type': yaml_config['port_type'],
                 'transceivers':yaml_config['transceivers'],
                 'repeats': yaml_config.get('repeats', 1),

@@ -50,12 +50,10 @@ def get_derivation_params():
     has_cli_input = any(v is not None and v is not False for k, v in args.items())
 
     if has_cli_input:
-        print("CLI input detected ")
         if all(args.get(k) for k in ['device_id', 'port_speed', 'port_type', 'transceivers', 'traffic_generator']):
             return args
     
     elif os.path.exists('args.yml'): # TODO: Path
-        print("args.yml detected.")
         yaml_config = load_yml('args.yml')
         if yaml_config and all(k in yaml_config for k in ['device_id', 'port_speed', 'port_type', 'transceivers', 'traffic_generator']):
             tg = yaml_config['traffic_generator']

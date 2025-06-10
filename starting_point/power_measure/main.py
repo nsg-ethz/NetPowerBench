@@ -642,12 +642,12 @@ if __name__ == '__main__':
     
     device_id = params['device_id']
     exp = params['exp']
-    speed = params['speed']
+    speeds = params['port_speed']
     repeats_per_test = params['repeats']
 
 
     exp_list = []
-    for e, s in itertools.product(exp, speed):
+    for e, s in itertools.product(exp, speeds):
         if e =='reset_only':
             exp_list.append([e, s])  
         else:
