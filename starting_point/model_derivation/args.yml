@@ -1,11 +1,11 @@
-device_id: ciscoNCS55A1-24H
+device_id: ciscoNexus9336-FX2
 port_type: QSFP28
 port_speed: 100G
-transceivers: PCC
+transceivers: LR
 traffic_generator: RDMA # iperf3 
 
-measurements_from:
-measurements_to: 
-preprocess_only: False
-derive_only: True
+measurements_from: 2025-04-29_09:00:00
+measurements_to: 2025-04-30_15:00:00
+preprocess_only: True
+derive_only: False
 plot_data: False
