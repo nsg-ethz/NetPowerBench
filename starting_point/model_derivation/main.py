@@ -51,7 +51,7 @@ def prepare_data(params):
             # Discard if only one PSU was plugged in, meaning the average power was less than 1W
             if (float(power_log.iloc[:,0].mean()) < 1000 or float(power_log.iloc[:,1].mean()) < 1000):
                 print(f'WARING: Appears to have only one channel measuring.\nDiscarding {measurement_path}')
-                return
+                continue
             # TODO: Discard if data is too irregular
 
             metadata = load_yml(measurement_path/'metadata.yml')
