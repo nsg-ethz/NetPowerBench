@@ -1,0 +1,95 @@
+metadata:
+  device_id: ciscoNCS55A1-24H
+  connected_PSUs: 2
+QSFP28:
+  PCC:
+    100G:
+      P_BASE: 319.82
+      P_PORT: 0.3160487179487193
+      P_TRX: 0.21247884615384513
+      P_TRX_IN: 0.018541666666666384
+      P_TRX_UP: 0.19393717948717876
+      E_BIT: 2.1537124073086068e-11
+      E_PKT: 5.8297952617362215e-08
+      P_OFFSET: 0.37469527968315575
+    50G:
+      P_BASE: 319.82
+      P_PORT: 0.18326084358942474
+      P_TRX: 0.18294784322570182
+      P_TRX_IN: 0.018541666666666384
+      P_TRX_UP: 0.16440617655903544
+      E_BIT: 2.175446933838009e-11
+      E_PKT: 5.715095073291043e-08
+      P_OFFSET: 0.33854581563192926
+    25G:
+      P_BASE: 319.82
+      P_PORT: 0.10163636363638062
+      P_TRX: 0.1018901515151424
+      P_TRX_IN: 0.018541666666666384
+      P_TRX_UP: 0.08334848484847601
+      E_BIT: 2.1541682476770664e-11
+      E_PKT: 5.4992618016466955e-08
+      P_OFFSET: 0.20954728876724715
+  SR4:
+    100G:
+      default:
+        port_type: QSFP28
+        trx_phy: PCC
+        trx_speed: 100G
+  LR4:
+    100G:
+      default:
+        port_type: QSFP28
+        trx_phy: PCC
+        trx_speed: 100G
+  LR:
+    100G:
+      default:
+        port_type: QSFP28
+        trx_phy: PCC
+        trx_speed: 100G
+  FR:
+    100G:
+      default:
+        port_type: QSFP28
+        trx_phy: PCC
+        trx_speed: 100G
+
+QSFP+:
+  LR4:
+    40G:
+      default:
+        port_type: QSFP28
+        trx_phy: PCC
+        trx_speed: 100G
+SFP+:
+  ACU10M:
+    10G:
+      default:
+        port_type: QSFP28
+        trx_phy: PCC
+        trx_speed: 100G
+  DWDM:
+    10G:
+      default:
+        port_type: QSFP28
+        trx_phy: PCC
+        trx_speed: 100G
+  CWDM:
+    10G:
+      default:
+        port_type: QSFP28
+        trx_phy: PCC
+        trx_speed: 100G
+  LR:
+    10G:
+      default:
+        port_type: QSFP28
+        trx_phy: PCC
+        trx_speed: 100G
+  ZR:
+    10G:
+      default:
+        port_type: QSFP28
+        trx_phy: PCC
+        trx_speed: 100G

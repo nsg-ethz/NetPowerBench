@@ -57,7 +57,6 @@ def prepare_data(params):
             metadata = load_yml(measurement_path/'metadata.yml')
             group = get_group(metadata)
             value = analyse_data(measurement_path, params['plot_data'])
-            print(f"Value: {value}, type: {type(value)}")
             store_datapoint(measurement_path, float(value), group, power_data)    
     # Put into file
     save_as_yml(power_data, output_data_path, 'power_data.yml', sort_keys=True)
@@ -67,7 +66,7 @@ def get_datapoints(params, power_data, exp_type):
     print(f"Fetching dataponits for {exp_type} ...")
     port_type = params['port_type']
     port_speed = params['port_speed']
-    tranceivers = params['tranceivers']
+    tranceivers = params['transceivers']
     # Get group
     if exp_type == 'base':
         group = {'exp_type':'base'}
@@ -131,11 +130,14 @@ def get_datapoints(params, power_data, exp_type):
 
     elif exp_type == 'base':
         data = {
-            'n_ports'   : [0],
+            'n_ports':   [0 for _ in tmp['ts']],
             'ts'        : tmp['ts'],
             'power'     : tmp['power'],
         }
     else:
+        number_ports = []
+        timestamps   = []
+        power_values = []
         for n_port in tmp.keys():
             number_ports = number_ports + (n_port * np.ones(len(tmp[n_port]['ts']), dtype=int)).tolist()
             timestamps = timestamps + tmp[n_port]['ts']
@@ -158,8 +160,6 @@ def get_datapoints(params, power_data, exp_type):
         if (time_from is None or t >= time_from) and (time_to is None or t <= time_to)
     ]
 
-    print(f"Returning data for {exp_type}\n")
-
     return {
         key: [values[i] for i in valid_indices]
         for key, values in data.items()
@@ -171,7 +171,8 @@ def derive_model(params):
     device_id = params['device_id']
     port_type = params['port_type']
     port_speed = params['port_speed']
-    tranceivers = params['tranceivers']
+    tranceivers = params['transceivers']
+    traffic_generator = params['traffic_generator']
     plotting = params['plot_data']
     print(f"Deriving model for {device_id}, port type {port_type}, port speed {port_speed}, transceivers {tranceivers}. \n Data will be plotted: {plotting}")
 
@@ -243,14 +244,14 @@ def derive_model(params):
 
 
     # Snake-test => E_b, E_p, P_OFFSET
-    data_snake = get_datapoints(power_data, exp_type='snake-test')
+    data_snake = get_datapoints(params, power_data, exp_type='snake-test')
     if not data_snake:
         print("WARNING: There seems to be no snake-test data present. ")
     else:
         print("Processing snake data\n")
         if plotting: plot_intermediate_data(data_snake)
 
-        if params['traffic_generator'] == 'RDMA':
+        if traffic_generator == 'RDMA':
             packet_header_length = 58
         else:
             packet_header_length = 42 
@@ -298,6 +299,14 @@ def derive_model(params):
 
     # Save model in yml
     model_data = {
+        'Arguments' : {
+            'Device': device_id,
+            'Port_type' : port_type,
+            'Port_speed' : port_speed,
+            'Transceivers' : tranceivers,
+            'Traffic_generator' : traffic_generator,
+            },
+        'Power_model' : {
             'P_BASE': float(P_BASE),
             'P_PORT': float(P_PORT),
             'P_TRX' : float(P_TRX_IN+P_TRX_UP),
@@ -306,36 +315,13 @@ def derive_model(params):
             'E_BIT' : float(E_b),
             'E_PKT' : float(E_p),
             'P_OFFSET' : float(P_OFFSET)
+            }
     }
-    save_as_yml(model_data, io_data_path)
+    file_name = f"power_model_{port_type}_{port_speed}_{tranceivers}_{traffic_generator}.yml"
+    save_as_yml(model_data, io_data_path, file_name, sort_keys=False)
 
     print(yaml.dump(model_data, default_flow_style=False,sort_keys=False))
-
-    latex_string = '& {} & {} & {} &'.format(
-        port_type,
-        tranceivers,
-        port_speed,    
-    )
-    sep = ' & '
-    latex_string+=str(int(P_BASE))
-    latex_string+=sep
-    latex_string+=str(round(P_PORT,2))
-    latex_string+=sep
-    latex_string+=str(round(P_TRX_IN,2))
-    latex_string+=sep
-    latex_string+=str(round(P_TRX_UP,2))
-    latex_string+=sep
-    latex_string+=str(int(E_b*1e12))
-    latex_string+=sep
-    latex_string+=str(int(E_p*1e9))
-    latex_string+=sep
-    latex_string+=str(round(P_OFFSET,2))
-    latex_string+='\\\\'
-    
-    print(latex_string)
-    print("Model derivation done")
-
-
+    print("Model derivation done\n")
     return
 
 if __name__ == '__main__':
