@@ -25,7 +25,7 @@ def parse_cli_args():
     parser.add_argument('-s', '--port_speed', type=str, help='Speed of port used in the model (e.g., 100G 400G)')
     parser.add_argument('-p', '--port_type', type=str, help='Port type used in the model (e.g., QSFP28)')
     parser.add_argument('-t', '--transceivers', type=str, help='Transceiver type used in the model(e.g., LR)')
-    parser.add_argument('-g', '--traffic_generator', type=str, choices=['RDMA', 'iperf3'], required=True, help="Type of traffic generator used. Must be either 'RDMA' or 'iperf3'.")
+    parser.add_argument('-g', '--traffic_generator', type=str, choices=['RDMA', 'iperf3'], help="Type of traffic generator used. Must be either 'RDMA' or 'iperf3'.")
     parser.add_argument('--measurements_from', type=str, help='Start time for measurements, only data with timestamp later than this will be considered for model.')
     parser.add_argument('--measurements_to', type=str, help='End time for measurements, only data with timestamp earlier than this will be considered for model.')
     parser.add_argument('--preprocess_only', action='store_true', help='Run only preprocessing (default: False)')
@@ -50,29 +50,33 @@ def get_derivation_params():
     has_cli_input = any(v is not None and v is not False for k, v in args.items())
 
     if has_cli_input:
+        print("CLI input detected ")
         if all(args.get(k) for k in ['device_id', 'port_speed', 'port_type', 'transceivers', 'traffic_generator']):
             return args
     
     elif os.path.exists('args.yml'): # TODO: Path
-        yaml_config = load_yml('exp.yml')
-        if yaml_config and all(k in yaml_config for k in ['device_id', 'speed', 'port_type', 'transceivers', 'traffic_generator']):
+        print("args.yml detected.")
+        yaml_config = load_yml('args.yml')
+        if yaml_config and all(k in yaml_config for k in ['device_id', 'port_speed', 'port_type', 'transceivers', 'traffic_generator']):
             tg = yaml_config['traffic_generator']
             if tg not in ['RDMA', 'iperf3']:
                 raise RuntimeError(f"Invalid traffic_generator '{tg}' in exp.yml. Must be 'RDMA' or 'iperf3'.")
 
-            return {
+            params = {
                 'device_id': yaml_config['device_id'],
                 'port_speed': yaml_config['port_speed'],
                 'port_type': yaml_config['port_type'],
                 'transceivers':yaml_config['transceivers'],
                 'traffic_generator': yaml_config['traffic_generator'],
-                'measurements_from': yaml_config.get('measurements_from'),
-                'measurements_to': yaml_config.get('measurements_to'),
+                'measurements_from': yaml_config.get('measurements_from', None),
+                'measurements_to': yaml_config.get('measurements_to', None),
                 'preprocess_only': yaml_config.get('preprocess_only', False),
                 'derive_only': yaml_config.get('derive_only', False),
                 'plot_data': yaml_config.get('plot_data', False)
                 
             }
+            
+            return params
     raise RuntimeError("Missing experiment parameters. Provide CLI args or a valid exp.yml file.")
 
 
