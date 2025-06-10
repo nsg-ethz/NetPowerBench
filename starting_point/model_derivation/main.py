@@ -6,7 +6,7 @@ import plotly.express as px
 
 
 def analyse_data(measurement_path, display_plot=False):
-    print("Analysing data ...")
+    print(f"Analysing data for {measurement_path} ...")
     # Load power data
     df = pd.read_csv(measurement_path / 'power.log', names=['MCP1', 'MCP2'], header=0)
     df['Power [W]'] = (df['MCP1'] + df['MCP2']) / 1000.0
@@ -57,7 +57,8 @@ def prepare_data(params):
             metadata = load_yml(measurement_path/'metadata.yml')
             group = get_group(metadata)
             value = analyse_data(measurement_path, params['plot_data'])
-            store_datapoint(measurement_path, value, group, power_data)    
+            print(f"Value: {value}, type: {type(value)}")
+            store_datapoint(measurement_path, float(value), group, power_data)    
     # Put into file
     save_as_yml(power_data, output_data_path, 'power_data.yml', sort_keys=True)
     print("Preparation complete\n")

@@ -101,7 +101,7 @@ def save_as_yml(data,dest,name,sort_keys=False):
 
 def get_group(metadata):
     exp_type = metadata['Metadata']['experiment_type']
-    
+    print(f"Fetching group for {exp_type}")
     if exp_type == 'base':
         group = {'exp_type': exp_type}
     elif exp_type == 'idle':
@@ -139,7 +139,7 @@ def get_group(metadata):
             'trx'           : metadata['Metadata']['transceivers'],
             'exp_type'      : metadata['Metadata']['experiment_type'],
             'port_speed'    : metadata['Metadata']['port_speed'],
-            'n_ports'       : len(metadata['Measurement_data']['port_list']), 
+            'n_ports'       : len(metadata['Measurement_Data']['port_list']), 
         }
     return group
 
