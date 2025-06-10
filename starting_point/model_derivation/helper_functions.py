@@ -45,6 +45,7 @@ def get_derivation_params():
     Raises:
         RuntimeError: If 'device_id' is not provided by CLI or YAML.
     """
+    print("Fetching parameters ...")
     args = parse_cli_args()
     has_cli_input = any(v is not None and v is not False for k, v in args.items())
 

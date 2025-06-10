@@ -6,6 +6,7 @@ import plotly.express as px
 
 
 def analyse_data(measurement_path, display_plot=False):
+    print("Analysing data ...")
     # Load power data
     df = pd.read_csv(measurement_path / 'power.log', names=['MCP1', 'MCP2'], header=0)
     df['Power [W]'] = (df['MCP1'] + df['MCP2']) / 1000.0
@@ -35,6 +36,7 @@ def store_datapoint(measurement_path, value, group, power_data):
 
 
 def prepare_data(params):
+    print("Preparing data ...")
     device_id = params['device_id']
     power_data = {'device' : device_id}
     # Load the paths
@@ -58,8 +60,10 @@ def prepare_data(params):
             store_datapoint(measurement_path, value, group, power_data)    
     # Put into file
     save_as_yml(power_data, output_data_path, 'power_data.yml', sort_keys=True)
+    print("Preparation complete\n")
 
 def get_datapoints(params, power_data, exp_type):
+    print(f"Fetching dataponits for {exp_type} ...")
     port_type = params['port_type']
     port_speed = params['port_speed']
     tranceivers = params['tranceivers']
@@ -153,6 +157,8 @@ def get_datapoints(params, power_data, exp_type):
         if (time_from is None or t >= time_from) and (time_to is None or t <= time_to)
     ]
 
+    print(f"Returning data for {exp_type}\n")
+
     return {
         key: [values[i] for i in valid_indices]
         for key, values in data.items()
@@ -166,6 +172,7 @@ def derive_model(params):
     port_speed = params['port_speed']
     tranceivers = params['tranceivers']
     plotting = params['plot_data']
+    print(f"Deriving model for {device_id}, port type {port_type}, port speed {port_speed}, transceivers {tranceivers}. \n Data will be plotted: {plotting}")
 
     io_data_path  = Path('..','devices',device_id)
     power_data = load_yml(io_data_path/'power_data.yml')
@@ -184,6 +191,7 @@ def derive_model(params):
     if not data_base:
         print("WARNING: There seems to be no base data present.")
     else: 
+        print("Processing base data\n")
         if plotting: plot_intermediate_data(data_base)
         P_BASE = np.median(data_base['power'])
 
@@ -192,6 +200,7 @@ def derive_model(params):
     if not data_idle:
         print("WARNING: There seems to be no idle data present.")
     else:
+        print("Processing idle data\n")
         if plotting: plot_intermediate_data(data_idle)
         P_IDLE   = np.median(data_idle['power'])
         P_TRX_IN = np.median((data_idle['power'] - P_BASE)/data_idle['n_ports'])
@@ -201,6 +210,7 @@ def derive_model(params):
     if not data_port:
         print("WARNING: There seems to be no port data present. ")
     else:
+        print("Processing port data\n")
         if plotting: plot_intermediate_data(data_port)
 
         df = pd.DataFrame(data_port)
@@ -217,6 +227,7 @@ def derive_model(params):
     if not data_trx:
         print("WARNING: There seems to be no idle data present. ")
     else:
+        print("Processing trx data\n")
         if plotting: plot_intermediate_data(data_trx)
 
         df = pd.DataFrame(data_trx)
@@ -235,6 +246,7 @@ def derive_model(params):
     if not data_snake:
         print("WARNING: There seems to be no snake-test data present. ")
     else:
+        print("Processing snake data\n")
         if plotting: plot_intermediate_data(data_snake)
 
         if params['traffic_generator'] == 'RDMA':
@@ -295,6 +307,34 @@ def derive_model(params):
             'P_OFFSET' : float(P_OFFSET)
     }
     save_as_yml(model_data, io_data_path)
+
+    print(yaml.dump(model_data, default_flow_style=False,sort_keys=False))
+
+    latex_string = '& {} & {} & {} &'.format(
+        port_type,
+        tranceivers,
+        port_speed,    
+    )
+    sep = ' & '
+    latex_string+=str(int(P_BASE))
+    latex_string+=sep
+    latex_string+=str(round(P_PORT,2))
+    latex_string+=sep
+    latex_string+=str(round(P_TRX_IN,2))
+    latex_string+=sep
+    latex_string+=str(round(P_TRX_UP,2))
+    latex_string+=sep
+    latex_string+=str(int(E_b*1e12))
+    latex_string+=sep
+    latex_string+=str(int(E_p*1e9))
+    latex_string+=sep
+    latex_string+=str(round(P_OFFSET,2))
+    latex_string+='\\\\'
+    
+    print(latex_string)
+    print("Model derivation done")
+
+
     return
 
 if __name__ == '__main__':
