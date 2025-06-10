@@ -4,8 +4,8 @@ port_speed: 100G
 transceivers: LR
 traffic_generator: RDMA # iperf3 
 
-measurements_from: 2025-04-29_09:00:00
+measurements_from: 2024-11-16_00:00:00 # 2025-04-29_09:00:00
 measurements_to: 2025-04-30_15:00:00
-preprocess_only: True
-derive_only: False
+preprocess_only: False
+derive_only: True
 plot_data: False

@@ -159,6 +159,8 @@ def get_datapoints(params, power_data, exp_type):
         i for i, t in enumerate(parsed_ts)
         if (time_from is None or t >= time_from) and (time_to is None or t <= time_to)
     ]
+    if not valid_indices:
+        return None
 
     return {
         key: [values[i] for i in valid_indices]
