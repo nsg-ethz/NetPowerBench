@@ -81,7 +81,7 @@ if __name__ == '__main__':
         if usr1.lower() == 'n':
             sys.exit(0)
 
-    if 'full_reset':
+    if 'full_reset' in tests:
         # Disabling all ports
         cmd = get_port_config(metadata, 'disable_all')
         configure_ports(metadata, cmd)
