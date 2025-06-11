@@ -6,6 +6,18 @@ import plotly.express as px
 
 
 def analyse_data(measurement_path, display_plot=False):
+    """
+    Reads the power log from the specified measurement path, calculates the median power, 
+    generates a plot of power over time with a median line, saves the plot as an image, 
+    and optionally displays the plot.
+
+    Args:
+        measurement_path (Path): Path to the directory containing the 'power.log' file.
+        display_plot (bool, optional): If True, displays the plot. Defaults to False.
+
+    Returns:
+        numpy.float64: The median power value in watts.
+    """
     print(f"Analysing data for {measurement_path} ...")
     # Load power data
     df = pd.read_csv(measurement_path / 'power.log', names=['MCP1', 'MCP2'], header=0)
@@ -26,6 +38,18 @@ def analyse_data(measurement_path, display_plot=False):
     return median_power
 
 def store_datapoint(measurement_path, value, group, power_data):
+    """
+    Stores value in the nested dictionary power_data with the values in group being the chain of keys to access.
+
+    Args:
+        measurement_path (Path): Path to the directory containing the 'power.log' file.
+        value (float): Value to be stored
+        group (dict): Dictionary with values that will be the keys in the nested dictionary
+        power_data (dict): Nested Dictionary that value will be stored in. 
+
+    Returns:
+        None
+    """
     tmp = power_data
     
     for key in group.values():
@@ -36,6 +60,15 @@ def store_datapoint(measurement_path, value, group, power_data):
 
 
 def prepare_data(params):
+    """
+    Orchestrates data preparation: Iterates over all available measurements, loads power and metadata, process the data and stores the values in power_data.yml
+
+    Args:
+        params (dict): Arguments of the execution containing device_id etc. 
+
+    Returns:
+        None
+    """
     print("Preparing data ...")
     device_id = params['device_id']
     power_data = {'device' : device_id}
@@ -63,6 +96,26 @@ def prepare_data(params):
     print("Preparation complete\n")
 
 def get_datapoints(params, power_data, exp_type):
+    """
+    Fetches and filters power measurement data for a specified experiment type from the 
+    provided preprocessed dataset. Handles different experiment types ('base', 'idle', 
+    'snake-test', etc.) and filters entries based on traffic generator type and timestamp 
+    constraints.
+
+    Args:
+        params (dict): Dictionary of test parameters 
+        exp_type (str): Experiment type to extract data for (e.g., 'base', 'idle', 'snake-test').
+
+    Returns:
+        dict or None: Dictionary containing filtered lists of data points with keys like:
+            - 'n_ports': Number of ports used.
+            - 'ts': Timestamps.
+            - 'power': Power values in watts.
+            - 'packet_sizes': (Only for 'snake-test') Packet sizes.
+            - 'bw': (Only for 'snake-test') Bandwidth values.
+        Returns None if no valid data points remain after filtering.
+    """
+
     print(f"Fetching dataponits for {exp_type} ...")
     port_type = params['port_type']
     port_speed = params['port_speed']
@@ -169,6 +222,28 @@ def get_datapoints(params, power_data, exp_type):
 
 
 def derive_model(params):
+    """
+    Derives a power consumption model for a given device configuration based on 
+    preprocessed measurement data within a specified time range.
+
+    The model includes baseline power, idle power, port and transceiver power 
+    contributions, and energy per bit and packet. It also estimates offsets and saves 
+    the resulting model as a YAML file for later use or inspection.
+
+    Args:
+        params (dict): Dictionary containing experiment and device configuration, including:
+            - 'device_id' (str): Identifier of the device.
+            - 'port_type' (str): Type of network port used.
+            - 'port_speed' (str): Speed of the port.
+            - 'transceivers' (str): Type of transceivers used.
+            - 'traffic_generator' (str): Traffic generator used ('RDMA' or 'iperf3').
+            - 'plot_data' (bool): Whether to plot intermediate results.
+            - 'measurements_from' (str or None): Optional start timestamp for filtering.
+            - 'measurements_to' (str or None): Optional end timestamp for filtering.
+
+    Returns:
+        None
+    """
     # Load parameters into variables
     device_id = params['device_id']
     port_type = params['port_type']

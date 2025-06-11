@@ -12,15 +12,15 @@ def parse_cli_args():
     Parses command-line arguments for running device experiments.
 
     Recognized arguments:
-        -d, --device_id     : Identifier for the device to test (str)
-        -e, --exp           : List of experiment types to run (e.g., base, idle, port) (list of str)
-        -s, --port_speed    : List of port speeds to test (e.g., 100G, 400G) (list of str)
-        -p, --port_type     : Type of port to use (e.g., QSFP28) (str)
-        -t, --transceivers  : Transceiver type (e.g., LR)
-        -r, --repeats       : Number of times to repeat each test (int, default: 1)
-        -u, --user_confirm  : Manual user confirmation enabled/disabled (bool, default: True)
-        --disable_reset     : Disable device reset after snake-test (bool, default: False). Note that this option does not make sense to have for all other cases.
-        --not_reconfigure   : Disables configuration before running a base, idle or snake-test (bool, default: False) Note that this option does not make sense to have for all other cases.
+        -d, --device_id (str)           : Identifier for the device to test.
+        -e, --exp (list of str)         : List of experiment types to run (e.g., base, idle, port).
+        -s, --port_speed (list of str)  : List of port speeds to test (e.g., 100G, 400G).
+        -p, --port_type (str)           : Type of port to use (e.g., QSFP28).
+        -t, --transceivers (str)        : Transceiver type (e.g., LR).
+        -r, --repeats (int)             : Number of times to repeat each test (default: 1).
+        -u, --user_confirm (bool)       : If set, manual user confirmation is required (default: False).
+        --disable_reset (bool)          : If set, disables device reset after snake-test (default: False). Only relevant for the snake-test experiment.
+        --not_reconfigure (bool)        : If set, skips reconfiguration before base, idle, or snake-test experiments (default: False). Assumes the device is pre-configured.
 
     Returns:
         dict: A dictionary containing all parsed arguments.
@@ -45,11 +45,11 @@ def get_experiment_params():
 
     If parameters can not be loaded, an error is thrown.
 
-    Args:
-        None
-
     Returns:
         dict: Dictionary containing the experiment parameters
+
+    Raises:
+        RuntimeError: If 'device_id' is not provided by CLI or YAML.
     """
     print("Fetching parameters ...")
     args = parse_cli_args()

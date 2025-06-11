@@ -8,17 +8,22 @@ from datetime import datetime
 
 def parse_cli_args():
     """
-    Parses command-line arguments for running a data derivation task.
+    Parses command-line arguments for configuring and executing the power model derivation workflow.
 
     Recognized arguments:
-        -d, --device_id          : Identifier for the device (str) [required if not in exp.yml]
-        --measurements_from      : Start time for measurements (str, e.g., '2025-06-01_00:00:00')
-        --measurements_to        : End time for measurements (str, e.g., '2025-06-01_12:00:00')
-        --preprocess_only        : Run only preprocessing step (bool, default: False)
-        --derive_only            : Run only derivation step (bool, default: False)
+        -d, --device_id           (str) : Identifier for the device.
+        -s, --port_speed          (str) : Port speed (e.g., '100G', '400G').
+        -p, --port_type           (str) : Port type (e.g., 'QSFP28').
+        -t, --transceivers        (str) : Transceiver type (e.g., 'LR').
+        -g, --traffic_generator   (str) : Type of traffic generator ('RDMA' or 'iperf3').
+        --measurements_from       (str) : Start timestamp for data inclusion (e.g., '2025-06-01_00:00:00').
+        --measurements_to         (str) : End timestamp for data inclusion (e.g., '2025-06-01_12:00:00').
+        --preprocess_only                : If set, only run preprocessing step (bool).
+        --derive_only                    : If set, only run model derivation step (bool).
+        --plot_data                      : If set, plot intermediate data during processing (bool).
 
     Returns:
-        dict: A dictionary containing all parsed arguments.
+        dict: Dictionary of parsed arguments, with argument names as keys.
     """
     parser = argparse.ArgumentParser(description='Parse data derivation parameters.')
     parser.add_argument('-d', '--device_id', type=str, help='Device identifier')
@@ -98,6 +103,9 @@ def save_as_yml(data,dest,name,sort_keys=False):
 
 
 def get_group(metadata):
+    """
+    Returns the group needed to store a datapoint of a specific experient type.
+    """
     exp_type = metadata['Metadata']['experiment_type']
     print(f"Fetching group for {exp_type}")
     if exp_type == 'base':
@@ -143,6 +151,9 @@ def get_group(metadata):
 
 
 def parse_timestamp(ts_str):
+    """
+    Parses timestamp from string to datetime
+    """
     return datetime.strptime(ts_str, "%Y-%m-%d_%H:%M:%S")
 
 def plot_intermediate_data(dict):
