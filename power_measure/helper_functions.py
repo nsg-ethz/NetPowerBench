@@ -53,13 +53,11 @@ def get_experiment_params():
     """
     print("Fetching parameters ...")
     args = parse_cli_args()
-    has_cli_input = any(v is not None and v is not False for k, v in args.items())
 
-    if has_cli_input:
-        if all(args.get(k) for k in ['device_id', 'exp', 'port_speed', 'port_type', 'transceivers']):
-            return args
+    if all(args.get(k) for k in ['device_id', 'exp', 'port_speed', 'port_type', 'transceivers']):
+        return args
 
-    elif os.path.exists('exp.yml'): # TODO: Path
+    if os.path.exists('exp.yml'): # TODO: Path
         yaml_config = load_yml('exp.yml')
         if yaml_config and all(k in yaml_config for k in ['device_id', 'exp', 'port_speed', 'port_type', 'transceivers']):
             return {
