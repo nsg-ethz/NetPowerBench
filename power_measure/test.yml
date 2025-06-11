@@ -1,10 +1,10 @@
 device_id: ciscoNexus9336-FX2
 test:
-  - system
-  - disable_all # Entire device
-  - enable
+  # - system
+  # - disable_all # Entire device
+  # - enable
   - snake-test
 speed: 100G
 port_type: QSFP28
 transceivers: "LR" # Passive Copper Cable
-disable_reset: False # Resets only ports of type above
+disable_reset: True # Resets only ports of type above
