@@ -230,7 +230,7 @@ def get_randomized_traffic_settings(metadata):
         random.seed(seed)
 
     # Load the traffic settings
-    traffic_settings = load_yml('../traffic_gen/config.yml')
+    traffic_settings = load_yml('../traffic_gen/traffic.yml')
 
     # Generate that list
     iterations = []
