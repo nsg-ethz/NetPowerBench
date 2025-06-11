@@ -1,4 +1,4 @@
-device_id: 
+device_id: # This needs to be the same as the file name, where the device config files are stored
 exp: # Type of experiment to be run
   - base # No transceivers are plugged in, all ports are disabled
   - idle # All transceivers are plugged in, all ports are disabled

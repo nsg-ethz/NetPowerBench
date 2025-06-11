@@ -1,7 +1,8 @@
 packet_sizes:
-  - bytes: # Size of the generated packages
-    max_bandwidth: # Optional: Maximum bandwidth for this packetsize
-bandwidth_gbps: # Bandwidth needed
+  - bytes: # Size of the generated packets
+    max_bandwidth: # Optional: Maximum bandwidth for this packetsize, as the traffic
+                   #           generator might not be able to reach the fastest bandwidth
+bandwidth_gbps: # Bandwidth tested
   - 0.001
   - 0.005
   - 0.01

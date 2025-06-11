@@ -17,13 +17,12 @@ from main import *
 def get_test_params():
     if os.path.exists('test.yml'): # TODO: Path
         yaml_config = load_yml('test.yml')
-        if yaml_config and all(k in yaml_config for k in ['device_id', 'test', 'speed', 'port_type', 'transceivers']):
+        if yaml_config and all(k in yaml_config for k in ['device_id', 'test', 'speed', 'port_type']):
             return {
                 'device_id': yaml_config['device_id'],
                 'test': yaml_config['test'],
                 'speed': yaml_config['speed'],
                 'port_type': yaml_config['port_type'],
-                'transceivers':yaml_config['transceivers'],
                 'disable_reset': yaml_config.get('disable_reset', False),
                 'not_reconfigure': yaml_config.get('not_reconfigure', False)
             }
@@ -44,7 +43,6 @@ def load_metadata(params):
         device               = meta_config['DUT']['id'],
         port_file            = meta_config['DUT']['port_file'],
         port_type            = params['port_type'],
-        transceivers         = params['transceivers'],
         dut_type             = meta_config['DUT']['type'],
         needs_commit         = meta_config['DUT']['needs_commit'],
         seed                 = meta_config['random_seed'],
