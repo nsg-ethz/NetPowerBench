@@ -1,0 +1,13 @@
+device_id:  # This needs to be the same as the file name, where the device config files are stored
+port_type: # Port type the model considers
+port_speed: # Port speed the model considers
+transceivers: # Type of transceivers, e.g. "LR" 
+traffic_generator: # Traffig generator used. Must be either RDMA (for bandwidth >= 2.5) or iperf3 (bandwith < 2.5). 
+                   # For the model only the measurements with respective bandwidth will be considered
+
+measurements_from: 2024-11-16_00:00:00 # Optional: Only measurements after this point of time will be considered
+measurements_to: 2025-04-30_00:00:00 # Optional: Only measurements before this point of time will be considered
+                                     # Format for timestamps: YYYY-MM-DD_hh:mm:ss
+preprocess_only: False # Model derivation will not be executed
+derive_only: True # Preprocessing will not be executed
+plot_data: False # Intermediate data will be plotted and displayed
