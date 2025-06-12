@@ -1,6 +1,6 @@
 device_id: ciscoNexus9336-FX2
 test:
-  # - system
+  - system
   # - disable_all # Entire device
   # - enable
   - snake-test
