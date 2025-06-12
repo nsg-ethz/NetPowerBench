@@ -2,11 +2,18 @@
 NetPowerBench is a tool for generating a power model of a routing device. It is intended to be used in a lab setup.
 
 The motivation behind the creation of the tool as well as a detailed description of the powermodel it generates is described in [this paper](https://www.research-collection.ethz.ch/handle/20.500.11850/728960) (also listed under references). 
+
+The workflow is separated into:
+- Configuring the device and running the measurements 
+- Processing the data and deriving the model
+  
+These two steps are separated programs and are descirbed more in detail in the respective directories.
+
 ## Environment and Prerequisites
 ### Hardware
 The tool needs the following componends:
 - Device under testing (DUT): A L2 or L3 routing device with at least 4 ports, ideally more
-- A powermeter. The one we used is linked [here](https://www.microchip.com/en-us/development-tool/ADM00706)
+- A powermeter. It needs to support the pinpoint submodule. The one we used is linked [here](https://www.microchip.com/en-us/development-tool/ADM00706)
 - A workstation that is running the experiment. It need have two ports to send and receive traffic to the DUT and need to be able to generate the traffic volume that the user wants to test. Furthermore it needs a Serial connection to the DUT and a connection to the powermeter. 
 
 ### Software
@@ -14,17 +21,72 @@ In order to run the experiments, we used the following software environment:
 - Python: 3.10.12
 - IDE: Visual Studio Code 
 - OS: Ubuntu 22.04
+
 ## Repository structure
-Use tree command
-## Setup
-### General setup
-which hardware is used
-### Base test
-trx not plugged in
-### Idle, port and trx test
-trx plugged in according to listing
-### Snake test
-trx plugged in for snake test
+``` 
+.
+├── archive
+│   └── configs_PowerModellingFrameworkforNetworkSwitches
+│       ├── cisco_catalyst
+│       │   └── running-config.txt
+│       ├── cisco_nexus
+│       │   └── sw1-run-config.bak
+│       └── p4
+│           ├── port_based_forwarder.p4
+│           └── snake.py
+├── command
+│   ├── pinpoint_sleep.sh
+│   └── README.md
+├── data
+│   ├── log
+│   │   └── pinpoint.log
+│   └── <device identifier>
+├── devices
+│   ├── aristaDCS-7280CR3K-32D4
+│   ├── cisco8201-32FH
+│   ├── ciscoNCS55A1-24H
+│   ├── ciscoNexus9336-FX2
+│   ├── config_template.yml
+│   ├── ports_template.yml
+│   └── README.md
+├── legacy
+│   ├── derive_model.py
+│   ├── helpers.py
+│   ├── power-model_derivation.ipynb
+│   ├── README.md
+│   └── static_test.py
+├── model_derivation
+│   ├── args_template.yml
+│   ├── args.yml
+│   ├── helper_functions.py
+│   ├── main.py
+│   ├── __pycache__
+│   │   └── helper_functions.cpython-310.pyc
+│   └── README.md
+├── power_measure
+│   ├── exp_template.yml
+│   ├── exp.yml
+│   ├── helper_functions.py
+│   ├── main.py
+│   ├── __pycache__
+│   │   ├── helper_functions.cpython-310.pyc
+│   │   ├── helpers.cpython-310.pyc
+│   │   ├── main.cpython-310.pyc
+│   │   └── test_main.cpython-310.pyc
+│   ├── README.md
+│   ├── test_config.py
+│   ├── test_template.yml
+│   └── test.yml
+├── README.md
+├── requirements.txt
+└── traffic_gen
+    ├── README.md
+    ├── requirements.txt
+    ├── setup.sh
+    ├── traffic_gen.py
+    ├── traffic_template.yml
+    └── traffic.yml
+```
 
 ## Directories
 ### Archives
@@ -32,19 +94,55 @@ trx plugged in for snake test
 > The P4 code and the configuration of the Cisco devices used in [Lim2024](#references) are available in `\archive\configs_PowerModellingFrameworkforNetworkSwitches`.
 
 ### command
-Contains Pinpoint
+This directory contains the script that will execute pinpoint, the software used to conduct the measurements with the powermeter. Pinpoint is a submodule of this repository. 
 ### data
-There the data will end up
+This directory will contain the raw data and metadata from the measurements. 
+
+`/log` contains `pinpoint.log`, which is the log of the last measurements and is there for debugging reasons. 
+
+For each device tested there will be a subdirectory with the device identifier as name. In there there will be directories with names following one of these formats:
+- `/base` 
+- `/idle`
+- `/port_<port_type>_<transceiver_type>_<port_speed>_<number_of_active_ports>p`
+- `/trx_<port_type>_<transceiver_type>_<port_speed>_<number_of_active_ports>p`
+- `/snake-test_<port_type>_<transceiver_type>_<port_speed>_<packet_size>_<bandwidth>`
+
+Note that each of these directories refers to a test type and the relevant parameters for this test. As base and idle are indepentend of port_type or similar, they don't contain that information in the directory name. 
+
+Inside the respective subdirectory there will be a subdirectory for each measurements run with this configuration with the timestamp of the measurement as directory name. This directory contains:
+-  `metadata.yml`: The metadata of the measurement
+-  `power.log`: The acutal measurement data
+
+A possible layout of `data` could look like this:
+```
+├── data
+│   ├── log
+│   │   └── pinpoint.log
+│   └── ciscoNexus9336-FX2
+│           └── snake-test_QSFP28_LR_100G_256B_2.5Gbps
+│               ├── 2025-05-15_16:20:45
+│               │   ├── metadata.yml
+│               │   └── power.log
+```
+
+For further details on the test types and measurement procedure, please refer to the documentation in `power_measure`.
+
 ### devices
-There your config files should be
+For each DUI there needs to be a subdirectory in  `/devices` with the device identifier as directory. That folder needs to contain the configuration files of that device. There are templates available. The processed data from the measurements and the parameter values of the power model will be stored there as well. 
+
+For further details please refer to the documentation in `/devices`. 
+
 ### legacy
-Old code
+This directory contains an older version of this code and is here for reference. It is not expected to be usable. 
 ### model_derivation
-Code for model derivation
-### power_model
-Code for measurements and preparation and exp.yml
+This directory contains the code to process the raw measurement data and derive the power modle values. 
+
+### power_measure
+This directory contains the code to run the measurements needed for the model derivation. 
+
+Additionally there is another code that can help finding the right configuration commands for the tests (compare to the documentation in `/devices` and in `/power_measure).
 ### traffic_gen
-Trafic generations
+This directory contains all the files necessary for the traffic generation including the code, the configuration file and a setup script.
 ## Usage specification
 How the code works (vlans etc)
 How to use the code
