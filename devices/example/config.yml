@@ -1,0 +1,22 @@
+# DUT parameters
+DUT:
+  id: "example" 
+  port_file: "ports.yml"
+  needs_commit: False 
+
+# Measurement parameters
+measurement_time_s:   10      
+configuration_time_s: 0   
+wait_factor_per_port_others_s: 1.5  
+wait_factor_per_port_snake-test_s: 2.8
+sampling_interval_ms: 1000     
+random_seed:                  
+
+# External dependencies
+pinpoint:
+  binary: "/path/to/my/pinpoint/binary/pinpoint"
+serial_port: "/dev/ttyUSB0"
+baudrate: 9600
+counter_1: mcp:dev0ch1
+counter_2: mcp:dev0ch2
+
