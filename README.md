@@ -38,14 +38,12 @@ In order to run the experiments, we used the following software environment:
 │   ├── pinpoint_sleep.sh
 │   └── README.md
 ├── data
-│   ├── log
-│   │   └── pinpoint.log
-│   └── <device identifier>
 ├── devices
-│   ├── aristaDCS-7280CR3K-32D4
-│   ├── cisco8201-32FH
-│   ├── ciscoNCS55A1-24H
-│   ├── ciscoNexus9336-FX2
+│   ├── <device identifier>
+│   │   ├── config.yml
+│   │   ├── ports.yml
+│   │   ├── power_data.yml
+│   │   └── power_model.yml
 │   ├── config_template.yml
 │   ├── ports_template.yml
 │   └── README.md
@@ -140,16 +138,21 @@ This directory contains the code to process the raw measurement data and derive 
 ### power_measure
 This directory contains the code to run the measurements needed for the model derivation. 
 
-Additionally there is another code that can help finding the right configuration commands for the tests (compare to the documentation in `/devices` and in `/power_measure).
+Additionally there is another code that can help finding the right configuration commands for the tests (compare to the documentation in `/devices` and in `/power_measure`)`.
 ### traffic_gen
 This directory contains all the files necessary for the traffic generation including the code, the configuration file and a setup script.
 ## Usage specification
-How the code works (vlans etc)
-How to use the code
+In order to get a power model for a device, the following steps are advised:
+- Prepare the following files with the device specific information (details are in `devices/`):
+  - `devices/<device identifier>/config.yml`
+  - `devices/<device identifier>/ports.yml`
+- Follow the intructions in `/power_measure` in order to set up and run the measurements on the device
+- Follow the instructions in `/model_derivation` in order to derive a power model 
 ## Known issues
 
-
-To be described
+- For us unknown reasons sometimes ghost counters appear. This means the pinpoint software recognizes counters that are not from the powermeter and will also be present when it is unplugged. Our way of solving this is making the counters used a parameter in `config.yml`. In case of the pinpoint script getting stuck, we advise the user to verify that the counters used are the ones the powermeter writes to and adapt `config.yml` accordingly. 
+- The traffic generation needs sudo rights in order to be executed properly. As this is not really resolvable for us, our workaround was to disable the necessity of a password for executing sudo commands.
+- Currently for many scrips there are dependencies on from where they are executed. This might be changed in the future but for now, in order to have everything properly executed, please run a script only from the directory it is in.  
 
 
 ## References
