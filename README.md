@@ -159,4 +159,3 @@ In order to get a power model for a device, the following steps are advised:
 - https://www.research-collection.ethz.ch/handle/20.500.11850/728960
 - Lim2024: [Lim, Jackie. "Power Modelling Framework for Network Switches." Master's thesis, ETH Zurich, 2024.](https://doi.org/10.3929/ethz-b-000663342)
 
-Refere to the paper 
