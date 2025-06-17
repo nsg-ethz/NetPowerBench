@@ -152,7 +152,9 @@ This directory contains the code to process the raw measurement data and derive 
 
 This directory contains the code to run the measurements needed for the model derivation. 
 
-Additionally there is another code that can help finding the right configuration commands for the tests (compare to the documentation in `/devices` and in `/power_measure`)`.
+### test_config
+
+This directory contains code intended to help with finding the right configuration commands for the tests (compare to the documentation in `/devices` and in `/power_measure`).
 
 ### traffic_gen
 

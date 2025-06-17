@@ -186,7 +186,7 @@ def check_cwd():
     """
     cwd_name = os.path.basename(os.getcwd())
     if cwd_name != 'power_measure':
-        raise Exception("Check working directory. Please run from the automation directory")
+        raise Exception("Check working directory. Please run from power_measure ")
 
 def get_workspace_directory(): 
     """

@@ -35,7 +35,7 @@ For each port type available there should be a respective section as shown in th
 
 Note that for all commands exept `system`, interface labels and speed labels should use the placeholders INTERFACE_LABEL and SPEED_LABEL. When generating the command to configure the ports, the placeholders INTERFACE_LABEL, SPEED_LABEL and PORT will be replaced with the speed and interface label from the speed listed in `exp.yml`, PORT will be replaced with the number of the port. 
 
-From our experience, finding the right commands is one of the most challenging parts or using the code. The script `test_config.py` in `/power_measure` is intended to help with this process. 
+From our experience, finding the right commands is one of the most challenging parts or using the code. The script `test_config.py` in `/test_config` is intended to help with this process. 
 
 ### system
 

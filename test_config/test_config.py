@@ -16,6 +16,14 @@ from main import *
 # disable_reset will lead to the configurations not being reset after configuring. 
 # repeats, user_confirm and not_reconfigure will be ignored in this script.
 
+def check_location():
+    """ 
+    Checks whether we call the scripts in the correct directory (test_config).
+    """
+    cwd_name = os.path.basename(os.getcwd())
+    if cwd_name != 'test_config':
+        raise Exception("Check working directory. Please run from /test_config ")
+
 def get_test_params():
     if os.path.exists('test.yml'): # TODO: Path
         yaml_config = load_yml('test.yml')
@@ -61,7 +69,7 @@ def load_metadata(params):
     return metadata
 
 if __name__ == '__main__':
-    check_cwd()
+    check_location()
     params = get_test_params()
     tests = params['test']
     metadata = load_metadata(params)
