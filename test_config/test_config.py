@@ -4,18 +4,6 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../power_measure')))
 from main import *
 
-# This code uses the same functions to load data then the main code. 
-# The list of experiment types wanted corresponds here to the type of configurations that are tested.
-# The user confirmation is for the user to have enough time to check with an external tool (e.g. minicom) whether the device has been configured successfully.
-# The mapping between the configuration that is tested and the experiment types is the following
-#  - system configuration: reset_only
-#  - disable everything (reset): base and idle
-#  - enable a random selection of ports: port and trx
-#  - configure ports for a snake-tese: snake-test
-# If all pass successfully in the end all ports will be disabled
-# disable_reset will lead to the configurations not being reset after configuring. 
-# repeats, user_confirm and not_reconfigure will be ignored in this script.
-
 def check_location():
     """ 
     Checks whether we call the scripts in the correct directory (test_config).
