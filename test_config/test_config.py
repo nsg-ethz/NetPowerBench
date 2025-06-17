@@ -1,5 +1,7 @@
 import sys
 import random
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../power_measure')))
 from main import *
 
 # This code uses the same functions to load data then the main code. 
