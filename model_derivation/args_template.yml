@@ -8,6 +8,7 @@ traffic_generator: # Traffig generator used. Must be either RDMA (for bandwidth 
 measurements_from: 2024-11-16_00:00:00 # Optional: Only measurements after this point of time will be considered
 measurements_to: 2025-04-30_00:00:00 # Optional: Only measurements before this point of time will be considered
                                      # Format for timestamps: YYYY-MM-DD_hh:mm:ss
-preprocess_only: False # Model derivation will not be executed
-derive_only: True # Preprocessing will not be executed
+                                     # Note that this only impacts the model derivation, not the preprocessing. 
+preprocess_only: False # If true, model derivation will not be executed
+derive_only: False # If true, preprocessing will not be executed
 plot_data: False # Intermediate data will be plotted and displayed

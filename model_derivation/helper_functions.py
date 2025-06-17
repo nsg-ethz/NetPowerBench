@@ -16,8 +16,8 @@ def parse_cli_args():
         -p, --port_type           (str) : Port type (e.g., 'QSFP28').
         -t, --transceivers        (str) : Transceiver type (e.g., 'LR').
         -g, --traffic_generator   (str) : Type of traffic generator ('RDMA' or 'iperf3').
-        --measurements_from       (str) : Start timestamp for data inclusion (e.g., '2025-06-01_00:00:00').
-        --measurements_to         (str) : End timestamp for data inclusion (e.g., '2025-06-01_12:00:00').
+        --measurements_from       (str) : Will only consider data with timestamp later than this for the model (e.g., '2025-06-01_00:00:00').
+        --measurements_to         (str) : Will only consider data with timestamp earlier than this for the model (e.g., '2025-06-01_12:00:00').
         --preprocess_only                : If set, only run preprocessing step (bool).
         --derive_only                    : If set, only run model derivation step (bool).
         --plot_data                      : If set, plot intermediate data during processing (bool).
