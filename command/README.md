@@ -1,12 +1,17 @@
 # command
+
 In here is the script that gets called to run the measurements. The software used is in the submodule pinpoint. 
+
 ## Submodule structure
+
 ```
 .
 ├── pinpoint_sleep.sh
 └── README.md
 ```
+
 ## Usage specification
+
 `pinpoint_sleep.sh` takes the following arguments.
 - DURATION : The number of seconds the workload (/bin/sleep) should run
 - PATH : Path to the pinpoint binary

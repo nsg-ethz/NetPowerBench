@@ -4,7 +4,7 @@ For each device tested there should be a directory with the device identifier as
 
 Note that the files in `/example` are only there to give an impression of how those files might look like and are not consistent with each other. Also note that the files for the devices we worked with might be outdated and not work with the current format that is expected by the code. It is safe to follow the format used in the templates and `example`.
 
-## Submodule structure
+## Subdirectory structure
 
 ```
 .

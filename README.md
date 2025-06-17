@@ -1,4 +1,5 @@
 # NetPowerBench
+
 NetPowerBench is a tool for generating a power model of a routing device. It is intended to be used in a lab setup.
 
 The motivation behind the creation of the tool as well as a detailed description of the powermodel it generates is described in [this paper](https://www.research-collection.ethz.ch/handle/20.500.11850/728960) (also listed under references). 
@@ -10,19 +11,23 @@ The workflow is separated into:
 These two steps are separated programs and are descirbed more in detail in the respective directories.
 
 ## Environment and Prerequisites
+
 ### Hardware
+
 The tool needs the following componends:
 - Device under testing (DUT): A L2 or L3 routing device with at least 4 ports, ideally more
 - A powermeter. It needs to support the pinpoint submodule. The one we used is linked [here](https://www.microchip.com/en-us/development-tool/ADM00706)
 - A workstation that is running the experiment. It need have two ports to send and receive traffic to the DUT and need to be able to generate the traffic volume that the user wants to test. Furthermore it needs a Serial connection to the DUT and a connection to the powermeter. 
 
 ### Software
+
 In order to run the experiments, we used the following software environment:
 - Python: 3.10.12
 - IDE: Visual Studio Code 
 - OS: Ubuntu 22.04
 
 ## Repository structure
+
 ``` 
 .
 ├── archive
@@ -87,13 +92,17 @@ In order to run the experiments, we used the following software environment:
 ```
 
 ## Directories
+
 ### Archives
 
 > The P4 code and the configuration of the Cisco devices used in [Lim2024](#references) are available in `\archive\configs_PowerModellingFrameworkforNetworkSwitches`.
 
 ### command
+
 This directory contains the script that will execute pinpoint, the software used to conduct the measurements with the powermeter. Pinpoint is a submodule of this repository. 
+
 ### data
+
 This directory will contain the raw data and metadata from the measurements. 
 
 `/log` contains `pinpoint.log`, which is the log of the last measurements and is there for debugging reasons. 
@@ -126,36 +135,46 @@ A possible layout of `data` could look like this:
 For further details on the test types and measurement procedure, please refer to the documentation in `power_measure`.
 
 ### devices
+
 For each DUI there needs to be a subdirectory in  `/devices` with the device identifier as directory. That folder needs to contain the configuration files of that device. There are templates available. The processed data from the measurements and the parameter values of the power model will be stored there as well. 
 
 For further details please refer to the documentation in `/devices`. 
 
 ### legacy
+
 This directory contains an older version of this code and is here for reference. It is not expected to be usable. 
+
 ### model_derivation
+
 This directory contains the code to process the raw measurement data and derive the power modle values. 
 
 ### power_measure
+
 This directory contains the code to run the measurements needed for the model derivation. 
 
 Additionally there is another code that can help finding the right configuration commands for the tests (compare to the documentation in `/devices` and in `/power_measure`)`.
+
 ### traffic_gen
+
 This directory contains all the files necessary for the traffic generation including the code, the configuration file and a setup script.
+
 ## Usage specification
+
 In order to get a power model for a device, the following steps are advised:
 - Prepare the following files with the device specific information (details are in `devices/`):
   - `devices/<device identifier>/config.yml`
   - `devices/<device identifier>/ports.yml`
 - Follow the intructions in `/power_measure` in order to set up and run the measurements on the device
 - Follow the instructions in `/model_derivation` in order to derive a power model 
+
 ## Known issues
 
 - For us unknown reasons sometimes ghost counters appear. This means the pinpoint software recognizes counters that are not from the powermeter and will also be present when it is unplugged. Our way of solving this is making the counters used a parameter in `config.yml`. In case of the pinpoint script getting stuck, we advise the user to verify that the counters used are the ones the powermeter writes to and adapt `config.yml` accordingly. 
 - The traffic generation needs sudo rights in order to be executed properly. As this is not really resolvable for us, our workaround was to disable the necessity of a password for executing sudo commands.
 - Currently for many scrips there are dependencies on from where they are executed. This might be changed in the future but for now, in order to have everything properly executed, please run a script only from the directory it is in.  
 
-
 ## References
+
 - https://www.research-collection.ethz.ch/handle/20.500.11850/728960
 - Lim2024: [Lim, Jackie. "Power Modelling Framework for Network Switches." Master's thesis, ETH Zurich, 2024.](https://doi.org/10.3929/ethz-b-000663342)
 
