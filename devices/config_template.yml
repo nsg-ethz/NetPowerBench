@@ -1,7 +1,8 @@
 # Device Under Test (DUT) parameters
 DUT:
   id: # ID of the DUT. No space!
-  port_file: "ports_template.yml" # Name of the file that contains the port configuration data. The file is only searched in the same directory.
+  port_file: "ports_template.yml" # Name of the file that contains the port configuration data. Usually refered to as port.yml
+                                  # The file is only searched in the same directory.
   needs_commit: False  # Does device OS require a commit at the end of a configuration command to apply a port configuration
 
 # Measurement parameters

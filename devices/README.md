@@ -20,13 +20,9 @@ Note that the files in `/example` are only there to give an impression of how th
 
 ## config.yml
 
-This file should contain the device specific information, parameters for the measurements and external dependencies. It is necessary that it is called `config.yml and in the subdirectory with the device identifier as name. In detail it contains the following parameter: 
+This file should contain the device specific information, parameters for the measurements and external dependencies. It is necessary that it is called `config.yml and in the subdirectory with the device identifier as name. 
 
-- Device Under Test (DUT) parameters
-    - id: ID of the DUT. This should not contain any spaces or violate other directory naming rules
-    - port_file: Name of the file, that containst the port configuration data. It is usually called `ports.yml` and descibed in the respective section below. The file is only searched in the same directory.
-    - needs_commit: Indicates whether the device OS require a commit at the end of a configuration command to apply a port configuration. 
-- Measurement parameters:
+The detailed explanation about the parameters is in the template.
 
 ## port.yml
 
