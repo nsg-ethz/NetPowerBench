@@ -2,7 +2,7 @@
 
 The code in this directory handles the generation of the traffic needed for running snake test. 
 
-It is called by the code in `/power_measure`. It will create two namespaces called `ns1` and `ns2` and send the traffic wanted from one namespace to the other.
+It is called by the code in `power_measure/`. It will create two namespaces called `ns1` and `ns2` and send the traffic wanted from one namespace to the other.
 
 ## Subdirectory structure
 
@@ -25,7 +25,7 @@ When run, this code will:
 - Check whether the namespaces needed, otherwise runs `setup.sh`
 - Decides based on the bandwidth wanted which traffic generator to use: For a bandwidth smaller than 2.5 gbps, iperf3 is used, otherwise RDMA
 - Sends the traffic with the metrics set by the arguments from one namespace to the other for the duration specified 
-- Outputs performance metrics and will write them into `/power_measure/perftest.json`(file will be deleted later on again)
+- Outputs performance metrics and will write them into `power_measure/perftest.json`. This is only temporary, the file will be deleted after the output has been processed.
 
 `setup.sh` and `traffic.yml` are expected to be in the same directory. 
 
@@ -52,10 +52,12 @@ This file needs to be set by the user before a snake-test. There is a template p
 
 ## Usage specification
 
-In general there should be no need for the user to execute one of these scripts as they will be called by the code in `/power_measure` or call each other.
+In general there should be no need for the user to execute one of these scripts as they will be called by the code in `power_measure/` or call each other.
 
 In case of a problem with the traffic generation it can be useful to run `traffic_gen.py` manually. The command for this has the following format:
 
 ```
 python traffic_gen.py <duration> <bandwidth> <packet_size>
 ```
+
+It is advised to pay attention to whether the bandwidth reached is the same or similar to the bandwidth desired. If not that could indicate a problem with the port configuration. 

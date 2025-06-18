@@ -1,8 +1,8 @@
-# devices
+# Devices
 
-For each device tested there should be a directory with the device identifier as name. That directory should contain the file `config.yml` and the config file with the port config information, usually called `ports.yml`. Provided are templates for these files as well as an example directory and directories of devices we worked with. In here will also be the output of the model derivation.
+For each device tested there should be a directory with the device identifier as name. That directory should contain the file `config.yml` and the config file with the port config information, usually called `ports.yml`. Provided are templates for these files as well as an example directory and directories of devices we worked with. In there will also be the output of the model derivation.
 
-Note that the files in `/example` are only there to give an impression of how those files might look like and are not consistent with each other. Also note that the files for the devices we worked with might be outdated and not work with the current format that is expected by the code. It is safe to follow the format used in the templates and `example`.
+Note that the files in `example/` are only there to give an impression of how those files might look like and are not consistent with each other. Also note that the files for the devices we worked with might be outdated and not work with the current format that is expected by the code. It is safe to follow the format used in the templates and `example/`.
 
 ## Subdirectory structure
 
@@ -29,13 +29,14 @@ The detailed explanation about the parameters is in the template.
 This file should contain the information necessary in order to configure the ports for the experiments. 
 
 For each port type available there should be a respective section as shown in the template. This section contains the following information:
+
 - `ids`: This should be a list of all port numbers of this type. Note that for some test types the order of the numbers matters (details below). 
-- `speeds`: For each speed available for this port type there should be a section for the speed type listed with a name that needs to be consistent with the naming used in `exp.yml` (compare to `/power_measure`). For each speed, the speed label and interface label should be listed with PORT as placeholder for the port number. Furthermore, one speed type needs to be listed as default. This is especially relevant for machines with multiple port types as all port types that are not tested will be disables using the default speed and interface labels.
+- `speeds`: For each speed available for this port type there should be a section for the speed type listed with a name that needs to be consistent with the naming used in `exp.yml` (compare to `power_measure/`). For each speed, the speed label and interface label should be listed with `PORT` as placeholder for the port number. Furthermore, one speed type needs to be listed as default. This is especially relevant for machines with multiple port types as all port types that are not tested will be disables using the default speed and interface labels.
 - `commands`: The four types of commands needed are described below. 
 
-Note that for all commands exept `system`, interface labels and speed labels should use the placeholders INTERFACE_LABEL and SPEED_LABEL. When generating the command to configure the ports, the placeholders INTERFACE_LABEL, SPEED_LABEL and PORT will be replaced with the speed and interface label from the speed listed in `exp.yml`, PORT will be replaced with the number of the port. 
+Note that for all commands exept `system`, interface labels and speed labels should use the placeholders `INTERFACE_LABEL` and `SPEED_LABEL`. When generating the command to configure the ports, the placeholders `INTERFACE_LABEL`, `SPEED_LABEL` and `PORT` will be replaced with the speed and interface label from the speed listed in `exp.yml`, `PORT` will be replaced with the number of the port. 
 
-From our experience, finding the right commands is one of the most challenging parts or using the code. The script `test_config.py` in `/test_config` is intended to help with this process. 
+From our experience, finding the right commands is one of the most challenging parts or using the code. The script `test_config.py` in `test_config/` is intended to help with this process(further details [here](../test_config/README.md)). 
 
 ### system
 
@@ -60,14 +61,14 @@ This command shoud:
 - Enable the interface
 - Set it to layer 2 (switchport) mode
 - Set it to access mode
-- Assign it to the VLAN with number VLAN_NUMBER (will be replaced with actual number by the code)
-- Set it to speed SPEED_LABEL
+- Assign it to the `VLAN` with number `VLAN_NUMBER` (will be replaced with actual number by the code)
+- Set it to speed `SPEED_LABEL`
 
 Note that in order to correctly configure some devices correctly for snake-test, we had to add the following instructions to the command:
 - Set the mtu to 6000 to support jumbo frames (for tests with big packets)
 - Disable the spanning tree protocol for a VLAN as packets would not get forwarded otherwise
 
-For further information, please refer to [this blog](https://ostinato.org/blog/snake-test-guide). 
+For further information, please refer to [[3]](../README.md#references). 
 
 ### ID order for port and trx
 
@@ -102,7 +103,7 @@ ids:
 
 ![alt text](snake_test.png)
 
-Source: https://ostinato.org/blog/snake-test-guide
+Source: [[3]](../README.md#references)
 
 ## power_data.yml
 
@@ -155,4 +156,5 @@ device: <device_id>
 ```
 
 ## power_model_\<params>.yml
+
 This file is the output of the model derivation and contains the parameters of the experiment together with the values of the parameters of the power model generated. 

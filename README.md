@@ -2,7 +2,7 @@
 
 NetPowerBench is a tool for generating a power model of a routing device. It is intended to be used in a lab setup.
 
-The motivation behind the creation of the tool as well as a detailed description of the powermodel it generates is described in [this paper](https://www.research-collection.ethz.ch/handle/20.500.11850/728960) (also listed under references). 
+The motivation behind the creation of the tool as well as a detailed description of the powermodel it generates is described in [[1]](#references). 
 
 The workflow is separated into:
 - Configuring the device and running the measurements 
@@ -95,7 +95,7 @@ In order to run the experiments, we used the following software environment:
 
 ### Archives
 
-> The P4 code and the configuration of the Cisco devices used in [Lim2024](#references) are available in `\archive\configs_PowerModellingFrameworkforNetworkSwitches`.
+The P4 code and the configuration of the Cisco devices used in [[2]](#references) are available in `\archive\configs_PowerModellingFrameworkforNetworkSwitches`.
 
 ### command
 
@@ -105,16 +105,16 @@ This directory contains the script that will execute pinpoint, the software used
 
 This directory will contain the raw data and metadata from the measurements. 
 
-`/log` contains `pinpoint.log`, which is the log of the last measurements and is there for debugging reasons. 
+`log/` contains `pinpoint.log`, which is the log of the last measurements and is there for debugging reasons. 
 
 For each device tested there will be a subdirectory with the device identifier as name. In there there will be directories with names following one of these formats:
-- `/base` 
-- `/idle`
-- `/port_<port_type>_<transceiver_type>_<port_speed>_<number_of_active_ports>p`
-- `/trx_<port_type>_<transceiver_type>_<port_speed>_<number_of_active_ports>p`
-- `/snake-test_<port_type>_<transceiver_type>_<port_speed>_<packet_size>_<bandwidth>`
+- `base/` 
+- `idle/`
+- `port_<port_type>_<transceiver_type>_<port_speed>_<number_of_active_ports>p/`
+- `trx_<port_type>_<transceiver_type>_<port_speed>_<number_of_active_ports>p/`
+- `snake-test_<port_type>_<transceiver_type>_<port_speed>_<packet_size>_<bandwidth>/`
 
-Note that each of these directories refers to a test type and the relevant parameters for this test. As base and idle are indepentend of port_type or similar, they don't contain that information in the directory name. 
+Note that each of these directories refers to a test type and the relevant parameters for this test. As base and idle are indepentend of the port type etc, they don't contain that information in the directory name. 
 
 Inside the respective subdirectory there will be a subdirectory for each measurements run with this configuration with the timestamp of the measurement as directory name. This directory contains:
 -  `metadata.yml`: The metadata of the measurement
@@ -132,13 +132,13 @@ A possible layout of `data` could look like this:
 │               │   └── power.log
 ```
 
-For further details on the test types and measurement procedure, please refer to the documentation in `power_measure`.
+For further details on the test types and measurement procedure, please refer to the documentation in [`power_measure/`](power_measure/README.md).
 
 ### devices
 
-For each DUI there needs to be a subdirectory in  `/devices` with the device identifier as directory. That folder needs to contain the configuration files of that device. There are templates available. The processed data from the measurements and the parameter values of the power model will be stored there as well. 
+For each DUI there needs to be a subdirectory in `devices/` with the device identifier as directory. That folder needs to contain the configuration files of that device. There are templates available. The processed data from the measurements and the parameter values of the power model will be stored there as well. 
 
-For further details please refer to the documentation in `/devices`. 
+For further details please refer to the documentation in [`devices/`](devices/README.md). 
 
 ### legacy
 
@@ -154,7 +154,7 @@ This directory contains the code to run the measurements needed for the model de
 
 ### test_config
 
-This directory contains code intended to help with finding the right configuration commands for the tests (compare to the documentation in `/devices` and in `/power_measure`).
+This directory contains code intended to help with finding the right configuration commands for the tests.
 
 ### traffic_gen
 
@@ -163,11 +163,11 @@ This directory contains all the files necessary for the traffic generation inclu
 ## Usage specification
 
 In order to get a power model for a device, the following steps are advised:
-- Prepare the following files with the device specific information (details are in `devices/`):
+- Prepare the following files with the device specific information (details are in [`devices/`](devices/README.md)):
   - `devices/<device identifier>/config.yml`
   - `devices/<device identifier>/ports.yml`
-- Follow the intructions in `/power_measure` in order to set up and run the measurements on the device
-- Follow the instructions in `/model_derivation` in order to derive a power model 
+- Follow the intructions in [`power_measure/`](power_measure/README.md) in order to set up and run the measurements on the device
+- Follow the instructions in [`model_derivation/`](model_derivation/README.md) in order to derive a power model 
 
 ## Known issues
 
@@ -177,6 +177,9 @@ In order to get a power model for a device, the following steps are advised:
 
 ## References
 
-- https://www.research-collection.ethz.ch/handle/20.500.11850/728960
-- Lim2024: [Lim, Jackie. "Power Modelling Framework for Network Switches." Master's thesis, ETH Zurich, 2024.](https://doi.org/10.3929/ethz-b-000663342)
 
+1. Jacob, R., Röllin, L., Lim, J., Chung, J., Béhanzin, M., Wang, W., ... & Vanbever, L. (2025). [Fantastic Joules and Where to Find Them. Modeling and Optimizing Router Energy Demand](https://doi.org/10.3929/ethz-b-000728960). In *ACM Internet Measurement Conference (IMC 2025)*.
+
+2. Lim, J. (2024). [Power Modelling Framework for Network Switches](https://doi.org/10.3929/ethz-b-000663342). Master's thesis, ETH Zurich.
+
+3. Ostinato Team. (2024, June 27). [Snake Test for networking performance testing](https://ostinato.org/blog/snake-test-guide). Retrieved June 18, 2025
