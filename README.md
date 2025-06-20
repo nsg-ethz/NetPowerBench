@@ -1,5 +1,7 @@
 # NetPowerBench
 
+> The P4 code and the configuration files described in [Jackie Lim's thesis, Power Modelling Framework for Network Switches](https://doi.org/10.3929/ethz-b-000663342) [[2]](#references) are available in the [`/archive`](/archive/configs_PowerModellingFrameworkforNetworkSwitches) directory.
+
 NetPowerBench is a tool for generating a power model of a routing device. It is intended to be used in a lab setup.
 
 The motivation behind the creation of the tool as well as a detailed description of the powermodel it generates is described in [[1]](#references). 
@@ -93,7 +95,7 @@ In order to run the experiments, we used the following software environment:
 
 ## Directories
 
-### Archives
+### archive
 
 The P4 code and the configuration of the Cisco devices used in [[2]](#references) are available in `\archive\configs_PowerModellingFrameworkforNetworkSwitches`.
 
