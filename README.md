@@ -28,69 +28,30 @@ In order to run the experiments, we used the following software environment:
 - IDE: Visual Studio Code 
 - OS: Ubuntu 22.04
 
+There is a requirements.txt available. 
+
 ## Repository structure
 
 ``` 
 .
 ├── archive
-│   └── configs_PowerModellingFrameworkforNetworkSwitches
-│       ├── cisco_catalyst
-│       │   └── running-config.txt
-│       ├── cisco_nexus
-│       │   └── sw1-run-config.bak
-│       └── p4
-│           ├── port_based_forwarder.p4
-│           └── snake.py
+│   └── ...
 ├── command
-│   ├── pinpoint_sleep.sh
-│   └── README.md
-├── data
+│   └── ...
+├── data  # Will be created by the code
+│   └── ...
 ├── devices
-│   ├── <device identifier>
-│   │   ├── config.yml
-│   │   ├── ports.yml
-│   │   ├── power_data.yml
-│   │   └── power_model.yml
-│   ├── config_template.yml
-│   ├── ports_template.yml
-│   └── README.md
+│   └── ...
 ├── legacy
-│   ├── derive_model.py
-│   ├── helpers.py
-│   ├── power-model_derivation.ipynb
-│   ├── README.md
-│   └── static_test.py
+│   └── ...
 ├── model_derivation
-│   ├── args_template.yml
-│   ├── args.yml
-│   ├── helper_functions.py
-│   ├── main.py
-│   ├── __pycache__
-│   │   └── helper_functions.cpython-310.pyc
-│   └── README.md
+│   └── ...
 ├── power_measure
-│   ├── exp_template.yml
-│   ├── exp.yml
-│   ├── helper_functions.py
-│   ├── main.py
-│   ├── __pycache__
-│   │   ├── helper_functions.cpython-310.pyc
-│   │   ├── helpers.cpython-310.pyc
-│   │   ├── main.cpython-310.pyc
-│   │   └── test_main.cpython-310.pyc
-│   ├── README.md
-│   ├── test_config.py
-│   ├── test_template.yml
-│   └── test.yml
+│   └── ...
+├── traffic_gen
+│   └── ...
 ├── README.md
-├── requirements.txt
-└── traffic_gen
-    ├── README.md
-    ├── requirements.txt
-    ├── setup.sh
-    ├── traffic_gen.py
-    ├── traffic_template.yml
-    └── traffic.yml
+└── requirements.txt
 ```
 
 ## Directories
@@ -110,11 +71,11 @@ This directory will contain the raw data and metadata from the measurements.
 `log/` contains `pinpoint.log`, which is the log of the last measurements and is there for debugging reasons. 
 
 For each device tested there will be a subdirectory with the device identifier as name. In there there will be directories with names following one of these formats:
-- `base/` 
-- `idle/`
-- `port_<port_type>_<transceiver_type>_<port_speed>_<number_of_active_ports>p/`
-- `trx_<port_type>_<transceiver_type>_<port_speed>_<number_of_active_ports>p/`
-- `snake-test_<port_type>_<transceiver_type>_<port_speed>_<packet_size>_<bandwidth>/`
+- `base` 
+- `idle`
+- `port_<port_type>_<transceiver_type>_<port_speed>_<number_of_active_ports>p`
+- `trx_<port_type>_<transceiver_type>_<port_speed>_<number_of_active_ports>p`
+- `snake-test_<port_type>_<transceiver_type>_<port_speed>_<packet_size>_<bandwidth>`
 
 Note that each of these directories refers to a test type and the relevant parameters for this test. As base and idle are indepentend of the port type etc, they don't contain that information in the directory name. 
 
@@ -138,7 +99,7 @@ For further details on the test types and measurement procedure, please refer to
 
 ### devices
 
-For each DUI there needs to be a subdirectory in `devices/` with the device identifier as directory. That folder needs to contain the configuration files of that device. There are templates available. The processed data from the measurements and the parameter values of the power model will be stored there as well. 
+For each DUT there needs to be a subdirectory in `devices/` with the device identifier as directory. That folder needs to contain the configuration files of that device. There are templates available. The processed data from the measurements and the parameter values of the power model will be stored there as well. 
 
 For further details please refer to the documentation in [`devices/`](devices/README.md). 
 
@@ -148,7 +109,7 @@ This directory contains an older version of this code and is here for reference.
 
 ### model_derivation
 
-This directory contains the code to process the raw measurement data and derive the power modle values. 
+This directory contains the code to process the raw measurement data and derive the power model values. 
 
 ### power_measure
 
@@ -173,7 +134,7 @@ In order to get a power model for a device, the following steps are advised:
 
 ## Known issues
 
-- For us unknown reasons sometimes ghost counters appear. This means the pinpoint software recognizes counters that are not from the powermeter and will also be present when it is unplugged. Our way of solving this is making the counters used a parameter in `config.yml`. In case of the pinpoint script getting stuck, we advise the user to verify that the counters used are the ones the powermeter writes to and adapt `config.yml` accordingly. 
+-  Sometimes the pinpoint software recognizes counters that are not from the powermeter and will also be present when it is unplugged. Our way of solving this is making the counters used a parameter in `config.yml`. In case of the pinpoint script getting stuck, we advise the user to verify that the counters used are the ones the powermeter writes to and adapt `config.yml` accordingly. 
 - The traffic generation needs sudo rights in order to be executed properly. As this is not really resolvable for us, our workaround was to disable the necessity of a password for executing sudo commands.
 - Currently for many scrips there are dependencies on from where they are executed. This might be changed in the future but for now, in order to have everything properly executed, please run a script only from the directory it is in.  
 
