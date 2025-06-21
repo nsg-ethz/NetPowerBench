@@ -35,9 +35,11 @@ Note that in order to run properly, this code needs sudo privileges. We have sol
 
 `setup.sh` is called by `traffic_gen.py` in case the namespaces `ns1` and `ns2` don't exist yet. 
 
+It takes two arguments, the names of two interfaces, refert to as `if1` and `if2`. The names need to be specified in `traffic.yml`
+
 It will: 
 - Create the two namespaces 
-- Move the interfaces `enp1s0f0np0` and `enp1s0f1np1` each into one of the namespaces
+- Move the interfaces `if1` and `if2` each into one of the namespaces. 
 - Assign them the IP adresses `192.168.1.1/24` and `192.168.1.2/24`
 - Bring the interfaces up
 - Set MTU to 6000
@@ -46,7 +48,7 @@ Note that the interface names might have to be changed in this file to the actua
 
 ### traffic.yml
 
-This file contains the traffic configurations that will be tested in case of a snake-test. There will be a measurement for each packet size combined with each bandwidth, unless the bandwidth exceeds the maximum bandwidth listed. The reason for this is that for small packet sizes, the generator might not be able to reach the fastest bandwidth if the packets are too small. 
+This file contains the interface names of the workstation that are connected to the DUT and the traffic configurations that will be tested in case of a snake-test. There will be a measurement for each packet size combined with each bandwidth, unless the bandwidth exceeds the maximum bandwidth listed. The reason for this is that for small packet sizes, the generator might not be able to reach the fastest bandwidth if the packets are too small. 
 
 This file needs to be set by the user before a snake-test. There is a template provided. 
 

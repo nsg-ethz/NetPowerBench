@@ -1,3 +1,6 @@
+if1: "enp1s0f0np0"
+if2: "enp1s0f1np1"
+
 packet_sizes:
   - bytes: 256
     # max_bandwidth: 0.5

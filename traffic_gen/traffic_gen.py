@@ -1,5 +1,8 @@
-import sys, subprocess, time, os
-
+import sys
+import subprocess
+import time
+import os
+import yaml
 
 def main():
     setup()
@@ -88,7 +91,14 @@ def setup():
         print("Namespace existence check successful")
 
     except Exception:
-        setup = subprocess.run("sudo bash ../traffic_gen/setup.sh",shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        # Fetch parameters from traffic.yml
+        with open('../traffic_gen/traffic.yml', "r") as file:
+            traffic_settings = yaml.safe_load(file)
+        
+        if1 = traffic_settings['if1']
+        if2 = traffic_settings['if2']
+
+        setup = subprocess.run(f"sudo bash ../traffic_gen/setup.sh {if1} {if2}", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
         ns1_exists = check_namespace("ns1")
         ns2_exists = check_namespace("ns2")

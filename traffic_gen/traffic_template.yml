@@ -1,3 +1,6 @@
+if1: # Name of the first interface connected to the DUT
+if2: # Name of the second interface connected to the DUT
+
 packet_sizes:
   - bytes: # Size of the generated packets
     max_bandwidth: # Optional: Maximum bandwidth for this packetsize, as the traffic
