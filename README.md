@@ -1,12 +1,37 @@
-# NetPowerBench
+# Title
+## Environment and Prerequisites
+Python version
+VScode 
+## Repository structure
+Use tree command
+## Setup
+### General setup
+which hardware is used
+### Base test
+trx not plugged in
+### Idle, port and trx test
+trx plugged in according to listing
+### Snake test
+trx plugged in for snake test
 
-To be described
+## Directories
 
-## Archives
-
-> The P4 code and the configuration of the Cisco devices used in [Lim2024](#references) are available in `\archive\configs_PowerModellingFrameworkforNetworkSwitches`.
-
-## References
-
-- Lim2024: [Lim, Jackie. "Power Modelling Framework for Network Switches." Master's thesis, ETH Zurich, 2024.](https://doi.org/10.3929/ethz-b-000663342)
+### command
+Contains Pinpoint
+### data
+There the data will end up
+### devices
+There your config files should be
+### legacy
+Old code
+### model_derivation
+Code for model derivation
+### power_model
+Code for measurements and preparation and exp.yml
+### traffic_gen
+Trafic generations
+## Usage specification
+How the code works (vlans etc)
+How to use the code
+## Known issues
 
