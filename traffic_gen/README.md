@@ -44,7 +44,6 @@ It will:
 - Bring the interfaces up
 - Set MTU to 6000
 
-Note that the interface names might have to be changed in this file to the actual names of the interfaces on the machine used (putting this into a config file is in progress). 
 
 ### traffic.yml
 
