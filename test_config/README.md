@@ -17,10 +17,12 @@ This code is intended to help with finding the right commands for the DUT config
 The code will configure the ports accoding to the types listed in `test.yml`.
 
 The configurations will be, if listed, applied in the following order:
+
 - `system`
 - `disable_all`
 - `enable`
 - `snake-test`
+
 After each configuration, it will ask the user to verify the configuration and whether they want to continue. If not disabled, ports will be reset in between the configuration types.
 
 ## Usage specification
