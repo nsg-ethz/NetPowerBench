@@ -126,6 +126,8 @@ This directory contains all the files necessary for the traffic generation inclu
 ## Usage specification
 
 In order to get a power model for a device, the following steps are advised:
+- Clone the submodule `pinpoint` with `git submodule init` and `git submodule update`
+- Compile the pinpoint binary (location needed in `config.yml`)
 - Prepare the following files with the device specific information (details are in [`devices/`](devices/README.md)):
   - `devices/<device identifier>/config.yml`
   - `devices/<device identifier>/ports.yml`
