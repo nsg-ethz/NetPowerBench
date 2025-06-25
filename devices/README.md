@@ -34,9 +34,11 @@ For each port type available there should be a respective section as shown in th
 - `speeds`: This should be a list of all speeds this port type supports. For each speed available for this port type there should be a section for the speed. It should contain a speed label and a interface label. The speed label and interface label should be listed with `PORT` as placeholder for the port number. Furthermore, one speed type needs to be listed as default. This is especially relevant for machines with multiple port types as all port types that are not tested will be disables using the default speed and interface labels.
 - `commands`: The four types of commands needed are described below. 
 
-Note that for all commands exept `system`, interface labels and speed labels should use the placeholders `INTERFACE_LABEL` and `SPEED_LABEL`. When generating the command to configure the ports, the placeholders `INTERFACE_LABEL`, `SPEED_LABEL` and `PORT` will be replaced with the speed and interface label from the speed listed in `exp.yml`, `PORT` will be replaced with the number of the port. 
+When the commands are generated, the type needed is loaded from the command list. Then the placeholder strings `INTERFACE_LABEL`, `SPEED_LABEL` and `PORT` will be replaced with the speed and interface label from the speed listed in `exp.yml` and `PORT` will be replaced with the number of the port (for each port). Therefore when writing out the commands, interface labels and speed labels should use the placeholders `INTERFACE_LABEL` and `SPEED_LABEL`. 
 
-From our experience, finding the right commands is one of the most challenging parts or using the code. The script `test_config.py` in `test_config/` is intended to help with this process(further details [here](../test_config/README.md)). 
+Note that this does not apply to `system` as this command will be run once independent from an interface.
+
+From our experience, finding the right commands is one of the most challenging parts when using the code. The script `test_config.py` in `test_config/` is intended to help with this process(further details [here](../test_config/README.md)). 
 
 ### system
 
