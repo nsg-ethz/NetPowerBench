@@ -20,7 +20,7 @@ Note that the files in `example/` are only there to give an impression of how th
 
 ## config.yml
 
-This file should contain the device specific information, parameters for the measurements and external dependencies. It is necessary that it is called `config.yml and in the subdirectory with the device identifier as name. 
+This file should contain the device specific information, parameters for the measurements and external dependencies. It is necessary that it is called `config.yml` and in the subdirectory with the device identifier as name. 
 
 The detailed explanation about the parameters is in the template.
 
