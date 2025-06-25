@@ -32,7 +32,7 @@ It is best used in combination with a console that can display the output of the
 When testing the configuration, it can be useful to adjust the parameters `wait_factor_per_port_snake-test_s:` and `wait_factor_per_port_others_s` to ensure that the code will wait long enough to ensure the correct configuraiton of the device before continuing with the measurements.
 
 An additional use case of the script can be the preconfigruation of the device, especially for `snake-test`. In this case:
-1. Run `test_config.py` with `snake-test` listed undet `test` and `disable_reset` set to `True`
+1. Run `test_config.py` with `snake-test` listed under `test` and `disable_reset` set to `True`
 2. Run snake-test as described `power_measure/` with `not_reconfigure` and `disable_reset` both set to `True`. 
 
 This can significally speed up the time needed for a snake-test. 
