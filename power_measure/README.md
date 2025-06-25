@@ -81,7 +81,10 @@ In order to run one or multiple experiments, these are the recommended steps:
 2. Set the experiment parameters. These define what kind of experimet will be run and can be either set in `exp.yml` or given to the program via the CLI. For further details, please refer to the template provided or use `--help`.
 3. Arrange the physical setup according to the experiment parameters as described above. 
 4. Optionally: Preconfigure the device using `test_config.yml` and disable reconfiguration. This can save time for e.g. snake-test (details [here](../test_config/README.md#usage-specification)).
-5. Run the code
+5. Run the `main.py` with 
+   -  ```python main.py``` (if `exp.yml` is available)
+   -  ```python test_main.py -d <device_id> -e <exp_type_list> -s <speed_list> -p <port_type> -t <transceivers> -r <repeats> [-u] [--disable_reset] [--not_reconfigure]```
+
 
 Note that with `user_confirm = True`, the code will pause and ask for a confirmation of the setup and configuration. This will allow you to change the setup if multiple different experiment types are run in one execution, but will also make it necessary for you to monitor the execution more carefully. For tests that take a longer amount of time, it might be more convenient to only mix experiment types that use the same physical setup to avoid stalling. 
 
