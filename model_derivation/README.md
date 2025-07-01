@@ -31,6 +31,6 @@ The mathematics behind calculating the values for the power model is descibed in
 
 ## Usage specification
 
-The code can be run either with CLI arguments or with the arguments in `args.yml`. If there are no CLI arguments present, the code will look for `args.yml`. There is a template provided with detailed information about the arguments. Further information can also found when running the code with `--help`. 
+The code can be run either with CLI arguments or with the arguments in `args.yml`. If there are no CLI arguments present, the code will look for `args.yml`. There is a template provided with detailed information about the arguments. Further information can also found when running the code with `python main.py --help`. 
 
 Note that if both `preprocess_only` and `derive_only` are set to `True`, nothing will happen. 

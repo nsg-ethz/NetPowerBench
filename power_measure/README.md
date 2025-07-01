@@ -83,7 +83,7 @@ In order to run one or multiple experiments, these are the recommended steps:
     - `devices/<device_id>/config.yml`
     - `devices/<device_id>/ports.yml`
     - `traffic_gen/traffic.yml` (for snake-test)
-2. Set the experiment parameters. These define what kind of experimet will be run and can be either set in `exp.yml` or given to the program via the CLI. For further details, please refer to the template provided or use `--help`.
+2. Set the experiment parameters. These define what kind of experimet will be run and can be either set in `exp.yml` or given to the program via the CLI. For further details, please refer to the template provided or use `python main.py --help`.
 3. Arrange the physical setup according to the experiment parameters as described above. 
 4. Optionally: Preconfigure the device using `test_config.yml` and disable reconfiguration. This can save time for e.g. snake-test (details [here](../test_config/README.md#usage-specification)).
 5. Run the `main.py` with 
