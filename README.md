@@ -93,9 +93,9 @@ For each device tested there will be a subdirectory with the device identifier a
 - `trx_<port_type>_<transceiver_type>_<port_speed>_<number_of_active_ports>p`
 - `snake-test_<port_type>_<transceiver_type>_<port_speed>_<packet_size>_<bandwidth>`
 
-Note that each of these directories refers to a test type and the relevant parameters for this test. As base and idle are indepentend of the port type etc, they don't contain that information in the directory name. 
+Note that each of these directories refers to a test type and the relevant parameters for this test (refered to as test configuration). Relevant parameters can be port type, transceiver type, port speed, number of active ports, packet size or bandwidth, this depends on the test type. This means for exaple that as base and idle are indepentend of the port type etc, they don't contain an of that information in the directory name. 
 
-Inside the respective subdirectory there will be a subdirectory for each measurements run with this configuration with the timestamp of the measurement as directory name. This directory contains:
+Each test configuration directory contains one subdirectory per measurement run, named with the timestamp of when the measurement was taken. This directory contains:
 -  `metadata.yml`: The metadata of the measurement
 -  `power.log`: The acutal measurement data
 
