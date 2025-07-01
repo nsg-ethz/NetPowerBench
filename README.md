@@ -33,25 +33,41 @@ There is a requirements.txt available.
 ## Repository structure
 
 ``` 
+
 .
 ├── archive
 │   └── ...
 ├── command
-│   └── ...
-├── data  # Will be created by the code
+│   ├── pinpoint_sleep.sh
 │   └── ...
 ├── devices
+│   ├── example
+│   │   ├── config.yml
+│   │   ├── ports.yml
+│   │   ├── power_data.yml
+│   │   └── power_model_QSFP28_100G_LR_RDMA.yml
 │   └── ...
 ├── legacy
 │   └── ...
 ├── model_derivation
+│   ├── args.yml
+│   ├── main.py
 │   └── ...
+├── pinpoint
 ├── power_measure
-│   └── ...
-├── traffic_gen
+│   ├── exp.yml
+│   ├── main.py
 │   └── ...
 ├── README.md
-└── requirements.txt
+├── requirements.txt
+├── test_config
+│   ├── test_config.py
+│   ├── test.yml
+│   └── ...
+└── traffic_gen
+    ├── traffic_gen.py
+    ├── traffic.yml
+    └── ...
 ```
 
 ## Directories
