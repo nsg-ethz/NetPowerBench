@@ -7,11 +7,10 @@ NetPowerBench is a tool for generating a power model of a routing device. It is 
 The motivation behind the creation of the tool as well as a detailed description of the powermodel it generates is described in [[1]](#references). 
 
 The workflow is separated into:
-- Configuring the device and running the measurements 
-- Processing the data and deriving the model
-  
-These two steps are separated programs and are descirbed more in detail in the respective directories.
+- Configuring the device and running the measurements, mainly described in [`power_measure`](power_measure/README.md)
+- Processing the data and deriving the model, described in [`model_derivation`](model_derivation/README.md)
 
+There is a more detailed schema under [`Usage Specification`](#usage-specification) (TODO: or maybe here)
 ## Environment and Prerequisites
 
 ### Hardware
@@ -141,14 +140,17 @@ This directory contains all the files necessary for the traffic generation inclu
 
 ## Usage specification
 
+TODO: Add schema of standard workflow
+
 In order to get a power model for a device, the following steps are advised:
-- Clone the submodule `pinpoint` with `git submodule init` and `git submodule update`
-- Compile the pinpoint binary (location needed in `config.yml`)
-- Prepare the following files with the device specific information (details are in [`devices/`](devices/README.md)):
-  - `devices/<device identifier>/config.yml`
-  - `devices/<device identifier>/ports.yml`
-- Follow the intructions in [`power_measure/`](power_measure/README.md) in order to set up and run the measurements on the device
-- Follow the instructions in [`model_derivation/`](model_derivation/README.md) in order to derive a power model 
+1. Clone the submodule `pinpoint` with `git submodule init` and `git submodule update`
+2. Compile the pinpoint binary (location needed in `config.yml`)
+3. Follow the intructions in [`power_measure/`](power_measure/README.md) in order to set up and run the measurements on the device. 
+3. Follow the instructions in [`model_derivation/`](model_derivation/README.md) in order to derive a power model 
+
+### Example usage
+
+Described there is the workflow of creating a power model for a CiscoNexus9336-FX2. 
 
 ## Known issues
 
@@ -158,9 +160,13 @@ In order to get a power model for a device, the following steps are advised:
 
 ## References
 
-
 1. Jacob, R., Röllin, L., Lim, J., Chung, J., Béhanzin, M., Wang, W., ... & Vanbever, L. (2025). [Fantastic Joules and Where to Find Them. Modeling and Optimizing Router Energy Demand](https://doi.org/10.3929/ethz-b-000728960). In *ACM Internet Measurement Conference (IMC 2025)*.
 
 2. Lim, J. (2024). [Power Modelling Framework for Network Switches](https://doi.org/10.3929/ethz-b-000663342). Master's thesis, ETH Zurich.
 
 3. Ostinato Team. (2024, June 27). [Snake Test for networking performance testing](https://ostinato.org/blog/snake-test-guide). Retrieved June 18, 2025
+
+
+## Contact
+
+In case of questoins or problems, ...

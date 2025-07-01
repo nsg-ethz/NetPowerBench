@@ -20,12 +20,11 @@ It is called by the code in `power_measure/`. It will create two namespaces call
 ### traffic_gen.py
 
 When run, this code will:
-- Take the three arguments duration, bandwidth and packet size
-- Set CPU performance to be consistent
-- Check whether the namespaces needed, otherwise runs `setup.sh`
-- Decides based on the bandwidth wanted which traffic generator to use: For a bandwidth smaller than 2.5 gbps, iperf3 is used, otherwise RDMA
-- Sends the traffic with the metrics set by the arguments from one namespace to the other for the duration specified 
-- Outputs performance metrics and will write them into `power_measure/perftest.json`. This is only temporary, the file will be deleted after the output has been processed.
+1. Take the three arguments duration, bandwidth and packet size
+2. Check whether the namespaces needed, otherwise runs `setup.sh`
+3. Decides based on the bandwidth wanted which traffic generator to use: For a bandwidth smaller than 2.5 gbps, iperf3 is used, otherwise RDMA
+4. Sends the traffic with the metrics set by the arguments from one namespace to the other for the duration specified 
+5. Outputs performance metrics and will write them into `power_measure/perftest.json`. This is only temporary, the file will be deleted after the output has been processed.
 
 `setup.sh` and `traffic.yml` are expected to be in the same directory. 
 
@@ -38,11 +37,11 @@ Note that in order to run properly, this code needs sudo privileges. We have sol
 It takes two arguments, the names of two interfaces, refert to as `if1` and `if2`. The names need to be specified in `traffic.yml`
 
 It will: 
-- Create the two namespaces 
-- Move the interfaces `if1` and `if2` each into one of the namespaces. 
-- Assign them the IP adresses `192.168.1.1/24` and `192.168.1.2/24`
-- Bring the interfaces up
-- Set MTU to 6000
+1. Create the two namespaces 
+2. Move the interfaces `if1` and `if2` each into one of the namespaces. 
+3. Assign them the IP adresses `192.168.1.1/24` and `192.168.1.2/24`
+4. Bring the interfaces up
+5. Set MTU to 6000
 
 
 ### traffic.yml

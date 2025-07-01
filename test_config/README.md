@@ -23,9 +23,13 @@ The configurations will be, if listed, applied in the following order:
 - `enable`
 - `snake-test`
 
+TODO: Explain how they correspond to the command types
+
 After each configuration, it will ask the user to verify the configuration and whether they want to continue. If not disabled, ports will be reset in between the configuration types.
 
 ## Usage specification
+
+The script can be run with `python test_config.py`.
 
 In order to run the test, there needs to be `test.yml` that contains the arguments. There is a template provided.
 
