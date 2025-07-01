@@ -18,11 +18,14 @@ This directory contains the code that configures the device and runs the actual 
 Tests are run for a specific port type, port speed and transceiver type. It is assumed that all transceivers used are of the same type. If a device has multiple port types available, the setup described below only correspond to the type to be tested. All other ports will be disabled and should not have anything plugged in. 
 
 There are five different types of experiments. They are characterized by the state the device is in and whether there is traffic.  
-- **base**: No transceivers are plugged in, all ports are disabled, no traffic. 
-- **idle**: All transsceivers are plugged in, all ports are disabled, no traffic. 
-- **port**: All transceivers are plugged in such that each port is connected to another port. Out of each port pair, one port is enabled and one is disabled. No traffic. 
-- **trx**: Same setup as for port, but this time, all ports will be enabled. 
-- **snake-test**: A detailed description of snake-test is provided in [[3]](../README.md#references). 
+| **Test Type**   | **Transceivers**                                  | **Port State**                                        | **Traffic**     | **Description**                                                                 |
+|------------------|---------------------------------------------------|--------------------------------------------------------|------------------|----------------------------------------------------------------------------------|
+| `base`           | None plugged in                                   | All ports disabled                                     | No traffic       | Minimal setup for baseline power measurement.                                   |
+| `idle`           | All plugged in                                    | All ports disabled                                     | No traffic       | Measures idle power with all transceivers present.                              |
+| `port`           | All plugged in, each port connected to another    | One port in each pair enabled, the other disabled      | No traffic       | Measures power with partially active connections.                               |
+| `trx`            | Same as `port`                                    | All ports enabled                                      | No traffic       | Measures power with all ports fully active.                                     |
+| `snake-test`     | See [[3]](../README.md#references)                | Based on snake-test config                             | Based on config  | Full traffic test, described in more detail in the referenced documentation.    |
+
 
 In order to get a better understanding of how the experiment types work and how they are used to infere the power model, please refer to [[1]](../README.md#references). 
 
