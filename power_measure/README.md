@@ -51,7 +51,9 @@ The experiment setup has the following components:
 - A powermeter
 - A workstation that runs this code and is able to generate the traffic.
 
-The workstation needs a serial connection to the DUT that is ready to send commands over. Note that this might require some prior login into the system of the DUT. It is recommended to test this connection and verify that configurations can be applied successfully using the code in `test_config/`. 
+The workstation needs a serial connection to the DUT that is ready to send commands over. Note that this might require some prior login into the system of the DUT. 
+This can mean for example that every time after the start up of the DUT there is a prompt in minicom to log in as admin with password in order to be able to send configuration commands. 
+It is recommended to test this connection and verify that configurations can be applied successfully using the code in `test_config/`. 
 
 The DUT needs to be plugged into the powermeter so that the powermeter can measure its energy draw. Furthermore, the powermeter needs to be connected to the workstation. 
 
