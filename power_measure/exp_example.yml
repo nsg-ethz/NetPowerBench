@@ -1,0 +1,12 @@
+device_id: example
+exp:
+  - idle 
+  - port
+port_speed:
+  - 100G
+port_type: QSFP28
+transceivers: PCC 
+repeats: 1
+user_confirm: False
+disable_reset: False
+not_reconfigure: False

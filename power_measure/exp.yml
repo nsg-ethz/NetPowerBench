@@ -1,23 +1,18 @@
-# device_id: aristaDCS-7280CR3K-32D4
-device_id: ciscoNexus9336-FX2
+device_id: example
 exp:
   # - base
-  # - idle 
-  # - port
-  # - trx
-  - snake-test
+  - idle 
+  - port
+  - trx
+  # - snake-test
   # - reset_only
 port_speed:
-  # - 400G
   - 100G
-# port_type: QSFP-DD
 port_type: QSFP28
-transceivers: "LR" # Passive Copper Cable
+transceivers: PCC 
 repeats: 1
 user_confirm: False
-disable_reset: True
-# disable_reset: True
-# not_reconfigure: True
-not_reconfigure: True
+disable_reset: False
+not_reconfigure: False
 
 # python test_main.py -d ciscoNexus9336-FX2 -e snake-test -s 100G -p QSFP28 -r 1 -u false --disable_reset true --not_reconfigure t

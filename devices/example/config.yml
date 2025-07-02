@@ -1,22 +1,24 @@
 # DUT parameters
 DUT:
-  id: "example" 
+  id: "example"  # no space!
   port_file: "ports.yml"
-  needs_commit: False 
+  type: "router"
+  needs_commit: False  # Does OS require commit to apply configs
 
 # Measurement parameters
-measurement_time_s:   10      
-configuration_time_s: 0   
-wait_factor_per_port_others_s: 1.5  
+measurement_time_s:   10      # in seconds
+configuration_time_s: 0      # in seconds, also serves as warm-up interval for the traffic generation
+wait_factor_per_port_others_s: 1.5  # Factors that gets multiplied with the number of ports impacted
 wait_factor_per_port_snake-test_s: 2.8
-sampling_interval_ms: 1000     
-random_seed:                  
+sampling_interval_ms: 1000     # in milliseconds
+random_seed:                  # leave empty for uncontrolled seed
 
 # External dependencies
 pinpoint:
-  binary: "/path/to/my/pinpoint/binary/pinpoint"
+  binary: "/local/home/psteinebrunn/pinpoint/build/pinpoint"
 serial_port: "/dev/ttyUSB0"
 baudrate: 9600
 counter_1: mcp:dev0ch1
 counter_2: mcp:dev0ch2
+
 

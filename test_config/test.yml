@@ -1,4 +1,4 @@
-device_id: ciscoNexus9336-FX2
+device_id: example
 test:
   - system
   # - disable_all # Entire device

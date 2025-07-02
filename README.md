@@ -150,7 +150,26 @@ In order to get a power model for a device, the following steps are advised:
 
 ### Example usage
 
-Described there is the workflow of creating a power model for a CiscoNexus9336-FX2. 
+Described there is the workflow of creating a power model for a CiscoNexus9336-FX2, refered to as example.
+
+1. Fill out [`config.yml`](devices/example/config.yml)
+2. Fill out [`ports.yml`](devices/example/ports.yml)
+3. Fill out [`traffic.yml`](traffic_gen/traffic.yml)
+4. Set device up for snake test (TODO: add image)
+5. As port 35 and 36 are connected to the work station make sure order in ports is 36 1 2 ... 35
+6. cd test_config
+7. set test.yml so that system and snake-test are listed and reset is disabled
+8. python test_config.py
+9. cd ../power_measure
+10. run with CLI "python main.py -d example -e snake-test -s 100G -p QSFP28 -t PCC -r 1 --disable_reset --not_reconfigure"
+11. Set up device for port/trx/idle (TODO: Add image)
+12. Made sure order matches in port: now 1 2 ...
+13. This time set exp.yml like in exp_example.yml
+14. run python main.py
+15. unplugged all transceiver/setup for base test
+16. python main.py -d example -e base -s 100G -p QSFP28 -t PCC -r 1 
+17. cd ../model_derivation/
+18. python main.py -d example -s 100G -p QSFP28 -t PCC -g RDMA 
 
 ## Known issues
 

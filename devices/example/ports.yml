@@ -2,12 +2,12 @@ ports:
   QSFP28:
     ids:
       - 1
-      - 2 
+      - 2
+      - 3
       - 4
       - 5
       - 6
       - 7
-      - 3
       - 8
       - 9
       - 10
@@ -33,67 +33,26 @@ ports:
       - 30
       - 31
       - 32
-    speeds:
-      100G:
-        speed_label: 100g
-        interface_label: Ethernet PORT/1
-      50G:
-        speed_label: 50g
-        interface_label: Ethernet PORT/1
-      25G:
-        speed_label: 25g
-        interface_label: Ethernet PORT/1
-      10G:
-        speed_label: 10g
-        interface_label: Ethernet PORT/1
-      default: 100G
-
-    commands:
-      system:
-      snake-test:
-        - interface INTERFACE_LABEL
-        - no shutdown
-        - switchport
-        - switchport mode access
-        - switchport access vlan VLAN_NUMBER
-        - no spanning-tree vlan VLAN_NUMBER
-        - mtu 6000
-        - speed SPEED_LABEL
-        - exit
-      enable:
-        - interface INTERFACE_LABEL
-        - no shutdown
-        - exit
-      disable:
-        - interface INTERFACE_LABEL
-        - no switchport
-        - shutdown
-        - exit
-  QSFP-DD:
-    ids:
       - 33
       - 34
       - 35
       - 36
     speeds:
-      400G:
-        speed_label: 400g
-        interface_label: Ethernet PORT/1
       100G:
-        speed_label: 100g
-        interface_label: Ethernet PORT/1
+        speed_label: 100000   
+        interface_label: Ethernet 1/PORT
       default: 100G
-
     commands:
       system:
-        - ''
+        - system jumbomtu 6000
       snake-test:
+        - vlan VLAN_NUMBER
+        - exit
         - interface INTERFACE_LABEL
         - no shutdown
         - switchport
         - switchport mode access
         - switchport access vlan VLAN_NUMBER
-        - no spanning-tree vlan VLAN_NUMBER
         - mtu 6000
         - speed SPEED_LABEL
         - exit
@@ -104,6 +63,7 @@ ports:
         - exit
       disable:
         - interface INTERFACE_LABEL
+        - no speed SPEED_LABEL
         - no switchport
         - shutdown
         - exit
