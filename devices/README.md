@@ -13,9 +13,10 @@ Note that the files in `example/` are only there to give an impression of how th
 │   ├── config.yml
 │   ├── ports.yml
 │   ├── power_data.yml
-│   └── power_model_<port_type>_<port_speed>_<transceiver_type>_<traffic_generator>.yml
+│   └── power_model_QSFP28_100G_PCC_RDMA.yml
 ├── ports_template.yml
-└── README.md
+├── README.md
+└── snake_test.png
 ```
 
 ## config.yml
@@ -31,10 +32,11 @@ This file should contain the information necessary in order to configure the por
 For each port type available there should be a respective section as shown in the template. This section contains the following information:
 
 - `ids`: This should be a list of all port numbers of this type. Note that for some test types the order of the numbers matters (details below). 
-- `speeds`: This should be a list of all speeds this port type supports. For each speed available for this port type there should be a section for the speed. It should contain a speed label and a interface label. The speed label and interface label should be listed with `PORT` as placeholder for the port number. Furthermore, one speed type needs to be listed as default. This is especially relevant for machines with multiple port types as all port types that are not tested will be disables using the default speed and interface labels.
+- `speeds`: This should be a list of all speeds this port type supports. For each speed available there should be a section for this speed. It should contain a speed label and a interface label. Those should be listed with `PORT` as placeholder for the port number. 
+- Furthermore for `speeds`, one speed type needs to be listed as default. This is especially relevant for machines with multiple port types as all port types that are not tested will be disables using the default speed and interface labels.
 - `commands`: The four types of commands needed are described below. 
 
-When the commands are generated, the type needed is loaded from the command list. Then the placeholder strings `INTERFACE_LABEL`, `SPEED_LABEL` and `PORT` will be replaced with the speed and interface label from the speed listed in `exp.yml` and `PORT` will be replaced with the number of the port (for each port). Therefore when writing out the commands, interface labels and speed labels should use the placeholders `INTERFACE_LABEL` and `SPEED_LABEL`. 
+When the commands are generated, the type needed is loaded from the command list. The placeholder strings `INTERFACE_LABEL`, `SPEED_LABEL` and `PORT` will be replaced with the speed and interface label from the speed given as argument to the program. `PORT` will be replaced with the number of the port (for each port). Therefore, when writing out the commands, interface labels and speed labels should use the placeholders `INTERFACE_LABEL` and `SPEED_LABEL`. 
 
 Note that this does not apply to `system` as this command will be run once independent from an interface.
 
@@ -48,13 +50,13 @@ One example for a use of this is setting the system MTU to 6000 instead of the d
 
 ### enable
 
-This command should enable a port. When generating the configuration command, this command will be used for each port that should be enabled.  
+This command should enable the interface `INTERFACE_LABEL`. When generating the configuration command, this command will be used for each interface that should be enabled. `INTERFACE_LABEL` will be replaced by the actual interface label. 
 
-Note that if a port needs manual speed configuration, this should be included in this command. 
+Note that if an interface needs manual speed configuration, this should be included in this command. 
 
 ### disable
 
-This command should disable an interface. 
+This command should disable the interface `INTERFACE_LABEL`. 
 
 ### snake-test
 
@@ -74,7 +76,9 @@ For further information, please refer to [[3]](../README.md#references).
 
 ### ID order for port and trx
 
-In order to run a port or trx test, each port will be connected to another port (compare setup for these test types). The assumed pairing of the ports is implied by the order the port numbers are listed. Namely, if port `i` and `j` are connected, then their numbers need to be next to each other in the listing. 
+In order to run a port or trx test, each port will be connected to another port (compare setup for these test types). The assumed pairing of the ports is implied by the order the port numbers are listed. 
+
+Namely, if port `i` and `j` are connected, then their numbers need to be next to each other in the listing. 
 
 As an example, consider the following port listing:
 ```
@@ -104,8 +108,7 @@ ids:
 ```
 
 ![alt text](snake_test.png)
-
-Source: [[3]](../README.md#references)
+*Figure 1: This also visualizes how the VLANs are assigned. Source: [[3]](../README.md#references)*
 
 ## power_data.yml
 
