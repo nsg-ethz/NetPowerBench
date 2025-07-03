@@ -10,6 +10,7 @@ It is called by the code in `power_measure/`. It will create two namespaces call
 .
 ├── README.md
 ├── setup.sh
+├── traffic_example.yml
 ├── traffic_gen.py
 ├── traffic_template.yml
 └── traffic.yml

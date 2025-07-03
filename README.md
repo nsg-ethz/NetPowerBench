@@ -117,9 +117,9 @@ For further details on the test types and measurement procedure, please refer to
 
 ### devices
 
-For each DUT there needs to be a subdirectory in `devices/` with the device identifier as directory. That folder needs to contain the configuration files of that device. There are templates available. The processed data from the measurements and the parameter values of the power model will be stored there as well. 
+For each DUT there needs to be a subdirectory in `devices/` with the device identifier as directory. That folder needs to contain the configuration files of that device. There are templates in that directory. 
 
-For further details please refer to the documentation in [`devices/`](devices/README.md). 
+When running the model derivation, it will first preprocess the raw data from `data/` and store it in here. Then it will use that data to derive the parameter values and store these in here too. 
 
 ### legacy
 
