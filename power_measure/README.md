@@ -2,15 +2,19 @@
 
 This directory contains the code that configures the device and runs the actual measurements. There are five different types of experiments needed in order to have the data necessary to derive the power model and it is recommended to have multiple runs of an experient to improve the quality of the model.
 
-## Submodule structure
+## Subdirectory structure
 
 ```
 .
+├── exp_example.yml
 ├── exp_template.yml
 ├── exp.yml
+├── figures
+│   └── ...
 ├── helper_functions.py
 ├── main.py
 └── README.md
+
 ```
 
 ## Code description
