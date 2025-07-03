@@ -1,0 +1,8 @@
+device_id: example
+test:
+  - system
+  - snake-test
+speed: 100G
+port_type: QSFP28
+transceivers: PCC
+disable_reset: True 

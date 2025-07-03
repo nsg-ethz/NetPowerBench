@@ -4,21 +4,24 @@
 
 NetPowerBench is a tool for generating a power model of a routing device. It is intended to be used in a lab setup.
 
-The motivation behind the creation of the tool as well as a detailed description of the powermodel it generates is described in [[1]](#references). 
+The reason for the creation of the tool as well as a detailed description of the power model it generates is described in [[1]](#references). It is stronly encouraged to read this paper in order to be able to use this tool.
 
 The workflow is separated into:
-- Configuring the device and running the measurements, mainly described in [`power_measure`](power_measure/README.md)
+- Setting up and cnfiguring the device and running the measurements, mainly described in [`power_measure`](power_measure/README.md)
 - Processing the data and deriving the model, described in [`model_derivation`](model_derivation/README.md)
 
-There is a more detailed schema under [`Usage Specification`](#usage-specification) (TODO: or maybe here)
+This schema should give an impression of the general workflow. 
+
+![alt text](workflow.png)
+
 ## Environment and Prerequisites
 
 ### Hardware
 
 The tool needs the following componends:
-- Device under testing (DUT): A L2 or L3 routing device with at least 4 ports, ideally more
+- A Device Under Testing (DUT): A L2 or L3 routing device with at least 4 ports, ideally more
 - A powermeter. It needs to support the pinpoint submodule. The one we used is linked [here](https://www.microchip.com/en-us/development-tool/ADM00706)
-- A workstation that is running the experiment. It need have two ports to send and receive traffic to the DUT and need to be able to generate the traffic volume that the user wants to test. Furthermore it needs a Serial connection to the DUT and a connection to the powermeter. 
+- A workstation that is running the experiment. It needs have two ports to send and receive traffic from the DUT, and it needs to be able to generate the traffic volume that the user wants to test. Furthermore it needs a Serial connection to the DUT and a connection to the powermeter. 
 
 ### Software
 
@@ -27,7 +30,7 @@ In order to run the experiments, we used the following software environment:
 - IDE: Visual Studio Code 
 - OS: Ubuntu 22.04
 
-There is a requirements.txt available. 
+There is a [requirements.txt](requirements.txt) available. 
 
 ## Repository structure
 
@@ -92,7 +95,7 @@ For each device tested there will be a subdirectory with the device identifier a
 - `trx_<port_type>_<transceiver_type>_<port_speed>_<number_of_active_ports>p`
 - `snake-test_<port_type>_<transceiver_type>_<port_speed>_<packet_size>_<bandwidth>`
 
-Note that each of these directories refers to a test type and the relevant parameters for this test (refered to as test configuration). Relevant parameters can be port type, transceiver type, port speed, number of active ports, packet size or bandwidth, this depends on the test type. This means for exaple that as base and idle are indepentend of the port type etc, they don't contain an of that information in the directory name. 
+Note that each of these directories refers to a test type and the corresponding test configuration. Relevant parameters can be port type, transceiver type, port speed, number of active ports, packet size or bandwidth, this depends on the test type. This means for example that as base and idle are indepentend of the port port speed, they don't contain an of that information in the directory name. 
 
 Each test configuration directory contains one subdirectory per measurement run, named with the timestamp of when the measurement was taken. This directory contains:
 -  `metadata.yml`: The metadata of the measurement
@@ -140,42 +143,68 @@ This directory contains all the files necessary for the traffic generation inclu
 
 ## Usage specification
 
-TODO: Add schema of standard workflow
-
 In order to get a power model for a device, the following steps are advised:
 1. Clone the submodule `pinpoint` with `git submodule init` and `git submodule update`
 2. Compile the pinpoint binary (location needed in `config.yml`)
-3. Follow the intructions in [`power_measure/`](power_measure/README.md) in order to set up and run the measurements on the device. 
-3. Follow the instructions in [`model_derivation/`](model_derivation/README.md) in order to derive a power model 
+3. Follow the intructions in [`power_measure/`](power_measure/README.md#usage-specification) in order to set up and run the measurements on the device. 
+3. Follow the instructions in [`model_derivation/`](model_derivation/README.md#usage-specification) in order to derive a power model 
 
 ### Example usage
 
-Described there is the workflow of creating a power model for a CiscoNexus9336-FX2, refered to as example.
+Here is a list of the single steps that can be taken in order to create a power model for a CiscoNexus9336-FX2. The device ID used is `example`. The respective files can be found in [`devices/example`] or contain `example` in their file name (e.g. `traffic_example.yml`). 
 
-1. Fill out [`config.yml`](devices/example/config.yml)
-2. Fill out [`ports.yml`](devices/example/ports.yml)
-3. Fill out [`traffic.yml`](traffic_gen/traffic.yml)
-4. Set device up for snake test (TODO: add image)
-5. As port 35 and 36 are connected to the work station make sure order in ports is 36 1 2 ... 35
-6. cd test_config
-7. set test.yml so that system and snake-test are listed and reset is disabled
-8. python test_config.py
-9. cd ../power_measure
-10. run with CLI "python main.py -d example -e snake-test -s 100G -p QSFP28 -t PCC -r 1 --disable_reset --not_reconfigure"
-11. Set up device for port/trx/idle (TODO: Add image)
-12. Made sure order matches in port: now 1 2 ...
-13. This time set exp.yml like in exp_example.yml
-14. run python main.py
-15. unplugged all transceiver/setup for base test
-16. python main.py -d example -e base -s 100G -p QSFP28 -t PCC -r 1 
-17. cd ../model_derivation/
-18. python main.py -d example -s 100G -p QSFP28 -t PCC -g RDMA 
+1. Fill out `config.yml` as shown in the [example](devices/example/config.yml)
+2. Fill out `ports.yml` as shown in the [example](devices/example/ports.yml)
+3. Fill out `traffic.yml` as shown in the [example](traffic_gen/traffic.yml)
+4. `cd power_measure/`
+
+Base: 
+
+5. Make sure that device is powered up and power meter is connected, but no transceivers are plugged into any ports.
+6. Run a base test via CLI with 
+   
+   ```python main.py -d example -e base -s 100G -p QSFP28 -t PCC -r 1 ```
+
+Idle, Port and Trx:
+
+7.  Plugg transceivers into all ports, connecting port 1 with port 2, 3 with 4, 5 with 6, ... , 35 with 36. 
+8.  Make sure the order in `ports.yml` under `ids` goes 1 2 3 4 ... 35 36
+9.  Set `exp.yml` like in the [example](power_measure/exp_example.yml)
+10. Run a idle, port and trx test by executing 
+    
+    ```python main.py```
+
+Snake-test: 
+
+11. Set device up for snake test. The only thing that needs to be changed from the previous setup is connecting port 35 and 36 with the workstation instead of each other
+12. As port 35 and 36 are connected to the workstation make sure order in `ports.yml` is now 36 1 2 ... 35
+13. `cd ../test_config/`
+14. Set `test.yml` like in the [example](test_config/test_example.yml), so that system and snake-test are listed under `test` and reset is disabled. 
+15. Preconfigure the device with 
+    
+    ```python test_config.py```
+
+16. `cd ../power_measure`
+17. Run snake-test with with CLI: 
+    
+    ```python main.py -d example -e snake-test -s 100G -p QSFP28 -t PCC -r 1 --disable_reset --not_reconfigure```
+    
+Model derivation
+    
+18. `cd ../model_derivation/`
+19. Derive the power model with: 
+    
+    ```python main.py -d example -s 100G -p QSFP28 -t PCC -g RDMA ```
+
+Note that for most steps, there are alternative ways to do them. Also, to improve the quality of the power model, multiple repeats are advised as well as mixing the order of the tests.
 
 ## Known issues
 
 -  Sometimes the pinpoint software recognizes counters that are not from the powermeter and will also be present when it is unplugged. Our way of solving this is making the counters used a parameter in `config.yml`. In case of the pinpoint script getting stuck, we advise the user to verify that the counters used are the ones the powermeter writes to and adapt `config.yml` accordingly. 
 - The traffic generation needs sudo rights in order to be executed properly. As this is not really resolvable for us, our workaround was to disable the necessity of a password for executing sudo commands.
 - Currently for many scrips there are dependencies on from where they are executed. This might be changed in the future but for now, in order to have everything properly executed, please run a script only from the directory it is in.  
+
+In case of any problems occuring, please open an issue. 
 
 ## References
 
@@ -185,7 +214,3 @@ Described there is the workflow of creating a power model for a CiscoNexus9336-F
 
 3. Ostinato Team. (2024, June 27). [Snake Test for networking performance testing](https://ostinato.org/blog/snake-test-guide). Retrieved June 18, 2025
 
-
-## Contact
-
-In case of questoins or problems, ...
